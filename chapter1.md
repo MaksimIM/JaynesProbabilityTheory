@@ -1,5 +1,15 @@
 # Plausible Reasoning
 
+
+
+
+
+
+
+
+
+# Markdown Example equations
+
 inline equations are created within dollar signs, and supports latex syntax  $\overline{AB} = \overline{A} + \overline{B}$  
 
 
