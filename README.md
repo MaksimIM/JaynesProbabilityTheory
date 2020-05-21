@@ -16,9 +16,15 @@ Lots of editors can be used to edit markdown while displaying the resulting form
 
 ## Compile to pdf or latex or html
 
-Lets try to make sure that anything added compiles with the command below. If it doesn't compile, it usually means there's a latex syntax error in an equation.
+After editing the markdown files, you can compile it to other formats with pandoc using the commands below. If it doesn't compile, it usually means there's a latex syntax error in an equation. You don't have to compile before pushing changes if you don't want to, but it'd be good to make sure it works.
 
-```pandoc chapter1.md -f markdown -s -o chapter1.{pdf,tex}```
+```pandoc chapter1.md -f markdown -s -o chapter1.pdf```
 
 ```pandoc chapter1.md -f markdown --mathjax -s -o chapter1.html```
+
+
+
+## Viewing the html files online
+
+You can view the html files in this repository online [here](https://jezgillen.github.io/JaynesProbabilityTheory/).  
 
