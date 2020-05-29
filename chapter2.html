@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<h1 id="the-quantitative-rules">The quantitative rules</h1>
+<h4 id="todo-we-need-a-better-justification-of-2.19-to-go-here">TODO: We need a better justification of 2.19 to go here</h4>
+<h2 id="proof-of-equation-2.50">Proof of Equation 2.50</h2>
+<p>Source: <a href="https://math.stackexchange.com/questions/2438381/derivation-in-2-50-jaynes-probability">stackexchange</a>, I've reworded it and added detail to (hopefully) make it clearer.</p>
+<p>We will use the Taylor series approximation, which is an approximation of <span class="math inline">\(f(t)\)</span> around the point <span class="math inline">\(a\)</span>:</p>
+<p><span class="math display">\[f(t) = f(a) + f&#39;(a)(t-a) + O((t-a)^2)\]</span></p>
+<p>Big O notation is described on <a href="https://en.wikipedia.org/wiki/Big_O_notation">Wikipedia</a>.</p>
+<p>The proof:</p>
+<p>Letting <span class="math inline">\(\delta = e^{-q}\)</span>, we have from (2.48):</p>
+<p><span class="math display">\[S(y) = S \left[ \frac{S(x)}{1-\delta}\right]\]</span></p>
+<p>We then use a Taylor series approximation of the function <span class="math inline">\(f(\delta) = \frac{1}{1-\delta}\)</span> around with <span class="math inline">\(a = 0\)</span>.</p>
+<p><span class="math display">\[S(y) = S[S(x)(1+\delta + O(\delta^2))]\]</span></p>
+<p><span class="math display">\[S(y) = S[S(x) + S(x)\delta + S(x)O(\delta^2)]\]</span></p>
+<p>Now we want to get rid of the <span class="math inline">\(S[]\)</span> surrounding the equation, so we will use another Taylor approximation of the function <span class="math inline">\(S(t)\)</span>. We approximate around the point <span class="math inline">\(a=S(x)\)</span>.</p>
+<p>This gives us the approximation of <span class="math inline">\(S(t)\)</span> as:</p>
+<p><span class="math display">\[S(t) = S[S(x)]+S&#39;[S(x)](t - S(x)) + O((t - S(x))^2)\]</span></p>
+<p>Letting <span class="math inline">\(t=S(x) + S(x)\delta + S(x)O(\delta^2)\)</span></p>
+<p><span class="math display">\[S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S&#39;[S(x)](S(x)\delta + S(x)O(\delta^2)) + O((S(x)\delta+S(x)O(\delta^2))^2)\]</span></p>
+<p><span class="math display">\[S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S&#39;[S(x)]S(x)\delta + S&#39;[S(x)]S(x)O(\delta^2) + O((S(x)\delta+S(x)O(\delta^2))^2)\]</span></p>
+<p>With big O notation we can get rid of constant factors:</p>
+<p><span class="math display">\[S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S&#39;[S(x)]S(x)\delta + O(\delta^2) + O((\delta+O(\delta^2))^2)\]</span></p>
+<p>With big O notation we can also get rid terms that drop asymptotically faster than the largest term.</p>
+<p><span class="math display">\[S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S&#39;[S(x)]S(x)\delta + O(\delta^2)\]</span></p>
+<p><span class="math inline">\(\square\)</span></p>
+</body>
+</html>
