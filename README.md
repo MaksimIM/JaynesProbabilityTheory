@@ -1,6 +1,6 @@
 ## Content
 
-This document is for any information that you want to pass on to future readers. This will help people catch up with the reading group, and serves as a good way to share proofs and highlights of discussion. If we make it through the whole book, we can share it online. The plan is to make one markdown file per chapter, whose purpose will be to fill details of proofs, point out errors and controversial points, preserve some of the highlights of our discussions, answer common questions, link to further resources, and (hopefully) provide solutions to the exercises.
+This document is for any information that you want to pass on to future readers. This will help people catch up with the reading group, and serves as a good way to share proofs and highlights of discussion. If we make it through the whole book, we can share it online, with credit to everyone who contributed. The plan is to make one markdown file per chapter, whose purpose will be to fill details of proofs, point out errors and controversial points, preserve some of the highlights of our discussions, answer common questions, link to further resources, and (hopefully) provide solutions to the exercises.
 
 Send me a message and I'll add you as an author of this repo if you want to contribute, or just post your contribution on reddit and I'll format it and add it to the document.
 
