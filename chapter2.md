@@ -17,6 +17,10 @@ $G(x,y)=\frac{A(x)}{B(y)}=\frac{A(x)A(y)}{A(y)B(y)}=r \frac{A(x)}{A(y)}$
 
 
 
+## Brief explanation of the overall line of reasoning on from 2.45 to 2.58
+
+TODO
+
 ## Proof of Equation 2.50
 
 Source: [stackexchange](https://math.stackexchange.com/questions/2438381/derivation-in-2-50-jaynes-probability), I've reworded it and added detail to (hopefully) make it clearer.
@@ -63,9 +67,15 @@ $$S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S'[S(x)]S(x)\delta + O(\delta
 
 $\square$
 
-## Explanation of 2.52
+## Explanation of 2.52, 2.53
 
 TODO
+
+## Proof of 2.57
+
+TODO
+
+## Proof of 2.58
 
 
 
