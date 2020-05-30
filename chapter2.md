@@ -2,7 +2,18 @@
 
 
 
-#### TODO: We need a better justification of 2.19 to go here
+## Proof of 2.19
+
+Credit to atwwgb
+
+Continuing to get 2.19 from 2.18:  
+
+We have then $G(x,y)G(y,z)=P(x,z)$. Pick any fixed $z$. Denote $P(x,z)=A(x)$ and $G(y,z)=B(y)$.  Then $G(x,y)=\frac{A(x)}{B(y)}$ [and $G(y,z)=\frac{A(y)}{B(z)}$]. 
+
+Plug this in to $G(x,y)G(y,z)=P(x,z)$ to get $\frac{A(x)A(y)}{B(y)B(z)}=P(x,z)$. 
+So $A(y)/B(y)$ is independent of $y$, so is constant equal to $r$. This means 
+
+$G(x,y)=\frac{A(x)}{B(y)}=\frac{A(x)A(y)}{A(y)B(y)}=r \frac{A(x)}{A(y)}$
 
 
 
@@ -52,3 +63,30 @@ $$S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S'[S(x)]S(x)\delta + O(\delta
 
 $\square$
 
+## Explanation of 2.52
+
+TODO
+
+
+
+
+
+## Exercise 2.1
+
+I think this problem is ambiguous and can be interpreted in multiple ways, see [here](http://www-cs-students.stanford.edu/~blynn//pr/jaynes.html) for a different interpretation. But I think the following interpretation makes more sense.
+
+With $X$ representing any background information:
+
+$$p(C|(A+B)X) = \frac{p(A+B|CX)p(C|X)}{p(A+B|X)}$$ 
+
+$$= \frac{(p(A|CX)+p(B|CX)-p(AB|CX))p(C|X)}{p(A|X)+p(B|X)-p(AB|X)}$$ 
+
+$$= \frac{p(AC|X)+p(BC|X)-p(ABC|X)}{p(A|X)+p(B|X)-p(AB|X)}$$ 
+
+## Exercise 2.2
+
+TODO
+
+## Exercise 2.3
+
+TODO
