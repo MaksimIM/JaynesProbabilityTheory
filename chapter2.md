@@ -69,15 +69,76 @@ $\square$
 
 ## Explanation of 2.52, 2.53
 
-TODO
+2.45 says $S[S(x)]=x$. Differentiating in $x$ we get $S'[S(x)]S'(x)=1$, or $S'[S(x)]=1/S'(x)$. Now we plug in into 2.50 to get
+
+$$S(y)=x+\exp\{-q\} S(x)/S'(x)+O(\exp\{-2q\}) $$
+
+Denoting by $\alpha(x)=\log \left[\frac{-xS'(x)}{S(x)}\right]$ we get 
+
+
+$$S(y)=x+\exp\{-q\} (-x \exp{-\alpha})+O(\exp\{-2q\}) $$
+
+Dividing by $x$
+
+$$\frac{S(y)}{x}=1-\exp\{-(q+\alpha)\}+\frac{1}{x} O(\exp\{-2q\}) $$
+
+which is a version of 2.51. 
+
+From now on we will treat $x$ as fixed and only vary $q$, sening it to $+\infty$, which in light of 2.48 means keeping $x$ fixed and sending $y$ to $S(x)$ from below.
+
+Then we can write 
+
+$$\frac{S(y)}{x}=1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\}),$$
+
+which is 2.51.
+
+Now we want to deduce 2.53.  We make some progress but ultimately do not succeed (yet).
+
+ We start with 2.45
+
+$$x S\left[\frac{S(y)}{x}\right]=y S\left[\frac{S(x)}{y}\right]$$ 
+
+and plug in 2.51 and 2.48 to get 
+
+$$x S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=y S[1-\exp\{-q\}] $$
+
+Right hand side is $y \exp\{-J(q)\}$ by definition 2.49. We also plug in 2.48 in the form $y=S(x)/(1-\exp\{-q\})$ to get 
+
+$$RHS=S(x) \exp\{-J(q)\} /(1-\exp\{-q\})$$ 
+
+
+Now take log to get
+
+$$\log x +\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]$$
+
+$$ =\log S(x)-J(q)-\log(1-\exp\{q\})$$
+
+Now if we could write 
+
+
+$$\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=$$
+$$\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-2q\})$$
+
+we would get $J(q+\alpha)+O(\exp\{-2q\})$ and 2.53 would follow. 
+
+
+
+
+<!---
+Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ such that $\lim_{g\to {\text{something}}}\frac{g(q)}{f(q)}=0$". What we have obtained is that $\frac{S(y)}{x}-1-\exp\{-(q+\alpha)\}$  if considered as a function of $q$ alone, with $x$ fixed, is $O(q)$. However, the rates at which the limits in the definition of $O(q)$ converge depend on the "parameter" $x$.
+-->
+
+
+
+
 
 ## Proof of 2.57
 
-TODO
+
 
 ## Proof of 2.58
 
-
+$S^{m-1}S'=-x^{m-1}$ is equivalent to $(S^m)'=-\frac{1}{m} x^{m-1}$, so that $S^m=C-x^m$. Initial value $S(0)=1$ fixes $C=1$ and $S(x)=(1-x^m)^{1/m}$ as wanted.
 
 
 
