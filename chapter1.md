@@ -2,15 +2,55 @@
 
 
 
+## Proof of 1.13
+
+if $\overline{B} = AD$ then $A\overline{B}=\overline{B}$:
+
+$\overline{B} = AD$
+
+$A\overline{B} = AAD$
+
+$A\overline{B} = AD$
+
+$A\overline{B} = \overline{B}$ 
+
+$\square$
+
+if $\overline{B} = AD$ then $B\overline{A}=\overline{A}$:
+
+$\overline{B} = AD$
+
+$A+\overline{B} = A+AD$
+
+$A+\overline{B} = A$ 					using [absorption laws](https://proofwiki.org/wiki/Absorption_Laws_(Boolean_Algebras)), which can be proved with a truth table
+
+$\overline{A}B = \overline{A}$
+
+$\square$
 
 
 
 
 
 
-# Markdown Example equations
 
-inline equations are created within dollar signs, and supports latex syntax  $\overline{AB} = \overline{A} + \overline{B}$  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Markdown Example equations and symbols
+
+inline equations are created within dollar signs, and supports latex syntax  $\overline{AB} = \overline{A} + \overline{B}$
 
 
 
