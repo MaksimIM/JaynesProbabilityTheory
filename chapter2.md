@@ -156,8 +156,68 @@ $$= \frac{p(AC|X)+p(BC|X)-p(ABC|X)}{p(A|X)+p(B|X)-p(AB|X)}$$
 
 ## Exercise 2.2
 
-TODO
+We will use convention that **all $P$ are conditioned on $X$**. So $P(A|C)$ actually stands for $P(A|CX)$.
+
+First we do a bunch of lemmas about mutually exclusive propositions.
+
+1) If $A_i$ and are mutually exclusive, and $C$ is arbitrary, then 
+
+    a) $P(A_i+A_j)=P(A_i)+P(A_j)$
+
+      Proof: $P(A_i+A_j)=P(A_i)+P(A_j)-P(A_iA_j)=P(A_i)+P(A_j).$
+ 
+    b) $A_iC$ are mutually exclusive 
+
+      Proof: If $i\neq j$ then $P(A_iCA_jC)=P(A_iA_j)P(C|A_iA_j)=0.$
+
+    c)$A_i|C$ are mutually exclusive
+
+      Proof: If $i\neq j$ then $P(A_i|C)P(A_j|C)=P(A_iC)P(A_jC)/P(C)^2=0.$
+
+
+2) If $A_1, A_2, A_3$ are mutually exclusive, then $A_1+A_2$ and $A_3$ are mutually exclusive. 
+
+    First of all $P(A_1A_2A_3)=P(A_1|A_2A_3)P(A_2 A_3)=0$. Then, 
+
+$$P((A_1+A_2)A_3)=P(A_1A_3+A_2A_3)=$$
+
+$$P(A_1A_2)+P(A_2A_3)-P(A_1A_2A_3)=0.$$
+
+
+
+With this in place, we can use induction to see 
+
+$$P(\sum A_i)=\sum P(A_i)$$ 
+
+and 
+
+$$P(C(\sum A_i))=\sum P(CA_i).$$
+
+Finally,
+ 
+
+$$P(C(\sum A_i))=P(C|(\sum A_i))P(\sum A_i)$$
+
+and plugging in we get
+
+$$P(C|(\sum A_i))=\frac{P(C(\sum A_i))}{P(\sum A_i)}=\frac{\sum P(C A_i)}{\sum P(A_i)}=\frac{\sum P(A_i)P(C| A_i)}{\sum P(A_i)}.$$
+
+
 
 ## Exercise 2.3
 
-TODO
+Again, everything is conditional on $C$, but we don't write it. 
+
+Then 
+
+$P(AB)=P(B|A)P(A)\leq P(A)=a,$
+
+$P(A+B)=P(A)+P(B)-P(AB)=a+b-P(AB)\geq b.$
+
+Also 
+
+$P(AB)=P(A)+P(B)-P(A+B)\geq a+b-1$
+
+and 
+
+$P(A+B)=P(A)+P(B)-P(AB)\leq a+b.$

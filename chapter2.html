@@ -88,8 +88,41 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 <p><span class="math display">\[= \frac{(p(A|CX)+p(B|CX)-p(AB|CX))p(C|X)}{p(A|X)+p(B|X)-p(AB|X)}\]</span></p>
 <p><span class="math display">\[= \frac{p(AC|X)+p(BC|X)-p(ABC|X)}{p(A|X)+p(B|X)-p(AB|X)}\]</span></p>
 <h2 id="exercise-2.2">Exercise 2.2</h2>
-<p>TODO</p>
+<p>We will use convention that <strong>all <span class="math inline">\(P\)</span> are conditioned on <span class="math inline">\(X\)</span></strong>. So <span class="math inline">\(P(A|C)\)</span> actually stands for <span class="math inline">\(P(A|CX)\)</span>.</p>
+<p>First we do a bunch of lemmas about mutually exclusive propositions.</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(A_i\)</span> and are mutually exclusive, and <span class="math inline">\(C\)</span> is arbitrary, then</p>
+<ol type="a">
+<li><span class="math inline">\(P(A_i+A_j)=P(A_i)+P(A_j)\)</span></li>
+</ol>
+<p>Proof: <span class="math inline">\(P(A_i+A_j)=P(A_i)+P(A_j)-P(A_iA_j)=P(A_i)+P(A_j).\)</span></p>
+<ol start="2" type="a">
+<li><span class="math inline">\(A_iC\)</span> are mutually exclusive</li>
+</ol>
+<p>Proof: If <span class="math inline">\(i\neq j\)</span> then <span class="math inline">\(P(A_iCA_jC)=P(A_iA_j)P(C|A_iA_j)=0.\)</span></p>
+<p>c)<span class="math inline">\(A_i|C\)</span> are mutually exclusive</p>
+<p>Proof: If <span class="math inline">\(i\neq j\)</span> then <span class="math inline">\(P(A_i|C)P(A_j|C)=P(A_iC)P(A_jC)/P(C)^2=0.\)</span></p></li>
+<li><p>If <span class="math inline">\(A_1, A_2, A_3\)</span> are mutually exclusive, then <span class="math inline">\(A_1+A_2\)</span> and <span class="math inline">\(A_3\)</span> are mutually exclusive.</p>
+<p>First of all <span class="math inline">\(P(A_1A_2A_3)=P(A_1|A_2A_3)P(A_2 A_3)=0\)</span>. Then,</p></li>
+</ol>
+<p><span class="math display">\[P((A_1+A_2)A_3)=P(A_1A_3+A_2A_3)=\]</span></p>
+<p><span class="math display">\[P(A_1A_2)+P(A_2A_3)-P(A_1A_2A_3)=0.\]</span></p>
+<p>With this in place, we can use induction to see</p>
+<p><span class="math display">\[P(\sum A_i)=\sum P(A_i)\]</span></p>
+<p>and</p>
+<p><span class="math display">\[P(C(\sum A_i))=\sum P(CA_i).\]</span></p>
+<p>Finally,</p>
+<p><span class="math display">\[P(C(\sum A_i))=P(C|(\sum A_i))P(\sum A_i)\]</span></p>
+<p>and plugging in we get</p>
+<p><span class="math display">\[P(C|(\sum A_i))=\frac{P(C(\sum A_i))}{P(\sum A_i)}=\frac{\sum P(C A_i)}{\sum P(A_i)}=\frac{\sum P(A_i)P(C| A_i)}{\sum P(A_i)}.\]</span></p>
 <h2 id="exercise-2.3">Exercise 2.3</h2>
-<p>TODO</p>
+<p>Again, everything is conditional on <span class="math inline">\(C\)</span>, but we don’t write it.</p>
+<p>Then</p>
+<p><span class="math inline">\(P(AB)=P(B|A)P(A)\leq P(A)=a,\)</span></p>
+<p><span class="math inline">\(P(A+B)=P(A)+P(B)-P(AB)=a+b-P(AB)\geq b.\)</span></p>
+<p>Also</p>
+<p><span class="math inline">\(P(AB)=P(A)+P(B)-P(A+B)\geq a+b-1\)</span></p>
+<p>and</p>
+<p><span class="math inline">\(P(A+B)=P(A)+P(B)-P(AB)\leq a+b.\)</span></p>
 </body>
 </html>
