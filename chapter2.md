@@ -193,8 +193,8 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 
 
 
-## Proof of 2.57
 
+## Proof of 2.56
 The difficulty is getting 2.54 from 2.53. More precisely, we only need that 
 
  $$b=\alpha^{-1} \log\left[\frac{x}{S(x)}\right]= \log \left[ \frac{x}{S(x)} \right]/ \log \left[\frac{-xS'(x)}{S(x)}\right]$$
@@ -208,7 +208,10 @@ The difficulty is getting 2.54 from 2.53. More precisely, we only need that
    
    $$\left[ \frac{-xS'(x)}{S(x)} \right]^b = \left[ \frac{x}{S(x)} \right]$$
    
-   or 
+   i.e. 2.56.
+   
+   <!---
+
    
    $$\left[ \frac{-xS'(x)}{S(x)} \right] = \left[ \frac{x}{S(x)} \right]^{1/b}$$
    
@@ -218,10 +221,12 @@ The difficulty is getting 2.54 from 2.53. More precisely, we only need that
    
   for $m=1/b$.
   
+-->
+  So we just need to show that $b(x)$ is constant.
   
-  I find it simpler to show that $b(x)$ is constant than to show the asymptotic expansion 2.54.
+  I find it simpler to do "directly", rather than to show the asymptotic expansion 2.54.
   
-  Remark: To get 2.54 one must first make sure that $\alpha$ actually takes "continuum of values". Since $\alpha$ is a continuous function of $x$, intermediate value theorem implies that the set of values of $\alpha$ is an interval; we just check that it is not a degenerate interval consisting of a single point. Indeed, that would mean $\alpha(x)$ is constant, or $S'(x)/S(x)=-c/x$, $(\ln S)'=-c/x$, $\ln S(x)= a-c/x$, but this breaks $S(0)=1$. Now we do know that $\alpha$ takes ''continuum of values".  
+  Remark: To get 2.54 one must first make sure that $\alpha$ actually takes "continuum of values". Since $\alpha$ is a continuous function of $x$, intermediate value theorem implies that the set of values of $\alpha$ is an interval; we just check that it is not a degenerate interval consisting of a single point. Indeed, that would mean $\alpha(x)$ is constant, or $S'(x)/S(x)=-c/x$, $(\ln S)'=-c/x$, $\ln S(x)= a-c/x$, but this breaks $S(0)=1$. Now we do know that $\alpha$ takes ''continuum of values".  We will use this as well.
   
   
   We start with 2.53 in the form 
@@ -284,43 +289,53 @@ Now we want to repeat this argument with error terms.
     
 2. We know that for each $x$ and each $C>0$ there exists  $Q(x, C)$ such that  that for $q\geq Q(x, C)$ we have $|O(\exp\{-q\})|< C\exp\{-q\}$.  Pick any $q(x,C)\geq Q(x, C)$.
 
-        Now  we have by induction  (with everything depending on $x$)
+      Now  we have by induction  (with everything depending on $x$)
+        
 
-          $$|J(q+n\alpha)-(J (q)+n\beta)|$$
+      $$|J(q+n\alpha)-(J (q)+n\beta)|$$
+        
+      $$\leq C \exp\{-q\}(1+\exp\{-\alpha\}+...+\exp\{-(n-1)\alpha\})$$
 
-          $$\leq C \exp\{-q\}(1+\exp\{-\alpha\}+...+\exp\{-(n-1)\alpha\})$$
-
-          $$<\frac{C}{1-\exp\{-\alpha\}} \exp\{-q\}  $$
-          As before is $\alpha_1=(n_0/n_1)\alpha_0$ writing the above and picking sufficiently large $q$ we get 
+      $$<\frac{C}{1-\exp\{-\alpha\}} \exp\{-q\}  $$
           
-          $$\beta(\alpha_0)/\beta(\alpha_1)=n_0/n_1=\alpha_0/\alpha_1.$$
-          The rest is the sam as in the "error-less" case.
+          
+      As before is $\alpha_1=(n_0/n_1)\alpha_0$ writing the above and picking sufficiently large $q$ we get 
+          
+      $$\beta(\alpha_0)/\beta(\alpha_1)=n_0/n_1=\alpha_0/\alpha_1.$$
+      The rest is the sam as in the "error-less" case.
           
 
     This shows that 
 
     $$b(x)=\beta{x}/\alpha{x}=\log \left[ \frac{x}{S(x)} \right]/ \log \left[\frac{-xS'(x)}{S(x)}\right]$$ 
 
-    is constant, and thus establishing 2.57. 
+    is constant, and thus establishing 2.56. 
+    
+    
+## Proof of 2.57
 
-    Start with 2.56 and doing a bit of manipulation to isolate $$S^{\prime}(x)$$
-    $$
-    \begin{aligned}
-    \frac{x}{S(x)} &= \left[\frac{-x S^{\prime}(x)}{S(x)}\right]^{b}\\
-    \frac{x^{\frac{1}{b}}}{S(x)^{\frac{1}{b}}} &= -\frac{x S^{\prime}(x)}{S(x)}\\
-    S^{\prime}(x) &= -\frac{x^{\frac{1}{b}} S(x)}{x S(x)^{\frac{1}{b}}}\\
-    &= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}
-    \end{aligned}
-    $$
-    Expanding $S^{\prime}(x)$ into the actual derivative, and treating them as differentials.
-    $$
-    \begin{aligned}
-    \frac{dS(x)}{d x} &= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}\\
-    S(x)^{\frac{1}{b} - 1} dS &= -x^{\frac{1}{b} - 1} dx \\
-    S(x)^{\frac{1}{b} - 1} dS + x^{\frac{1}{b} - 1} dx &= 0\\
-    S(x)^{m - 1} dS + x^{m-1} dx &=0
-    \end{aligned}
-    $$
+
+
+  Start with 2.56 and doing a bit of manipulation to isolate $S^{\prime}(x)$
+        
+  $$
+  \begin{aligned}
+  \frac{x}{S(x)} &= \left[\frac{-x S^{\prime}(x)}{S(x)}\right]^{b}\\
+  \frac{x^{\frac{1}{b}}}{S(x)^{\frac{1}{b}}} &= -\frac{x S^{\prime}(x)}{S(x)}\\
+  S^{\prime}(x) &= -\frac{x^{\frac{1}{b}} S(x)}{x S(x)^{\frac{1}{b}}}\\
+  &= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}
+  \end{aligned}
+  $$
+  Expanding $S^{\prime}(x)$ into the actual derivative, and treating them as differentials.
+  $$
+  \begin{aligned}
+  \frac{dS(x)}{d x} &= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}\\
+  S(x)^{\frac{1}{b} - 1} dS &= -x^{\frac{1}{b} - 1} dx \\
+  S(x)^{\frac{1}{b} - 1} dS + x^{\frac{1}{b} - 1} dx &= 0\\
+  S(x)^{m - 1} dS + x^{m-1} dx &=0
+  \end{aligned}
+  $$
+
 
 
 ## Proof of 2.58
