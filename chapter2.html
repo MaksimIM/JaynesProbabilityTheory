@@ -81,7 +81,7 @@
 <p>Dividing by <span class="math inline">\(x\)</span></p>
 <p><span class="math display">\[\frac{S(y)}{x}=1-\exp\{-(q+\alpha)\}+\frac{1}{x} O(\exp\{-2q\}) \]</span></p>
 <p>which is a version of 2.51.</p>
-<p>From now on we will treat <span class="math inline">\(x\)</span> as fixed and only vary <span class="math inline">\(q\)</span>, sening it to <span class="math inline">\(+\infty\)</span>, which in light of 2.48 means keeping <span class="math inline">\(x\)</span> fixed and sending <span class="math inline">\(y\)</span> to <span class="math inline">\(S(x)\)</span> from below.</p>
+<p>From now on we will treat <span class="math inline">\(x\)</span> as fixed and only vary <span class="math inline">\(q\)</span>, sending it to <span class="math inline">\(+\infty\)</span>, which in light of 2.48 means keeping <span class="math inline">\(x\)</span> fixed and sending <span class="math inline">\(y\)</span> to <span class="math inline">\(S(x)\)</span> from below.</p>
 <p>Then we can write</p>
 <p><span class="math display">\[\frac{S(y)}{x}=1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\}),\]</span></p>
 <p>which is 2.51.</p>
@@ -156,6 +156,23 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 <p><span class="math display">\[b(x)=\beta{x}/\alpha{x}=\log \left[ \frac{x}{S(x)} \right]/ \log \left[\frac{-xS&#39;(x)}{S(x)}\right]\]</span></p>
 <p>is constant, and thus establishing 2.57.</p></li>
 </ol>
+
+<p>Start with 2.56 and doing a bit of manipulation to isolate <span class="math display">\[S^{\prime}(x)\]</span> <span class="math display">\[
+\begin{aligned}
+\frac{x}{S(x)} &amp;= \left[\frac{-x S^{\prime}(x)}{S(x)}\right]^{b}\\
+\frac{x^{\frac{1}{b}}}{S(x)^{\frac{1}{b}}} &amp;= -\frac{x S^{\prime}(x)}{S(x)}\\
+S^{\prime}(x) &amp;= -\frac{x^{\frac{1}{b}} S(x)}{x S(x)^{\frac{1}{b}}}\\
+&amp;= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}
+\end{aligned}
+\]</span> Expanding <span class="math inline">\(S^{\prime}(x)\)</span> into the actual derivative, and treating them as differentials. <span class="math display">\[
+\begin{aligned}
+\frac{dS(x)}{d x} &amp;= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}\\
+S(x)^{\frac{1}{b} - 1} dS &amp;= -x^{\frac{1}{b} - 1} dx \\
+S(x)^{\frac{1}{b} - 1} dS + x^{\frac{1}{b} - 1} dx &amp;= 0\\
+S(x)^{m - 1} dS + x^{m-1} dx &amp;=0
+\end{aligned}
+\]</span></p>
+
 <h2 id="proof-of-2.58">Proof of 2.58</h2>
 <p><span class="math inline">\(S^{m-1}S&#39;=-x^{m-1}\)</span> is equivalent to <span class="math inline">\((S^m)&#39;=-\frac{1}{m} x^{m-1}\)</span>, so that <span class="math inline">\(S^m=C-x^m\)</span>. Initial value <span class="math inline">\(S(0)=1\)</span> fixes <span class="math inline">\(C=1\)</span> and <span class="math inline">\(S(x)=(1-x^m)^{1/m}\)</span> as wanted.</p>
 <h2 id="exercise-2.1">Exercise 2.1</h2>
