@@ -84,7 +84,7 @@ $$\frac{S(y)}{x}=1-\exp\{-(q+\alpha)\}+\frac{1}{x} O(\exp\{-2q\}) $$
 
 which is a version of 2.51. 
 
-From now on we will treat $x$ as fixed and only vary $q$, sening it to $+\infty$, which in light of 2.48 means keeping $x$ fixed and sending $y$ to $S(x)$ from below.
+From now on we will treat $x$ as fixed and only vary $q$, sending it to $+\infty$, which in light of 2.48 means keeping $x$ fixed and sending $y$ to $S(x)$ from below.
 
 Then we can write 
 
@@ -115,7 +115,6 @@ $$ =\log S(x)-J(q)-\log(1-\exp\{q\})$$
 
 Now if we could write 
 
-
 $$\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=$$
 $$\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-2q\})$$
 
@@ -134,7 +133,24 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 
 ## Proof of 2.57
 
-
+Start with 2.56 and doing a bit of manipulation to isolate $$S^{\prime}(x)$$
+$$
+\begin{aligned}
+\frac{x}{S(x)} &= \left[\frac{-x S^{\prime}(x)}{S(x)}\right]^{b}\\
+\frac{x^{\frac{1}{b}}}{S(x)^{\frac{1}{b}}} &= -\frac{x S^{\prime}(x)}{S(x)}\\
+S^{\prime}(x) &= -\frac{x^{\frac{1}{b}} S(x)}{x S(x)^{\frac{1}{b}}}\\
+&= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}
+\end{aligned}
+$$
+Expanding $S^{\prime}(x)$ into the actual derivative, and treating them as differentials.
+$$
+\begin{aligned}
+\frac{dS(x)}{d x} &= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}\\
+S(x)^{\frac{1}{b} - 1} dS &= -x^{\frac{1}{b} - 1} dx \\
+S(x)^{\frac{1}{b} - 1} dS + x^{\frac{1}{b} - 1} dx &= 0\\
+S(x)^{m - 1} dS + x^{m-1} dx &=0
+\end{aligned}
+$$
 
 ## Proof of 2.58
 
@@ -163,15 +179,15 @@ First we do a bunch of lemmas about mutually exclusive propositions.
 1) If $A_i$ and are mutually exclusive, and $C$ is arbitrary, then 
 
     a) $P(A_i+A_j)=P(A_i)+P(A_j)$
-
+    
       Proof: $P(A_i+A_j)=P(A_i)+P(A_j)-P(A_iA_j)=P(A_i)+P(A_j).$
- 
+     
     b) $A_iC$ are mutually exclusive 
-
+    
       Proof: If $i\neq j$ then $P(A_iCA_jC)=P(A_iA_j)P(C|A_iA_j)=0.$
-
+    
     c)$A_i|C$ are mutually exclusive
-
+    
       Proof: If $i\neq j$ then $P(A_i|C)P(A_j|C)=P(A_iC)P(A_jC)/P(C)^2=0.$
 
 
@@ -194,7 +210,7 @@ and
 $$P(C(\sum A_i))=\sum P(CA_i).$$
 
 Finally,
- 
+
 
 $$P(C(\sum A_i))=P(C|(\sum A_i))P(\sum A_i)$$
 
