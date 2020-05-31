@@ -40,7 +40,7 @@ be a function well-defined up to a constant, we have
 
 $$df(v)=\frac{dv}{H(v)}, \text{    }  df(y)=\frac{dy}{H(y)} ,\text{    }  df(z)=\frac{dz}{H(z)}.$$
 
- Then, since untiderivative of a 1-form on a connected $\Sigma$ is well-defined up to a constant,   equality of 1-forms
+ Then, since antiderivative of a 1-form on a connected $\Sigma$ is well-defined up to a constant,   equality of 1-forms
 
 $$ \frac{dv}{H(v)}=\frac{dy}{H(y)}+r\frac{dz}{H(z)}$$
 
@@ -310,6 +310,19 @@ Now we want to repeat this argument with error terms.
     $$b(x)=\beta{x}/\alpha{x}=\log \left[ \frac{x}{S(x)} \right]/ \log \left[\frac{-xS'(x)}{S(x)}\right]$$ 
 
     is constant, and thus establishing 2.56. 
+    
+ <!---    
+  We can now get the asymptotic expansion as well. We have:
+  
+  $$ J(q + \alpha) - J (q) = b \alpha+O(\exp\{-q\})$$ 
+  
+  Define $G(q)=J(q)-bq$. 
+  
+  Then we have  $G(q+\alpha)=G(q)+O(\exp\{-q\})$ and we want $G(q)=a+O(\exp\{-q\})$.
+  
+    --->
+  
+  
     
     
 ## Proof of 2.57
