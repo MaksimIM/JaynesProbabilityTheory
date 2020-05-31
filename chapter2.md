@@ -154,7 +154,7 @@ $$
 
 ## Proof of 2.58
 
-$S^{m-1}S'=-x^{m-1}$ is equivalent to $(S^m)'=-\frac{1}{m} x^{m-1}$, so that $S^m=C-x^m$. Initial value $S(0)=1$ fixes $C=1$ and $S(x)=(1-x^m)^{1/m}$ as wanted.
+$S^{m-1}S'=-x^{m-1}$ is equivalent to $(S^m)'=-mx^{m-1}$, so that $S^m=C-x^m$. Initial value $S(0)=1$ fixes $C=1$ and $S(x)=(1-x^m)^{1/m}$ as wanted.
 
 
 
