@@ -315,6 +315,19 @@ Now we want to repeat this argument with error terms.
 
     is constant, and thus establishing 2.56. 
     
+ <!---    
+  We can now get the asymptotic expansion as well. We have:
+  
+  $$ J(q + \alpha) - J (q) = b \alpha+O(\exp\{-q\})$$ 
+  
+  Define $G(q)=J(q)-bq$. 
+  
+  Then we have  $G(q+\alpha)=G(q)+O(\exp\{-q\})$ and we want $G(q)=a+O(\exp\{-q\})$.
+  
+    --->
+  
+  
+    
     
 ## Proof of 2.57
 

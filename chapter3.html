@@ -13,11 +13,35 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
 <h1 id="elementary-sampling-theory">Elementary Sampling theory</h1>
+<p>##3.26, 3.27 The most probable value of <span class="math inline">\(r\)</span></p>
+<p>The sequence <span class="math inline">\(h(r|N, M, n)\)</span> for fixed <span class="math inline">\(N, M, n\)</span> is unimodal, meaning it first increases, then decreases. To see this we argue as follows.</p>
+<p>We want to see wether <span class="math inline">\(h(r+1|N, M, n)\)</span> is bigger <span class="math inline">\(h(r|N, M, n)\)</span>, so we need to compare their fraction to <span class="math inline">\(1\)</span>. We compute using 3.22</p>
+<p><span class="math display">\[h(r+1|N, M, n)/h(r|N, M, n)=\]</span></p>
+<p><span class="math display">\[ [(M-r) /(r+1)]  [(N-M - n+ r+1) /(n-r)]=\]</span></p>
+<p><span class="math display">\[ \frac{(r-M) (r-n)}{(r+1)(r+ N-M-n+1 )  }  \stackrel{?}{\gtreqless} 1\]</span></p>
+<p><span class="math display">\[(r-M) (r-n)\stackrel{?}{\gtreqless}(r+1)(r+ N-M-n+1 ) \]</span></p>
+<p><span class="math display">\[ Mn-(M+n)r  \stackrel{?}{\gtreqless} (N-M-n+1) +r (N-M-n+2)\]</span></p>
+<p><span class="math display">\[ Mn-(N-M-n+1) \stackrel{?}{\gtreqless}  r (N+2)\]</span></p>
+<p><span class="math display">\[\frac{ Mn-(N-M-n+1)}{N+2} \stackrel{?}{\gtreqless}  r \]</span></p>
+<p><span class="math display">\[\frac{ Mn+M+n+1}{N+2} \stackrel{?}{\gtreqless}  r+1 \]</span></p>
+<p><span class="math display">\[\frac{ (M+1)(n+1)}{N+2} \stackrel{?}{\gtreqless}  r+1 \]</span></p>
+<p>The sequence <span class="math inline">\(h(r)\)</span> increases while the left hand side is bigger.</p>
+<p>Thus denoting by <span class="math inline">\(r&#39;\)</span> the number <span class="math inline">\(\frac{ (M+1)(n+1)}{N+2}\)</span> we see that if <span class="math inline">\(r&#39;\)</span> is an integer, then <span class="math inline">\(h(r)\)</span> increase until <span class="math inline">\(r=r&#39;-1\)</span>, then <span class="math inline">\(h(r&#39;-1)=h(r&#39;)\)</span>, then the <span class="math inline">\(h(r)\)</span> decrease. If <span class="math inline">\(r&#39;\)</span> is not an integer, then <span class="math inline">\(h(r)\)</span> increase until <span class="math inline">\(h(INT(r&#39;))\)</span>, then decrease.</p>
+<p>Remak 1: Note that the expected number of red balls is just the “naive” <span class="math inline">\(n \frac{M}{N}\)</span> (this is not hard to show using linearity of expectation, see Example 4.2.3 in Blitzstein-Hwang “Introduction to Probability”).</p>
+<p>Remark 2: The above result can be restated in the following way: add one red and one white ball to the urn (for a total of <span class="math inline">\(N+2\)</span>) and draw <span class="math inline">\(n+1\)</span> balls from it. Compute the “naive” most likely fraction of red balls <span class="math inline">\(\frac{M+1}{N+2}\)</span> and the “naive” most likely number of red balls <span class="math inline">\(\frac{(n+1)(M+1)}{N+2}\)</span>. Now subtract <span class="math inline">\(1\)</span>. This is (up to rounding) the most likely number of red balls drawn in the original procedure. This seems somewhat reminiscent of the correction that putting a beta prior on Bernoulli makes to the posterior expectation, but I have no idea if there is more to this connection than that.</p>
+<h2 id="symmetry-of-hrn-m-n">3.29 Symmetry of <span class="math inline">\(h(r|N, M, n)\)</span></h2>
+<p>Combinatorial proof that <span class="math display">\[h(r|N, M, n)=h(r|N, n, M).\]</span></p>
+<p>Remark: This is Theorem 3.4.5 in Blitzstein - Hwang “Introduction to Probability”. See also Theorem 3.9.2.</p>
+<p>By definition, <span class="math inline">\(h(r|N, M, n)\)</span> is computed as follows. Lay down <span class="math inline">\(N\)</span> balls, labeled <span class="math inline">\(1, ..., N\)</span>. Pick the subset <span class="math inline">\(R_0=\{1,..., M\}\)</span> of them and paint it red. Then pick a subset <span class="math inline">\(D\)</span> of size <span class="math inline">\(n\)</span> of all the ball, and compute <span class="math inline">\(r=|D\cap R_0|\)</span>. The fraction of <span class="math inline">\(D\)</span>s that give specific answer <span class="math inline">\(r\)</span> is by definition <span class="math inline">\(h(r|N, M, n)\)</span>.</p>
+<p>Now suppose instead we pick a different subset <span class="math inline">\(R_1\)</span> of size <span class="math inline">\(M\)</span> to be red, and repeat the procedure above: pick <span class="math inline">\(D\)</span>, and comute <span class="math inline">\(r=|D \cap R_1|\)</span>. We claim that the fraction of <span class="math inline">\(D\)</span>s that give specific answer <span class="math inline">\(r\)</span> is still <span class="math inline">\(h(r|N, M, n)\)</span>. In deed, there exists a permutation of <span class="math inline">\(\{1, ..., N\}\)</span> taking <span class="math inline">\(R_1\)</span> to <span class="math inline">\(R_0\)</span> (“sort the reds to be first”); the same permutation takes <span class="math inline">\(D\)</span>s that give <span class="math inline">\(D\cap R_1=r\)</span> to those that give <span class="math inline">\(D\cap R_0=r\)</span>. Hence there are the same number of <span class="math inline">\(D\)</span>s in both circumstances.</p>
+<p>The above argument means that <span class="math inline">\(h(r|N, M, n)\)</span> can be also computed as follows. Lay down <span class="math inline">\(N\)</span> balls, labeled <span class="math inline">\(1, ..., N\)</span>. Pick <strong>any</strong> subset <span class="math inline">\(R\)</span> of them of size <span class="math inline">\(M\)</span> and paint it red. Then pick a subset <span class="math inline">\(D\)</span> of size <span class="math inline">\(n\)</span> of all the ball, and compute <span class="math inline">\(r=|D\cap R|\)</span>. The fraction of <strong><span class="math inline">\(R\)</span>s and <span class="math inline">\(D\)</span>s</strong> that give specific answer <span class="math inline">\(r\)</span> is then <span class="math inline">\(h(r|N, M, n)\)</span>.</p>
+<p>But the above procedure remains the same if we exchange <span class="math inline">\(M\)</span> and <span class="math inline">\(n\)</span> and rename “paint red” into “pick” and “pick” into “paint red”. Then it computes <span class="math inline">\(h(r|N, n, M)\)</span>. So the two numbers are equal.</p>
 </body>
 </html>
