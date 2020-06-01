@@ -366,16 +366,11 @@ $S^{m-1}S'=-x^{m-1}$ is equivalent to $(S^m)'=-mx^{m-1}$, so that $S^m=C-x^m$. I
 I think this problem is ambiguous and can be interpreted in multiple ways, see [here](http://www-cs-students.stanford.edu/~blynn//pr/jaynes.html) for a different interpretation. But I think the following interpretation makes more sense.
 
 With $X$ representing any background information:
-
 $$
 \begin{aligned}
-
-  p(C|(A+B)X) &= \frac{p(A+B|CX)p(C|X)}{p(A+B|X)} \\
-
-  &= \frac{[p(A|CX)+p(B|CX)-p(AB|CX)]p(C|X)}{p(A|X)+p(B|X)-p(AB|X)}\\
-
-  &= \frac{p(AC|X)+p(BC|X)-p(ABC|X)}{p(A|X)+p(B|X)-p(AB|X)}
-
+p(C|(A+B)X) &= \frac{p(A+B|CX)p(C|X)}{p(A+B|X)}\\
+&= \frac{[p(A|CX)+p(B|CX)-p(AB|CX)]p(C|X)}{p(A|X)+p(B|X)-p(AB|X)}\\
+&= \frac{p(AC|X)+p(BC|X)-p(ABC|X)}{p(A|X)+p(B|X)-p(AB|X)}
 \end{aligned}
 $$
 

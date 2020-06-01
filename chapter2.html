@@ -1,42 +1,33 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>chapter2</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
 <h1 id="the-quantitative-rules">The quantitative rules</h1>
 <h2 id="proof-of-2.19">Proof of 2.19</h2>
-<p>“We verify that <span class="math inline">\(\partial{V}/\partial{y} = \partial{U}/\partial{z}\)</span>”:</p>
+<p>&quot;We verify that <span class="math inline">\(\partial{V}/\partial{y} = \partial{U}/\partial{z}\)</span>&quot;:</p>
 <p>By definition <span class="math inline">\(U=G(x, v) F_1 (y, z)\)</span>, so by product rule and chain rule and using that <span class="math inline">\(v=F(y, z)\)</span> we have</p>
-<p><span class="math display">\[U_z=G_2(x,v)F_2(y,z)F_1(y,z)+ G(x,v)F_21(y,z).\]</span></p>
+<p><span class="math display">\[U_z=G_2(x,v)F_2(y,z)F_1(y,z)+ G(x,v)F_{21}(y,z).\]</span></p>
 <p>Similarly <span class="math inline">\(V=G(x,v)F_2(y,z)\)</span> so</p>
-<p><span class="math display">\[V_y=G_2(x,v)F_1(y,z)F_2(y,z)+G(x,v)F_12(y,z).\]</span></p>
-<p>Of course mixed partials are equal (under some continuity of second derivatives assumption, Clairot’s theorem), so the two expressions are the same.</p>
+<p><span class="math display">\[V_y=G_2(x,v)F_1(y,z)F_2(y,z)+G(x,v)F_{12}(y,z).\]</span></p>
+<p>Of course mixed partials are equal (under some continuity of second derivatives assumption, Clairot's theorem), so the two expressions are the same.</p>
 <p>Continuing to get 2.19 from 2.18:</p>
 <p>We have then <span class="math inline">\(G(x,y)G(y,z)=P(x,z)\)</span>. Pick any fixed <span class="math inline">\(z\)</span>. Denote <span class="math inline">\(P(x,z)=A(x)\)</span> and <span class="math inline">\(G(y,z)=B(y)\)</span>. Then <span class="math inline">\(G(x,y)=\frac{A(x)}{B(y)}\)</span> [and <span class="math inline">\(G(y,z)=\frac{A(y)}{B(z)}\)</span>].</p>
-<p>Plug this in to <span class="math inline">\(G(x,y)G(y,z)=P(x,z)\)</span> to get <span class="math inline">\(\frac{A(x)A(y)}{B(y)B(z)}=P(x,z)\)</span>. So <span class="math inline">\(A(y)/B(y)\)</span> is independent of <span class="math inline">\(y\)</span>, so is constant equal to <span class="math inline">\(r\)</span>. This means</p>
+<p>Plug this in to <span class="math inline">\(G(x,y)G(y,z)=P(x,z)\)</span> to get <span class="math inline">\(\frac{A(x)A(y)}{B(y)B(z)}=P(x,z)\)</span>.</p>
+<p>So <span class="math inline">\(A(y)/B(y)\)</span> is independent of <span class="math inline">\(y\)</span>, so is constant equal to <span class="math inline">\(r\)</span>. This means</p>
 <p><span class="math inline">\(G(x,y)=\frac{A(x)}{B(y)}=\frac{A(x)A(y)}{A(y)B(y)}=r \frac{A(x)}{A(y)}\)</span></p>
 <h2 id="proof-of-2.23-and-2.24-from-2.22">Proof of 2.23 and 2.24 from 2.22</h2>
-<p>The variables <span class="math inline">\(v, y, z\)</span> are related by <span class="math inline">\(v=F(y,z)\)</span>. One can interpret 2.22 as equality of differential 1-forms on the surface <span class="math inline">\(\Sigma=\{v,y,z|v=F(y,z)\}\)</span> in 3D space with coordinates <span class="math inline">\(v-y-z\)</span>. The forms <span class="math inline">\(\frac{v}{H(v)}\)</span>, <span class="math inline">\(\frac{y}{H(y)}\)</span> and <span class="math inline">\(\frac{z}{H(z)}\)</span> are exact, meaning are differentials of functions. We can find these functions by single-variable integration because each of the 1-forms depends only on one of the variables (in forms language, is pulled back via coordinate projection from the corresponding coordinate line), meaning we can find the antiderivative of the corresponding 1-form on the cordinate line, and then “pull back” the result, which just means interpret it as a function on <span class="math inline">\(\Sigma\)</span>. Namely if we set</p>
+<p>The variables <span class="math inline">\(v, y, z\)</span> are related by <span class="math inline">\(v=F(y,z)\)</span>. One can interpret 2.22 as equality of differential 1-forms on the surface <span class="math inline">\(\Sigma=\{v,y,z|v=F(y,z)\}\)</span> in 3D space with coordinates <span class="math inline">\(v-y-z\)</span>. The forms <span class="math inline">\(\frac{v}{H(v)}\)</span>, <span class="math inline">\(\frac{y}{H(y)}\)</span> and <span class="math inline">\(\frac{z}{H(z)}\)</span> are exact, meaning are differentials of functions. We can find these functions by single-variable integration because each of the 1-forms depends only on one of the variables (in forms language, is pulled back via coordinate projection from the corresponding coordinate line), meaning we can find the antiderivative of the corresponding 1-form on the coordinate line, and then &quot;pull back&quot; the result, which just means interpret it as a function on <span class="math inline">\(\Sigma\)</span>. Namely if we set</p>
 <p><span class="math display">\[f(x)=\int_{x_0}^x \frac{1}{H(t)}dt\]</span></p>
 <p>be a function well-defined up to a constant, we have</p>
 <p><span class="math display">\[df(v)=\frac{dv}{H(v)}, \text{    }  df(y)=\frac{dy}{H(y)} ,\text{    }  df(z)=\frac{dz}{H(z)}.\]</span></p>
-<p>Then, since untiderivative of a 1-form on a connected <span class="math inline">\(\Sigma\)</span> is well-defined up to a constant, equality of 1-forms</p>
+<p>Then, since the antiderivative of a 1-form on a connected <span class="math inline">\(\Sigma\)</span> is well-defined up to a constant, equality of 1-forms</p>
 <p><span class="math display">\[ \frac{dv}{H(v)}=\frac{dy}{H(y)}+r\frac{dz}{H(z)}\]</span></p>
 <p>implies equality of antiderivatives up to an additive constant, i.e.</p>
 <p><span class="math display">\[f(v)=f(y)+rf(z).\]</span></p>
@@ -46,13 +37,15 @@
 <p><span class="math display">\[w(F(y,z))=w(y)w(z)^r.\]</span></p>
 <h2 id="brief-explanation-of-the-overall-line-of-reasoning-on-from-2.45-to-2.58">Brief explanation of the overall line of reasoning on from 2.45 to 2.58</h2>
 <p>TODO</p>
+<p><strong>Note:</strong> There is a typo in the book just above equation 2.45 on pg 31. (2.25) should be (2.40).</p>
 <h2 id="symmetry-of-the-domain-of-2.45">Symmetry of the domain of 2.45</h2>
 <p>The domain is <span class="math inline">\(0\leq S(y)\leq x\)</span> because <span class="math inline">\(S(y)\)</span> is plausibility of <span class="math inline">\(\bar{B}=AD\)</span>, which is at most plausibility of <span class="math inline">\(A\)</span>, aka <span class="math inline">\(x\)</span>. for general <span class="math inline">\(A,D\)</span> these (and <span class="math inline">\(x,y\in [0,1]\)</span>) are the only requirements, anything else should be possible, so hence the domain).</p>
-<p>The symmetry of the domain comes from <span class="math inline">\(S\)</span> being self-inverse and monotone decreasing. In fact, by monotonicity we have <span class="math inline">\(S(y)\leq x \Leftrightarrow S(S(y))\geq S(x)\)</span> and by <span class="math inline">\(SS=Id\)</span> we have <span class="math inline">\(S(S(y))\geq S(x) \Leftrightarrow y\geq S(x)\)</span>.</p>
-<p>(In general the graph of the inverse function is obtained by flipping the graph of the original function through the <span class="math inline">\(x=y\)</span> line, and so the graph of <span class="math inline">\(S\)</span> is symmetric to this flip preciely when <span class="math inline">\(S\)</span> is it’s own inverse; monotonicity makes the same true for the overgraph region.)</p>
-<p>We can slightly rewrite the above argument as: <span class="math inline">\(y\geq S(x)\)</span> means <span class="math inline">\(w(\overline{AD})\geq w(\bar{A})\)</span>, which by monotonicity of <span class="math inline">\(S\)</span> means <span class="math inline">\(w(AD)\geq w(A)\)</span>, i.e. <span class="math inline">\(x\geq S(y)\)</span>.</p>
+<p>The symmetry of the domain comes from <span class="math inline">\(S\)</span> being self-inverse and monotone decreasing. In fact, by monotonicity we have <span class="math inline">\(S(y)\leq x \Leftrightarrow S(S(y))\geq S(x)\)</span> and by <span class="math inline">\(SS=Id\)</span> (Eq. 2.46) we have <span class="math inline">\(S(S(y))\geq S(x) \Leftrightarrow y\geq S(x)\)</span>.</p>
+<p>(In general the graph of the inverse function is obtained by flipping the graph of the original function through the <span class="math inline">\(x=y\)</span> line, and so the graph of <span class="math inline">\(S\)</span> is symmetric to this flip preciely when <span class="math inline">\(S\)</span> is it's own inverse; monotonicity makes the same true for the overgraph region.)</p>
+<p>We can slightly rewrite the above argument as: <span class="math inline">\(y\geq S(x)\)</span> means <span class="math inline">\(w(\overline{AD})\geq w(\bar{A})\)</span>, which by monotonicity of <span class="math inline">\(S\)</span> means <span class="math inline">\(w(AD)\geq w(A)\)</span>, i.e. <span class="math inline">\(x\geq S(y)\)</span>.</p>
+<p><strong>Note:</strong> There's a missing bracket in 2.49 before the second =.</p>
 <h2 id="proof-of-equation-2.50">Proof of Equation 2.50</h2>
-<p>Source: <a href="https://math.stackexchange.com/questions/2438381/derivation-in-2-50-jaynes-probability">stackexchange</a>, I’ve reworded it and added detail to (hopefully) make it clearer.</p>
+<p>Source: <a href="https://math.stackexchange.com/questions/2438381/derivation-in-2-50-jaynes-probability">stackexchange</a>, I've reworded it and added detail to (hopefully) make it clearer.</p>
 <p>We will use the Taylor series approximation, which is an approximation of <span class="math inline">\(f(t)\)</span> around the point <span class="math inline">\(a\)</span>:</p>
 <p><span class="math display">\[f(t) = f(a) + f&#39;(a)(t-a) + O((t-a)^2)\]</span></p>
 <p>Big O notation is described on <a href="https://en.wikipedia.org/wiki/Big_O_notation">Wikipedia</a>.</p>
@@ -72,12 +65,11 @@
 <p><span class="math display">\[S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S&#39;[S(x)]S(x)\delta + O(\delta^2) + O((\delta+O(\delta^2))^2)\]</span></p>
 <p>With big O notation we can also get rid terms that drop asymptotically faster than the largest term.</p>
 <p><span class="math display">\[S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S&#39;[S(x)]S(x)\delta + O(\delta^2)\]</span></p>
-<p><span class="math inline">\(\square\)</span></p>
 <h2 id="explanation-of-2.52-2.53-incomplete">Explanation of 2.52, 2.53 (incomplete)</h2>
 <p>2.45 says <span class="math inline">\(S[S(x)]=x\)</span>. Differentiating in <span class="math inline">\(x\)</span> we get <span class="math inline">\(S&#39;[S(x)]S&#39;(x)=1\)</span>, or <span class="math inline">\(S&#39;[S(x)]=1/S&#39;(x)\)</span>. Now we plug in into 2.50 to get</p>
 <p><span class="math display">\[S(y)=x+\exp\{-q\} S(x)/S&#39;(x)+O(\exp\{-2q\}) \]</span></p>
 <p>Denoting by <span class="math inline">\(\alpha(x)=\log \left[\frac{-xS&#39;(x)}{S(x)}\right]\)</span> we get</p>
-<p><span class="math display">\[S(y)=x+\exp\{-q\} (-x \exp{-\alpha})+O(\exp\{-2q\}) \]</span></p>
+<p><span class="math display">\[S(y)=x+\exp\{-q\} (-x) \exp\{-\alpha\}+O(\exp\{-2q\}) \]</span></p>
 <p>Dividing by <span class="math inline">\(x\)</span></p>
 <p><span class="math display">\[\frac{S(y)}{x}=1-\exp\{-(q+\alpha)\}+\frac{1}{x} O(\exp\{-2q\}) \]</span></p>
 <p>which is a version of 2.51.</p>
@@ -92,38 +84,38 @@
 <p><span class="math display">\[x S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=y S[1-\exp\{-q\}] \]</span></p>
 <p>Right hand side is <span class="math inline">\(y \exp\{-J(q)\}\)</span> by definition 2.49. We also plug in 2.48 in the form <span class="math inline">\(y=S(x)/(1-\exp\{-q\})\)</span> to get</p>
 <p><span class="math display">\[RHS=S(x) \exp\{-J(q)\} /(1-\exp\{-q\})\]</span></p>
-<p>Now take log to get</p>
+<p>Now take log of both sides to get</p>
 <p><span class="math display">\[\log x +\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]\]</span></p>
 <p><span class="math display">\[ =\log S(x)-J(q)-\log(1-\exp\{q\})\]</span></p>
 <p>Now if we could write</p>
 <p><span class="math display">\[\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=\]</span> <span class="math display">\[\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-2q\})\]</span></p>
 <p>we would get <span class="math inline">\(J(q+\alpha)+O(\exp\{-2q\})\)</span> and 2.53 would follow.</p>
 <p>TODO figure out what to do about this</p>
-<!---
+<!--- 
 Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ such that $\lim_{g\to {\text{something}}}\frac{g(q)}{f(q)}=0$". What we have obtained is that $\frac{S(y)}{x}-1-\exp\{-(q+\alpha)\}$  if considered as a function of $q$ alone, with $x$ fixed, is $O(q)$. However, the rates at which the limits in the definition of $O(q)$ converge depend on the "parameter" $x$.
 -->
 <h2 id="proof-of-2.56">Proof of 2.56</h2>
 <p>The difficulty is getting 2.54 from 2.53. More precisely, we only need that</p>
 <p><span class="math display">\[b=\alpha^{-1} \log\left[\frac{x}{S(x)}\right]= \log \left[ \frac{x}{S(x)} \right]/ \log \left[\frac{-xS&#39;(x)}{S(x)}\right]\]</span></p>
-<p>is constant. After that it’s algebra:</p>
+<p>is constant. After that it's algebra:</p>
 <p><span class="math display">\[b \log \left[\frac{-xS&#39;(x)}{S(x)}\right]=\log \left[ \frac{x}{S(x)} \right]\]</span></p>
 <p>and exponentiating one gets</p>
 <p><span class="math display">\[\left[ \frac{-xS&#39;(x)}{S(x)} \right]^b = \left[ \frac{x}{S(x)} \right]\]</span></p>
-<p>i.e. 2.56.</p>
+<p>i.e. 2.56.</p>
 <p><!---
 
-   
+
    $$\left[ \frac{-xS'(x)}{S(x)} \right] = \left[ \frac{x}{S(x)} \right]^{1/b}$$
-   
+
    $$S'(x)=-S(x)^{1-1/b}  x^{1/b-1}$$
-   
+
    $$\frac{dS}{dx}=-\frac{x^{m-1}}{S^{m-1}}$$
-   
+
   for $m=1/b$.
-  
+
 --> So we just need to show that <span class="math inline">\(b(x)\)</span> is constant.</p>
-<p>I find it simpler to do “directly”, rather than to show the asymptotic expansion 2.54.</p>
-<p>Remark: To get 2.54 one must first make sure that <span class="math inline">\(\alpha\)</span> actually takes “continuum of values”. Since <span class="math inline">\(\alpha\)</span> is a continuous function of <span class="math inline">\(x\)</span>, intermediate value theorem implies that the set of values of <span class="math inline">\(\alpha\)</span> is an interval; we just check that it is not a degenerate interval consisting of a single point. Indeed, that would mean <span class="math inline">\(\alpha(x)\)</span> is constant, or <span class="math inline">\(S&#39;(x)/S(x)=-c/x\)</span>, <span class="math inline">\((\ln S)&#39;=-c/x\)</span>, <span class="math inline">\(\ln S(x)= a-c/x\)</span>, but this breaks <span class="math inline">\(S(0)=1\)</span>. Now we do know that <span class="math inline">\(\alpha\)</span> takes ’’continuum of values". We will use this as well.</p>
+<p>I find it simpler to do &quot;directly&quot;, rather than to show the asymptotic expansion 2.54.</p>
+<p>Remark: To get 2.54 one must first make sure that <span class="math inline">\(\alpha\)</span> actually takes &quot;continuum of values&quot;. Since <span class="math inline">\(\alpha\)</span> is a continuous function of <span class="math inline">\(x\)</span>, intermediate value theorem implies that the set of values of <span class="math inline">\(\alpha\)</span> is an interval; we just check that it is not a degenerate interval consisting of a single point. Indeed, that would mean <span class="math inline">\(\alpha(x)\)</span> is constant, or <span class="math inline">\(S&#39;(x)/S(x)=-c/x\)</span>, <span class="math inline">\((\ln S)&#39;=-c/x\)</span>, <span class="math inline">\(\ln S(x)= a-c/x\)</span>, but this breaks <span class="math inline">\(S(0)=1\)</span>. Now we do know that <span class="math inline">\(\alpha\)</span> takes ''continuum of values&quot;. We will use this as well.</p>
 <p>We start with 2.53 in the form</p>
 <p><span class="math display">\[J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{-q\})\]</span></p>
 <p>We want to deduce that</p>
@@ -144,7 +136,7 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 <p><span class="math display">\[\beta(\alpha_0)/\beta(\alpha_1)=n_0/n_1=\alpha_0/\alpha_1\]</span></p>
 <p>meaning <span class="math inline">\(\beta(\alpha_0)/\alpha_0=\beta(\alpha_1)/\alpha_1\)</span>. Since <span class="math inline">\(\beta(\alpha)\)</span> is continuous, bing constant on all rational multiples of a given <span class="math inline">\(\alpha_0\)</span> implies that it is constant (recall <span class="math inline">\(\alpha\)</span> varies over an interval, on which rational multiples of <span class="math inline">\(\alpha_0\)</span> are dense).</p>
 <p>Now we want to repeat this argument with error terms.</p>
-<ol type="1">
+<ol style="list-style-type: decimal">
 <li><p>Suppose <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are such that <span class="math inline">\(\alpha(x_1)=\alpha(x_2)\)</span>.</p>
 <p>Then <span class="math inline">\(J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{-q\})\)</span> implies, by plugging in sufficiently large <span class="math inline">\(q\)</span>, that the difference <span class="math inline">\(\beta(x_1)-\beta(x_2)\)</span> is smaller than any positive number, so is zero. Thus, as before <span class="math inline">\(\beta(\alpha)\)</span> is well-defined.</p>
 <p>To see that <span class="math inline">\(\beta(\alpha)\)</span> is continuous, given <span class="math inline">\(x_0\)</span> corresponding to some <span class="math inline">\(\alpha_0\)</span> and any <span class="math inline">\(\varepsilon&gt;0\)</span> pick <span class="math inline">\(q\)</span> such that <span class="math inline">\(|O(\exp\{-q\})| &lt;\varepsilon/2\)</span> and, using continuity of <span class="math inline">\(J\)</span> at <span class="math inline">\(q+\alpha_0\)</span>, pick <span class="math inline">\(\delta\)</span> such that <span class="math inline">\(|\alpha-\alpha_0|&lt;\delta\)</span> implies <span class="math inline">\(|J(q+\alpha)-J(q+\alpha_0)|&lt;\varepsilon/2\)</span>. Then <span class="math inline">\(|\beta(\alpha)-\beta(\alpha_0)|&lt;\varepsilon\)</span> on the same interval <span class="math inline">\(|\alpha-\alpha_0|&lt;\delta\)</span>, meaning that <span class="math inline">\(\beta(\alpha)\)</span> is continuous at <span class="math inline">\(\alpha_0\)</span>, as wanted.</p></li>
@@ -154,46 +146,59 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 <p><span class="math display">\[\leq C \exp\{-q\}(1+\exp\{-\alpha\}+...+\exp\{-(n-1)\alpha\})\]</span></p>
 <p><span class="math display">\[&lt;\frac{C}{1-\exp\{-\alpha\}} \exp\{-q\}  \]</span></p>
 <p>As before is <span class="math inline">\(\alpha_1=(n_0/n_1)\alpha_0\)</span> writing the above and picking sufficiently large <span class="math inline">\(q\)</span> we get</p>
-<p><span class="math display">\[\beta(\alpha_0)/\beta(\alpha_1)=n_0/n_1=\alpha_0/\alpha_1.\]</span> The rest is the sam as in the “error-less” case.</p>
+<p><span class="math display">\[\beta(\alpha_0)/\beta(\alpha_1)=n_0/n_1=\alpha_0/\alpha_1.\]</span> The rest is the sam as in the &quot;error-less&quot; case.</p>
 <p>This shows that</p>
 <p><span class="math display">\[b(x)=\beta{x}/\alpha{x}=\log \left[ \frac{x}{S(x)} \right]/ \log \left[\frac{-xS&#39;(x)}{S(x)}\right]\]</span></p>
 <p>is constant, and thus establishing 2.56.</p></li>
 </ol>
+<p><!---    
+  We can now get the asymptotic expansion as well. We have:
+  
+  $$ J(q + \alpha) - J (q) = b \alpha+O(\exp\{-q\})$$ 
+  
+  Define $G(q)=J(q)-bq$. 
+  
+  Then we have  $G(q+\alpha)=G(q)+O(\exp\{-q\})$ and we want $G(q)=a+O(\exp\{-q\})$.
+  
+    ---></p>
 <h2 id="proof-of-2.57">Proof of 2.57</h2>
 <p>Start with 2.56 and doing a bit of manipulation to isolate <span class="math inline">\(S^{\prime}(x)\)</span></p>
 <p><span class="math display">\[
-  \begin{aligned}
+\begin{aligned}
   \frac{x}{S(x)} &amp;= \left[\frac{-x S^{\prime}(x)}{S(x)}\right]^{b}\\
   \frac{x^{\frac{1}{b}}}{S(x)^{\frac{1}{b}}} &amp;= -\frac{x S^{\prime}(x)}{S(x)}\\
   S^{\prime}(x) &amp;= -\frac{x^{\frac{1}{b}} S(x)}{x S(x)^{\frac{1}{b}}}\\
   &amp;= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}
   \end{aligned}
-  \]</span> Expanding <span class="math inline">\(S^{\prime}(x)\)</span> into the actual derivative, and treating them as differentials. <span class="math display">\[
-  \begin{aligned}
+\]</span> Expanding <span class="math inline">\(S^{\prime}(x)\)</span> into the actual derivative, and treating them as differentials. <span class="math display">\[
+\begin{aligned}
   \frac{dS(x)}{d x} &amp;= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}\\
   S(x)^{\frac{1}{b} - 1} dS &amp;= -x^{\frac{1}{b} - 1} dx \\
   S(x)^{\frac{1}{b} - 1} dS + x^{\frac{1}{b} - 1} dx &amp;= 0\\
   S(x)^{m - 1} dS + x^{m-1} dx &amp;=0
   \end{aligned}
-  \]</span></p>
+\]</span></p>
 <h2 id="proof-of-2.58">Proof of 2.58</h2>
 <p><span class="math inline">\(S^{m-1}S&#39;=-x^{m-1}\)</span> is equivalent to <span class="math inline">\((S^m)&#39;=-mx^{m-1}\)</span>, so that <span class="math inline">\(S^m=C-x^m\)</span>. Initial value <span class="math inline">\(S(0)=1\)</span> fixes <span class="math inline">\(C=1\)</span> and <span class="math inline">\(S(x)=(1-x^m)^{1/m}\)</span> as wanted.</p>
 <h2 id="exercise-2.1">Exercise 2.1</h2>
 <p>I think this problem is ambiguous and can be interpreted in multiple ways, see <a href="http://www-cs-students.stanford.edu/~blynn//pr/jaynes.html">here</a> for a different interpretation. But I think the following interpretation makes more sense.</p>
-<p>With <span class="math inline">\(X\)</span> representing any background information:</p>
-<p><span class="math display">\[p(C|(A+B)X) = \frac{p(A+B|CX)p(C|X)}{p(A+B|X)}\]</span></p>
-<p><span class="math display">\[= \frac{(p(A|CX)+p(B|CX)-p(AB|CX))p(C|X)}{p(A|X)+p(B|X)-p(AB|X)}\]</span></p>
-<p><span class="math display">\[= \frac{p(AC|X)+p(BC|X)-p(ABC|X)}{p(A|X)+p(B|X)-p(AB|X)}\]</span></p>
+<p>With <span class="math inline">\(X\)</span> representing any background information: <span class="math display">\[
+\begin{aligned}
+p(C|(A+B)X) &amp;= \frac{p(A+B|CX)p(C|X)}{p(A+B|X)}\\
+&amp;= \frac{[p(A|CX)+p(B|CX)-p(AB|CX)]p(C|X)}{p(A|X)+p(B|X)-p(AB|X)}\\
+&amp;= \frac{p(AC|X)+p(BC|X)-p(ABC|X)}{p(A|X)+p(B|X)-p(AB|X)}
+\end{aligned}
+\]</span></p>
 <h2 id="exercise-2.2">Exercise 2.2</h2>
 <p>We will use convention that <strong>all <span class="math inline">\(P\)</span> are conditioned on <span class="math inline">\(X\)</span></strong>. So <span class="math inline">\(P(A|C)\)</span> actually stands for <span class="math inline">\(P(A|CX)\)</span>.</p>
 <p>First we do a bunch of lemmas about mutually exclusive propositions.</p>
-<ol type="1">
+<ol style="list-style-type: decimal">
 <li><p>If <span class="math inline">\(A_i\)</span> and are mutually exclusive, and <span class="math inline">\(C\)</span> is arbitrary, then</p>
-<ol type="a">
+<ol style="list-style-type: lower-alpha">
 <li><span class="math inline">\(P(A_i+A_j)=P(A_i)+P(A_j)\)</span></li>
 </ol>
 <p>Proof: <span class="math inline">\(P(A_i+A_j)=P(A_i)+P(A_j)-P(A_iA_j)=P(A_i)+P(A_j).\)</span></p>
-<ol start="2" type="a">
+<ol start="2" style="list-style-type: lower-alpha">
 <li><span class="math inline">\(A_iC\)</span> are mutually exclusive</li>
 </ol>
 <p>Proof: If <span class="math inline">\(i\neq j\)</span> then <span class="math inline">\(P(A_iCA_jC)=P(A_iA_j)P(C|A_iA_j)=0.\)</span></p>
@@ -213,7 +218,7 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 <p>and plugging in we get</p>
 <p><span class="math display">\[P(C|(\sum A_i))=\frac{P(C(\sum A_i))}{P(\sum A_i)}=\frac{\sum P(C A_i)}{\sum P(A_i)}=\frac{\sum P(A_i)P(C| A_i)}{\sum P(A_i)}.\]</span></p>
 <h2 id="exercise-2.3">Exercise 2.3</h2>
-<p>Again, everything is conditional on <span class="math inline">\(C\)</span>, but we don’t write it.</p>
+<p>Again, everything is conditional on <span class="math inline">\(C\)</span>, but we don't write it.</p>
 <p>Then</p>
 <p><span class="math inline">\(P(AB)=P(B|A)P(A)\leq P(A)=a,\)</span></p>
 <p><span class="math inline">\(P(A+B)=P(A)+P(B)-P(AB)=a+b-P(AB)\geq b.\)</span></p>
