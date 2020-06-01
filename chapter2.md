@@ -183,9 +183,34 @@ $$\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-2q\})$$
 
 we would get $J(q+\alpha)+O(\exp\{-2q\})$ and 2.53 would follow. 
 
-TODO figure out what to do about this 
 
 
+Write 
+
+$$\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})=\exp\{-(q+\alpha)(1+O(\exp\{-q\})\}).$$
+
+Define $T(s)= S(1-s)$. Then $T(0)=0$ and Taylor expanding $T$ around $0$ we have 
+
+$$T(s)=T'(0)s+O(s^2)=T'(0)s(1+O(s)).$$ 
+
+So 
+
+$$\log T(\exp t)=\log T'(0)+ t+ \log(1+O(\exp \{t\})$$
+
+$$=\log T'(0)+ t+  O(\exp \{t\})  $$
+
+Comparing the above expressions for $t_1=-(q+\alpha)$ and $t_2 =-(q+\alpha)(1+O(\exp\{-q\}))$
+
+we get that their difference is $O(\exp\{-q\})$ i.e.
+
+$$\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=$$
+$$\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-q\})$$
+
+so that 
+
+$$J(q+\alpha(x))-J(q)= \log \left[\frac{x}{S(x)}\right]+\log (1-\exp\{-q\}) +O(\exp\{-q\})$$
+
+ which is not quite 2.53 but is good enough for deducing 2.54 (see below).
 
 
 

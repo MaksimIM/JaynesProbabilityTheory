@@ -1,7 +1,7 @@
 # Elementary Sampling theory
 
 
-##3.26, 3.27  The most probable value of $r$
+## 3.26, 3.27  The most probable value of $r$
 
 The sequence $h(r|N, M, n)$ for fixed $N, M, n$ is unimodal, meaning it first increases, then decreases. To see this we argue as follows.
 
