@@ -52,4 +52,28 @@ Remark: This is Theorem 3.4.5 in Blitzstein - Hwang "Introduction to Probability
  
  But the above procedure remains  the same if we exchange $M$ and $n$ and rename "paint red" into "pick" and "pick" into "paint red". Then it computes $h(r|N, n, M)$. So the two numbers are equal.
  
+ Remark: This view of hypergeometric distribution as giving probabilities of overlap of two subsets ("the red" and "the picked") removes all time dependence and, in my opinion, sheds a lot of  light on the discussion at the end of Section 3.2.
  
+ ## Exercise 3.4
+ 
+Denote by $F_i$ be the event "$i$ is fixed", and, for any $I \subset \{1, ..., n\}$, denote by $F_I$  the event "all $i$ in $I$ are fixed", i.e. $F_I=\prod_{i\in I} F_i$.
+ 
+ We are looking for $P(\sum F_i)$. By inclusion exclusion this is 
+ 
+ $$P(\sum F_i)=\sum_{I \subset \{1, ..., n\}, I\neq \emptyset} (-1)^{|I|+1}P(F_I).$$
+ 
+ 
+ 
+For a given subset of size $k$ probability that it is fixed is $\frac{(n-k)!}{n!}$, and there are $n\choose k$ such subsets, so the sum over those $I$ with size $k$ gives $(-1)^{k+1}\frac{1}{k!}$. Plugging this in we obtain 
+
+ $$h=P(\sum F_i)=\sum_{k=1}^{n} (-1)^{k+1}\frac{1}{k!},$$
+ as wanted.
+ 
+ Observe that $1-h$  is the value of $k$-th order Taylor series for $e^x$ evaluated at $x=-1$, which as $k\to \infty$ converges to $e^{-1}=1/e$.
+ 
+  ## Exercise 3.5
+  
+Similarly to 3.4, consider the event $E_I$=the bins with labels $i\in I$ are left empty; then $P(E_I)= (M-|I|)^N/M^N$ and by inclusion-exclusion $P(\overline{\sum E_i})$ is
+  $$\frac{1}{M^N}\sum_{k=0}^{M} (-1)^{k} \binom{M}{k} (M-k)^N.$$
+
+Remark: We are computing probability that a function from a set of size $N$ to a set of size $M$ is onto. There are $M^N$ total functions, and the number of surjective ones is  $M!$ times a [Stirling number of second kind](https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind).  
