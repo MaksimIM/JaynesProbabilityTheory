@@ -14,6 +14,8 @@ We'll mostly be using equations, which are typed using Latex syntax. Inline equa
 
 Lots of editors can be used to edit markdown while displaying the resulting formatted text and equations. Whatever text editor you prefer probably has a plugin to display markdown. I like Typora, and StackEdit can be good if you want one that runs in a browser. Or you can just edit the plaintext. 
 
+If you aren't comfortable using git, you can edit in the browser by clicking on a .md file and then clicking on the edit button in the top right corner. After you've finished, click "Propose file change". (If I've added you as a contributor, the button will say "Commit changes"). 
+
 ## Compile to pdf or latex or html
 
 After editing the markdown files, you can compile it to other formats with pandoc using the commands below. If it doesn't compile, it usually means there's a latex syntax error in an equation. You don't have to compile before pushing changes if you don't want to, but it'd be good to make sure it works.
