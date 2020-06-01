@@ -10,11 +10,11 @@
 
 By definition $U=G(x, v) F_1 (y, z)$, so by product rule and chain rule  and using that $v=F(y, z)$ we have
 
-$$U_z=G_2(x,v)F_2(y,z)F_1(y,z)+ G(x,v)F_21(y,z).$$ 
+$$U_z=G_2(x,v)F_2(y,z)F_1(y,z)+ G(x,v)F_{21}(y,z).$$ 
 
 Similarly $V=G(x,v)F_2(y,z)$ so
 
-$$V_y=G_2(x,v)F_1(y,z)F_2(y,z)+G(x,v)F_12(y,z).$$
+$$V_y=G_2(x,v)F_1(y,z)F_2(y,z)+G(x,v)F_{12}(y,z).$$
 
 Of course mixed partials are equal (under some continuity of second derivatives assumption, Clairot's theorem), so the two expressions are the same.
 
@@ -25,13 +25,14 @@ Continuing to get 2.19 from 2.18:
 We have then $G(x,y)G(y,z)=P(x,z)$. Pick any fixed $z$. Denote $P(x,z)=A(x)$ and $G(y,z)=B(y)$.  Then $G(x,y)=\frac{A(x)}{B(y)}$ [and $G(y,z)=\frac{A(y)}{B(z)}$]. 
 
 Plug this in to $G(x,y)G(y,z)=P(x,z)$ to get $\frac{A(x)A(y)}{B(y)B(z)}=P(x,z)$. 
+
 So $A(y)/B(y)$ is independent of $y$, so is constant equal to $r$. This means 
 
 $G(x,y)=\frac{A(x)}{B(y)}=\frac{A(x)A(y)}{A(y)B(y)}=r \frac{A(x)}{A(y)}$
 
 ## Proof of 2.23 and 2.24 from 2.22
 
-The variables $v, y, z$ are related by $v=F(y,z)$. One can interpret 2.22 as equality of differential 1-forms on the surface $\Sigma=\{v,y,z|v=F(y,z)\}$ in 3D space with coordinates $v-y-z$. The forms $\frac{v}{H(v)}$, $\frac{y}{H(y)}$  and $\frac{z}{H(z)}$  are exact, meaning are differentials of functions.  We can find these functions by single-variable integration because each of the  1-forms depends only on one of the variables (in forms language, is pulled back via coordinate projection from the corresponding coordinate line), meaning we can find the antiderivative of the corresponding 1-form on the cordinate line, and then "pull back" the result, which just means interpret it as a function on  $\Sigma$. Namely if we set 
+The variables $v, y, z$ are related by $v=F(y,z)$. One can interpret 2.22 as equality of differential 1-forms on the surface $\Sigma=\{v,y,z|v=F(y,z)\}$ in 3D space with coordinates $v-y-z$. The forms $\frac{v}{H(v)}$, $\frac{y}{H(y)}$  and $\frac{z}{H(z)}$  are exact, meaning are differentials of functions.  We can find these functions by single-variable integration because each of the  1-forms depends only on one of the variables (in forms language, is pulled back via coordinate projection from the corresponding coordinate line), meaning we can find the antiderivative of the corresponding 1-form on the coordinate line, and then "pull back" the result, which just means interpret it as a function on  $\Sigma$. Namely if we set 
 
 
 $$f(x)=\int_{x_0}^x \frac{1}{H(t)}dt$$
@@ -40,7 +41,7 @@ be a function well-defined up to a constant, we have
 
 $$df(v)=\frac{dv}{H(v)}, \text{    }  df(y)=\frac{dy}{H(y)} ,\text{    }  df(z)=\frac{dz}{H(z)}.$$
 
- Then, since untiderivative of a 1-form on a connected $\Sigma$ is well-defined up to a constant,   equality of 1-forms
+ Then, since the antiderivative of a 1-form on a connected $\Sigma$ is well-defined up to a constant,  equality of 1-forms
 
 $$ \frac{dv}{H(v)}=\frac{dy}{H(y)}+r\frac{dz}{H(z)}$$
 
@@ -63,13 +64,19 @@ $$w(F(y,z))=w(y)w(z)^r.$$
 
 ## Brief explanation of the overall line of reasoning on from 2.45 to 2.58
 
+
+
 TODO
+
+
+
+**Note:** There is a typo in the book just above equation 2.45 on pg 31. (2.25) should be (2.40).
 
 ## Symmetry of the domain of 2.45
 
 The domain is $0\leq S(y)\leq x$ because $S(y)$ is plausibility of $\bar{B}=AD$, which is at most plausibility of $A$, aka $x$. for general $A,D$ these (and $x,y\in [0,1]$) are the only requirements, anything else should be possible, so hence the domain).
 
-The symmetry of the domain comes from $S$ being self-inverse and monotone decreasing. In fact, by monotonicity we have  $S(y)\leq x \Leftrightarrow S(S(y))\geq S(x)$  and by $SS=Id$ we have $S(S(y))\geq S(x) \Leftrightarrow y\geq S(x)$. 
+The symmetry of the domain comes from $S$ being self-inverse and monotone decreasing. In fact, by monotonicity we have  $S(y)\leq x \Leftrightarrow S(S(y))\geq S(x)$  and by $SS=Id$ (Eq. 2.46) we have $S(S(y))\geq S(x) \Leftrightarrow y\geq S(x)$. 
 
 (In general the graph of the inverse function is obtained by flipping the graph of the original function through the $x=y$ line, and so the graph of $S$ is symmetric to this flip preciely when $S$ is it's own inverse; monotonicity makes the same true for the overgraph region.) 
 
@@ -77,8 +84,7 @@ We can slightly rewrite the above argument as:  $y\geq S(x)$ means $w(\overline{
 
 
 
-
-
+**Note:** There's a missing bracket in 2.49 before the second =.
 
 ## Proof of Equation 2.50
 
@@ -124,8 +130,6 @@ With big O notation we can also get rid terms that drop asymptotically faster th
 
 $$S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S'[S(x)]S(x)\delta + O(\delta^2)$$
 
-$\square$
-
 ## Explanation of 2.52, 2.53 (incomplete)
 
 2.45 says $S[S(x)]=x$. Differentiating in $x$ we get $S'[S(x)]S'(x)=1$, or $S'[S(x)]=1/S'(x)$. Now we plug in into 2.50 to get
@@ -135,7 +139,7 @@ $$S(y)=x+\exp\{-q\} S(x)/S'(x)+O(\exp\{-2q\}) $$
 Denoting by $\alpha(x)=\log \left[\frac{-xS'(x)}{S(x)}\right]$ we get 
 
 
-$$S(y)=x+\exp\{-q\} (-x \exp{-\alpha})+O(\exp\{-2q\}) $$
+$$S(y)=x+\exp\{-q\} (-x) \exp\{-\alpha\}+O(\exp\{-2q\}) $$
 
 Dividing by $x$
 
@@ -166,7 +170,7 @@ Right hand side is $y \exp\{-J(q)\}$ by definition 2.49. We also plug in 2.48 in
 $$RHS=S(x) \exp\{-J(q)\} /(1-\exp\{-q\})$$ 
 
 
-Now take log to get
+Now take log of both sides to get
 
 $$\log x +\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]$$
 
@@ -185,7 +189,7 @@ TODO figure out what to do about this
 
 
 
-<!---
+<!--- 
 Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ such that $\lim_{g\to {\text{something}}}\frac{g(q)}{f(q)}=0$". What we have obtained is that $\frac{S(y)}{x}-1-\exp\{-(q+\alpha)\}$  if considered as a function of $q$ alone, with $x$ fixed, is $O(q)$. However, the rates at which the limits in the definition of $O(q)$ converge depend on the "parameter" $x$.
 -->
 
@@ -198,43 +202,43 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 The difficulty is getting 2.54 from 2.53. More precisely, we only need that 
 
  $$b=\alpha^{-1} \log\left[\frac{x}{S(x)}\right]= \log \left[ \frac{x}{S(x)} \right]/ \log \left[\frac{-xS'(x)}{S(x)}\right]$$
- 
- 
+
+
   is constant. After that it's algebra:
-  
+
   $$b \log \left[\frac{-xS'(x)}{S(x)}\right]=\log \left[ \frac{x}{S(x)} \right]$$
-  
+
    and exponentiating one gets
-   
+
    $$\left[ \frac{-xS'(x)}{S(x)} \right]^b = \left[ \frac{x}{S(x)} \right]$$
-   
+
    i.e. 2.56.
-   
+
    <!---
 
-   
+
    $$\left[ \frac{-xS'(x)}{S(x)} \right] = \left[ \frac{x}{S(x)} \right]^{1/b}$$
-   
+
    $$S'(x)=-S(x)^{1-1/b}  x^{1/b-1}$$
-   
+
    $$\frac{dS}{dx}=-\frac{x^{m-1}}{S^{m-1}}$$
-   
+
   for $m=1/b$.
-  
+
 -->
   So we just need to show that $b(x)$ is constant.
-  
+
   I find it simpler to do "directly", rather than to show the asymptotic expansion 2.54.
-  
+
   Remark: To get 2.54 one must first make sure that $\alpha$ actually takes "continuum of values". Since $\alpha$ is a continuous function of $x$, intermediate value theorem implies that the set of values of $\alpha$ is an interval; we just check that it is not a degenerate interval consisting of a single point. Indeed, that would mean $\alpha(x)$ is constant, or $S'(x)/S(x)=-c/x$, $(\ln S)'=-c/x$, $\ln S(x)= a-c/x$, but this breaks $S(0)=1$. Now we do know that $\alpha$ takes ''continuum of values".  We will use this as well.
-  
-  
+
+
   We start with 2.53 in the form 
-  
+
   $$J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{-q\})$$
-  
+
   We want to deduce that 
-  
+
  $b(x)=\beta(x)/\alpha(x)$ is constant.
 
 Intuitively, $J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{-q\})$ does say that for every increment of $\alpha(x)$ in the input, the output of $J$ increases by $\beta(x)$ (plus a small error), so (asymptotically) $J$ must be linear with slope=rise/run=$b(x),$ and since there can be only one slope, $b(x)$ must be constant.   The question is how to make it precise.
@@ -263,24 +267,24 @@ Then given any two $\alpha$ values $\alpha_0$, $\alpha_1$, we have
 $$J(q + n_1\alpha_1)=J(q)+n_1\beta(\alpha_1).$$ 
 
 
- 
- 
+
+
  If $\alpha_0/\alpha_1$ is rational then $\alpha_1=(n_0/n_1) \alpha_0$, and after plugging into the above
- 
+
  $$J(q+n_0\alpha_0)=J(q)+n_0\beta(\alpha_0)=J(q)+n_1\beta(\alpha_1)$$
- 
+
  so 
- 
+
  $$\beta(\alpha_0)/\beta(\alpha_1)=n_0/n_1=\alpha_0/\alpha_1$$
- 
+
  meaning $\beta(\alpha_0)/\alpha_0=\beta(\alpha_1)/\alpha_1$. Since $\beta(\alpha)$ is continuous, bing constant on all rational multiples of a given $\alpha_0$ implies that it is constant (recall $\alpha$ varies over  an interval, on which rational multiples of $\alpha_0$ are dense).
+
  
- 
- 
+
 Now we want to repeat this argument with error terms.
+
  
- 
- 
+
 1. Suppose $x_1$ and $x_2$ are such that $\alpha(x_1)=\alpha(x_2)$. 
 
     Then  $J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{-q\})$ implies, by plugging in sufficiently large $q$, that the difference $\beta(x_1)-\beta(x_2)$ is smaller than any positive number, so is zero. Thus, as before $\beta(\alpha)$ is well-defined. 
@@ -290,10 +294,10 @@ Now we want to repeat this argument with error terms.
 2. We know that for each $x$ and each $C>0$ there exists  $Q(x, C)$ such that  that for $q\geq Q(x, C)$ we have $|O(\exp\{-q\})|< C\exp\{-q\}$.  Pick any $q(x,C)\geq Q(x, C)$.
 
       Now  we have by induction  (with everything depending on $x$)
-        
+      
 
       $$|J(q+n\alpha)-(J (q)+n\beta)|$$
-        
+      
       $$\leq C \exp\{-q\}(1+\exp\{-\alpha\}+...+\exp\{-(n-1)\alpha\})$$
 
       $$<\frac{C}{1-\exp\{-\alpha\}} \exp\{-q\}  $$
@@ -318,23 +322,23 @@ Now we want to repeat this argument with error terms.
 
   Start with 2.56 and doing a bit of manipulation to isolate $S^{\prime}(x)$
         
-  $$
-  \begin{aligned}
+$$
+\begin{aligned}
   \frac{x}{S(x)} &= \left[\frac{-x S^{\prime}(x)}{S(x)}\right]^{b}\\
   \frac{x^{\frac{1}{b}}}{S(x)^{\frac{1}{b}}} &= -\frac{x S^{\prime}(x)}{S(x)}\\
   S^{\prime}(x) &= -\frac{x^{\frac{1}{b}} S(x)}{x S(x)^{\frac{1}{b}}}\\
   &= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}
   \end{aligned}
-  $$
+$$
   Expanding $S^{\prime}(x)$ into the actual derivative, and treating them as differentials.
-  $$
-  \begin{aligned}
+$$
+\begin{aligned}
   \frac{dS(x)}{d x} &= - x^{\frac{1}{b} - 1} S(x)^{1 - \frac{1}{b}}\\
   S(x)^{\frac{1}{b} - 1} dS &= -x^{\frac{1}{b} - 1} dx \\
   S(x)^{\frac{1}{b} - 1} dS + x^{\frac{1}{b} - 1} dx &= 0\\
   S(x)^{m - 1} dS + x^{m-1} dx &=0
   \end{aligned}
-  $$
+$$
 
 
 
@@ -350,11 +354,17 @@ I think this problem is ambiguous and can be interpreted in multiple ways, see [
 
 With $X$ representing any background information:
 
-$$p(C|(A+B)X) = \frac{p(A+B|CX)p(C|X)}{p(A+B|X)}$$ 
+$$
+\begin{aligned}
 
-$$= \frac{(p(A|CX)+p(B|CX)-p(AB|CX))p(C|X)}{p(A|X)+p(B|X)-p(AB|X)}$$ 
+  p(C|(A+B)X) &= \frac{p(A+B|CX)p(C|X)}{p(A+B|X)} \\
 
-$$= \frac{p(AC|X)+p(BC|X)-p(ABC|X)}{p(A|X)+p(B|X)-p(AB|X)}$$ 
+  &= \frac{[p(A|CX)+p(B|CX)-p(AB|CX)]p(C|X)}{p(A|X)+p(B|X)-p(AB|X)}\\
+
+  &= \frac{p(AC|X)+p(BC|X)-p(ABC|X)}{p(A|X)+p(B|X)-p(AB|X)}
+
+\end{aligned}
+$$
 
 ## Exercise 2.2
 
@@ -367,7 +377,7 @@ First we do a bunch of lemmas about mutually exclusive propositions.
     a) $P(A_i+A_j)=P(A_i)+P(A_j)$
     
       Proof: $P(A_i+A_j)=P(A_i)+P(A_j)-P(A_iA_j)=P(A_i)+P(A_j).$
-     
+    
     b) $A_iC$ are mutually exclusive 
     
       Proof: If $i\neq j$ then $P(A_iCA_jC)=P(A_iA_j)P(C|A_iA_j)=0.$
