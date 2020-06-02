@@ -222,7 +222,7 @@ $$t_2 =\ln [ \exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=-(q+\alpha)+\ln(1-\exp\{-q\})$
 $$=-(q+\alpha)+O(\exp\{-q\})  $$
 
 
-We plug into $\log T'(0)+ t+  O(\exp \{t\})$ and see that the difference (as $q\to \infty$) is  $O(-q)$. That is,
+We plug into $\log T'(0)+ t+  O(\exp \{t\})$ and see that the difference (as $q\to \infty$) is  $O(-\exp\{-q\})$. That is,
 
 
 
@@ -290,7 +290,7 @@ The difficulty is getting 2.54 from 2.53. More precisely, we only need that
 
  $b(x)=\beta(x)/\alpha(x)$ is constant.
 
-Intuitively, $J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{- \frac{1}{2} q\})$ does say that for every increment of $\alpha(x)$ in the input, the output of $J$ increases by $\beta(x)$ (plus a small error), so (asymptotically) $J$ must be linear with slope=rise/run=$b(x),$ and since there can be only one slope, $b(x)$ must be constant.   The question is how to make it precise.
+Intuitively, $J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{- q\})$ does say that for every increment of $\alpha(x)$ in the input, the output of $J$ increases by $\beta(x)$ (plus a small error), so (asymptotically) $J$ must be linear with slope=rise/run=$b(x),$ and since there can be only one slope, $b(x)$ must be constant.   The question is how to make it precise.
 
 First, if the error term was absent 
 
