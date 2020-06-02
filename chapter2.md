@@ -184,16 +184,18 @@ $$\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-2q\})$$
 we would get $J(q+\alpha)+O(\exp\{-2q\})$ and 2.53 would follow. 
 
 
+We use the following fact: If $f(q)=O(g(q))$ then, for any  eventually non-zero $h(q)$ one has $f(q)=h(q) O(g(q)/h(q))$. This is simply from definition: both mean $\lim_{q\to something} \frac{g(q)}{f(q)}=\lim_{q\to something} \frac{g(q)/h(q)}{f(q)/h(q)}=0$
 
-Write 
+
+So, since $q$ is the variable and so single $\exp{\alpha}$ is a constant and can be absorbed into any $O(g(q))$,  we  write 
 
 $$\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})=\exp\{-(q+\alpha)(1+O(\exp\{-q\})\}).$$
 
-Define $T(s)= S(1-s)$. Then $T(0)=0$ and Taylor expanding $T$ around $0$ we have 
+Define $T(s)= S(1-s)$. Then $T(0)=0$ and Taylor expanding $T$ around $0$ we have, as $s\to 0$
 
 $$T(s)=T'(0)s+O(s^2)=T'(0)s(1+O(s)).$$ 
 
-So 
+So, as $t\to -\infty$
 
 $$\log T(\exp t)=\log T'(0)+ t+ \log(1+O(\exp \{t\})$$
 
@@ -201,14 +203,16 @@ $$=\log T'(0)+ t+  O(\exp \{t\})  $$
 
 Comparing the above expressions for $t_1=-(q+\alpha)$ and $t_2 =-(q+\alpha)(1+O(\exp\{-q\}))$
 
-we get that their difference is $O(\exp\{-q\})$ i.e.
+we get that, as $q\to \infty$ their difference is $O(q\exp\{-q\})$ i.e.
 
 $$\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=$$
-$$\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-q\})$$
+$$\log  S[1-\exp\{-(q+\alpha)\}]+ O(q\exp\{-q\})=$$
+$$\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-\frac{1}{2} q\})$$
+
 
 so that 
 
-$$J(q+\alpha(x))-J(q)= \log \left[\frac{x}{S(x)}\right]+\log (1-\exp\{-q\}) +O(\exp\{-q\})$$
+$$J(q+\alpha(x))-J(q)= \log \left[\frac{x}{S(x)}\right]+\log (1-\exp\{-q\}) +O( \exp\{-\frac{q}{2}\})$$
 
  which is not quite 2.53 but is good enough for deducing 2.54 (see below).
 
@@ -260,13 +264,13 @@ The difficulty is getting 2.54 from 2.53. More precisely, we only need that
 
   We start with 2.53 in the form 
 
-  $$J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{-q\})$$
+  $$J(q+\alpha(x))-J(q)= \beta(x)+ O( \exp\{-\frac{q}{2}\})$$
 
   We want to deduce that 
 
  $b(x)=\beta(x)/\alpha(x)$ is constant.
 
-Intuitively, $J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{-q\})$ does say that for every increment of $\alpha(x)$ in the input, the output of $J$ increases by $\beta(x)$ (plus a small error), so (asymptotically) $J$ must be linear with slope=rise/run=$b(x),$ and since there can be only one slope, $b(x)$ must be constant.   The question is how to make it precise.
+Intuitively, $J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{- \frac{1}{2} q\})$ does say that for every increment of $\alpha(x)$ in the input, the output of $J$ increases by $\beta(x)$ (plus a small error), so (asymptotically) $J$ must be linear with slope=rise/run=$b(x),$ and since there can be only one slope, $b(x)$ must be constant.   The question is how to make it precise.
 
 First, if the error term was absent 
 
@@ -312,20 +316,20 @@ Now we want to repeat this argument with error terms.
 
 1. Suppose $x_1$ and $x_2$ are such that $\alpha(x_1)=\alpha(x_2)$. 
 
-    Then  $J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{-q\})$ implies, by plugging in sufficiently large $q$, that the difference $\beta(x_1)-\beta(x_2)$ is smaller than any positive number, so is zero. Thus, as before $\beta(\alpha)$ is well-defined. 
+    Then  $J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{- \frac{q}{2} \})$ implies, by plugging in sufficiently large $q$, that the difference $\beta(x_1)-\beta(x_2)$ is smaller than any positive number, so is zero. Thus, as before $\beta(\alpha)$ is well-defined. 
     
     To see that $\beta(\alpha)$ is continuous, given $x_0$ corresponding to some $\alpha_0$ and any $\varepsilon>0$ pick $q$ such that $|O(\exp\{-q\})| <\varepsilon/2$ and, using continuity of $J$ at $q+\alpha_0$, pick  $\delta$ such that $|\alpha-\alpha_0|<\delta$ implies $|J(q+\alpha)-J(q+\alpha_0)|<\varepsilon/2$. Then $|\beta(\alpha)-\beta(\alpha_0)|<\varepsilon$ on the same interval $|\alpha-\alpha_0|<\delta$,  meaning that $\beta(\alpha)$ is continuous at $\alpha_0$, as wanted.
     
-2. We know that for each $x$ and each $C>0$ there exists  $Q(x, C)$ such that  that for $q\geq Q(x, C)$ we have $|O(\exp\{-q\})|< C\exp\{-q\}$.  Pick any $q(x,C)\geq Q(x, C)$.
+2. We know that for each $x$ and each $C>0$ there exists  $Q(x, C)$ such that  that for $q\geq Q(x, C)$ we have $|O(\exp\{-\frac{q}{2} \})|< C\exp\{ -\frac{q}{2} \}$.  Pick any $q(x,C)\geq Q(x, C)$.
 
       Now  we have by induction  (with everything depending on $x$)
       
 
       $$|J(q+n\alpha)-(J (q)+n\beta)|$$
       
-      $$\leq C \exp\{-q\}(1+\exp\{-\alpha\}+...+\exp\{-(n-1)\alpha\})$$
+      $$\leq C \exp\{-\frac{q}{2}\}(1+\exp\{- \frac{\alpha}{2} \}+...+\exp\{-(n-1) \frac{\alpha}{2} \})$$
 
-      $$<\frac{C}{1-\exp\{-\alpha\}} \exp\{-q\}  $$
+      $$<\frac{C}{1-\exp\{- \frac{\alpha}{2} \}} \exp\{- \frac{q}{2} \}  $$
           
           
       As before is $\alpha_1=(n_0/n_1)\alpha_0$ writing the above and picking sufficiently large $q$ we get 
