@@ -115,7 +115,7 @@
 <p>and</p>
 <p><span class="math display">\[t_2 =\ln [ \exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=-(q+\alpha)+\ln(1-\exp\{-q\})\]</span></p>
 <p><span class="math display">\[=-(q+\alpha)+O(\exp\{-q\})  \]</span></p>
-<p>We plug into <span class="math inline">\(\log T&#39;(0)+ t+ O(\exp \{t\})\)</span> and see that the difference (as <span class="math inline">\(q\to \infty\)</span>) is <span class="math inline">\(O(-q)\)</span>. That is,</p>
+<p>We plug into <span class="math inline">\(\log T&#39;(0)+ t+ O(\exp \{t\})\)</span> and see that the difference (as <span class="math inline">\(q\to \infty\)</span>) is <span class="math inline">\(O(-\exp\{-q\})\)</span>. That is,</p>
 <p><span class="math display">\[\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=\]</span> <span class="math display">\[\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-q\})\]</span></p>
 <p>so that</p>
 <p><span class="math display">\[J(q+\alpha(x))-J(q)= \log \left[\frac{x}{S(x)}\right]+\log (1-\exp\{-q\}) +O( \exp\{-q\})\]</span></p>
@@ -149,7 +149,7 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 <p><span class="math display">\[J(q+\alpha(x))-J(q)= \beta(x)+ O( \exp\{-q\})\]</span></p>
 <p>We want to deduce that</p>
 <p><span class="math inline">\(b(x)=\beta(x)/\alpha(x)\)</span> is constant.</p>
-<p>Intuitively, <span class="math inline">\(J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{- \frac{1}{2} q\})\)</span> does say that for every increment of <span class="math inline">\(\alpha(x)\)</span> in the input, the output of <span class="math inline">\(J\)</span> increases by <span class="math inline">\(\beta(x)\)</span> (plus a small error), so (asymptotically) <span class="math inline">\(J\)</span> must be linear with slope=rise/run=<span class="math inline">\(b(x),\)</span> and since there can be only one slope, <span class="math inline">\(b(x)\)</span> must be constant. The question is how to make it precise.</p>
+<p>Intuitively, <span class="math inline">\(J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{- q\})\)</span> does say that for every increment of <span class="math inline">\(\alpha(x)\)</span> in the input, the output of <span class="math inline">\(J\)</span> increases by <span class="math inline">\(\beta(x)\)</span> (plus a small error), so (asymptotically) <span class="math inline">\(J\)</span> must be linear with slope=rise/run=<span class="math inline">\(b(x),\)</span> and since there can be only one slope, <span class="math inline">\(b(x)\)</span> must be constant. The question is how to make it precise.</p>
 <p>First, if the error term was absent</p>
 <p><span class="math display">\[J(q + \alpha(x)) - J (q) = \beta(x)\]</span></p>
 <p>implies that if <span class="math inline">\(\alpha(x_1)=\alpha(x_2)\)</span> then <span class="math inline">\(\beta(x_1)=\beta(x_2)\)</span>, so <span class="math inline">\(\beta\)</span> is a well-defined function of <span class="math inline">\(\alpha\)</span>, and if <span class="math inline">\(J(q)\)</span> is continuous <span class="math inline">\(\beta(\alpha)\)</span> is also continuous. Now we can write</p>
