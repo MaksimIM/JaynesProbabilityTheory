@@ -9,7 +9,7 @@ We want to see wether $h(r+1|N, M, n)$ is bigger than $h(r|N, M, n)$, so we need
 
 $$h(r+1|N, M, n)/h(r|N, M, n)=$$
 
-$$ \frac{[(M-r) /(r+1)]}{[(N-M - n+ r+1) /(n-r)]}=$$
+$$ \frac{(M-r) /(r+1)}{(N-M - n+ r+1) /(n-r)}=$$
 
 $$ \frac{(r-M) (r-n)}{(r+1)(r+ N-M-n+1 )  }  \stackrel{?}{\gtreqless} 1$$
 
