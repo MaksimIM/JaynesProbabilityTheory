@@ -5,11 +5,11 @@
 
 The sequence $h(r|N, M, n)$ for fixed $N, M, n$ is unimodal, meaning it first increases, then decreases. To see this we argue as follows.
 
-We want to see wether $h(r+1|N, M, n)$ is bigger $h(r|N, M, n)$, so we need to compare their fraction to $1$.  We compute using 3.22
+We want to see wether $h(r+1|N, M, n)$ is bigger than $h(r|N, M, n)$, so we need to compare their fraction to $1$.  We compute using 3.22
 
 $$h(r+1|N, M, n)/h(r|N, M, n)=$$
 
-$$ [(M-r) /(r+1)]  [(N-M - n+ r+1) /(n-r)]=$$
+$$ \frac{(M-r) /(r+1)}{(N-M - n+ r+1) /(n-r)}=$$
 
 $$ \frac{(r-M) (r-n)}{(r+1)(r+ N-M-n+1 )  }  \stackrel{?}{\gtreqless} 1$$
 
