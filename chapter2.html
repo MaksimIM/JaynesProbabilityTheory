@@ -102,17 +102,23 @@
 <p>we would get <span class="math inline">\(J(q+\alpha)+O(\exp\{-2q\})\)</span> and 2.53 would follow.</p>
 <p>We use the following fact: If <span class="math inline">\(f(q)=O(g(q))\)</span> then, for any eventually non-zero <span class="math inline">\(h(q)\)</span> one has <span class="math inline">\(f(q)=h(q) O(g(q)/h(q))\)</span>. This is simply from definition: both mean <span class="math inline">\(\lim_{q\to something} \frac{g(q)}{f(q)}=\lim_{q\to something} \frac{g(q)/h(q)}{f(q)/h(q)}=0\)</span></p>
 <p>So, since <span class="math inline">\(q\)</span> is the variable and so single <span class="math inline">\(\exp{\alpha}\)</span> is a constant and can be absorbed into any <span class="math inline">\(O(g(q))\)</span>, we write</p>
-<p><span class="math display">\[\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})=\exp\{-(q+\alpha)(1+O(\exp\{-q\})\}).\]</span></p>
+<p><span class="math display">\[\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})=\]</span></p>
+<p><span class="math display">\[\exp\{-(q+\alpha)\}+ (\exp\{-(q+\alpha\} O(\exp\{-(q-\alpha\})   \]</span></p>
+<p><span class="math display">\[\exp\{-(q+\alpha)\} \left[1+O(\exp\{-q\})\}\right].\]</span></p>
 <p>Define <span class="math inline">\(T(s)= S(1-s)\)</span>. Then <span class="math inline">\(T(0)=0\)</span> and Taylor expanding <span class="math inline">\(T\)</span> around <span class="math inline">\(0\)</span> we have, as <span class="math inline">\(s\to 0\)</span></p>
 <p><span class="math display">\[T(s)=T&#39;(0)s+O(s^2)=T&#39;(0)s(1+O(s)).\]</span></p>
 <p>So, as <span class="math inline">\(t\to -\infty\)</span></p>
 <p><span class="math display">\[\log T(\exp t)=\log T&#39;(0)+ t+ \log(1+O(\exp \{t\})\]</span></p>
 <p><span class="math display">\[=\log T&#39;(0)+ t+  O(\exp \{t\})  \]</span></p>
-<p>Comparing the above expressions for <span class="math inline">\(t_1=-(q+\alpha)\)</span> and <span class="math inline">\(t_2 =-(q+\alpha)(1+O(\exp\{-q\}))\)</span></p>
-<p>we get that, as <span class="math inline">\(q\to \infty\)</span> their difference is <span class="math inline">\(O(q\exp\{-q\})\)</span> i.e.</p>
-<p><span class="math display">\[\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=\]</span> <span class="math display">\[\log  S[1-\exp\{-(q+\alpha)\}]+ O(q\exp\{-q\})=\]</span> <span class="math display">\[\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-\frac{1}{2} q\})\]</span></p>
+<p>Let</p>
+<p><span class="math display">\[t_1=-(q+\alpha)\]</span></p>
+<p>and</p>
+<p><span class="math display">\[t_2 =\ln [ \exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=-(q+\alpha)+\ln(1-\exp\{-q\})\]</span></p>
+<p><span class="math display">\[=-(q+\alpha)+O(\exp\{-q\})  \]</span></p>
+<p>We plug into <span class="math inline">\(\log T&#39;(0)+ t+ O(\exp \{t\})\)</span> and see that the difference (as <span class="math inline">\(q\to \infty\)</span>) is <span class="math inline">\(O(-q)\)</span>. That is,</p>
+<p><span class="math display">\[\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=\]</span> <span class="math display">\[\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-q\})\]</span></p>
 <p>so that</p>
-<p><span class="math display">\[J(q+\alpha(x))-J(q)= \log \left[\frac{x}{S(x)}\right]+\log (1-\exp\{-q\}) +O( \exp\{-\frac{q}{2}\})\]</span></p>
+<p><span class="math display">\[J(q+\alpha(x))-J(q)= \log \left[\frac{x}{S(x)}\right]+\log (1-\exp\{-q\}) +O( \exp\{-q\})\]</span></p>
 <p>which is not quite 2.53 but is good enough for deducing 2.54 (see below).</p>
 <!--- 
 Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ such that $\lim_{g\to {\text{something}}}\frac{g(q)}{f(q)}=0$". What we have obtained is that $\frac{S(y)}{x}-1-\exp\{-(q+\alpha)\}$  if considered as a function of $q$ alone, with $x$ fixed, is $O(q)$. However, the rates at which the limits in the definition of $O(q)$ converge depend on the "parameter" $x$.
@@ -140,7 +146,7 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 <p>I find it simpler to do “directly”, rather than to show the asymptotic expansion 2.54.</p>
 <p>Remark: To get 2.54 one must first make sure that <span class="math inline">\(\alpha\)</span> actually takes “continuum of values”. Since <span class="math inline">\(\alpha\)</span> is a continuous function of <span class="math inline">\(x\)</span>, intermediate value theorem implies that the set of values of <span class="math inline">\(\alpha\)</span> is an interval; we just check that it is not a degenerate interval consisting of a single point. Indeed, that would mean <span class="math inline">\(\alpha(x)\)</span> is constant, or <span class="math inline">\(S&#39;(x)/S(x)=-c/x\)</span>, <span class="math inline">\((\ln S)&#39;=-c/x\)</span>, <span class="math inline">\(\ln S(x)= a-c/x\)</span>, but this breaks <span class="math inline">\(S(0)=1\)</span>. Now we do know that <span class="math inline">\(\alpha\)</span> takes ’’continuum of values". We will use this as well.</p>
 <p>We start with 2.53 in the form</p>
-<p><span class="math display">\[J(q+\alpha(x))-J(q)= \beta(x)+ O( \exp\{-\frac{q}{2}\})\]</span></p>
+<p><span class="math display">\[J(q+\alpha(x))-J(q)= \beta(x)+ O( \exp\{-q\})\]</span></p>
 <p>We want to deduce that</p>
 <p><span class="math inline">\(b(x)=\beta(x)/\alpha(x)\)</span> is constant.</p>
 <p>Intuitively, <span class="math inline">\(J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{- \frac{1}{2} q\})\)</span> does say that for every increment of <span class="math inline">\(\alpha(x)\)</span> in the input, the output of <span class="math inline">\(J\)</span> increases by <span class="math inline">\(\beta(x)\)</span> (plus a small error), so (asymptotically) <span class="math inline">\(J\)</span> must be linear with slope=rise/run=<span class="math inline">\(b(x),\)</span> and since there can be only one slope, <span class="math inline">\(b(x)\)</span> must be constant. The question is how to make it precise.</p>
@@ -161,13 +167,13 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 <p>Now we want to repeat this argument with error terms.</p>
 <ol type="1">
 <li><p>Suppose <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are such that <span class="math inline">\(\alpha(x_1)=\alpha(x_2)\)</span>.</p>
-<p>Then <span class="math inline">\(J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{- \frac{q}{2} \})\)</span> implies, by plugging in sufficiently large <span class="math inline">\(q\)</span>, that the difference <span class="math inline">\(\beta(x_1)-\beta(x_2)\)</span> is smaller than any positive number, so is zero. Thus, as before <span class="math inline">\(\beta(\alpha)\)</span> is well-defined.</p>
+<p>Then <span class="math inline">\(J(q+\alpha(x))-J(q)= \beta(x)+ O(\exp\{- q \})\)</span> implies, by plugging in sufficiently large <span class="math inline">\(q\)</span>, that the difference <span class="math inline">\(\beta(x_1)-\beta(x_2)\)</span> is smaller than any positive number, so is zero. Thus, as before <span class="math inline">\(\beta(\alpha)\)</span> is well-defined.</p>
 <p>To see that <span class="math inline">\(\beta(\alpha)\)</span> is continuous, given <span class="math inline">\(x_0\)</span> corresponding to some <span class="math inline">\(\alpha_0\)</span> and any <span class="math inline">\(\varepsilon&gt;0\)</span> pick <span class="math inline">\(q\)</span> such that <span class="math inline">\(|O(\exp\{-q\})| &lt;\varepsilon/2\)</span> and, using continuity of <span class="math inline">\(J\)</span> at <span class="math inline">\(q+\alpha_0\)</span>, pick <span class="math inline">\(\delta\)</span> such that <span class="math inline">\(|\alpha-\alpha_0|&lt;\delta\)</span> implies <span class="math inline">\(|J(q+\alpha)-J(q+\alpha_0)|&lt;\varepsilon/2\)</span>. Then <span class="math inline">\(|\beta(\alpha)-\beta(\alpha_0)|&lt;\varepsilon\)</span> on the same interval <span class="math inline">\(|\alpha-\alpha_0|&lt;\delta\)</span>, meaning that <span class="math inline">\(\beta(\alpha)\)</span> is continuous at <span class="math inline">\(\alpha_0\)</span>, as wanted.</p></li>
-<li><p>We know that for each <span class="math inline">\(x\)</span> and each <span class="math inline">\(C&gt;0\)</span> there exists <span class="math inline">\(Q(x, C)\)</span> such that that for <span class="math inline">\(q\geq Q(x, C)\)</span> we have <span class="math inline">\(|O(\exp\{-\frac{q}{2} \})|&lt; C\exp\{ -\frac{q}{2} \}\)</span>. Pick any <span class="math inline">\(q(x,C)\geq Q(x, C)\)</span>.</p>
+<li><p>We know that for each <span class="math inline">\(x\)</span> and each <span class="math inline">\(C&gt;0\)</span> there exists <span class="math inline">\(Q(x, C)\)</span> such that that for <span class="math inline">\(q\geq Q(x, C)\)</span> we have <span class="math inline">\(|O(\exp\{-q \})|&lt; C\exp\{ -q \}\)</span>. Pick any <span class="math inline">\(q(x,C)\geq Q(x, C)\)</span>.</p>
 <p>Now we have by induction (with everything depending on <span class="math inline">\(x\)</span>)</p>
 <p><span class="math display">\[|J(q+n\alpha)-(J (q)+n\beta)|\]</span></p>
-<p><span class="math display">\[\leq C \exp\{-\frac{q}{2}\}(1+\exp\{- \frac{\alpha}{2} \}+...+\exp\{-(n-1) \frac{\alpha}{2} \})\]</span></p>
-<p><span class="math display">\[&lt;\frac{C}{1-\exp\{- \frac{\alpha}{2} \}} \exp\{- \frac{q}{2} \}  \]</span></p>
+<p><span class="math display">\[\leq C \exp\{-q\}(1+\exp\{- \alpha \}+...+\exp\{-(n-1) \alpha \})\]</span></p>
+<p><span class="math display">\[&lt;\frac{C}{1-\exp\{- \alpha \}} \exp\{- q \}  \]</span></p>
 <p>As before is <span class="math inline">\(\alpha_1=(n_0/n_1)\alpha_0\)</span> writing the above and picking sufficiently large <span class="math inline">\(q\)</span> we get</p>
 <p><span class="math display">\[\beta(\alpha_0)/\beta(\alpha_1)=n_0/n_1=\alpha_0/\alpha_1.\]</span> The rest is the sam as in the “error-less” case.</p>
 <p>This shows that</p>
