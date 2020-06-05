@@ -12,5 +12,3 @@ for file in chapter*.md; do
     echo "created $filename.html";
 done
 
-
-rm *.log *.out *.tex *.aux

@@ -1,5 +1,6 @@
 # The quantitative rules
 
+$\leftarrow$ [Back to Chapters](./index.html)
 
 
 

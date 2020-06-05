@@ -1,5 +1,6 @@
 # Elementary Sampling theory
 
+$\leftarrow$ [Back to Chapters](./index.html)
 
 ## 3.26, 3.27  The most probable value of $r$
 
