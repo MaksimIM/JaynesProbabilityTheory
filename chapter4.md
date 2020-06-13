@@ -138,7 +138,7 @@ To that end we write
  
  Summing over $i$  we get (taking note that each $D(M_l, M_l)$ will apear $n-1$ times, while those $D(M_j, M_k)$ with $j\neq k$ will appear only $n-2$ times):
  
- $$\sum_l D(M_l, M_l)   (n-2)\sum_{j,k} D(M_j, M_k)=0$$
+ $$\sum_l D(M_l, M_l) +  (n-2)\sum_{j,k} D(M_j, M_k)=0$$
  
  So, since $D(M_l, M_l)=0$,  as long as $n\neq 2$ we have what we want.
  
