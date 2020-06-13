@@ -1,5 +1,6 @@
 # Elementary Sampling theory
 
+$\leftarrow$ [Back to Chapters](./index.html)
 
 ## 3.26, 3.27  The most probable value of $r$
 
@@ -45,7 +46,7 @@ Remark: This is Theorem 3.4.5 in Blitzstein - Hwang "Introduction to Probability
 
  By definition, $h(r|N, M, n)$ is computed as follows. Lay down $N$ balls, labeled $1, ..., N$. Pick the subset $R_0=\{1,..., M\}$ of them and paint it red. Then pick a subset $D$ of size $n$ of all the ball, and compute $r=|D\cap R_0|$. The fraction of $D$s that give specific answer $r$ is by definition $h(r|N, M, n)$.
  
- Now suppose instead we pick a different subset $R_1$ of size $M$ to be red, and repeat the procedure above: pick $D$, and comute $r=|D \cap R_1|$. We claim that the fraction of $D$s that give specific answer $r$ is still $h(r|N, M, n)$. In deed, there exists a  permutation of $\{1, ..., N\}$ taking $R_1$ to $R_0$ ("sort the reds to be first"); the same permutation takes $D$s that give $D\cap R_1=r$ to those that give $D\cap R_0=r$. Hence there are the same number of $D$s in both circumstances.
+ Now suppose instead we pick a different subset $R_1$ of size $M$ to be red, and repeat the procedure above: pick $D$, and compute $r=|D \cap R_1|$. We claim that the fraction of $D$s that give specific answer $r$ is still $h(r|N, M, n)$. In deed, there exists a  permutation of $\{1, ..., N\}$ taking $R_1$ to $R_0$ ("sort the reds to be first"); the same permutation takes $D$s that give $D\cap R_1=r$ to those that give $D\cap R_0=r$. Hence there are the same number of $D$s in both circumstances.
  
  The above argument means that $h(r|N, M, n)$ can be also computed as follows.  Lay down $N$ balls, labeled $1, ..., N$. Pick 
  **any** subset $R$ of them of size $M$ and paint it red. Then pick a subset $D$ of size $n$ of all the ball, and compute $r=|D\cap R|$. The fraction of  **$R$s and $D$s** that give specific answer $r$ is then $h(r|N, M, n)$.

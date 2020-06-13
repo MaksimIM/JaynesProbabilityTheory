@@ -1,5 +1,6 @@
 # The quantitative rules
 
+$\leftarrow$ [Back to Chapters](./index.html)
 
 
 
@@ -364,20 +365,22 @@ Now we want to repeat this argument with error terms.
 
     is constant, and thus establishing 2.56. 
     
+
  <!---    
   We can now get the asymptotic expansion as well. We have:
-  
+
   $$ J(q + \alpha) - J (q) = b \alpha+O(\exp\{-q\})$$ 
-  
+
   Define $G(q)=J(q)-bq$. 
-  
+
   Then we have  $G(q+\alpha)=G(q)+O(\exp\{-q\})$ and we want $G(q)=a+O(\exp\{-q\})$.
-  
+
     --->
+
   
-  
-    
-    
+
+
+​    
 ## Proof of 2.57
 
 
@@ -407,6 +410,14 @@ $$
 ## Proof of 2.58
 
 $S^{m-1}S'=-x^{m-1}$ is equivalent to $(S^m)'=-mx^{m-1}$, so that $S^m=C-x^m$. Initial value $S(0)=1$ fixes $C=1$ and $S(x)=(1-x^m)^{1/m}$ as wanted.
+
+
+
+## Alternative proof of sum rule 
+
+[Cox (1946)](https://wwwusers.ts.infn.it/~milotti/Didattica/Bayes/Cox_1946.pdf), page 12, starting at equation (15).
+
+
 
 
 

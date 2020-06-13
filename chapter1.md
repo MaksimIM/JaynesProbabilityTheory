@@ -1,5 +1,6 @@
 # Plausible Reasoning
 
+$\leftarrow$ [Back to Chapters](./index.html)
 
 
 ## Proof of 1.13
