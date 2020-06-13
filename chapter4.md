@@ -53,7 +53,7 @@ Then a "conceptual" proof is as follows:
 
 A sum $M$ of two rank 1 matrices  $M=h_1 v_1 u^T_1 +h_2 v_2 u^T_2$ can only be rank 1 if either $v_1$ and $v_2$ are linearly dependent or $u_1$ and $u_2$ are linearly dependent. Indeed, 
 consider the image of $M$. $M(u_1)$ and $M
-(u_2)$  are both linear combinations of $h_1 v_1$ and $h_2 v_2$, so it is enough that the matrix of coefficients $G=\begin{pmatrix} u_1^T u_1& u_1^T\cdot u_2\\u_2^T u_1& u_2^T\cdot u_2\end{pmatrix}$ to get that the image of $M$ is span of $v_1$ and $v_2$. But $G$ is the Grammian of $u_1, u_2$ and is invertible precisely when $u_1$ and $u_2$ are linearly independent (its determinant is the square of the area of the parallelogram spanned by $u_1$ and $u_2$, as you can easily verify). So if that's the case, then rank of $M$ is the dimension of the span of $v_1, v_2$ and is 2, not 1 if $v_1, v_2$ are independent, proving what we want.
+(u_2)$  are both linear combinations of $h_1 v_1$ and $h_2 v_2$, so, to get that the image of $M$ is span of $v_1$ and $v_2$, it is enough that the matrix of coefficients $G=\begin{pmatrix} u_1^T u_1& u_1^T\cdot u_2\\u_2^T u_1& u_2^T\cdot u_2\end{pmatrix}$ is invertible. But $G$ is the Grammian of $u_1, u_2$ and is invertible precisely when $u_1$ and $u_2$ are linearly independent (its determinant is the square of the area of the parallelogram spanned by $u_1$ and $u_2$, as you can easily verify). In that case (of independent $u$s), the rank of $M$ is the dimension of the span of $v_1, v_2$ and is 2, not 1 if $v_1, v_2$ are independent, proving what we want.
 
 Rmark: Those familiar with tensors may realize that we use metric in which $u_1$ and $u_2$ are orthonormal (that's the inverse of $G$) to "raise and index" and go from a bilinear form encoded by $M$ to a linear map, whose range is then thespan of $v$s. 
 
@@ -65,6 +65,7 @@ Now from $i=1$ and $i=2$ we get that (either $v_2=v_3$ or $u_2=u_3$) and (either
 
 Alternatively, for those who don't like linear algebra computational proof is as follows:
 
+A (non-zero) 2 by 2 matrix has rank one when its determinant is zero. Writing this out in our case we get:
 
 $$[h_1 a_1 b_1+h_2 a_2 b_2][h_1 (1-a_1)(1-b_1)+h_2 (1-a_2) (1-b_2)]$$
 
