@@ -6,7 +6,7 @@ $\leftarrow$ [Back to Chapters](./index.html)
 
 
 
-### Exercise 4.1
+### (most of) Exercise 4.1 
 
 Given 
 $$P(D_1 ... D_m|H_i X)=\prod_j P(D_j|H_iX)$$
@@ -29,6 +29,7 @@ Firstly, we claim that the case of $2$ pieces of data implies the general result
 Indeed, independence assumptions of all $D_j$ together imply analogous pairwise independence for any pair $D_k$ and $D_l$, and so, assuming the case with two data pieces is solved, for any pair $\frac{P(D_k|H_iX)}{P(D_k|\overline{H}_iX)}$, $\frac{P(D_l|H_iX)}{P(D_l|\overline{H}_iX)}$ at most one is not equal to $1$, so of the whole set of $\frac{P(D_j|H_iX)}{P(D_j|\overline{H}_iX)}$  at most one is not equal to $1$.
 
 
+We formulate our solution for binary $D$s. We will reformulate for general $D$ in a later version.
 
 For a given hypothesis $H_i$ we let $P(D_1|H_i X)=a_i$ $P(D_2|H_i X)=b_i$, so the ditribution of $D_1$ under $H_iX$ is given by a vector $v_i= \begin{bmatrix}a_i \\ 1-a_i\end{bmatrix}$ and that of $D_2$ by $u_i= \begin{bmatrix}b_i \\ 1-b_i\end{bmatrix}$ 
 
