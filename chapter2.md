@@ -16,7 +16,7 @@ Similarly $V=G(x,v)F_2(y,z)$ so
 
 $$V_y=G_2(x,v)F_1(y,z)F_2(y,z)+G(x,v)F_{12}(y,z).$$
 
-Of course mixed partials are equal (under some continuity of second derivatives assumption, Clairot's theorem), so the two expressions are the same.
+Of course mixed partials are equal (under some continuity of second derivatives assumption, Clairaut's theorem), so the two expressions are the same.
 
 
 
@@ -130,7 +130,7 @@ With big O notation we can also get rid terms that drop asymptotically faster th
 
 $$S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S'[S(x)]S(x)\delta + O(\delta^2)$$
 
-## Explanation of 2.52, 2.53 (incomplete)
+## Explanation of 2.52, 2.53 (mildly incomplete)
 
 2.45 says $S[S(x)]=x$. Differentiating in $x$ we get $S'[S(x)]S'(x)=1$, or $S'[S(x)]=1/S'(x)$. Now we plug in into 2.50 to get
 
@@ -155,7 +155,7 @@ $$\frac{S(y)}{x}=1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\}),$$
 
 which is 2.51.
 
-Now we want to deduce 2.53.  We make some progress but ultimately do not succeed (yet).
+Now we want to deduce 2.53.  We make some progress but ultimately do not succeed, deriving a weaker statement, sufficient for continuing.
 
  We start with 2.45
 
@@ -181,7 +181,7 @@ Now if we could write
 $$\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=$$
 $$\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-2q\})$$
 
-we would get $J(q+\alpha)+O(\exp\{-2q\})$ and 2.53 would follow. 
+we would get $J(q+\alpha)+O(\exp\{-2q\})$ and 2.53 would follow. We don't get that, but we get almost the same thing - just without the 2 in the last exponent.
 
 
 We use the following fact: If $f(q)=O(g(q))$ then, for any  eventually non-zero $h(q)$ one has $f(q)=h(q) O(g(q)/h(q))$. This is simply from definition: both mean $\lim_{q\to something} \frac{g(q)}{f(q)}=\lim_{q\to something} \frac{g(q)/h(q)}{f(q)/h(q)}=0$

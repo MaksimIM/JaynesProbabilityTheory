@@ -33,7 +33,7 @@ Thus denoting by $r'$ the number $\frac{ (M+1)(n+1)}{N+2}$ we see that if $r'$ i
 
 Remak 1: Note that the expected number of red balls is just the "naive" $n \frac{M}{N}$ (this is not hard to show using linearity of expectation, see Example 4.2.3 in Blitzstein-Hwang "Introduction to Probability").
 
-Remark 2: The above result can be restated in the following way: add one red and one white ball to the urn (for a total of $N+2$) and draw $n+1$ balls from it. Compute the "naive" most likely fraction of red balls $\frac{M+1}{N+2}$ and the "naive" most likely number of red balls $\frac{(n+1)(M+1)}{N+2}$. Now subtract $1$. This is (up to rounding) the most likely number of red balls drawn in the original procedure. This seems somewhat reminiscent of the correction that putting a beta prior on Bernoulli makes to the posterior expectation, but I have no idea if there is more to this connection than that.
+Remark 2: The above result can be restated in the following way: pretend to add one red and one white ball to the urn (for a total of $N+2$) and draw $n+1$ balls from the resulting urn. Compute the "naive" most likely fraction of red balls $\frac{M+1}{N+2}$ and the "naive" most likely number of red balls $\frac{(n+1)(M+1)}{N+2}$. Now subtract $1$. This is (up to rounding) the most likely number of red balls drawn in the original procedure. This seems somewhat reminiscent of the correction that putting a beta prior on Bernoulli makes to the posterior expectation, but I have no idea if there is more to this connection than that.
 
 ## 3.29 Symmetry of $h(r|N, M, n)$ 
 
