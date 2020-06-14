@@ -199,3 +199,71 @@ To that end we write
  $U^c_i=U_i$  and hence $\frac{P(D_2|H_iX)}{P(D_2|\overline{H}_iX)}=1$. This is exactly what we wanted to prove.
  
  
+ #### Some remarks on sequential vs. batch updates.
+ 
+ (See formula 4.11; the discussion is in the context of section  4.4 and formula 4.44.)
+ 
+ We are considering a batch of widgets from a single machine.
+ We have three hypothesis, $A$ -- the machine has failure rate $\frac{1}{3}$ (prior probability $\frac{1}{11}$), $B$ -- the machine has failure rate $\frac{1}{6}$ (prior probability $\frac{10}{11}$), and $C$ -- the machine has failure rate $\frac{99}{100}$ (prior probability $\frac{1}{10^6}$).
+ 
+ Prior odds ratio is then (to a very good approximation) $\frac{10^6}{11} :  \frac{10^7}{11} : 1$.
+ 
+
+
+The update rule for arbitrary data tells us how to compute the posterior odds  $A$ vs $B$ vs $C$: one takes the prior odds and multiplies each number by the likeliehood of data under corresponding hypothesis. For data of $m$ bad widgets  the likeliehhods are $\frac{1}{3^m},\frac{1}{6^m},\frac{99^m}{100^m}$.  This gives posterior odds:
+
+$$\frac{10^6}{11} \frac{1}{3^m} : \frac{10^7}{11} \frac{1}{6^m}:\frac{1}{10^6}\frac{99^m}{100^m}.$$
+
+Note that since the individual draws are independent **conditional on one specific hypothesis**, the likeliehoods for $m$ widgets are each a product of individual likelihoods of draws, and we see very clearly that the same posterior odds will be obtained by updating on all the data of $m$ bad widgets, or by splitting $m=m_1+m_2$ and updating first to odds ratio 
+
+$$\frac{10^6}{11} \frac{1}{3^{m_1}} : \frac{10^7}{11} \frac{1}{6^{m_1}}:\frac{1}{10^6}\frac{99^{m_1}}{100^{m_1}},$$
+
+using that as new prior odds and then updating to the final posterior odds
+
+$$\frac{10^6}{11} \frac{1}{3^{m_1}} \frac{1}{3^{m_2}} : \frac{10^7}{11} \frac{1}{6^{m_1}} \frac{1}{6^{m_2}}:\frac{1}{10^6}\frac{99^{m_1}}{100^{m_1}} \frac{99^{m_2}}{100^{m_2}}$$
+
+getting the same result.
+
+It is only when merging $A$ and $B$ into a single hypothesis $\overline{C}=A+B$ that we have trouble: individual draws are not independent under $\overline{C}$. To illustrate, consider $m=2$. Firstly, the prior odds of  $C: \overline{C}$ are  
+
+$$C_0:\overline{C}=C_0:A_0+B_0= 1 : \frac{10^6}{11} + \frac{10^7}{11}=1:10^6$$
+
+The likeliehood of the first widget being bad under $C$ is as before $\frac{99}{100}$. The likeliehood of it being bad under $\overline{C}=A+B$ is trickier: $B$ is 10 times more likely than $A$, so the probability of a bad widget under $A+B$ is weighted average of probabilities under $A$ and $B$ with the one under $B$ getting ten times more weight. This is simply the "total probability formula"
+
+$$P(D_1|A+B)=P(D_1|A)P(A|A+B)+P(D_1|B)P(B|A+B)=$$
+
+$$=\frac{1}{3}\frac{1}{11} +\frac{1}{6}\frac{10}{11}=\frac{2}{11}$$
+
+After the first widget is drawn, the posterior odds are prior odds times likeliehood:
+
+$$C_1:\overline{C}_1= 1 \frac{99}{100}: 10^6 \frac{2}{11}$$
+
+We can check it's the same result as one obtained by first updating the odds of $A:B:C$ and then summing the ones for $A$ and $B$:
+
+$$C_1:A_1+B_1=\frac{99^{1}}{100^{1}}: \frac{10^6}{11} \frac{1}{3^{1}} + \frac{10^7}{11} \frac{1}{6^{1}}=\frac{99}{100} :\frac{2\cdot10^6}{11} $$
+
+
+
+
+Now **if** the likeliehood of second bad widget under $\overline{C}$ was again $P(D_2|A+B)=\frac{2}{11}$ we would get the **WRONG** $C_2:\overline{C}_2= \frac{99}{100}\frac{99}{100}: \frac{2\cdot10^6}{11} \frac{2}{11}$. 
+
+However, it is not - $D_2$ is not independent of $D_1$ under $\overline{C}$ -- having learned that the first draw was defective we now think it is relatively more likely that the batch came from $A$ rather than $B$, as follows. The odds ratios after $D_1$ of $A_1:B_1=1 \frac{1}{3}:\frac{1}{6}{10}=1:5$, so $P(A|(A+B)D_1)=\frac{1}{6}$ and $P(B|(A+B)D_1)=\frac{5}{6}$. This means that the second widget is more likely to come from $A$ rather than $B$ and is more likely to be bad:
+
+$$P(D_2|(A+B)D_1)=$$
+
+$$P(D_2|AD_1)P(A|(A+B)D_1)+P(D_2|BD_1)P(B|(A+B)D_1)=$$
+
+$$=\frac{1}{3}\frac{1}{6} +\frac{1}{6}\frac{5}{6}=\frac{7}{36}> \frac{2}{11}$$
+
+This means that seeing the second bad widget is giving somewhat less evidence for $C$ over $\overline{C}$ than seeing the first one did (some evidence in $D_2$ is "already" in $D_1$). 
+
+We can now finish the computation for the second update:
+
+$$ C_2 : \overline{C}_2 = \frac{99}{100} \frac{99}{100} :  \frac{2\cdot10^6}{11} \frac{7}{36}=\frac{99^2}{100^2}: \frac{14 \cdot 10^6}{11\cdot 6^2}$$
+ 
+and compare it to the "batch" calculation:
+
+$$C_2:A_2+B_2= \frac{99^2}{100^2}: \frac{10^6}{11}\frac{1}{3^2}+ \frac{10^7}{11} \frac{1}{6^2}=\frac{99^2}{100^2}: \frac{14 \cdot 10^6}{11\cdot 6^2}.$$
+
+ 
+ 
