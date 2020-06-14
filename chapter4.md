@@ -28,9 +28,11 @@ Firstly, we claim that the case of $2$ pieces of data implies the general result
 
 Indeed, independence assumptions of all $D_j$ together imply analogous pairwise independence for any pair $D_k$ and $D_l$, and so, assuming the case with two data pieces is solved, for a fixed $i$ and for any pair of $k, l$ $\frac{P(D_k|H_iX)}{P(D_k|\overline{H}_iX)}$, $\frac{P(D_l|H_iX)}{P(D_l|\overline{H}_iX)}$ at most one is not equal to $1$, so of the whole set of $\frac{P(D_j|H_iX)}{P(D_j|\overline{H}_iX)}$  at most one is not equal to $1.$
 
-so we focus on the case of only two data sets, $D_1$ and $D_2$.
+So we focus on the case of only two data sets, $D_1$ and $D_2$.
 
 We will denote probability density/mass function of $D_1$ under hypothesis $H_iX$ by $V_i$ and that of $D_2$ by $U_i$. We will also denote probability density/mass function of $D_1$ under hypothesis $\overline{H}_iX$ by $V^c_i$ and that of $D_2$ by $U^c_i$, though we will not use these until the very end.
+
+Remark 1: The proof actually works for arbitrary (not necessarily discrete or continuous) real-valued random variables, one just has to say that $V$s and $U$s are CDFs instead of PMFs/PDFs. 
 
 We will denote value of $V_i$  at some $D_1=x_1$ by $v_{i1}$ (and at $D_1=x_2$ by $v_{i2}$). Similarly the values of $U$ at $D_2=y_1$ will be denoted by $u_{i1}$.
 
@@ -52,7 +54,7 @@ $$M_i=v_i u_i^T=\begin{bmatrix}v_{i1} \\ v_{i2}\end{bmatrix} \begin{bmatrix}u_{i
 
 $$=\begin{bmatrix}v_{i1}u_{i1}& v_{i1}u_{i2}  \\v_{i2}u_{i1} & v_{i2}u_{i2}\end{bmatrix}$$
 
-It follows fro this that the (joint) probability matrix of $D_1D_2$ ( again, at $x= x_1, x_2$ and $y=y_1, y_2$) conditional on $\overline{H_i}X$ is obtained by taking all the matrices of $H_j$ with $j\neq i$ weighing them by (prior) probabilities $h_j$ of $H_j$  and adding them (and then dividing by the sum of the weights, but this is an overall normalizing factor which will not be important for us). That is, the matrix is proportional to 
+It follows from this that the (joint) probability matrix of $D_1D_2$ ( again, at $x= x_1, x_2$ and $y=y_1, y_2$) conditional on $\overline{H_i}X$ is obtained by taking all the matrices of $H_j$ with $j\neq i$ weighing them by (prior) probabilities $h_j$ of $H_j$  and adding them (and then dividing by the sum of the weights, but this is an overall normalizing factor which will not be important for us). That is, the matrix is proportional to 
 
 
 $$\sum_{j\neq i} h_j  M_i=\sum_{j\neq i} h_j v_j u_j^T=$$
@@ -63,25 +65,23 @@ $$\begin{bmatrix}\sum_{j\neq i} h_j v_{i1}u_{i1}& \sum_{j\neq i} h_j v_{i1}u_{i2
 
 Now the assumption that $D_1$ and $D_2$ are independent conditional on $\overline{H}_i$ means this matrix is also a product of "marginal" matrices of $D_1|  \overline{H}_i X$ and $D_2|\overline{H}_i X$, i.e. is of rank 1. This means that it has determiant 0. 
 
-##### Three  hypothesis.
+#### Three  hypothesis.
 Let's start with the case of only 3 hypothesis $H_1, H_2,H_3$.  Start with $i=3$.
 
 
 
-######Lemma 1: A sum $M$ of two rank 1 matrices  $M=h_1 v_1 u^T_1 +h_2 v_2 u^T_2$ can only be rank 1 if either $v_1$ and $v_2$ are linearly dependent or $u_1$ and $u_2$ are linearly dependent.
+#####Lemma: A sum $M$ of two rank 1 matrices  $M=h_1 v_1 u^T_1 +h_2 v_2 u^T_2$ can only be rank 1 if either $v_1$ and $v_2$ are linearly dependent or $u_1$ and $u_2$ are linearly dependent.
 
 
-Then a "conceptual" proof is as follows:
-
- Indeed, 
-consider the image of $M$. $M(u_1)$ and $M
-(u_2)$  are both linear combinations of $h_1 v_1$ and $h_2 v_2$, so, to get that the image of $M$ is span of $v_1$ and $v_2$, it is enough that the matrix of coefficients $G=\begin{pmatrix} u_1^T u_1& u_1^T\cdot u_2\\u_2^T u_1& u_2^T\cdot u_2\end{pmatrix}$ is invertible. But $G$ is the Grammian of $u_1, u_2$ and is invertible precisely when $u_1$ and $u_2$ are linearly independent (its determinant is the square of the area of the parallelogram spanned by $u_1$ and $u_2,$ as you can easily verify). In that case (of independent $u$s), the rank of $M$ is the dimension of the span of $v_1, v_2$ and is 2, not 1 if $v_1, v_2$ are independent, proving what we want.
+A "conceptual" proof is as follows:
+Consider the image of $M$. Vectors $M(u_1)$ and $M
+(u_2)$  are both linear combinations of $h_1 v_1$ and $h_2 v_2$, so, to get that the image of $M$ is the span of $v_1$ and $v_2$, it is enough that the matrix of coefficients $G=\begin{pmatrix} u_1^T u_1& u_1^T u_2\\u_2^T u_1& u_2^T u_2\end{pmatrix}$ is invertible. But $G$ is the Grammian of $u_1, u_2$ and is invertible precisely when $u_1$ and $u_2$ are linearly independent (its determinant is the square of the area of the parallelogram spanned by $u_1$ and $u_2,$ as you can easily verify). In that case (of independent $u$s), the rank of $M$ is the dimension of the span of $v_1, v_2$ and if $v_1, v_2$ were independent, it would be 2. So if rank of $M$ is below 2, then either $u$s or $v$s are dependent, as   wanted.
 
 
 
-Remark 1: Those familiar with tensors may realize that we use metric in which $u_1$ and $u_2$ are orthonormal (that's the inverse of $G$) to "raise and index" and go from a bilinear form encoded by $M$ to a linear map, whose range is then the span of $v$s. 
+Remark 2: Those familiar with tensors may realize that we use metric in which $u_1$ and $u_2$ are orthonormal (that's the inverse of $G$) to "raise and index" and go from a bilinear form encoded by $M$ to a linear map, whose range is then the span of $v$s. 
 
-Remark 2:  Alternatively, for those who don't like linear algebra computational proof of Lemma 1 is as follows:
+Remark 3:  Alternatively, for those who don't like linear algebra, a computational proof of Lemma 1 is as follows:
 A (non-zero) 2 by 2 matrix has rank one when its determinant is zero. Writing this out in our case we get:
 
 $$[h_1 v_{11} u_{11}+h_2 v_{21} u_{21}][h_1 v_{12} u_{12}+h_2 v_{22} u_{22}]=$$
@@ -110,9 +110,9 @@ $$(v_{11}v_{22}-v_{12}v_{21})(u_{11}u_{22}-u_{12}u_{21})=0,$$
 Continuing with the case of three hypothesis, recall $v_i$ and $u_i$ were likeliehood/probability vectors of $D_1$ taking values $x_1, x_2$  and $D_2$ taking values $y_1, y_2$ (under hypothesis $H_iX$).
 
 Observe that a pair of non-zero functions $V_1$ and $V_2$ such that $(V_1(x_1), V_1(x_2))$ is always proportional to 
-$(V_2(x_1), V_2(x_2))$ are "globally" proportional meaning $U_1=kU_2$ (take any $x$ with $V_2(x)\neq 0$ and make $k= V_1(x)/V_2(x)$).
+$(V_2(x_1), V_2(x_2))$ are "globally" proportional meaning $V_1=kV_2$ (take any $x$ with $V_2(x)\neq 0$ and make $k= V_1(x)/V_2(x)$).
 
- This means that if distributions of $D_1$ under $H_1X$ and $H_2X$ are different, then they are also not proportional. This implies that there will be two values $x_1$ and $x_2$ giving unproportional $v_1$ and $v_2$ (otherwise we have a two functions with values at any two inputs proportional, wh). Then for arbitrary pair of values $y_1, y_2$ of $D_2$ the corresponding vectors $u_1$ and $u_2$ are proportional, so whole probability mass/density functions $U_1$ and $U_2$ of $D_2$ under $H_1X$ and $H_2X$ are proportional, i.e. equal. 
+ If distributions of $D_1$ under $H_1X$ and $H_2X$ are different, then they are also not proportional. By the previous paragraph, this implies that there will be two values $x_1$ and $x_2$ giving unproportional $v_1$ and $v_2$. Then for arbitrary pair of values $y_1, y_2$ of $D_2$ the corresponding vectors $u_1$ and $u_2$ are proportional, so, again, by the previous paragraph, the whole probability mass/density functions $U_1$ and $U_2$ of $D_2$ under $H_1X$ and $H_2X$ are proportional, ergo equal. 
 
 So either $V_1=V_2$ or $U_1=U_2$.
 
@@ -122,7 +122,7 @@ Now from $i=1$ and $i=2$ we get that (either $V_2=V_3$ or $U_2=U_3$) and (either
 
 This completes the case of 3 hypothesis.
 
-##### The general case.
+#### The general case.
 
 
 
@@ -131,8 +131,8 @@ This completes the case of 3 hypothesis.
 
 To get the extension to more than $3$ hypothesis we use the following approach. As we mentioned before, a 2 by 2 matrix is or rank at most 1 if its determinant is zero.  So we need some an efficient way of telling when the deterimnant of 2 by 2 matrix is zero.
 
-Remark 3: More generally, a matrix is of rank at most 1 if all 
-2 by 2 minors have determinannt zero i.e. all $M^{\wedge 2}_{(i,j), (k,l)}=M_{ik}M_{jl}-M_{il}M_{jk}$ are zero. In tensor analysis, these are the entries of the second exterior power $M^{\wedge 2}$ of $M$. When dimension is $2$ there is only one minor, and the $M^{\wedge 2}$ is a scalar, equal to $\det M$. So in dimensions above 2, we can formulate everything that follows in terms ofdeterminants.
+Remark 4: More generally, a matrix is of rank at most 1 if all 
+2 by 2 minors have determinannt zero i.e. all $M^{\wedge 2}_{(i,j), (k,l)}=M_{ik}M_{jl}-M_{il}M_{jk}$ are zero. In tensor analysis, these are the entries of the second exterior power $M^{\wedge 2}$ of $M$. When dimension is $2$ there is only one minor, and the $M^{\wedge 2}$ is a scalar, equal to $\det M$. So in dimensions above 2, we can formulate everything that follows in terms of determinants.
 
 
 
@@ -159,9 +159,9 @@ Observe that $D(M, M)=\det M$. We then have, by induction on the number of summa
 $\det (\sum M_i)=D(\sum M_i, \sum M_j)=\sum_{i, j} D(M_i, M_j)$
 
 
-Remark 4: We also have $D(\lambda M, N)=\lambda D(M, N)$, as usual in bilinearity, but we don't need this.
+Remark 5: We also have $D(\lambda M, N)=\lambda D(M, N)$, as usual in bilinearity, but we don't need this.
 
- Remark 5: In higher dimensions, and using tensor language, we are saying that taking second exterior power, which is quadratic, is a restriction of a symmetric bilinear operation.
+ Remark 6: In higher dimensions, and using tensor language, we are saying that taking second exterior power, which is quadratic in the input, is a restriction of a symmetric bilinear operation (on two inputs).
 
 <!---Remrk 5: This is a little strange, but perhaps the following will fact can make slightly more palatable: if matrix $M$ a matrix encoding a PMF of a pair of binary random variables $X_1$ and $X_2$, and we assign value 0 to first outcome and 1 to the second one, then $\det M$ is the covariance $Cov(X_1, X_2)$
 ----->
