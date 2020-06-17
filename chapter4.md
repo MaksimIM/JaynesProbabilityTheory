@@ -265,5 +265,289 @@ and compare it to the "batch" calculation:
 
 $$C_2:A_2+B_2= \frac{99^2}{100^2}: \frac{10^6}{11}\frac{1}{3^2}+ \frac{10^7}{11} \frac{1}{6^2}=\frac{99^2}{100^2}: \frac{14 \cdot 10^6}{11\cdot 6^2}.$$
 
+
+##### Most of Exercise 4.2
+
+Suppose prior odds of hypothesis $H_i$ are $s_i$, and the probability of good widget under $H_i$ is $p_i$ and of a bad one is $q_i=1-p_i$. 
+
+For $n_0$ bad widgets and $n_1$ good ones the posterior odds are 
+
+$$ \ldots   :L_i=s_i p_i^{n_0} q_i^{n_1}: \ldots$$
+
+If the fraction of bad widgets is $f$ then we have $n_0=f n$, $n_1=(1-f)n$ and posterior odds
+
+$$ \ldots   :L_i=s_i (p_i^{1-f})^n (q_i^{f})^{n}: \ldots$$
+
+For two different hypothesis the ratio $L_i: L_j$ does not go to zero or infinity precisely when $p_i^{1-f} q_i^{f}=p_j^{1-f} q_j^{f}$. Solving for $f$ we get:
+
+ $\frac{p_i}{p_j}=(\frac{q_j p_i}{q_i p_j})^f$
+ 
+
+$\ln \frac{p_i}{pj}=f\ln \frac{q_j p_i}{q_i p_j}$
+
+$f= \frac{\ln \frac{p_i}{pj}}{\ln \frac{q_j}{q_i}+\ln \frac{p_i}{pj}}$
+
+$f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}$
+
+For the case in section 4.4 we have $p_C=1/100$, $p_A=2/3$, $q_C=99/100$, $q_A=1/3$,
+
+$f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}=\frac{1}{\frac{\ln \frac{297}{100}}{\ln \frac{200}{3} }+1}=0.7941552598429126932775507544006687123649252334748242$
+
+
+##### Some of Exercise 4.3
+We now consider the case of 4 hypothesis $A, B, C$ as before and $F$. We remark that since we will study the evolution of our beliefs in the scenario where about $1/4$ of widgets are defective, neither $C$ nor the hypothetical $E$ from the first part of this exercise under which most widgets are good are of any importance, so we can, in fact just study how $F$ fairs against $A$ and $B$.
+
+The likeliehoods of data of $n/4$ bad widgets and $3n/4$ good ones under $A:B:F$ are
+
+$$ \left[\left(\frac{1}{3}\right)^{\frac{1}{4}} \left(\frac{2}{3}\right)^{\frac{3}{4}} \right]^n: \left[\left(\frac{1}{6}\right)^{\frac{1}{4}} \left(\frac{5}{6}\right)^{\frac{3}{4}} \right]^n: \left[\left(\frac{1}{4}\right)^{\frac{1}{4}} \left(\frac{3}{4}\right)^{\frac{3}{4}} \right]^n $$
+
+$$0.5606^n: 0.5573^n:0.5699^n$$
+
+So the evidence for $F$ is (in Jaynesean db) $10(\log_{10} 0.5699^n- \log_{10} (0.5606^n+ 0.5573^n))$ which for large $n$ is $n\cdot  10 \log_{10} \frac{0.5699}{0.5606} \approx n \cdot 0.0714556 \approx \frac{n}{14}$. So we would need about 14 samples per decibel of evidence in favor of $F$, i.e. multiple hundreds before something like 20db of evidence for $F$ over $A$ and $B$ can be collected.
+
+
+
+##### Exercise 4.4
+
+This problem is simplified if we assume that $A$ and $B$ are the only hypothesis under consideration. Then evidence for $A$ is evidence against $B$ and vice versa. In addition, the individual widget tests are independent both under $A=\overline{B}$ and $B=\overline{A}$.
+
+ So each negative test gives $10 \log_{10} \frac{1/3}{1/6}=3$ db  evidence for $A$. If $B$ is true, the probability of this is $\frac{1}{6}$.
+ 
+  And a positive gives $10 \log_{10} \frac{2/3}{5/6}=-0.97$ db evidence against $A$. If $B$ is true, the probability of this is $\frac{5}{6}$.
+
+We now indeed have a random walk.  We start at $0$ db of evidence, and then at each step we either, with probability $\frac{1}{6}$ take a step of size $3$, or, with probability $\frac{5}{6}$ take a step of size $-0.97$.
+
+We now ask: 1) what is the probability of ever getting to $20$ db? 2) how long will it take to get $-20$ db?
+
+
+This is an exercise in "Wald theory" a la A. Wald, "Sequential analysis" or W. Feller, "An introduction to probability theory and its applications", Vol 1 Ch. XIV., Vol 2 Ch.XII (Abraham Wald is the statistician of the "holes you see in the returning bombers are in the areas where a bomber can take a hit and still come back, it's all the other areas you should worry about, you dolts!" fame; someone really should make a movie about his life.)
+
+
+
+One gets a simplification by rounding $-0.97$ to $-1$, for then the possible amounts of evidence are all integers, and the random walk is on $\mathbb{Z}$.  Moreover, the resulting random walk is "skip-free to the left" - one can not move left by more than one unit at a time. There are a more or less standard approaches for analyzing such a walk.
+
+(But see below for the general case. (Feller, XIV.8))
+
+##### Probability of getting 20 db for $A$.
+
+
+
+Let $p_i$ be the probability that the walk will ever reach the state $i$ decibel.
+
+Firstly, the expected evidence is $3\frac{1}{6}+(-1)\frac{5}{6}=-\frac{1}{3}$ is negative, so by the strong law of large numbers the walk goes off to $-\infty$ with probability 1. Since the only way to reach it starting from  0 is to go through all negative values, $p(i)=1$ for all $i\leq 0$.
+
+In addition, this means that, if we denote by $X_j$ the set of all walks that reach state $i$ but don't reach state $i+1$ then $X=\cup_{j\geq 0} X_j$ has probability $1$ (each walk that converges to $-\infty$ will belong to one of the $X_i$). This means that $p_i=P(\cup_{j\geq i-1} X_i)$ converges to zero as $i \to \infty$.
+
+The above two paragraphs give boundary conditions for $p_i$.  Now let's find a relation between different $p_i$s (for positive $i$). Consider the first step of the walk. Either, with probability $\frac{1}{6}$ it is 3 to the right, and so what remains is to reach $i-3$ steps to the right, probability of which is $p_{i-3}$. Or, with probability $\frac{5}{6}$ it is 1 to the left, and so now the walk needs to reach $i+1$ steps to the right, probability of which is $p_{i+1}$. So 
+
+$$p_{i}=\frac{1}{6} p_{i-3}+ \frac{5}{6} p_{i+1}$$
+
+The first few are $p_1=\frac{1}{6}+\frac{5}{6} p_{2}$,  $p_2=\frac{1}{6}+\frac{5}{6} p_{3}$, $p_3=\frac{1}{6}+\frac{5}{6} p_4$, $p_4=\frac{1}{6}p_1+\frac{5}{6} p_{5}$ etc. 
+
+Remark:  $\frac{1}{6} p_{-3}+ \frac{5}{6} p_{1}=\frac{1}{6}+ \frac{5}{6} p_{1}$ is the probability of returning to $0$ **after** the firs step, and so in **not**  equal to $p_0=1$. 
+
+
+
+There is a standard way to solve such recurrence relations, and even several variations on it. 
+
+
+
+
+
+ **In a more direct way**, one starts with $p_i=r^i$ to get characteristic equation
+
+$$ r^3= \frac{1}{6}+ \frac{5}{6} r^4 .$$
+
+This has roots $r_1=1$, $r_2\approx 0.8$, $r_{3,4}\approx -0.3 \pm 0.4 i$ (so $|r_{3,4}|\approx 0.5$). A general solution is  a linear combination of these, $p_i=c_1 r_1^i+c_2 r_2^i+c_3 r_3^i+ c_4 r_4^i$. The boundary condition $\lim_{i \to \infty} p_i=0$ means $c_1=0$, and the other conditions $p_0=p_{-1}=p_{-2}=1$ give
+
+
+$$\begin{pmatrix} 1 &1 &1\\r_2^{-1}&r_3^{-1}&r_4^{-1}\\r_2^{-2}&r_3^{-2}&r_4^{-2} \end{pmatrix}\begin{pmatrix}c_2\\c_3\\c_4\end{pmatrix}=\begin{pmatrix}1\\1\\1\end{pmatrix}$$
+
+
+$$\begin{pmatrix}c_2\\c_3\\c_4\end{pmatrix}=\begin{pmatrix} 1 &1 &1\\r_2^{-1}&r_3^{-1}&r_4^{-1}\\r_2^{-2}&r_3^{-2}&r_4^{-2} \end{pmatrix}^{-1}\begin{pmatrix}1\\1\\1\end{pmatrix}$$
+
+I seem to get $c_4=0.07492831-0.0259995i$,
+$c_3=0.07492831+0.0259995i$,
+$c_2=0.85014338$. This means that we can ignore the smaller modulus complex roots, and write $p_i\approx 0.85 \cdot (0.7823728)^i$. For $i=20$ we have 
+
+$$p_{20}\approx 0.006276157.$$ 
+
+This can probably be described as "negligibly small". 
+
+
+**Alternatively**, another way (Feller, Chapter XI.1 and XI.4, particularly Example b) is to define $Q(s)=\sum_{i=-2}^{\infty} p_i s^i$ and observe that starting from 
+
+$$p_{i}=\frac{1}{6} p_{i-3}+ \frac{5}{6} p_{i+1}$$
+
+ multiplying by $s^i$, and summing over $i\geq 1$ and summing, using $p_{-2}=p_{-1}=p_0=1$ and  $p_1=p$ gives:
+
+$$Q(s)-1-s^{-1}-s^{-2}= \frac{1}{6}s^3Q(s)+\frac{5}{6}(\frac{1}{s}(Q(s)-sp-1-s^{-1}-s^{-2}))$$
+
+$$\frac{5}{6}(ps^3+s^2+s+1)-(s^3+s^2+s)=Q(s)s^2(\frac{1}{6}s^4-s+\frac{5}{6})$$
+
+$$Q(s)s^2=\frac{\frac{5}{6}(ps^3+s^2+s+1)-(s^3+s^2+s)}{\frac{1}{6}s^4-s+\frac{5}{6}}$$
+
+This means that $Q(s)s^2=\frac{U(s)}{V(s)}$ is a rational function and has partial fraction expansion $\sum_{j=1}^{4}\frac{a_k}{s_k-s}$ with $s_k$ the roots of $V(s)$ (luckily in our case the roots of $V$ are distinct) and 
+
+$$a_k=\frac{-U(s_k)}{V'(s_k)}$$
+
+ and
+
+ $$p_{i-2}=\frac{a_1}{s_1^{i+1}}+\frac{a_2}{s_2^{i+1}}+\frac{a_3}{s_3^{i+1}}+\frac{a_4}{s_4^{i+1}}.$$  
+ 
+ We note that the roosts $s_k$ of $V(s)$ are the inverses of the roots $r_k$ in our previous "direct approach", and the formula above is thus identical with the one we got before.
+  
+ One of the roots of $V(s)$ is $1$, but the corresponding coefficient $c_1$ must be $0$ otherwise the limit $p_i$ will not be zero. This gives $U(1)=0$ meaning $\frac{5}{6}(p+3)-3=0$, or $p=\frac{3}{5}.$
+ 
+ The next smallest in absolute value root is $s_2\approx 1.278$. The corresponding coefficient 
+ 
+ $$a_2=\frac{-U(s_2)}{V'(s_2)}\approx\frac{0.696}{1.225424}\approx1.775215$$
+ 
+ giving 
+ 
+ $$p_{20}\approx \frac{1.775215}{(1.2781)^{23}}\approx 0.0062772128$$
+ 
+ as before (within precision of calculations). We could compute $a_3$ and $a_4$ to make sure they are not huge and ignoring the other terms is justified, but we have already seen this in the previous method, so we omit this calculation.
+ 
+ **Remark**: The fact that one can use these two methods to compute the coefficients $c_k$ in the expansion of $p_i$ means that the inverse of the Vandermonde matrix is computable via partial fractions expansion. This has been noted in the literature.
+ 
+ 
+ 
+ <!--
+ c_2=0.850143379135273
+ 
+ 0.7823728
+ 1.278163
+ 
+ s_2=1.278163072798148594862153110738810942822842764694097321941
+ \frac{2.086860726169758341196705432583458069289117363026753422832365}{1.2254240576913640671052130911121400436831404124458669595926648}=1.702970260026799764438894848068807946323626715997234302853$
+ ---->
+
+ 
+
+
+##### Time to get 20 db for $B$.
+
+
+**For a shortcut skip to the bottom "Wald identities".**
+
+Since the the walk is skip-free on the left, to get $20$ db for $B$ one has to first get $19$ db, and for that one needs to first get $18$ db etc. So we start by getting a distribution of times to get $1$ db for $B$. Let $T$ be the (random) time until the walk hits $-1$. We define the formal power series 
+
+$$f(x)=E(x^T)=xP(T=1)+x^2P(T=2)+...$$
+
+encoding the distribution of $T$. We have $f(1)=1$ and $f(0)=0$. We also have $f'(1)=E(T)$ and $f''(1)=E(T(T-1))$ and so on.
+
+Remark: This annoying $T^2-T$ as opposed to just $T$ can be avoided by changing variables $x=e^{u}$ (giving moment generating function of $T$), or, even better, $x=e^{iu}$ (giving characteristic function of $T$). This is in some ways nicer, but we stick to generating function version and its polynomial look and feel.
+
+Then the distribution of (random) time to hit $-k$ is given by writing $T_k=Z_1+Z_2+\ldots+Z_k$ with $Z_i$ i.i.d. with same distribution as $T$, so that the formal power series encoding the distribution of $T_k$ is
+
+$$f_k(x)= E(x^{T_k})=E(x^{\sum Z_i})=E(\prod x^{Z_i})=\prod E( x^{Z_i})=f(x)^k$$
+
+Now consider $T$ again, and condition on the first step of the walk. With probability $\frac{5}{6}$ it is to the left and $T=1$. With probability $\frac{1}{6}$ it is to the right and then $T$ is distributed as encoded by $f_4(x)=xf(x)^4$ (the extra $x$ is for the one extra time beat that the first step used). So overall $T$, being a mixture of these two possibilities, is distributed as $\frac{5}{6}x+\frac{1}{6}f(x)^4$. Hence 
+
+$$f(x)=\frac{5}{6}x+\frac{1}{6}xf(x)^4$$
+
+One could write $f(x)=c_1x+c_2x^2+...$ and plug in to get
+
+$$c_1x+c_2x^2+...=\frac{5}{6}x +\frac{1}{6}x(c_1x+c_2x^2+...)^4$$
+
+which can be rewritten as a "upper triangular" system of equations to be solved one after another, getting $c_1=\frac{5}{6}, c_2=c_3=c_4=0, c_5=\frac{1}{6}c_1^4=\frac{5^4}{6^5}, c_6= \frac{1}{6}4c_1^3c_2=0$ etc.
+Then, of course it is $f(x)^{20}$ that gives the distribution of times to hit $20$ db  that we are after.
+
+Abandoning the pursuit of full distribution of $T_{20}$ we instead compute its first and second moments. 
+
+First we deal with the moments of $T$. Differentiating the equationfor $f$ we have
+
+$$f'=\frac{5}{6}+\frac{1}{6}f^4+\frac{1}{6}x 4 f' f^3$$
+
+Since $f(1)=1$ we get $f'(1)=1+\frac{4}{6}f'(1)$, $f'(1)=3$.
+
+
+We have $E(T_{20})=(f^{20})'(1)=20 f'(1)f(1)^{19}=20\times 3=60$. This tells us the expected time to get 20 db for $B$ is 60 samples.
+
+We will now find the variance of this estimate.
+
+
+Differentiating again  
+
+$$f''= \frac{1}{6}4f' f^3+  \frac{1}{6} 4 f' f^3+\frac{1}{6}x 4 f'' f^3+ \frac{1}{6}x 4 f'3 f'f^2$$
+
+from which $f''(1)=2+2+\frac{2}{3}f''(1)+18$, $f''(1)=66$. Thus $E(T^2)=69$ and $Var(T)=E(T^2)-E(T)^2=60$, and standard deviation is $\sqrt{60}\approx 7.75$
+
+
+Remark 1: This low expectation and high variance are due to the high probability of $T=1$; conditional on $T\neq 1$ the expectation of $T$ is $(3-\frac{5}{6})/\frac{1}{6}=13$ (which coincides with the (unconditional) expectation of $T_4$ plus 1, i.e.  $3\cdot 4+1=13$). The conditional variance is the variance of $T_4$ and is $240$, so the standard deviation is $\approx 15.5$ (see below). This is still indicating high probability of low values and a "fat tail", but a bit less so than the unconditional case.
+
+On the other hand 
+
+$$ (f^{20})''=(20 f^{19}f')'=20( 19 (f')^2f^{18}+f^{19}f'')=20(19\cdot 9+66 )=4740$$
+
+so $E(T_{20}^2)=4740+60=4800$  and $Var(T)=4800-60^2=1200$, and standard deviation $\sqrt{1200}\approx34.64$, which is more reasonable. It indicates that we may get lucky and get 20 db evidence much sooner than 60 tests, but may get unlucky and have to wait substantially longer, maybe as long as 130 trials or even more. One could compute further moments using the same method (with a longer calculation) to get more of an idea.
+
+
+For general $k$ we get $E(T_k^2)=k((k-1)9+66) +3k$, $Var(T_k)=60k$
+
+
+**Alternative solution using Wald identities.**
+
+ We have in general $E(T_k)=3k$. Can be deduced much more quickly from the general First Wald Identity: if $T$ is a stopping time with respect to i.i.d. $Z_i$s with $E(T)$ finite, and $X=\sum_{i=1}^T Z_i$ then 
+ 
+ $$E(X)=E(T)E(Z_1).$$
+ 
+  In our case, assuming $E(T_k)$ is finite, we have $E_{Z_1}=3\frac{1}{6}-\frac{5}{6}=-\frac{1}{3}$, $X=-k$ (always), so $E(T_k)=3k$.
+
+Wald's second identity  (under same assumption $E(T)$ finite) is 
+
+$$E[(X-E(Z_i)T)^2]=Var(Z_i)E(T).$$
+
+
+For us $X=-k$, $E(Z_i)=-\frac{1}{3}$,   $E(T_k)=3k$  and 
+
+$$Var{Z_i}=\frac{1}{6}(3
+  +\frac{1}{3})^2+\frac{5}{6}(-1+\frac{1}{3})^2=100/54+20/54=120/54$$ 
+  
+  
+  Plugging in, this gives:
+  
+$$k^2 -2 (-k) (-1/3) 3k +1/9 E(T_k^2)=120/54 \cdot 3k $$
+
+
+$$ -9k^2 +E(T_k^2)=60k $$
+
+$$E(T_k^2)=9k^2+60k$$
+
+$$ Var (T_k) = 9k^2+60k - 9k^2=60k$$
+
+as before.
+
+One advantge of using this method is that it can handle the unapproximated problem as well. 
+
+Indeed, if we keep the leftward step $0.97$ instead of making it $1$, $E(Z_1)$ changes a bit to $-\frac{1}{3}+\frac{5}{6}0.03=\frac{-200+15}{600}=-\frac{37}{120}$, and the $E(X)$ is no longer $-k$, but is between $-k$ and $-k-0.97$, so we get an estimate $\frac{120}{54}k\leq E(T_k)< \frac{120}{54}(k+0.97).$ Similar estimate can be found for the variance of $T_k$ as well.
+
+
+
+
+
+
+
+
+
+
+
+<br/><br/>
+
+To make these results rigorous we only to show $E(T_k)<\infty$. But this follows from the central limit theorem: $P(T_k\geq n+1)$ implies $Z_1+\ldots+Z_{n}>-k$,or  
+
+$\frac{Z_1+\ldots+Z_{n}}{\sqrt{n}}>-\frac{k}{\sqrt{n}}$ 
+
+$\frac{Z_1+\ldots+Z_{n}}{\sqrt{n}}+\frac{\sqrt{n}}{3}>\frac{\sqrt{n}}{3}-\frac{k}{\sqrt{n}}$ 
+
+Probability of this event is $\Phi_n(\frac{\sqrt{n}}{3}-\frac{k}{\sqrt{n}})$ where $\Phi_n$ is the CDF of $\sqrt{n} (\frac{Z_1+\ldots+Z_{n}}{n}-\mu_Z)$, which converges to a normal with mean $0$ (and variance $Var Z_i=120/54$)
+
+
+ is bounded by $e^{-\alpha n}$, hence so is $P(T_k=n)$, so $E(T_k)$ is finite.
+
+
+<!----
+Consider the probability $p$ of ever getting $-1$ db of evidence. To compute it, we condition on the first step. Either, with probability $1/6$, we move we get that $-1$ right away, or with probability $5/6$ we move $3$ to the right, after which the probability of ever obtaining $-1$ db of evidence is $p^4$ (since the walk is skip-free, we would need to obtain $-1$ evidence 4 times, 3 times to undo the first step, and then one more (we are using the fact that the random walk is memoryless, so that probability of eventually moving left by one is the same no matter from what moment we start counting). We get $p=\frac{1}{6}+\frac{5}{6}p^4$. This has positive second derivative, so is convex, and so has at most 2 roots. One of them is $1$ and another is approximately $0.16732$. We argue below that $p=1$ is not possible, so $p\approx 0.16732$. The probability of 
  
  
