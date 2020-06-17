@@ -59,7 +59,7 @@ Remark: This is Theorem 3.4.5 in Blitzstein - Hwang "Introduction to Probability
 
 Modified from [stackexchange](https://math.stackexchange.com/questions/1552250/e-t-jaynes-probability-theory-exercise-3-2).
 
-Let $A_i$ be the statement "all colors except color i were drawn". Then 
+Let $A_i$ be the statement "color i was not drawn". Then 
 
 $$P(A_i) = \frac{{N-N_i \choose m}}{{N\choose m}}$$
 
@@ -176,7 +176,7 @@ The $\vec{N}=[51-k, 1, \ldots, 1]$ gives data likeliehood ${k-1\choose 2}{50-k \
 
 So when $k$ reaches 16 even the most advantageous color counts $\vec{N}$ are suppressed at least $10^4$ times more than the most disadvantageous ones with $k=3$. So it seems no matter what reasonable prior for the color counts one takes the posterior should be mostly supported on $3\leq k\leq 16.$
 
-**Remark**: It is not sufficient to have a prior over $k$, since same prior over $k$ may correspond to different priors over $\vec{N}$, producing different posteriors (the reason being that data likeliehoods are not determined by $k$). Thus a prior over $\vec{N}$ is needed. It also seems likely that a reasonable prior over $\vec{N}$ will not result in a uniform prior over $k$.
+**Remark**: For exact inference, it is not sufficient to have a prior over $k$, since same prior over $k$ may correspond to different priors over $\vec{N}$, producing different posteriors (the reason being that data likeliehoods are not determined by $k$). Thus a prior over $\vec{N}$ is needed. Of course, approximate inference a prior over $k$ may be sufficient (as in the first approach above;  however it seems likely that a reasonable prior over $\vec{N}$ will not result in a uniform prior over $k$).
 
 **Discussion of priors**
  How to get  a prior  over $\vec{N}$ is not clear to me. One option is to model the urn being filled by sampling from an (infinite ) population.
