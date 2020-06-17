@@ -176,6 +176,21 @@ The $\vec{N}=[51-k, 1, \ldots, 1]$ gives data likeliehood ${k-1\choose 2}{50-k \
 
 So when $k$ reaches 16 even the most advantageous color counts $\vec{N}$ are suppressed at least $10^4$ times more than the most disadvantageous ones with $k=3$. So it seems no matter what reasonable prior for the color counts one takes the posterior should be mostly supported on $3\leq k\leq 16.$
 
+**Remark**: It is not sufficient to have a prior over $k$, since same prior over $k$ may correspond to different priors over $\vec{N}$, producing different posteriors (the reason being that data likeliehoods are not determined by $k$). Thus a prior over $\vec{N}$ is needed. It also seems likely that a reasonable prior over $\vec{N}$ will not result in a uniform prior over $k$.
+
+**Discussion of priors**
+ How to get  a prior  over $\vec{N}$ is not clear to me. One option is to model the urn being filled by sampling from an (infinite ) population.
+ We can use several versions: 
+ 
+ Version 1: The population has $K$ colors, with frequencies $p_1, \ldots, p_K$. The set of such populations is the union of $K-1$ dimensional simplexes for $K=1, 2, \ldots$.
+ 
+ Version 2: The population has infinitely many colors and probabilities of each color $p_i$.  The set of such populations is the "infinite dimensional simplex" $p_i\geq 0$, $\sum p_i=1$. 
+ 
+ For each population (of either kind), the probability of every $\vec{N}$ is determined. So if we had a prior over the population types it would determine a corresponding prior over fully specified (though maybe still intractable) inference problem.
+
+How to get a prior over population types also seems unclear. One could try to take some maximal entropy priors, or do some further hierarchical modeling, but since I do not plan to actually implement the inference, I will not go into details of this.
+
+
 ## Exercise 3.4
 
 Denote by $F_i$ be the event "$i$ is fixed", and, for any $I \subset \{1, ..., n\}$, denote by $F_I$  the event "all $i$ in $I$ are fixed", i.e. $F_I=\prod_{i\in I} F_i$.
