@@ -44,36 +44,92 @@ $$h(r|N, M, n)=h(r|N, n, M).$$
 Remark: This is Theorem 3.4.5 in Blitzstein - Hwang "Introduction to Probability". See also Theorem 3.9.2.
 
 
- By definition, $h(r|N, M, n)$ is computed as follows. Lay down $N$ balls, labeled $1, ..., N$. Pick the subset $R_0=\{1,..., M\}$ of them and paint it red. Then pick a subset $D$ of size $n$ of all the ball, and compute $r=|D\cap R_0|$. The fraction of $D$s that give specific answer $r$ is by definition $h(r|N, M, n)$.
- 
+ By definition, $h(r|N, M, n)$ is computed as follows. Lay down $N$ balls, labelled $1, ..., N$. Pick the subset $R_0=\{1,..., M\}$ of them and paint it red. Then pick a subset $D$ of size $n$ of all the ball, and compute $r=|D\cap R_0|$. The fraction of $D$s that give specific answer $r$ is by definition $h(r|N, M, n)$.
+
  Now suppose instead we pick a different subset $R_1$ of size $M$ to be red, and repeat the procedure above: pick $D$, and compute $r=|D \cap R_1|$. We claim that the fraction of $D$s that give specific answer $r$ is still $h(r|N, M, n)$. In deed, there exists a  permutation of $\{1, ..., N\}$ taking $R_1$ to $R_0$ ("sort the reds to be first"); the same permutation takes $D$s that give $D\cap R_1=r$ to those that give $D\cap R_0=r$. Hence there are the same number of $D$s in both circumstances.
- 
+
  The above argument means that $h(r|N, M, n)$ can be also computed as follows.  Lay down $N$ balls, labeled $1, ..., N$. Pick 
  **any** subset $R$ of them of size $M$ and paint it red. Then pick a subset $D$ of size $n$ of all the ball, and compute $r=|D\cap R|$. The fraction of  **$R$s and $D$s** that give specific answer $r$ is then $h(r|N, M, n)$.
- 
+
  But the above procedure remains  the same if we exchange $M$ and $n$ and rename "paint red" into "pick" and "pick" into "paint red". Then it computes $h(r|N, n, M)$. So the two numbers are equal.
- 
+
  Remark: This view of hypergeometric distribution as giving probabilities of overlap of two subsets ("the red" and "the picked") removes all time dependence and, in my opinion, sheds a lot of  light on the discussion at the end of Section 3.2.
- 
+
+## Exercise 3.2
+
+Modified from [stackexchange](https://math.stackexchange.com/questions/1552250/e-t-jaynes-probability-theory-exercise-3-2).
+
+Let $A_i$ be the statement "all colors except color i were drawn". Then 
+
+$$P(A_i) = \frac{{N-N_i \choose m}}{{N\choose m}}$$
+
+This is the number of ways of drawing $m$ balls from $N-N_i$ non-$i$ colored balls, divided by the number of ways of drawing $m$ balls from all $N$ colored balls. Similarly,
+
+$$P(A_iA_j) = \frac{{N-N_i-Nj \choose m}}{{N\choose m}}, P(A_iA_jA_k) = \frac{{N-N_i-Nj-N_k \choose m}}{{N\choose m}} ...$$ 
+
+The probability we want is $1 - P(A_1+A_2+A_3+A_4+A_5)$, the probability that no colors will be missing from our draw.
+
+By the sum rule this can be calculated as
+
+$$1 -\sum\limits_{i} P(A_i) +  \sum\limits_{i<j} P(A_iA_j) - \sum\limits_{i<j<k} P(A_iA_jA_k) ... $$
+
+where the first sum term is over all subsets of 1 color, the second is over all subsets of 2 colors, etc.
+
+This calculation can be done in python like so:
+
+```python
+def prob_all_colors_drawn(m, N):
+    ''' 
+    m is number of balls drawn
+    N is a list containing how many of each color is in the urn 
+    '''
+    k = len(N) # number of colors
+    
+    total = 1.0 # start with 1
+    for i in range(1,k+1):
+
+        # calculate each sum term
+        conjunction_prob = 0
+        for Ns in combinations(N, i): # for all combinations of i colors
+            conjunction_prob += comb(sum(N) - sum(Ns), m,True)/comb(sum(N),m,True)
+
+        # alternately add or subtract the sum term 
+        total += ((-1)**i)*conjunction_prob
+    return total
+
+```
+
+You can modify and run this code on [Google Colab](https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing), and see a monte carlo approximation of the same problem.
+
+
+
+## Exercise 3.3
+
+TODO
+
+I think this depends mainly on your prior distribution $p(N_1, N_2, ... N_k | k) $. If can sample from this distribution, and we know your prior over k, then we can do a monte carlo approximation of  $p(k|colors=3) = \sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)$. 
+
+Jaynes seems to think there is only one reasonable prior for this problem, does anyone know what it might be?
+
 ## Exercise 3.4
- 
+
 Denote by $F_i$ be the event "$i$ is fixed", and, for any $I \subset \{1, ..., n\}$, denote by $F_I$  the event "all $i$ in $I$ are fixed", i.e. $F_I=\prod_{i\in I} F_i$.
- 
+
  We are looking for $P(\sum F_i)$. By inclusion exclusion this is 
- 
+
  $$P(\sum F_i)=\sum_{I \subset \{1, ..., n\}, I\neq \emptyset} (-1)^{|I|+1}P(F_I).$$
+
  
- 
- 
+
 For a given subset of size $k$ probability that it is fixed is $\frac{(n-k)!}{n!}$, and there are $n\choose k$ such subsets, so the sum over those $I$ with size $k$ gives $(-1)^{k+1}\frac{1}{k!}$. Plugging this in we obtain 
 
  $$h=P(\sum F_i)=\sum_{k=1}^{n} (-1)^{k+1}\frac{1}{k!},$$
  as wanted.
- 
+
  Observe that $1-h$  is the value of $k$-th order Taylor series for $e^x$ evaluated at $x=-1$, which, as $k\to \infty$, converges to $e^{-1}=1/e$.
- 
+
 ## Exercise 3.5
-  
+
 Similarly to 3.4, consider the event $E_I$=the bins with labels $i\in I$ are left empty; then $P(E_I)= (M-|I|)^N/M^N$ and by inclusion-exclusion $P(\overline{\sum E_i})$ is
   $$\frac{1}{M^N}\sum_{k=0}^{M} (-1)^{k} \binom{M}{k} (M-k)^N.$$
 

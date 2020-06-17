@@ -12,6 +12,68 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
   <!--[if lt IE 9]>
@@ -40,11 +102,45 @@
 <h2 id="symmetry-of-hrn-m-n">3.29 Symmetry of <span class="math inline">\(h(r|N, M, n)\)</span></h2>
 <p>Combinatorial proof that <span class="math display">\[h(r|N, M, n)=h(r|N, n, M).\]</span></p>
 <p>Remark: This is Theorem 3.4.5 in Blitzstein - Hwang “Introduction to Probability”. See also Theorem 3.9.2.</p>
-<p>By definition, <span class="math inline">\(h(r|N, M, n)\)</span> is computed as follows. Lay down <span class="math inline">\(N\)</span> balls, labeled <span class="math inline">\(1, ..., N\)</span>. Pick the subset <span class="math inline">\(R_0=\{1,..., M\}\)</span> of them and paint it red. Then pick a subset <span class="math inline">\(D\)</span> of size <span class="math inline">\(n\)</span> of all the ball, and compute <span class="math inline">\(r=|D\cap R_0|\)</span>. The fraction of <span class="math inline">\(D\)</span>s that give specific answer <span class="math inline">\(r\)</span> is by definition <span class="math inline">\(h(r|N, M, n)\)</span>.</p>
+<p>By definition, <span class="math inline">\(h(r|N, M, n)\)</span> is computed as follows. Lay down <span class="math inline">\(N\)</span> balls, labelled <span class="math inline">\(1, ..., N\)</span>. Pick the subset <span class="math inline">\(R_0=\{1,..., M\}\)</span> of them and paint it red. Then pick a subset <span class="math inline">\(D\)</span> of size <span class="math inline">\(n\)</span> of all the ball, and compute <span class="math inline">\(r=|D\cap R_0|\)</span>. The fraction of <span class="math inline">\(D\)</span>s that give specific answer <span class="math inline">\(r\)</span> is by definition <span class="math inline">\(h(r|N, M, n)\)</span>.</p>
 <p>Now suppose instead we pick a different subset <span class="math inline">\(R_1\)</span> of size <span class="math inline">\(M\)</span> to be red, and repeat the procedure above: pick <span class="math inline">\(D\)</span>, and compute <span class="math inline">\(r=|D \cap R_1|\)</span>. We claim that the fraction of <span class="math inline">\(D\)</span>s that give specific answer <span class="math inline">\(r\)</span> is still <span class="math inline">\(h(r|N, M, n)\)</span>. In deed, there exists a permutation of <span class="math inline">\(\{1, ..., N\}\)</span> taking <span class="math inline">\(R_1\)</span> to <span class="math inline">\(R_0\)</span> (“sort the reds to be first”); the same permutation takes <span class="math inline">\(D\)</span>s that give <span class="math inline">\(D\cap R_1=r\)</span> to those that give <span class="math inline">\(D\cap R_0=r\)</span>. Hence there are the same number of <span class="math inline">\(D\)</span>s in both circumstances.</p>
 <p>The above argument means that <span class="math inline">\(h(r|N, M, n)\)</span> can be also computed as follows. Lay down <span class="math inline">\(N\)</span> balls, labeled <span class="math inline">\(1, ..., N\)</span>. Pick <strong>any</strong> subset <span class="math inline">\(R\)</span> of them of size <span class="math inline">\(M\)</span> and paint it red. Then pick a subset <span class="math inline">\(D\)</span> of size <span class="math inline">\(n\)</span> of all the ball, and compute <span class="math inline">\(r=|D\cap R|\)</span>. The fraction of <strong><span class="math inline">\(R\)</span>s and <span class="math inline">\(D\)</span>s</strong> that give specific answer <span class="math inline">\(r\)</span> is then <span class="math inline">\(h(r|N, M, n)\)</span>.</p>
 <p>But the above procedure remains the same if we exchange <span class="math inline">\(M\)</span> and <span class="math inline">\(n\)</span> and rename “paint red” into “pick” and “pick” into “paint red”. Then it computes <span class="math inline">\(h(r|N, n, M)\)</span>. So the two numbers are equal.</p>
 <p>Remark: This view of hypergeometric distribution as giving probabilities of overlap of two subsets (“the red” and “the picked”) removes all time dependence and, in my opinion, sheds a lot of light on the discussion at the end of Section 3.2.</p>
+<h2 id="exercise-3.2">Exercise 3.2</h2>
+<p>Modified from <a href="https://math.stackexchange.com/questions/1552250/e-t-jaynes-probability-theory-exercise-3-2">stackexchange</a>.</p>
+<p>Let <span class="math inline">\(A_i\)</span> be the statement “all colors except color i were drawn”. Then</p>
+<p><span class="math display">\[P(A_i) = \frac{{N-N_i \choose m}}{{N\choose m}}\]</span></p>
+<p>This is the number of ways of drawing <span class="math inline">\(m\)</span> balls from <span class="math inline">\(N-N_i\)</span> non-<span class="math inline">\(i\)</span> colored balls, divided by the number of ways of drawing <span class="math inline">\(m\)</span> balls from all <span class="math inline">\(N\)</span> colored balls. Similarly,</p>
+<p><span class="math display">\[P(A_iA_j) = \frac{{N-N_i-Nj \choose m}}{{N\choose m}}, P(A_iA_jA_k) = \frac{{N-N_i-Nj-N_k \choose m}}{{N\choose m}} ...\]</span></p>
+<p>The probability we want is <span class="math inline">\(1 - P(A_1+A_2+A_3+A_4+A_5)\)</span>, the probability that no colors will be missing from our draw.</p>
+<p>By the sum rule this can be calculated as</p>
+<p><span class="math display">\[1 -\sum\limits_{i} P(A_i) +  \sum\limits_{i&lt;j} P(A_iA_j) - \sum\limits_{i&lt;j&lt;k} P(A_iA_jA_k) ... \]</span></p>
+<p>where the first sum term is over all subsets of 1 color, the second is over all subsets of 2 colors, etc.</p>
+<p>This calculation can be done in python like so:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> prob_all_colors_drawn(m, N):</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="co">&#39;&#39;&#39; </span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">    m is number of balls drawn</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">    N is a list containing how many of each color is in the urn </span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">    &#39;&#39;&#39;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    k <span class="op">=</span> <span class="bu">len</span>(N) <span class="co"># number of colors</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>    </span>
+<span id="cb1-8"><a href="#cb1-8"></a>    total <span class="op">=</span> <span class="fl">1.0</span> <span class="co"># start with 1</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,k<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a>        <span class="co"># calculate each sum term</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>        conjunction_prob <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>        <span class="cf">for</span> Ns <span class="kw">in</span> combinations(N, i): <span class="co"># for all combinations of i colors</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>            conjunction_prob <span class="op">+=</span> comb(<span class="bu">sum</span>(N) <span class="op">-</span> <span class="bu">sum</span>(Ns), m,<span class="va">True</span>)<span class="op">/</span>comb(<span class="bu">sum</span>(N),m,<span class="va">True</span>)</span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a>        <span class="co"># alternately add or subtract the sum term </span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>        total <span class="op">+=</span> ((<span class="op">-</span><span class="dv">1</span>)<span class="op">**</span>i)<span class="op">*</span>conjunction_prob</span>
+<span id="cb1-18"><a href="#cb1-18"></a>    <span class="cf">return</span> total</span></code></pre></div>
+<p>You can modify and run this code on <a href="https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing">Google Colab</a>, and see a monte carlo approximation of the same problem.</p>
+<h2 id="exercise-3.3">Exercise 3.3</h2>
+<p>TODO</p>
+<p>I think this depends mainly on your prior distribution $p(N_1, N_2, … N_k | k) $. If can sample from this distribution, and we know your prior over k, then we can do a monte carlo approximation of <span class="math inline">\(p(k|colors=3) = \sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)\)</span>.</p>
+<p>Jaynes seems to think there is only one reasonable prior for this problem, does anyone know what it might be?</p>
 <h2 id="exercise-3.4">Exercise 3.4</h2>
 <p>Denote by <span class="math inline">\(F_i\)</span> be the event “<span class="math inline">\(i\)</span> is fixed”, and, for any <span class="math inline">\(I \subset \{1, ..., n\}\)</span>, denote by <span class="math inline">\(F_I\)</span> the event “all <span class="math inline">\(i\)</span> in <span class="math inline">\(I\)</span> are fixed”, i.e. <span class="math inline">\(F_I=\prod_{i\in I} F_i\)</span>.</p>
 <p>We are looking for <span class="math inline">\(P(\sum F_i)\)</span>. By inclusion exclusion this is</p>
