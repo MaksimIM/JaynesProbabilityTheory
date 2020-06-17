@@ -139,7 +139,7 @@
 <p>You can modify and run this code on <a href="https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing">Google Colab</a>, and see a monte carlo approximation of the same problem.</p>
 <h2 id="exercise-3.3">Exercise 3.3</h2>
 <p>TODO</p>
-<p>I think this depends mainly on your prior distribution $p(N_1, N_2, … N_k | k) $. If can sample from this distribution, and we know your prior over k, then we can do a monte carlo approximation of <span class="math inline">\(p(k|colors=3) = \sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)\)</span>.</p>
+<p>I think this depends mainly on your prior distribution <span class="math inline">\(p(N_1, N_2, ... N_k | k)\)</span>. If can sample from this distribution, and we know your prior over k, then we can do a monte carlo approximation of <span class="math inline">\(p(k|colors=3) = \sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)\)</span>.</p>
 <p>Jaynes seems to think there is only one reasonable prior for this problem, does anyone know what it might be?</p>
 <h2 id="exercise-3.4">Exercise 3.4</h2>
 <p>Denote by <span class="math inline">\(F_i\)</span> be the event “<span class="math inline">\(i\)</span> is fixed”, and, for any <span class="math inline">\(I \subset \{1, ..., n\}\)</span>, denote by <span class="math inline">\(F_I\)</span> the event “all <span class="math inline">\(i\)</span> in <span class="math inline">\(I\)</span> are fixed”, i.e. <span class="math inline">\(F_I=\prod_{i\in I} F_i\)</span>.</p>

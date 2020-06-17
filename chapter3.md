@@ -107,7 +107,7 @@ You can modify and run this code on [Google Colab](https://colab.research.google
 
 TODO
 
-I think this depends mainly on your prior distribution $p(N_1, N_2, ... N_k | k) $. If can sample from this distribution, and we know your prior over k, then we can do a monte carlo approximation of  $p(k|colors=3) = \sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)$. 
+I think this depends mainly on your prior distribution $p(N_1, N_2, ... N_k | k)$. If can sample from this distribution, and we know your prior over k, then we can do a monte carlo approximation of  $p(k|colors=3) = \sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)$. 
 
 Jaynes seems to think there is only one reasonable prior for this problem, does anyone know what it might be?
 
