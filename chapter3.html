@@ -157,6 +157,62 @@ p(k|colors=3) &amp;= \frac{\sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_
 <p><span class="math display">\[p(\overline{A_1}\overline{A_2}\overline{A_3}|A_4...A_k...)p(A_4...A_k|...) =[1-p(A_1+A_2+A_3|A_4...A_k...)]p(A_4...A_k|...)\]</span></p>
 <p>From then it’s similar to the calculations from Exercise 3.2.</p>
 <p>We run the calculations with the code in the same <a href="https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing">Colab</a> as above, and show that we can be at least 99% confident that <span class="math inline">\(3 \leq k \leq 20\)</span>. I suspect the upper bound can be tightened significantly with weak assumptions.</p>
+<h4 id="data-likeliehood-estimates-no-prior.">Data likeliehood estimates, no prior.</h4>
+<p>Let’s try to see what the data likeliehood would be under different <span class="math inline">\(N_i\)</span> tuples (to see how much probability of each <span class="math inline">\(N_i\)</span> tuple is suppressed/boosted by the data).</p>
+<p>Suppose the numbers of balls of different colors in the urn are <span class="math inline">\(N_1, N_2,\ldots, N_k\)</span> (with <span class="math inline">\(\sum N_i=50\)</span>). What is the probability of event “a sample of 20 contains balls of exactly 3 colors”? First we choose the 3 colors, <span class="math inline">\(i_1\)</span>, <span class="math inline">\(i_2\)</span> and <span class="math inline">\(i_3\)</span> and then apply Exercise 3.2 to the triple <span class="math inline">\(N_{i_1}, N_{i_2}, N_{i_3}\)</span> to get</p>
+<p><span class="math inline">\({N_{i_1}+ N_{i_2}+ N_{i_3} \choose 20}-{ N_{i_1}+ N_{i_2}\choose 20}-{ N_{i_2}+ N_{i_3}\choose 20}-{ N_{i_1}+ N_{i_3}\choose 20}+ { N_{i_1}\choose 20}+{ N_{i_2}\choose 20}+{ N_{i_3}\choose 20}\)</span></p>
+<p>possible draws that satisfy this, summing over all the selections of <span class="math inline">\(i_1, i_2, i_3\)</span> to get the total number of draws with 3 colors. Each <span class="math inline">\(N_i\)</span> will be chosen in <span class="math inline">\(k-1\choose 2\)</span> triples and each pair <span class="math inline">\(N_i, N_j\)</span> in <span class="math inline">\(k-2\)</span> triples. So the sum is</p>
+<p><span class="math inline">\(\sum_{triples} {N_{i_1}+ N_{i_2}+ N_{i_3} \choose 20} - (k-2) \sum_{pairs} {N_{j_1}+ N_{j_2}\choose 20}+ {k-1\choose 2 } \sum_l {N_l \choose 20}\)</span></p>
+<p>(The total number of draws is always the same <span class="math inline">\({50 \choose 20}\)</span>.)</p>
+<p>Now, <span class="math inline">\(Q(x)=20!{x\choose 20}= x(x-1)\ldots (x-19)\)</span> is increasing in <span class="math inline">\(x&gt;19\)</span>, with ratio <span class="math inline">\(Q(x+1)/Q(x)= x/(x-19)\)</span>; for <span class="math inline">\(x\)</span> near 50 this is a factor of about <span class="math inline">\(1.7\)</span>. So, at first glance, those <span class="math inline">\(k\)</span> tuples with largest possible <span class="math inline">\(i_1+i_2+i_3\)</span> will have highest data likeliehood. All those with <span class="math inline">\(i_1+i_2+i_3=50\)</span> have <span class="math inline">\(k=3\)</span> of course. The <span class="math inline">\([48, 1, 1]\)</span> has <span class="math inline">\(47\choose 17\)</span> sequences, and data likeliehood of about <span class="math inline">\(0.06\)</span>. The <span class="math inline">\([17,17,16]\)</span> has data likeliehood <span class="math inline">\(0.99995\)</span>.</p>
+<p>The <span class="math inline">\([51-k, 1, \ldots, 1]\)</span> gives data likeliehood <span class="math inline">\({k-1\choose 2}{50-k \choose 17}\)</span>, which goes</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(5.82\cdot 10^{-2}\)</span></td>
+<td><span class="math inline">\(1.11\cdot 10^{-1}\)</span></td>
+<td><span class="math inline">\(1.40\cdot 10^{-1}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1.46\cdot 10^{-1}\)</span></td>
+<td><span class="math inline">\(1.34\cdot 10^{-1}\)</span></td>
+<td><span class="math inline">\(1.13\cdot 10^{-1}\)</span></td>
+<td><span class="math inline">\(9.01\cdot 10^{-2}\)</span></td>
+<td><span class="math inline">\(6.78\cdot 10^{-2}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(5.20\cdot 10^{-3}\)</span></td>
+<td><span class="math inline">\(2.97\cdot 10^{-3}\)</span></td>
+<td><span class="math inline">\(1.63\cdot 10^{-3}\)</span></td>
+<td><span class="math inline">\(8.61\cdot 10^{-4}\)</span></td>
+<td><span class="math inline">\(4.35\cdot 10^{-4}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(2.20\cdot 10^{-6}\)</span></td>
+<td><span class="math inline">\(6.96\cdot 10^{-7}\)</span></td>
+<td><span class="math inline">\(1.96\cdot 10^{-7}\)</span></td>
+<td><span class="math inline">\(4.80\cdot 10^{-8}\)</span></td>
+<td><span class="math inline">\(9.82\cdot 10^{-9}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(1.58\cdot 10^{-9}\)</span></td>
+<td><span class="math inline">\(1.78\cdot 10^{-10}\)</span></td>
+<td><span class="math inline">\(1.05\cdot 10^{-11}\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>So when <span class="math inline">\(k\)</span> reaches 16 even the most advantageous color counts are suppressed at least <span class="math inline">\(10^4\)</span> times more than the most disadvantageous ones with <span class="math inline">\(k=3\)</span>. So it seems no matter what reasonable prior for the color counts one takes the posterior should be mostly supported on <span class="math inline">\(3\leq k\leq 16.\)</span></p>
 <h2 id="exercise-3.4">Exercise 3.4</h2>
 <p>Denote by <span class="math inline">\(F_i\)</span> be the event “<span class="math inline">\(i\)</span> is fixed”, and, for any <span class="math inline">\(I \subset \{1, ..., n\}\)</span>, denote by <span class="math inline">\(F_I\)</span> the event “all <span class="math inline">\(i\)</span> in <span class="math inline">\(I\)</span> are fixed”, i.e. <span class="math inline">\(F_I=\prod_{i\in I} F_i\)</span>.</p>
 <p>We are looking for <span class="math inline">\(P(\sum F_i)\)</span>. By inclusion exclusion this is</p>
@@ -168,7 +224,7 @@ p(k|colors=3) &amp;= \frac{\sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_
 <p>Similarly to 3.4, consider the event <span class="math inline">\(E_I\)</span>=the bins with labels <span class="math inline">\(i\in I\)</span> are left empty; then <span class="math inline">\(P(E_I)= (M-|I|)^N/M^N\)</span> and by inclusion-exclusion <span class="math inline">\(P(\overline{\sum E_i})\)</span> is <span class="math display">\[\frac{1}{M^N}\sum_{k=0}^{M} (-1)^{k} \binom{M}{k} (M-k)^N.\]</span></p>
 <p>Remark: We are computing probability that a function from a set of size <span class="math inline">\(N\)</span> to a set of size <span class="math inline">\(M\)</span> is onto. There are <span class="math inline">\(M^N\)</span> total functions, and the number of surjective ones is <span class="math inline">\(M!\)</span> times a <a href="https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind">Stirling number of second kind</a>.</p>
 <h2 id="some-of-exercise-3.6">Some of Exercise 3.6</h2>
-<p>Remark: If the initial distribution (for <span class="math inline">\(R_0\)</span>, i.e. <span class="math inline">\(P(red)=P(R_0)=p,\)</span> <span class="math inline">\(P(white)=P(\bar{R}_0)=q\)</span>) were the same as the limit distribution <span class="math inline">\(\pi\)</span> (formula 3.125, <span class="math inline">\(\pi(red)=\lim P(R_k)=\frac{p-\delta}{1-\epsilon-\delta},\)</span> <span class="math inline">\(\pi(white)=\lim P(\bar{R}_k)=\frac{q-\epsilon}{1-\epsilon-\delta}\)</span>), this would be a steady state Markov chain, whose time-reverse process is also a Markov chain with transition probabilities <span class="math inline">\(M_{ij}^r=\frac{\pi_j}{\pi_i}M_{ji}\)</span> (note that for 2 state chains one always has <span class="math inline">\(M_{ij}^r=M_{ij}\)</span>). This is precisely condition 3.131. Under this condition it is easy to compute <span class="math inline">\(P(R_j|R_k)\)</span> with <span class="math inline">\(j&lt;k\)</span>, and in the 2-state case that we are considering, they would be the same as <span class="math inline">\(P(R_k|R_j)\)</span> (as in 3.134). However in this exercise the Markov chain starts from the initial distribution that, in general, is not the steady state distribution, so reversing the time produces a process (indexed by negative integers) which is a Markov chain which is not time-homogeneous. Maybe there is still a way to apply general theory of Markov chains to the problem of “backward inference” in this setting; absent that, we proceed by a direct computation (but observe that the reversed process is connected to the limiting behavior of the result, see below).</p>
+<p>Remark: If the initial distribution (for <span class="math inline">\(R_0\)</span>, i.e. <span class="math inline">\(P(red)=P(R_0)=p,\)</span> <span class="math inline">\(P(white)=P(\bar{R}_0)=q\)</span>) were the same as the limit distribution <span class="math inline">\(\pi\)</span> (formula 3.125, <span class="math inline">\(\pi(red)=\lim P(R_k)=\frac{p-\delta}{1-\epsilon-\delta},\)</span> <span class="math inline">\(\pi(white)=\lim P(\bar{R}_k)=\frac{q-\epsilon}{1-\epsilon-\delta}\)</span>}, this would be a steady state Markov chain, whose time-reverse process is also a Markov chain with transition probabilities <span class="math inline">\(M_{ij}^r=\frac{\pi_j}{\pi_i}M_{ji}\)</span> (note that for 2 state chains one always has <span class="math inline">\(M_{ij}^r=M_{ij}\)</span>). This is precisely condition 3.131. Under this condition it is easy to compute <span class="math inline">\(P(R_j|R_k)\)</span> with <span class="math inline">\(j&lt;k\)</span>, and in the 2-state case that we are considering, they would be the same as <span class="math inline">\(P(R_k|R_j)\)</span> (as in 3.134). However in this exercise the Markov chain starts from the initial distribution that, in general, is not the steady state distribution, so reversing the time produces a process (indexed by negative integers) which is a Markov chain which is not time-homogeneous. Maybe there is still a way to apply general theory of Markov chains to the problem of “backward inference” in this setting; absent that, we proceed by a direct computation (but observe that the reversed process is connected to the limiting behavior of the result, see below).</p>
 <p>As usual, all probabilities are conditioned on <span class="math inline">\(C\)</span>. Equation 3.129 is</p>
 <p><span class="math display">\[ P(R_k |R_j) P(R_j) = P(R_j |R_k) P(R_k) \]</span></p>
 <p>Equation 3.118 is</p>
