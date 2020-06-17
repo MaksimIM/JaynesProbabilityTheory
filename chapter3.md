@@ -139,11 +139,15 @@ We run the calculations with the code in the same [Colab](https://colab.research
 
 
 
-#### Data likeliehood estimates, no prior.
+#### Alternative approach: Data likeliehood estimates, no prior.
 
-Let's  try to see what the data likeliehood would be under different $N_i$ tuples (to see how much probability of each $N_i$ tuple is suppressed/boosted by the data).
+Suppose the color counts in the bin are given by the tuple $\vec{N}=(N_1, N_2, \ldots, N_k)$ with $N_i\geq 1$,  $\sum N_i=50$ and $k\geq 1$. Of course under this assumption the number of colors in the bin is just $k$. 
 
-Suppose the numbers of balls of different colors in the urn are $N_1, N_2,\ldots, N_k$ (with $\sum N_i=50$). What is the probability of event "a sample of 20 contains balls of exactly 3 colors"? First we choose the 3 colors, $i_1$, $i_2$ and $i_3$ and then apply Exercise 3.2 to the triple $N_{i_1}, N_{i_2}, N_{i_3}$ to get 
+If we had a prior $p(\vec{N})$ for various $\vec{N}$ tuples, we would compute posterior over same  tuples by  multiplying the $p(\vec{N})$ by likeliehood of getting $3$ colors from a sample of 20 balls $L(\vec{N})$ (which is fully determined by $\vec{N}$, see below), and renormalizing. 
+
+Let's  try to see what the data likeliehood would be $L(\vec{N})$ for different $N_i$ tuples (to see how much probability of each $N_i$ tuple is suppressed/boosted by the data).
+
+So, again, we suppose the numbers of balls of different colors in the urn are $N_1, N_2,\ldots, N_k$. What is the probability of event "a sample of 20 contains balls of exactly 3 colors"? First we choose the 3 colors, $i_1$, $i_2$ and $i_3$ and then apply Exercise 3.2 to the triple $N_{i_1}, N_{i_2}, N_{i_3}$ to get 
 
 ${N_{i_1}+ N_{i_2}+ N_{i_3}  \choose 20}-{ N_{i_1}+ N_{i_2}\choose 20}-{ N_{i_2}+ N_{i_3}\choose 20}-{ N_{i_1}+ N_{i_3}\choose 20}+ { N_{i_1}\choose 20}+{ N_{i_2}\choose 20}+{ N_{i_3}\choose 20}$
 
@@ -154,9 +158,9 @@ $\sum_{triples} {N_{i_1}+ N_{i_2}+ N_{i_3}  \choose 20} - (k-2) \sum_{pairs} {N_
 
 (The total number of draws is always the same ${50 \choose 20}$.)
 
-Now, $Q(x)=20!{x\choose 20}= x(x-1)\ldots (x-19)$  is  increasing in $x>19$, with ratio $Q(x+1)/Q(x)=  x/(x-19)$; for $x$ near 50 this is a factor of about $1.7$. So, at first glance,  those $k$ tuples with largest possible $i_1+i_2+i_3$ will have highest data likeliehood. All those with $i_1+i_2+i_3=50$ have $k=3$ of course. The $[48, 1, 1]$ has $47\choose 17$ sequences, and data likeliehood of about $0.06$. The $[17,17,16]$ has data likeliehood $0.99995$.
+Now, $Q(x)=20!{x\choose 20}= x(x-1)\ldots (x-19)$  is  increasing in $x>19$, with ratio $Q(x+1)/Q(x)=  x/(x-19)$; for $x$ near 50 this is a factor of about $1.7$. So, at first glance,  those $k$ tuples with largest possible $i_1+i_2+i_3$ will have highest data likeliehood. All those with $i_1+i_2+i_3=50$ have $k=3$ of course. The $\vec{N}=[48, 1, 1]$ has $47\choose 17$ sequences, and data likeliehood of about $0.06$. The $\vec{N}=[17,17,16]$ has data likeliehood $0.99995$.
 
-The $[51-k, 1, \ldots, 1]$ gives data likeliehood ${k-1\choose 2}{50-k \choose 17}$, which goes 
+The $\vec{N}=[51-k, 1, \ldots, 1]$ gives data likeliehood ${k-1\choose 2}{50-k \choose 17}$, which goes 
 
 
 
@@ -170,7 +174,7 @@ The $[51-k, 1, \ldots, 1]$ gives data likeliehood ${k-1\choose 2}{50-k \choose 1
 
 
 
-So when $k$ reaches 16 even the most advantageous color counts are suppressed at least $10^4$ times more than the most disadvantageous ones with $k=3$. So it seems no matter what reasonable prior for the color counts one takes the posterior should be mostly supported on $3\leq k\leq 16.$
+So when $k$ reaches 16 even the most advantageous color counts $\vec{N}$ are suppressed at least $10^4$ times more than the most disadvantageous ones with $k=3$. So it seems no matter what reasonable prior for the color counts one takes the posterior should be mostly supported on $3\leq k\leq 16.$
 
 ## Exercise 3.4
 
