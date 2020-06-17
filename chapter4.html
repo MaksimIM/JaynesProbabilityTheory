@@ -155,7 +155,7 @@ Now consider the sum $X_1,X_2$ and $Y_1, Y_2$ independent. Form $X_1+Y_1, X_2Y_2
 <p>We now ask: 1) what is the probability of ever getting to <span class="math inline">\(20\)</span> db? 2) how long will it take to get <span class="math inline">\(-20\)</span> db?</p>
 <p>This is an exercise in “Wald theory” a la A. Wald, “Sequential analysis” or W. Feller, “An introduction to probability theory and its applications”, Vol 1 Ch. XIV., Vol 2 Ch.XII (Abraham Wald is the statistician of the “holes you see in the returning bombers are in the areas where a bomber can take a hit and still come back, it’s all the other areas you should worry about, you dolts!” fame; someone really should make a movie about his life.)</p>
 <p>One gets a simplification by rounding <span class="math inline">\(-0.97\)</span> to <span class="math inline">\(-1\)</span>, for then the possible amounts of evidence are all integers, and the random walk is on <span class="math inline">\(\mathbb{Z}\)</span>. Moreover, the resulting random walk is “skip-free to the left” - one can not move left by more than one unit at a time. There are a more or less standard approaches for analyzing such a walk.</p>
-<p>(But see below for the general case. (Feller, XIV.8))</p>
+<p>(Without simplifying exact solution becomes intractable, but one can get various approximations. We derive only very basic such approximation at the end this write-up, but it is discussed by Wald and in Vol II of Feller.)</p>
 <h5 id="probability-of-getting-20-db-for-a.">Probability of getting 20 db for <span class="math inline">\(A\)</span>.</h5>
 <p>Let <span class="math inline">\(p_i\)</span> be the probability that the walk will ever reach the state <span class="math inline">\(i\)</span> decibel.</p>
 <p>Firstly, the expected evidence is <span class="math inline">\(3\frac{1}{6}+(-1)\frac{5}{6}=-\frac{1}{3}\)</span> is negative, so by the strong law of large numbers the walk goes off to <span class="math inline">\(-\infty\)</span> with probability 1. Since the only way to reach it starting from 0 is to go through all negative values, <span class="math inline">\(p(i)=1\)</span> for all <span class="math inline">\(i\leq 0\)</span>.</p>
@@ -201,7 +201,7 @@ Now consider the sum $X_1,X_2$ and $Y_1, Y_2$ independent. Form $X_1+Y_1, X_2Y_2
  \frac{2.086860726169758341196705432583458069289117363026753422832365}{1.2254240576913640671052130911121400436831404124458669595926648}=1.702970260026799764438894848068807946323626715997234302853$
  ----></p>
 <h5 id="time-to-get-20-db-for-b.">Time to get 20 db for <span class="math inline">\(B\)</span>.</h5>
-<p><strong>For a shortcut skip to the bottom “Wald identities”.</strong></p>
+<p><span class="math inline">\(\phantom{}\)</span> <strong>For a shortcut skip to the bottom “Wald identities”.</strong></p>
 <p>Since the the walk is skip-free on the left, to get <span class="math inline">\(20\)</span> db for <span class="math inline">\(B\)</span> one has to first get <span class="math inline">\(19\)</span> db, and for that one needs to first get <span class="math inline">\(18\)</span> db etc. So we start by getting a distribution of times to get <span class="math inline">\(1\)</span> db for <span class="math inline">\(B\)</span>. Let <span class="math inline">\(T\)</span> be the (random) time until the walk hits <span class="math inline">\(-1\)</span>. We define the formal power series</p>
 <p><span class="math display">\[f(x)=E(x^T)=xP(T=1)+x^2P(T=2)+...\]</span></p>
 <p>encoding the distribution of <span class="math inline">\(T\)</span>. We have <span class="math inline">\(f(1)=1\)</span> and <span class="math inline">\(f(0)=0\)</span>. We also have <span class="math inline">\(f&#39;(1)=E(T)\)</span> and <span class="math inline">\(f&#39;&#39;(1)=E(T(T-1))\)</span> and so on.</p>
@@ -231,6 +231,7 @@ Now consider the sum $X_1,X_2$ and $Y_1, Y_2$ independent. Form $X_1+Y_1, X_2Y_2
 <p>We have in general <span class="math inline">\(E(T_k)=3k\)</span>. Can be deduced much more quickly from the general First Wald Identity: if <span class="math inline">\(T\)</span> is a stopping time with respect to i.i.d. <span class="math inline">\(Z_i\)</span>s with <span class="math inline">\(E(T)\)</span> finite, and <span class="math inline">\(X=\sum_{i=1}^T Z_i\)</span> then</p>
 <p><span class="math display">\[E(X)=E(T)E(Z_1).\]</span></p>
 <p>In our case, assuming <span class="math inline">\(E(T_k)\)</span> is finite, we have <span class="math inline">\(E_{Z_1}=3\frac{1}{6}-\frac{5}{6}=-\frac{1}{3}\)</span>, <span class="math inline">\(X=-k\)</span> (always), so <span class="math inline">\(E(T_k)=3k\)</span>.</p>
+<p>We still need to check <span class="math inline">\(E(T_k)&lt;\infty\)</span>. This follows from (a generalization) of our analysis of the random walk on <span class="math inline">\(\mathbb{Z}\)</span> but is also part of Theorem 2 Ch. XII.2 in Volume 2 of Feller’s book.</p>
 <p>Wald’s second identity (under same assumption <span class="math inline">\(E(T)\)</span> finite) is</p>
 <p><span class="math display">\[E[(X-E(Z_i)T)^2]=Var(Z_i)E(T).\]</span></p>
 <p>For us <span class="math inline">\(X=-k\)</span>, <span class="math inline">\(E(Z_i)=-\frac{1}{3}\)</span>, <span class="math inline">\(E(T_k)=3k\)</span> and</p>
@@ -244,12 +245,25 @@ Now consider the sum $X_1,X_2$ and $Y_1, Y_2$ independent. Form $X_1+Y_1, X_2Y_2
 <p>as before.</p>
 <p>One advantge of using this method is that it can handle the unapproximated problem as well.</p>
 <p>Indeed, if we keep the leftward step <span class="math inline">\(0.97\)</span> instead of making it <span class="math inline">\(1\)</span>, <span class="math inline">\(E(Z_1)\)</span> changes a bit to <span class="math inline">\(-\frac{1}{3}+\frac{5}{6}0.03=\frac{-200+15}{600}=-\frac{37}{120}\)</span>, and the <span class="math inline">\(E(X)\)</span> is no longer <span class="math inline">\(-k\)</span>, but is between <span class="math inline">\(-k\)</span> and <span class="math inline">\(-k-0.97\)</span>, so we get an estimate <span class="math inline">\(\frac{120}{54}k\leq E(T_k)&lt; \frac{120}{54}(k+0.97).\)</span> Similar estimate can be found for the variance of <span class="math inline">\(T_k\)</span> as well.</p>
-<p><br/><br/></p>
-<p>To make these results rigorous we only to show <span class="math inline">\(E(T_k)&lt;\infty\)</span>. But this follows from the central limit theorem: <span class="math inline">\(P(T_k\geq n+1)\)</span> implies <span class="math inline">\(Z_1+\ldots+Z_{n}&gt;-k\)</span>,or</p>
-<p><span class="math inline">\(\frac{Z_1+\ldots+Z_{n}}{\sqrt{n}}&gt;-\frac{k}{\sqrt{n}}\)</span></p>
-<p><span class="math inline">\(\frac{Z_1+\ldots+Z_{n}}{\sqrt{n}}+\frac{\sqrt{n}}{3}&gt;\frac{\sqrt{n}}{3}-\frac{k}{\sqrt{n}}\)</span></p>
-<p>Probability of this event is <span class="math inline">\(\Phi_n(\frac{\sqrt{n}}{3}-\frac{k}{\sqrt{n}})\)</span> where <span class="math inline">\(\Phi_n\)</span> is the CDF of <span class="math inline">\(\sqrt{n} (\frac{Z_1+\ldots+Z_{n}}{n}-\mu_Z)\)</span>, which converges to a normal with mean <span class="math inline">\(0\)</span> (and variance <span class="math inline">\(Var Z_i=120/54\)</span>)</p>
-<p>is bounded by <span class="math inline">\(e^{-\alpha n}\)</span>, hence so is <span class="math inline">\(P(T_k=n)\)</span>, so <span class="math inline">\(E(T_k)\)</span> is finite.</p>
-<p>&lt;!—- Consider the probability <span class="math inline">\(p\)</span> of ever getting <span class="math inline">\(-1\)</span> db of evidence. To compute it, we condition on the first step. Either, with probability <span class="math inline">\(1/6\)</span>, we move we get that <span class="math inline">\(-1\)</span> right away, or with probability <span class="math inline">\(5/6\)</span> we move <span class="math inline">\(3\)</span> to the right, after which the probability of ever obtaining <span class="math inline">\(-1\)</span> db of evidence is <span class="math inline">\(p^4\)</span> (since the walk is skip-free, we would need to obtain <span class="math inline">\(-1\)</span> evidence 4 times, 3 times to undo the first step, and then one more (we are using the fact that the random walk is memoryless, so that probability of eventually moving left by one is the same no matter from what moment we start counting). We get <span class="math inline">\(p=\frac{1}{6}+\frac{5}{6}p^4\)</span>. This has positive second derivative, so is convex, and so has at most 2 roots. One of them is <span class="math inline">\(1\)</span> and another is approximately <span class="math inline">\(0.16732\)</span>. We argue below that <span class="math inline">\(p=1\)</span> is not possible, so <span class="math inline">\(p\approx 0.16732\)</span>. The probability of</p>
+<!----
+
+<br/><br/>
+
+To make these results rigorous we only to show $E(T_k)<\infty$. But this follows from the central limit theorem: $P(T_k\geq n+1)$ implies $Z_1+\ldots+Z_{n}>-k$,or  
+
+$\frac{Z_1+\ldots+Z_{n}}{\sqrt{n}}>-\frac{k}{\sqrt{n}}$ 
+
+$\frac{Z_1+\ldots+Z_{n}}{\sqrt{n}}+\frac{\sqrt{n}}{3}>\frac{\sqrt{n}}{3}-\frac{k}{\sqrt{n}}$ 
+
+Probability of this event is $\Phi_n(\frac{\sqrt{n}}{3}-\frac{k}{\sqrt{n}})$ where $\Phi_n$ is the CDF of $\sqrt{n} (\frac{Z_1+\ldots+Z_{n}}{n}-\mu_Z)$, which converges to a normal with mean $0$ (and variance $Var Z_i=120/54$)
+
+
+ is bounded by $e^{-\alpha n}$, hence so is $P(T_k=n)$, so $E(T_k)$ is finite.
+
+
+<!----
+Consider the probability $p$ of ever getting $-1$ db of evidence. To compute it, we condition on the first step. Either, with probability $1/6$, we move we get that $-1$ right away, or with probability $5/6$ we move $3$ to the right, after which the probability of ever obtaining $-1$ db of evidence is $p^4$ (since the walk is skip-free, we would need to obtain $-1$ evidence 4 times, 3 times to undo the first step, and then one more (we are using the fact that the random walk is memoryless, so that probability of eventually moving left by one is the same no matter from what moment we start counting). We get $p=\frac{1}{6}+\frac{5}{6}p^4$. This has positive second derivative, so is convex, and so has at most 2 roots. One of them is $1$ and another is approximately $0.16732$. We argue below that $p=1$ is not possible, so $p\approx 0.16732$. The probability of 
+ 
+ ----->
 </body>
 </html>

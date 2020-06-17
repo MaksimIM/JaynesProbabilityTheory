@@ -326,7 +326,7 @@ This is an exercise in "Wald theory" a la A. Wald, "Sequential analysis" or W. F
 
 One gets a simplification by rounding $-0.97$ to $-1$, for then the possible amounts of evidence are all integers, and the random walk is on $\mathbb{Z}$.  Moreover, the resulting random walk is "skip-free to the left" - one can not move left by more than one unit at a time. There are a more or less standard approaches for analyzing such a walk.
 
-(But see below for the general case. (Feller, XIV.8))
+(Without simplifying exact solution becomes intractable, but one can get various approximations. We derive only very basic such approximation at the end this write-up, but it is discussed by Wald and in Vol II of Feller.)
 
 ##### Probability of getting 20 db for $A$.
 
@@ -428,7 +428,7 @@ $$a_k=\frac{-U(s_k)}{V'(s_k)}$$
 
 ##### Time to get 20 db for $B$.
 
-
+$\phantom{}$
 **For a shortcut skip to the bottom "Wald identities".**
 
 Since the the walk is skip-free on the left, to get $20$ db for $B$ one has to first get $19$ db, and for that one needs to first get $18$ db etc. So we start by getting a distribution of times to get $1$ db for $B$. Let $T$ be the (random) time until the walk hits $-1$. We define the formal power series 
@@ -494,6 +494,9 @@ For general $k$ we get $E(T_k^2)=k((k-1)9+66) +3k$, $Var(T_k)=60k$
  $$E(X)=E(T)E(Z_1).$$
  
   In our case, assuming $E(T_k)$ is finite, we have $E_{Z_1}=3\frac{1}{6}-\frac{5}{6}=-\frac{1}{3}$, $X=-k$ (always), so $E(T_k)=3k$.
+  
+  We still need to check  $E(T_k)<\infty$. This follows from (a generalization) of our analysis of the random walk on $\mathbb{Z}$ but is also part of Theorem 2 Ch. XII.2 in Volume 2 of Feller's book.
+
 
 Wald's second identity  (under same assumption $E(T)$ finite) is 
 
@@ -531,7 +534,7 @@ Indeed, if we keep the leftward step $0.97$ instead of making it $1$, $E(Z_1)$ c
 
 
 
-
+<!----
 
 <br/><br/>
 
@@ -550,4 +553,4 @@ Probability of this event is $\Phi_n(\frac{\sqrt{n}}{3}-\frac{k}{\sqrt{n}})$ whe
 <!----
 Consider the probability $p$ of ever getting $-1$ db of evidence. To compute it, we condition on the first step. Either, with probability $1/6$, we move we get that $-1$ right away, or with probability $5/6$ we move $3$ to the right, after which the probability of ever obtaining $-1$ db of evidence is $p^4$ (since the walk is skip-free, we would need to obtain $-1$ evidence 4 times, 3 times to undo the first step, and then one more (we are using the fact that the random walk is memoryless, so that probability of eventually moving left by one is the same no matter from what moment we start counting). We get $p=\frac{1}{6}+\frac{5}{6}p^4$. This has positive second derivative, so is convex, and so has at most 2 roots. One of them is $1$ and another is approximately $0.16732$. We argue below that $p=1$ is not possible, so $p\approx 0.16732$. The probability of 
  
- 
+ ----->
