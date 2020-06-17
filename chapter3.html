@@ -118,29 +118,45 @@
 <p><span class="math display">\[1 -\sum\limits_{i} P(A_i) +  \sum\limits_{i&lt;j} P(A_iA_j) - \sum\limits_{i&lt;j&lt;k} P(A_iA_jA_k) ... \]</span></p>
 <p>where the first sum term is over all subsets of 1 color, the second is over all subsets of 2 colors, etc.</p>
 <p>This calculation can be done in python like so:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> prob_all_colors_drawn(m, N):</span>
-<span id="cb1-2"><a href="#cb1-2"></a>    <span class="co">&#39;&#39;&#39; </span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">    m is number of balls drawn</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">    N is a list containing how many of each color is in the urn </span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">    &#39;&#39;&#39;</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>    k <span class="op">=</span> <span class="bu">len</span>(N) <span class="co"># number of colors</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>    </span>
-<span id="cb1-8"><a href="#cb1-8"></a>    total <span class="op">=</span> <span class="fl">1.0</span> <span class="co"># start with 1</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,k<span class="op">+</span><span class="dv">1</span>):</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a>        <span class="co"># calculate each sum term</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>        conjunction_prob <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a>        <span class="cf">for</span> Ns <span class="kw">in</span> combinations(N, i): <span class="co"># for all combinations of i colors</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>            conjunction_prob <span class="op">+=</span> comb(<span class="bu">sum</span>(N) <span class="op">-</span> <span class="bu">sum</span>(Ns), m,<span class="va">True</span>)<span class="op">/</span>comb(<span class="bu">sum</span>(N),m,<span class="va">True</span>)</span>
-<span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a>        <span class="co"># alternately add or subtract the sum term </span></span>
-<span id="cb1-17"><a href="#cb1-17"></a>        total <span class="op">+=</span> ((<span class="op">-</span><span class="dv">1</span>)<span class="op">**</span>i)<span class="op">*</span>conjunction_prob</span>
-<span id="cb1-18"><a href="#cb1-18"></a>    <span class="cf">return</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> itertools <span class="im">import</span> combinations</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> scipy.special <span class="im">import</span> comb, perm</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">def</span> prob_all_colors_drawn(m, N):</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="co">&#39;&#39;&#39; </span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">    m is number of balls drawn</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">    N is a list containing how many of each color is in the urn </span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">    &#39;&#39;&#39;</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>    k <span class="op">=</span> <span class="bu">len</span>(N) <span class="co"># number of colors</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>    </span>
+<span id="cb1-11"><a href="#cb1-11"></a>    total <span class="op">=</span> <span class="fl">1.0</span> <span class="co"># start with 1</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,k<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>        <span class="co"># calculate each sum term</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>        conjunction_prob <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>        <span class="cf">for</span> Ns <span class="kw">in</span> combinations(N, i): <span class="co"># for all combinations of i colors</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>            conjunction_prob <span class="op">+=</span> comb(<span class="bu">sum</span>(N) <span class="op">-</span> <span class="bu">sum</span>(Ns), m,<span class="va">True</span>)<span class="op">/</span>comb(<span class="bu">sum</span>(N),m,<span class="va">True</span>)</span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a>        <span class="co"># alternately add or subtract the sum term </span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>        total <span class="op">+=</span> ((<span class="op">-</span><span class="dv">1</span>)<span class="op">**</span>i)<span class="op">*</span>conjunction_prob</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="cf">return</span> total</span></code></pre></div>
 <p>You can modify and run this code on <a href="https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing">Google Colab</a>, and see a monte carlo approximation of the same problem.</p>
+<p>The code shows that to be 90% confident of getting all 5 colors we need 15 draws.</p>
 <h2 id="exercise-3.3">Exercise 3.3</h2>
-<p>TODO</p>
-<p>I think this depends mainly on your prior distribution <span class="math inline">\(p(N_1, N_2, ... N_k | k)\)</span>. If can sample from this distribution, and we know your prior over k, then we can do a monte carlo approximation of <span class="math inline">\(p(k|colors=3) = \sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)\)</span>.</p>
-<p>Jaynes seems to think there is only one reasonable prior for this problem, does anyone know what it might be?</p>
+<p>We can obtain an upper bound on <span class="math inline">\(p(k|colors=3)\)</span> like so: <span class="math display">\[
+\begin{aligned}
+p(k|colors=3) &amp;= \frac{\sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)}{\sum_{k}p(colors=3|k)p(k)}\\
+&amp;&lt; \sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)\frac{1}{50}\times334\\
+&amp;&lt; \max\limits_{N_1,...,N_k}[p(colors=3|k, N_1, N_2, ... N_k)]\times6.66\\
+&amp;&lt; {k\choose3}\max\limits_{N_1,...,N_k}[p(\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k|k, N_1, N_2, ... N_k)]\times6.66\\
+\end{aligned}
+\]</span></p>
+<p>We assume a uniform prior over k: <span class="math inline">\(p(k) = \frac{1}{50}\)</span>. The first step is taken finding a lower bound on the denominator. We know that <span class="math inline">\(p(colors=3|k=3) &gt; 0.15\)</span>, so the denominator must be greater than <span class="math inline">\(0.15/50 = 1/334\)</span>.</p>
+<p>The second step is taken because it contains a weighted average. We can find an upper bound over the weighted average by finding the <span class="math inline">\(N_1, N_2, ... N_k\)</span> that maximises it.</p>
+<p>The third step is found because the statement <span class="math inline">\(colors=3\)</span> is the logical sum of <span class="math inline">\(k\choose3\)</span> conjunctions of the form <span class="math inline">\(\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k\)</span>, each of which has 3 A’s negated. This sum is bounded by <span class="math inline">\({k\choose3}\max\limits_{N_1,...,N_k}[p(\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k|...)]\)</span>.</p>
+<p><span class="math inline">\(p(\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k|k, N_1, N_2, ... N_k)\)</span> can be calculated with:</p>
+<p><span class="math display">\[p(\overline{A_1}\overline{A_2}\overline{A_3}|A_4...A_k...)p(A_4...A_k|...) =[1-p(A_1+A_2+A_3|A_4...A_k...)]p(A_4...A_k|...)\]</span></p>
+<p>From then it’s similar to the calculations from Exercise 3.2.</p>
+<p>We run the calculations with the code in the same <a href="https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing">Colab</a> as above, and show that we can be at least 99% confident that <span class="math inline">\(3 \leq k \leq 20\)</span>. I suspect the upper bound can be tightened significantly with weak assumptions.</p>
 <h2 id="exercise-3.4">Exercise 3.4</h2>
 <p>Denote by <span class="math inline">\(F_i\)</span> be the event “<span class="math inline">\(i\)</span> is fixed”, and, for any <span class="math inline">\(I \subset \{1, ..., n\}\)</span>, denote by <span class="math inline">\(F_I\)</span> the event “all <span class="math inline">\(i\)</span> in <span class="math inline">\(I\)</span> are fixed”, i.e. <span class="math inline">\(F_I=\prod_{i\in I} F_i\)</span>.</p>
 <p>We are looking for <span class="math inline">\(P(\sum F_i)\)</span>. By inclusion exclusion this is</p>

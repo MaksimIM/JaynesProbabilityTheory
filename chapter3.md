@@ -78,6 +78,9 @@ where the first sum term is over all subsets of 1 color, the second is over all 
 This calculation can be done in python like so:
 
 ```python
+from itertools import combinations
+from scipy.special import comb, perm
+
 def prob_all_colors_drawn(m, N):
     ''' 
     m is number of balls drawn
@@ -101,15 +104,37 @@ def prob_all_colors_drawn(m, N):
 
 You can modify and run this code on [Google Colab](https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing), and see a monte carlo approximation of the same problem.
 
+The code shows that to be 90% confident of getting all 5 colors we need 15 draws.
+
 
 
 ## Exercise 3.3
 
-TODO
+We can obtain an upper bound on $p(k|colors=3)$ like so:
+$$
+\begin{aligned}
+p(k|colors=3) &= \frac{\sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)}{\sum_{k}p(colors=3|k)p(k)}\\
+&< \sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)\frac{1}{50}\times334\\
+&< \max\limits_{N_1,...,N_k}[p(colors=3|k, N_1, N_2, ... N_k)]\times6.66\\
+&< {k\choose3}\max\limits_{N_1,...,N_k}[p(\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k|k, N_1, N_2, ... N_k)]\times6.66\\
+\end{aligned}
+$$
 
-I think this depends mainly on your prior distribution $p(N_1, N_2, ... N_k | k)$. If can sample from this distribution, and we know your prior over k, then we can do a monte carlo approximation of  $p(k|colors=3) = \sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)$. 
+We assume a uniform prior over k: $p(k) = \frac{1}{50}$. The first step is taken finding a lower bound on the denominator. We know that $p(colors=3|k=3) > 0.15$, so the denominator must be greater than $0.15/50 = 1/334$. 
 
-Jaynes seems to think there is only one reasonable prior for this problem, does anyone know what it might be?
+The second step is taken because it contains a weighted average. We can find an upper bound over the weighted average by finding the $N_1, N_2, ... N_k$ that maximises it.
+
+The third step is found because the statement $colors=3$ is the logical sum of $k\choose3$ conjunctions of the form $\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k$, each of which has 3 A's negated. This sum is bounded by ${k\choose3}\max\limits_{N_1,...,N_k}[p(\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k|...)]$. 
+
+$p(\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k|k, N_1, N_2, ... N_k)$ can be calculated with:
+
+$$p(\overline{A_1}\overline{A_2}\overline{A_3}|A_4...A_k...)p(A_4...A_k|...) =[1-p(A_1+A_2+A_3|A_4...A_k...)]p(A_4...A_k|...)$$
+
+From then it's similar to the calculations from Exercise 3.2.
+
+We run the calculations with the code in the same [Colab](https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing) as above, and show that we can be at least 99% confident that $3 \leq k \leq 20$. I suspect the upper bound can be tightened significantly with weak assumptions.
+
+
 
 ## Exercise 3.4
 
