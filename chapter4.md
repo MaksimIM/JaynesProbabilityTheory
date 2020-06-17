@@ -495,7 +495,7 @@ For general $k$ we get $E(T_k^2)=k((k-1)9+66) +3k$, $Var(T_k)=60k$
  
   In our case, assuming $E(T_k)$ is finite, we have $E_{Z_1}=3\frac{1}{6}-\frac{5}{6}=-\frac{1}{3}$, $X=-k$ (always), so $E(T_k)=3k$.
   
-  We still need to check  $E(T_k)<\infty$. This follows from (a generalization) of our analysis of the random walk on $\mathbb{Z}$ but is also part of Theorem 2 Ch. XII.2 in Volume 2 of Feller's book.
+  We still need to check  $E(T_k)<\infty$. This follows from (a generalization) of our analysis of the random walk on $\mathbb{Z}$, but in fact Hoeffding's inequality implies exponentially small bond on probability $T_k>n$, so $T_k$ actually has all moments finite.
 
 
 Wald's second identity  (under same assumption $E(T)$ finite) is 
