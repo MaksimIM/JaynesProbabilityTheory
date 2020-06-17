@@ -107,9 +107,49 @@ You can modify and run this code on [Google Colab](https://colab.research.google
 
 TODO
 
-I think this depends mainly on your prior distribution $p(N_1, N_2, ... N_k | k)$. If can sample from this distribution, and we know your prior over k, then we can do a monte carlo approximation of  $p(k|colors=3) = \sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)$. 
+I think this depends mainly on your prior distribution $p(N_1, N_2, ... N_k | k)$. If can sample from this distribution, and we know your prior over k, then we can do a monte carlo approximation of  
+
+$$p(k|colors=3) =$$
+
+$$ \sum_{\text{all } N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)$$
 
 Jaynes seems to think there is only one reasonable prior for this problem, does anyone know what it might be?
+
+
+
+
+#### Data likeliehood estimates, no prior.
+
+Let's  try to see what the data likeliehood would be under different $N_i$ tuples (to see how much probability of each $N_i$ tuple is suppressed/boosted by the data).
+
+Suppose the numbers of balls of different colors in the urn are $N_1, N_2,\ldots, N_k$ (with $\sum N_i=50$). What is the probability of event "a sample of 20 contains balls of exactly 3 colors"? First we choose the 3 colors, $i_1$, $i_2$ and $i_3$ and then apply Exercise 3.2 to the triple $N_{i_1}, N_{i_2}, N_{i_3}$ to get 
+
+${N_{i_1}+ N_{i_2}+ N_{i_3}  \choose 20}-{ N_{i_1}+ N_{i_2}\choose 20}-{ N_{i_2}+ N_{i_3}\choose 20}-{ N_{i_1}+ N_{i_3}\choose 20}+ { N_{i_1}\choose 20}+{ N_{i_2}\choose 20}+{ N_{i_3}\choose 20}$
+
+possible draws that satisfy this, summing over all the selections of $i_1, i_2, i_3$ to get the total number of draws with 3 colors.
+Each $N_i$ will be chosen in $k-1\choose 2$ triples and each pair $N_i, N_j$ in $k-2$ triples. So the sum is
+
+$\sum_{triples} {N_{i_1}+ N_{i_2}+ N_{i_3}  \choose 20} - (k-2) \sum_{pairs} {N_{j_1}+ N_{j_2}\choose 20}+ {k-1\choose 2 } \sum_l {N_l \choose 20}$
+
+(The total number of draws is always the same ${50 \choose 20}$.)
+
+Now, $Q(x)=20!{x\choose 20}= x(x-1)\ldots (x-19)$  is  increasing in $x>19$, with ratio $Q(x+1)/Q(x)=  x/(x-19)$; for $x$ near 50 this is a factor of about $1.7$. So, at first glance,  those $k$ tuples with largest possible $i_1+i_2+i_3$ will have highest data likeliehood. All those with $i_1+i_2+i_3=50$ have $k=3$ of course. The $[48, 1, 1]$ has $47\choose 17$ sequences, and data likeliehood of about $0.06$. The $[17,17,16]$ has data likeliehood $0.99995$.
+
+The $[51-k, 1, \ldots, 1]$ gives data likeliehood ${k-1\choose 2}{50-k \choose 17}$, which goes 
+
+
+
+| | | | | |
+|-|-|-|-|-|
+| $0$ | $0$ | $5.82\cdot 10^{-2}$| $1.11\cdot 10^{-1}$| $1.40\cdot 10^{-1}$|
+| $1.46\cdot 10^{-1}$ | $1.34\cdot 10^{-1}$| $1.13\cdot 10^{-1}$| $9.01\cdot 10^{-2}$| $6.78\cdot 10^{-2}$|
+| $5.20\cdot 10^{-3}$| $2.97\cdot 10^{-3}$| $1.63\cdot 10^{-3}$| $8.61\cdot 10^{-4}$ | $4.35\cdot 10^{-4}$|
+|$2.20\cdot 10^{-6}$| $6.96\cdot 10^{-7}$| $1.96\cdot 10^{-7}$| $4.80\cdot 10^{-8}$| $9.82\cdot 10^{-9}$|
+| $1.58\cdot 10^{-9}$| $1.78\cdot 10^{-10}$ | $1.05\cdot 10^{-11}$ | $0$ | 
+
+
+
+So when $k$ reaches 16 even the most advantageous color counts are suppressed at least $10^4$ times more than the most disadvantageous ones with $k=3$. So it seems no matter what reasonable prior for the color counts one takes the posterior should be mostly supported on $3\leq k\leq 16.$
 
 ## Exercise 3.4
 
@@ -138,7 +178,7 @@ Remark: We are computing probability that a function from a set of size $N$ to a
 
 ## Some of Exercise 3.6
 
-Remark: If the initial distribution (for $R_0$, i.e. $P(red)=P(R_0)=p,$ $P(white)=P(\bar{R}_0)=q$) were the same as the limit distribution  $\pi$ (formula 3.125, $\pi(red)=\lim P(R_k)=\frac{p-\delta}{1-\epsilon-\delta},$ $\pi(white)=\lim P(\bar{R}_k)=\frac{q-\epsilon}{1-\epsilon-\delta}$), this would be a steady state Markov chain, whose time-reverse process is also a Markov chain with transition probabilities $M_{ij}^r=\frac{\pi_j}{\pi_i}M_{ji}$ (note that for 2 state chains one always has $M_{ij}^r=M_{ij}$). This is precisely condition 3.131. Under this condition it is easy to compute $P(R_j|R_k)$ with $j<k$, and in the 2-state case that we are considering, they would be the same as $P(R_k|R_j)$ (as in 3.134).  However in this exercise the Markov chain starts from the initial distribution that, in general, is not the steady state distribution, so reversing the time produces a process (indexed by negative integers) which is a Markov chain which is not time-homogeneous. Maybe there is still a way to apply general theory of Markov chains to the problem of "backward inference" in this setting; absent that, we proceed by a direct computation (but observe that the reversed process is connected to the limiting behavior of the result, see below).
+Remark: If the initial distribution (for $R_0$, i.e. $P(red)=P(R_0)=p,$ $P(white)=P(\bar{R}_0)=q$) were the same as the limit distribution  $\pi$ (formula 3.125, $\pi(red)=\lim P(R_k)=\frac{p-\delta}{1-\epsilon-\delta},$ $\pi(white)=\lim P(\bar{R}_k)=\frac{q-\epsilon}{1-\epsilon-\delta}$}, this would be a steady state Markov chain, whose time-reverse process is also a Markov chain with transition probabilities $M_{ij}^r=\frac{\pi_j}{\pi_i}M_{ji}$ (note that for 2 state chains one always has $M_{ij}^r=M_{ij}$). This is precisely condition 3.131. Under this condition it is easy to compute $P(R_j|R_k)$ with $j<k$, and in the 2-state case that we are considering, they would be the same as $P(R_k|R_j)$ (as in 3.134).  However in this exercise the Markov chain starts from the initial distribution that, in general, is not the steady state distribution, so reversing the time produces a process (indexed by negative integers) which is a Markov chain which is not time-homogeneous. Maybe there is still a way to apply general theory of Markov chains to the problem of "backward inference" in this setting; absent that, we proceed by a direct computation (but observe that the reversed process is connected to the limiting behavior of the result, see below).
 
 As usual, all probabilities are conditioned on $C$. Equation 3.129 is
 
