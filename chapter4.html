@@ -98,7 +98,7 @@ Now consider the sum $X_1,X_2$ and $Y_1, Y_2$ independent. Form $X_1+Y_1, X_2Y_2
 <p>This gives <span class="math inline">\(M=vu^T\)</span>. Going back to <span class="math inline">\(M=M_i+N_i\)</span> we again see two rank one matrices add up to a rank one matrix. We conclude, just as in the case of 3 hypothesis, that for each specific <span class="math inline">\(i\)</span>, either <span class="math inline">\(V^c_i=V_i\)</span> and hence <span class="math inline">\(\frac{P(D_1|H_iX)}{P(D_1|\overline{H}_iX)}=1\)</span></p>
 <p>OR</p>
 <p><span class="math inline">\(U^c_i=U_i\)</span> and hence <span class="math inline">\(\frac{P(D_2|H_iX)}{P(D_2|\overline{H}_iX)}=1\)</span>. This is exactly what we wanted to prove.</p>
-<p>#### Some remarks on sequential vs. batch updates.</p>
+<p>### Some remarks on sequential vs. batch updates.</p>
 <p>(See formula 4.11; the discussion is in the context of section 4.4 and formula 4.44.)</p>
 <p>We are considering a batch of widgets from a single machine. We have three hypothesis, <span class="math inline">\(A\)</span> – the machine has failure rate <span class="math inline">\(\frac{1}{3}\)</span> (prior probability <span class="math inline">\(\frac{1}{11}\)</span>), <span class="math inline">\(B\)</span> – the machine has failure rate <span class="math inline">\(\frac{1}{6}\)</span> (prior probability <span class="math inline">\(\frac{10}{11}\)</span>), and <span class="math inline">\(C\)</span> – the machine has failure rate <span class="math inline">\(\frac{99}{100}\)</span> (prior probability <span class="math inline">\(\frac{1}{10^6}\)</span>).</p>
 <p>Prior odds ratio is then (to a very good approximation) <span class="math inline">\(\frac{10^6}{11} : \frac{10^7}{11} : 1\)</span>.</p>
@@ -128,26 +128,26 @@ Now consider the sum $X_1,X_2$ and $Y_1, Y_2$ independent. Form $X_1+Y_1, X_2Y_2
 <p><span class="math display">\[ C_2 : \overline{C}_2 = \frac{99}{100} \frac{99}{100} :  \frac{2\cdot10^6}{11} \frac{7}{36}=\frac{99^2}{100^2}: \frac{14 \cdot 10^6}{11\cdot 6^2}\]</span></p>
 <p>and compare it to the “batch” calculation:</p>
 <p><span class="math display">\[C_2:A_2+B_2= \frac{99^2}{100^2}: \frac{10^6}{11}\frac{1}{3^2}+ \frac{10^7}{11} \frac{1}{6^2}=\frac{99^2}{100^2}: \frac{14 \cdot 10^6}{11\cdot 6^2}.\]</span></p>
-<h5 id="most-of-exercise-4.2">Most of Exercise 4.2</h5>
+<h3 id="most-of-exercise-4.2">Most of Exercise 4.2</h3>
 <p>Suppose prior odds of hypothesis <span class="math inline">\(H_i\)</span> are <span class="math inline">\(s_i\)</span>, and the probability of good widget under <span class="math inline">\(H_i\)</span> is <span class="math inline">\(p_i\)</span> and of a bad one is <span class="math inline">\(q_i=1-p_i\)</span>.</p>
 <p>For <span class="math inline">\(n_0\)</span> bad widgets and <span class="math inline">\(n_1\)</span> good ones the posterior odds are</p>
 <p><span class="math display">\[ \ldots   :L_i=s_i p_i^{n_0} q_i^{n_1}: \ldots\]</span></p>
 <p>If the fraction of bad widgets is <span class="math inline">\(f\)</span> then we have <span class="math inline">\(n_0=f n\)</span>, <span class="math inline">\(n_1=(1-f)n\)</span> and posterior odds</p>
 <p><span class="math display">\[ \ldots   :L_i=s_i (p_i^{1-f})^n (q_i^{f})^{n}: \ldots\]</span></p>
 <p>For two different hypothesis the ratio <span class="math inline">\(L_i: L_j\)</span> does not go to zero or infinity precisely when <span class="math inline">\(p_i^{1-f} q_i^{f}=p_j^{1-f} q_j^{f}\)</span>. Solving for <span class="math inline">\(f\)</span> we get:</p>
-<p><span class="math inline">\(\frac{p_i}{p_j}=(\frac{q_j p_i}{q_i p_j})^f\)</span></p>
-<p><span class="math inline">\(\ln \frac{p_i}{pj}=f\ln \frac{q_j p_i}{q_i p_j}\)</span></p>
-<p><span class="math inline">\(f= \frac{\ln \frac{p_i}{pj}}{\ln \frac{q_j}{q_i}+\ln \frac{p_i}{pj}}\)</span></p>
-<p><span class="math inline">\(f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}\)</span></p>
+<p><span class="math display">\[\frac{p_i}{p_j}=(\frac{q_j p_i}{q_i p_j})^f\]</span></p>
+<p><span class="math display">\[\ln \frac{p_i}{pj}=f\ln \frac{q_j p_i}{q_i p_j}\]</span></p>
+<p><span class="math display">\[f= \frac{\ln \frac{p_i}{pj}}{\ln \frac{q_j}{q_i}+\ln \frac{p_i}{pj}}\]</span></p>
+<p><span class="math display">\[f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}\]</span></p>
 <p>For the case in section 4.4 we have <span class="math inline">\(p_C=1/100\)</span>, <span class="math inline">\(p_A=2/3\)</span>, <span class="math inline">\(q_C=99/100\)</span>, <span class="math inline">\(q_A=1/3\)</span>,</p>
 <p><span class="math inline">\(f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}=\frac{1}{\frac{\ln \frac{297}{100}}{\ln \frac{200}{3} }+1}=0.7941552598429126932775507544006687123649252334748242\)</span></p>
-<h5 id="some-of-exercise-4.3">Some of Exercise 4.3</h5>
+<h3 id="some-of-exercise-4.3">Some of Exercise 4.3</h3>
 <p>We now consider the case of 4 hypothesis <span class="math inline">\(A, B, C\)</span> as before and <span class="math inline">\(F\)</span>. We remark that since we will study the evolution of our beliefs in the scenario where about <span class="math inline">\(1/4\)</span> of widgets are defective, neither <span class="math inline">\(C\)</span> nor the hypothetical <span class="math inline">\(E\)</span> from the first part of this exercise under which most widgets are good are of any importance, so we can, in fact just study how <span class="math inline">\(F\)</span> fairs against <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
 <p>The likeliehoods of data of <span class="math inline">\(n/4\)</span> bad widgets and <span class="math inline">\(3n/4\)</span> good ones under <span class="math inline">\(A:B:F\)</span> are</p>
 <p><span class="math display">\[ \left[\left(\frac{1}{3}\right)^{\frac{1}{4}} \left(\frac{2}{3}\right)^{\frac{3}{4}} \right]^n: \left[\left(\frac{1}{6}\right)^{\frac{1}{4}} \left(\frac{5}{6}\right)^{\frac{3}{4}} \right]^n: \left[\left(\frac{1}{4}\right)^{\frac{1}{4}} \left(\frac{3}{4}\right)^{\frac{3}{4}} \right]^n \]</span></p>
 <p><span class="math display">\[0.5606^n: 0.5573^n:0.5699^n\]</span></p>
 <p>So the evidence for <span class="math inline">\(F\)</span> is (in Jaynesean db) <span class="math inline">\(10(\log_{10} 0.5699^n- \log_{10} (0.5606^n+ 0.5573^n))\)</span> which for large <span class="math inline">\(n\)</span> is <span class="math inline">\(n\cdot 10 \log_{10} \frac{0.5699}{0.5606} \approx n \cdot 0.0714556 \approx \frac{n}{14}\)</span>. So we would need about 14 samples per decibel of evidence in favor of <span class="math inline">\(F\)</span>, i.e. multiple hundreds before something like 20db of evidence for <span class="math inline">\(F\)</span> over <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> can be collected.</p>
-<h5 id="exercise-4.4">Exercise 4.4</h5>
+<h3 id="exercise-4.4">Exercise 4.4</h3>
 <p>This problem is simplified if we assume that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are the only hypothesis under consideration. Then evidence for <span class="math inline">\(A\)</span> is evidence against <span class="math inline">\(B\)</span> and vice versa. In addition, the individual widget tests are independent both under <span class="math inline">\(A=\overline{B}\)</span> and <span class="math inline">\(B=\overline{A}\)</span>.</p>
 <p>So each negative test gives <span class="math inline">\(10 \log_{10} \frac{1/3}{1/6}=3\)</span> db evidence for <span class="math inline">\(A\)</span>. If <span class="math inline">\(B\)</span> is true, the probability of this is <span class="math inline">\(\frac{1}{6}\)</span>.</p>
 <p>And a positive gives <span class="math inline">\(10 \log_{10} \frac{2/3}{5/6}=-0.97\)</span> db evidence against <span class="math inline">\(A\)</span>. If <span class="math inline">\(B\)</span> is true, the probability of this is <span class="math inline">\(\frac{5}{6}\)</span>.</p>
@@ -217,7 +217,7 @@ Now consider the sum $X_1,X_2$ and $Y_1, Y_2$ independent. Form $X_1+Y_1, X_2Y_2
 <p>First we deal with the moments of <span class="math inline">\(T\)</span>. Differentiating the equationfor <span class="math inline">\(f\)</span> we have</p>
 <p><span class="math display">\[f&#39;=\frac{5}{6}+\frac{1}{6}f^4+\frac{1}{6}x 4 f&#39; f^3\]</span></p>
 <p>Since <span class="math inline">\(f(1)=1\)</span> we get <span class="math inline">\(f&#39;(1)=1+\frac{4}{6}f&#39;(1)\)</span>, <span class="math inline">\(f&#39;(1)=3\)</span>.</p>
-<p>We have <span class="math inline">\(E(T_{20})=(f^{20})&#39;(1)=20 f&#39;(1)f(1)^{19}=20\times 3=60\)</span>. This tells us the expected time to get 20 db for <span class="math inline">\(B\)</span> is 60 samples.</p>
+<p>We have <span class="math inline">\(E(T_{20})=(f^{20})&#39;(1)=20 f&#39;(1)f(1)^{19}=20\times 3=60\)</span>. This tells us the expected time to get 20 db for <span class="math inline">\(B\)</span> is 60 samples. (For general <span class="math inline">\(k\)</span> we get <span class="math inline">\(E(T_k)=3k\)</span>.)</p>
 <p>We will now find the variance of this estimate.</p>
 <p>Differentiating again</p>
 <p><span class="math display">\[f&#39;&#39;= \frac{1}{6}4f&#39; f^3+  \frac{1}{6} 4 f&#39; f^3+\frac{1}{6}x 4 f&#39;&#39; f^3+ \frac{1}{6}x 4 f&#39;3 f&#39;f^2\]</span></p>
@@ -245,6 +245,8 @@ Now consider the sum $X_1,X_2$ and $Y_1, Y_2$ independent. Form $X_1+Y_1, X_2Y_2
 <p>as before.</p>
 <p>One advantge of using this method is that it can handle the unapproximated problem as well.</p>
 <p>Indeed, if we keep the leftward step <span class="math inline">\(0.97\)</span> instead of making it <span class="math inline">\(1\)</span>, <span class="math inline">\(E(Z_1)\)</span> changes a bit to <span class="math inline">\(-\frac{1}{3}+\frac{5}{6}0.03=\frac{-200+15}{600}=-\frac{37}{120}\)</span>, and the <span class="math inline">\(E(X)\)</span> is no longer <span class="math inline">\(-k\)</span>, but is between <span class="math inline">\(-k\)</span> and <span class="math inline">\(-k-0.97\)</span>, so we get an estimate <span class="math inline">\(\frac{120}{54}k\leq E(T_k)&lt; \frac{120}{54}(k+0.97).\)</span> Similar estimate can be found for the variance of <span class="math inline">\(T_k\)</span> as well.</p>
+<p>###Exercise 4.5</p>
+<p>It seems that from Bayesian perspective the conjecture is tautological. If “reliability of conclusion” means some precise minimum of posterior odds ratio in favor of the <span class="math inline">\(i\)</span>th hypothesis, then one has to keep collecting data until that odds ratio is achieved. So, tautologically, the minimum ASN is obtained by the procedure in which one stops collecting further data after the requisite odds ratio (for any of the hypothesis under consideration) is attained for the first time.</p>
 <!----
 
 <br/><br/>

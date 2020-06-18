@@ -199,7 +199,7 @@ To that end we write
  $U^c_i=U_i$  and hence $\frac{P(D_2|H_iX)}{P(D_2|\overline{H}_iX)}=1$. This is exactly what we wanted to prove.
  
  
- #### Some remarks on sequential vs. batch updates.
+ ### Some remarks on sequential vs. batch updates.
  
  (See formula 4.11; the discussion is in the context of section  4.4 and formula 4.44.)
  
@@ -266,7 +266,7 @@ and compare it to the "batch" calculation:
 $$C_2:A_2+B_2= \frac{99^2}{100^2}: \frac{10^6}{11}\frac{1}{3^2}+ \frac{10^7}{11} \frac{1}{6^2}=\frac{99^2}{100^2}: \frac{14 \cdot 10^6}{11\cdot 6^2}.$$
 
 
-##### Most of Exercise 4.2
+### Most of Exercise 4.2
 
 Suppose prior odds of hypothesis $H_i$ are $s_i$, and the probability of good widget under $H_i$ is $p_i$ and of a bad one is $q_i=1-p_i$. 
 
@@ -280,21 +280,21 @@ $$ \ldots   :L_i=s_i (p_i^{1-f})^n (q_i^{f})^{n}: \ldots$$
 
 For two different hypothesis the ratio $L_i: L_j$ does not go to zero or infinity precisely when $p_i^{1-f} q_i^{f}=p_j^{1-f} q_j^{f}$. Solving for $f$ we get:
 
- $\frac{p_i}{p_j}=(\frac{q_j p_i}{q_i p_j})^f$
+$$\frac{p_i}{p_j}=(\frac{q_j p_i}{q_i p_j})^f$$
  
 
-$\ln \frac{p_i}{pj}=f\ln \frac{q_j p_i}{q_i p_j}$
+$$\ln \frac{p_i}{pj}=f\ln \frac{q_j p_i}{q_i p_j}$$
 
-$f= \frac{\ln \frac{p_i}{pj}}{\ln \frac{q_j}{q_i}+\ln \frac{p_i}{pj}}$
+$$f= \frac{\ln \frac{p_i}{pj}}{\ln \frac{q_j}{q_i}+\ln \frac{p_i}{pj}}$$
 
-$f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}$
+$$f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}$$
 
 For the case in section 4.4 we have $p_C=1/100$, $p_A=2/3$, $q_C=99/100$, $q_A=1/3$,
 
 $f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}=\frac{1}{\frac{\ln \frac{297}{100}}{\ln \frac{200}{3} }+1}=0.7941552598429126932775507544006687123649252334748242$
 
 
-##### Some of Exercise 4.3
+### Some of Exercise 4.3
 We now consider the case of 4 hypothesis $A, B, C$ as before and $F$. We remark that since we will study the evolution of our beliefs in the scenario where about $1/4$ of widgets are defective, neither $C$ nor the hypothetical $E$ from the first part of this exercise under which most widgets are good are of any importance, so we can, in fact just study how $F$ fairs against $A$ and $B$.
 
 The likeliehoods of data of $n/4$ bad widgets and $3n/4$ good ones under $A:B:F$ are
@@ -307,7 +307,7 @@ So the evidence for $F$ is (in Jaynesean db) $10(\log_{10} 0.5699^n- \log_{10} (
 
 
 
-##### Exercise 4.4
+### Exercise 4.4
 
 This problem is simplified if we assume that $A$ and $B$ are the only hypothesis under consideration. Then evidence for $A$ is evidence against $B$ and vice versa. In addition, the individual widget tests are independent both under $A=\overline{B}$ and $B=\overline{A}$.
 
@@ -463,7 +463,7 @@ $$f'=\frac{5}{6}+\frac{1}{6}f^4+\frac{1}{6}x 4 f' f^3$$
 Since $f(1)=1$ we get $f'(1)=1+\frac{4}{6}f'(1)$, $f'(1)=3$.
 
 
-We have $E(T_{20})=(f^{20})'(1)=20 f'(1)f(1)^{19}=20\times 3=60$. This tells us the expected time to get 20 db for $B$ is 60 samples.
+We have $E(T_{20})=(f^{20})'(1)=20 f'(1)f(1)^{19}=20\times 3=60$. This tells us the expected time to get 20 db for $B$ is 60 samples. (For general $k$ we get $E(T_k)=3k$.)
 
 We will now find the variance of this estimate.
 
@@ -529,7 +529,9 @@ Indeed, if we keep the leftward step $0.97$ instead of making it $1$, $E(Z_1)$ c
 
 
 
+###Exercise 4.5
 
+It seems that from Bayesian perspective the conjecture is tautological. If "reliability of conclusion" means some precise minimum of posterior odds ratio in favor of the $i$th hypothesis, then one has to keep collecting data until that odds ratio is achieved. So, tautologically, the minimum ASN is obtained by the procedure in which one stops collecting further data after the requisite odds ratio (for any of the hypothesis under consideration) is attained for the first time.
 
 
 
