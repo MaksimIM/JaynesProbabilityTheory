@@ -38,4 +38,4 @@ and since $P(A|\overline{B}I)$ is bounded by $1$, as $q\to 1$ we do have $P(A|CI
 
 By taking more-sided dice we can even make  $P(A|B)$ arbitrarily small while keeping the other implications.
 
-An example "from life": $B=$"I'm in San Francisco" implies that the probability that $A|B=$"It is snowing around me" is very low. However, if I know $C=$"I'm in San Francisco and the date is February 5, 1976" then I am certain of $B|C$ (so $q=1$), but also certain of $A|C$.  
+An example "from life": $B=$"I'm in San Francisco" implies that the probability that $A$"It is snowing around me" conditional on $B$ is very low. However, if I know $C=$"I'm in San Francisco and the date is February 5, 1976" then I am certain of $B|C$ (so $q=1$), but also certain of $A|C$.  
