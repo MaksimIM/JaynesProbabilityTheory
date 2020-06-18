@@ -533,6 +533,8 @@ Indeed, if we keep the leftward step $0.97$ instead of making it $1$, $E(Z_1)$ c
 
 It seems that from a Bayesian perspective the conjecture is tautological. If "reliability of conclusion" means some precise minimum of posterior odds ratio in favor of the $i$th hypothesis, then one has to keep collecting data until that odds ratio is achieved. So, tautologically, the minimum ASN is obtained by the procedure in which one stops collecting further data after the requisite odds ratio (for any of the hypothesis under consideration) is attained for the first time.
 
+From the frequentist point of view the situation is more complicated. Instead of posterior probability/odds for a specific hypothesis, the frequentist guarantee on a procedure is in a form of a bound on probability of Type I (falsely rejecting a true hypothesis, low p value) and Type II (accepting a false hypothesis, high power) errors is posited, and a procedure that confirms to these bounds is evaluated based on  its ASN.  It is relatively easy to see tha for testing binary hypothesis, if Bayesian/sequential procedure always hits the required posterior odds exactly, without overshooting (for example, in the setup of Exercise 4.4 the evidence is always either plus or minus 1 and the bounds are integers), then sequential test will have the smallest ASN, and, thus, in general, it will have closed to the smallest ASN (this is Section A.7 of Wald's "Sequential Analysis" book). However without such an assumption such optimality of sequential tests is harder to establish. Nonetheless it was done by Wald and Wolfowitz in 1948 ("Optimum character of the sequential ratio test"). 
+
 
 
 
