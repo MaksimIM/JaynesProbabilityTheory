@@ -110,7 +110,7 @@ The code shows that to be 90% confident of getting all 5 colors we need 15 draws
 
 ## Exercise 3.3
 
-We can obtain an upper bound on $p(k|colors=3)$ like so:
+First we assume a uniform prior over k: $p(k) = \frac{1}{50}$. We can obtain an upper bound on $p(k|colors=3)$ like so:
 $$
 \begin{aligned}
 p(k|colors=3) &= \frac{\sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(N_1, N_2, ... N_k|k)p(k)}{\sum_{k}p(colors=3|k)p(k)}\\
@@ -120,9 +120,21 @@ p(k|colors=3) &= \frac{\sum_{all N_1 ... N_k} p(colors=3|k, N_1, N_2, ... N_k)p(
 \end{aligned}
 $$
 
-We assume a uniform prior over k: $p(k) = \frac{1}{50}$. The first step is taken finding a lower bound on the denominator. We know that $p(colors=3|k=3) > 0.15$, so the denominator must be greater than $0.15/50 = 1/334$. 
+The first step uses the following lower bound on the denominator. 
+$$
+\begin{aligned}
+p(colors=3|k=3) &= \sum_{all N_1 ... N_k}p(colors=3|k=3,N_1,N_2,N_3)p(N_1, N_2, ... N_k|k)\\
+&> \min_{all N_1 ... N_k}p(colors=3|k=3,N_1,N_2,N_3)\\
+&= p(colors=3|k=3,N_1=48,N_2=1,N_3=1)\\
+&> p(\overline{A_1}\overline{A_2}\overline{A_3}|k=3,N_1=48,N_2=1,N_3=1)\\ 
+&= 0.15\\
+\end{aligned}
+$$
 
-The second step is taken because it contains a weighted average. We can find an upper bound over the weighted average by finding the $N_1, N_2, ... N_k$ that maximises it.
+
+so the denominator must contain a term greater than $0.15/50 = 1/334$, hence the sum is also greater than that value. The value $0.15$ is calculated in the [Colab](https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing) code.
+
+The second step is taken because it contains a weighted average, same as above. We can find an upper bound over the weighted average by finding the $N_1, N_2, ... N_k$ that maximises $p(colors=3|k, N_1, N_2, ... N_k)$. Note that this makes the proof entirely independent of the prior $p(N_1, N_2, ... N_k|k)$.
 
 The third step is found because the statement $colors=3$ is the logical sum of $k\choose3$ conjunctions of the form $\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k$, each of which has 3 A's negated. This sum is bounded by ${k\choose3}\max\limits_{N_1,...,N_k}[p(\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k|...)]$. 
 
@@ -130,22 +142,20 @@ $p(\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k|k, N_1, N_2, ... N_k)$ ca
 
 $$p(\overline{A_1}\overline{A_2}\overline{A_3}|A_4...A_k...)p(A_4...A_k|...) =[1-p(A_1+A_2+A_3|A_4...A_k...)]p(A_4...A_k|...)$$
 
-From then it's similar to the calculations from Exercise 3.2.
+An equivalent but more efficient formula for this likelihood can be found below in the alternative approach below. From either formula it's similar to the calculations from Exercise 3.2, and straightforward to implement in python.
 
-We run the calculations with the code in the same [Colab](https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing) as above, and show that we can be at least 99% confident that $3 \leq k \leq 20$. I suspect the upper bound can be tightened significantly with weak assumptions.
-
-
+We run the calculations using python in the same [Colab](https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing) as above, and show that we can be *at least* 99% confident that $3 \leq k \leq 20$. Priors $p(k)$ that favor lower $k$ will tighten the bound.
 
 
 
 
-#### Alternative approach: Data likeliehood estimates, no prior.
+#### Alternative approach: Data likelihood estimates, no prior.
 
 Suppose the color counts in the bin are given by the tuple $\vec{N}=(N_1, N_2, \ldots, N_k)$ with $N_i\geq 1$,  $\sum N_i=50$ and $k\geq 1$. Of course under this assumption the number of colors in the bin is just $k$. 
 
-If we had a prior $p(\vec{N})$ for various $\vec{N}$ tuples, we would compute posterior over same  tuples by  multiplying the $p(\vec{N})$ by likeliehood of getting $3$ colors from a sample of 20 balls $L(\vec{N})$ (which is fully determined by $\vec{N}$, see below), and renormalizing. 
+If we had a prior $p(\vec{N})$ for various $\vec{N}$ tuples, we would compute posterior over same  tuples by  multiplying the $p(\vec{N})$ by likelihood of getting $3$ colors from a sample of 20 balls $L(\vec{N})$ (which is fully determined by $\vec{N}$, see below), and renormalizing. 
 
-Let's  try to see what the data likeliehood would be $L(\vec{N})$ for different $N_i$ tuples (to see how much probability of each $N_i$ tuple is suppressed/boosted by the data).
+Let's  try to see what the data likelihood would be $L(\vec{N})$ for different $N_i$ tuples (to see how much probability of each $N_i$ tuple is suppressed/boosted by the data).
 
 So, again, we suppose the numbers of balls of different colors in the urn are $N_1, N_2,\ldots, N_k$. What is the probability of event "a sample of 20 contains balls of exactly 3 colors"? First we choose the 3 colors, $i_1$, $i_2$ and $i_3$ and then apply Exercise 3.2 to the triple $N_{i_1}, N_{i_2}, N_{i_3}$ to get 
 
@@ -158,9 +168,9 @@ $\sum_{triples} {N_{i_1}+ N_{i_2}+ N_{i_3}  \choose 20} - (k-2) \sum_{pairs} {N_
 
 (The total number of draws is always the same ${50 \choose 20}$.)
 
-Now, $Q(x)=20!{x\choose 20}= x(x-1)\ldots (x-19)$  is  increasing in $x>19$, with ratio $Q(x+1)/Q(x)=  x/(x-19)$; for $x$ near 50 this is a factor of about $1.7$. So, at first glance,  those $k$ tuples with largest possible $i_1+i_2+i_3$ will have highest data likeliehood. All those with $i_1+i_2+i_3=50$ have $k=3$ of course. The $\vec{N}=[48, 1, 1]$ has $47\choose 17$ sequences, and data likeliehood of about $0.06$. The $\vec{N}=[17,17,16]$ has data likeliehood $0.99995$.
+Now, $Q(x)=20!{x\choose 20}= x(x-1)\ldots (x-19)$  is  increasing in $x>19$, with ratio $Q(x+1)/Q(x)=  x/(x-19)$; for $x$ near 50 this is a factor of about $1.7$. So, at first glance,  those $k$ tuples with largest possible $i_1+i_2+i_3$ will have highest data likelihood. All those with $i_1+i_2+i_3=50$ have $k=3$ of course. The $\vec{N}=[48, 1, 1]$ has $47\choose 17$ sequences, and data likelihood of about $0.06$. The $\vec{N}=[17,17,16]$ has data likelihood $0.99995$.
 
-The $\vec{N}=[51-k, 1, \ldots, 1]$ gives data likeliehood ${k-1\choose 2}{50-k \choose 17}$, which goes 
+The $\vec{N}=[51-k, 1, \ldots, 1]$ gives data likelihood ${k-1\choose 2}{50-k \choose 17}$, which goes 
 
 
 
@@ -170,22 +180,22 @@ The $\vec{N}=[51-k, 1, \ldots, 1]$ gives data likeliehood ${k-1\choose 2}{50-k \
 | $1.46\cdot 10^{-1}$ | $1.34\cdot 10^{-1}$| $1.13\cdot 10^{-1}$| $9.01\cdot 10^{-2}$| $6.78\cdot 10^{-2}$|
 | $5.20\cdot 10^{-3}$| $2.97\cdot 10^{-3}$| $1.63\cdot 10^{-3}$| $8.61\cdot 10^{-4}$ | $4.35\cdot 10^{-4}$|
 |$2.20\cdot 10^{-6}$| $6.96\cdot 10^{-7}$| $1.96\cdot 10^{-7}$| $4.80\cdot 10^{-8}$| $9.82\cdot 10^{-9}$|
-| $1.58\cdot 10^{-9}$| $1.78\cdot 10^{-10}$ | $1.05\cdot 10^{-11}$ | $0$ | 
+| $1.58\cdot 10^{-9}$| $1.78\cdot 10^{-10}$ | $1.05\cdot 10^{-11}$ | $0$ |
 
 
 
 So when $k$ reaches 16 even the most advantageous color counts $\vec{N}$ are suppressed at least $10^4$ times more than the most disadvantageous ones with $k=3$. So it seems no matter what reasonable prior for the color counts one takes the posterior should be mostly supported on $3\leq k\leq 16.$
 
-**Remark**: For exact inference, it is not sufficient to have a prior over $k$, since same prior over $k$ may correspond to different priors over $\vec{N}$, producing different posteriors (the reason being that data likeliehoods are not determined by $k$). Thus a prior over $\vec{N}$ is needed. Of course, approximate inference a prior over $k$ may be sufficient (as in the first approach above;  however it seems likely that a reasonable prior over $\vec{N}$ will not result in a uniform prior over $k$).
+**Remark**: For exact inference, it is not sufficient to have a prior over $k$, since same prior over $k$ may correspond to different priors over $\vec{N}$, producing different posteriors (the reason being that data likelihoods are not determined by $k$). Thus a prior over $\vec{N}$ is needed. Of course, approximate inference a prior over $k$ may be sufficient (as in the first approach above;  however it seems likely that a reasonable prior over $\vec{N}$ will not result in a uniform prior over $k$).
 
 **Discussion of priors**
  How to get  a prior  over $\vec{N}$ is not clear to me. One option is to model the urn being filled by sampling from an (infinite ) population.
  We can use several versions: 
- 
+
  Version 1: The population has $K$ colors, with frequencies $p_1, \ldots, p_K$. The set of such populations is the union of $K-1$ dimensional simplexes for $K=1, 2, \ldots$.
- 
+
  Version 2: The population has infinitely many colors and probabilities of each color $p_i$.  The set of such populations is the "infinite dimensional simplex" $p_i\geq 0$, $\sum p_i=1$. 
- 
+
  For each population (of either kind), the probability of every $\vec{N}$ is determined. So if we had a prior over the population types it would determine a corresponding prior over fully specified (though maybe still intractable) inference problem.
 
 How to get a prior over population types also seems unclear. One could try to take some maximal entropy priors, or do some further hierarchical modeling, but since I do not plan to actually implement the inference, I will not go into details of this.
