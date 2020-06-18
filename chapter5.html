@@ -21,5 +21,20 @@
 <body>
 <h1 id="queer-uses-for-probability-theory">Queer uses for probability theory</h1>
 <p><span class="math inline">\(\leftarrow\)</span> <a href="./index.html">Back to Chapters</a></p>
+<h2 id="exercise-5.3">Exercise 5.3</h2>
+<p>From 5.31 we want <span class="math inline">\(x&gt;y\)</span> but</p>
+<p><span class="math display">\[\log \frac{x}{1-x} +\log \frac{a_x}{b_x}&lt;  \log \frac{y}{1-y}+ \log \frac{a_y}{b_y}  \]</span></p>
+<p>i.e. </p>
+<p><span class="math display">\[\log \frac{x}{1-x} -    \log \frac{y}{1-y}  &lt;\log \frac{a_y}{b_y} -\log \frac{a_x}{b_x} \]</span></p>
+<p>or, multiplicatively</p>
+<p><span class="math display">\[\frac{x(1-y)}{y(1-x)}&lt; \frac{a_y b_x}{a_x b_y}.\]</span></p>
+<p>This is of course very possible. It means simply that the level of trust of N is sufficiently different between X and Y that the the difference of evidence perceived by X and Y from the announcement is bigger than their prior difference of evidences.</p>
+<h2 id="exercise-5.5">Exercise 5.5</h2>
+<p>Everything in this exercise is conditional on <span class="math inline">\(I\)</span>.</p>
+<p><strong>If</strong> the “graphical model” assumption <span class="math inline">\(C\to B\to A\)</span>, is true (meaning that <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> are independent conditional on <span class="math inline">\(B\)</span>), then 5.43 becomes</p>
+<p><span class="math display">\[P(A|CI)=qP(A|BI)+(1-q)P(A|\overline{B}I)\]</span></p>
+<p>and since <span class="math inline">\(P(A|\overline{B}I)\)</span> is bounded by <span class="math inline">\(1\)</span>, as <span class="math inline">\(q\to 1\)</span> we do have <span class="math inline">\(P(A|CI) \to P(A|BI).\)</span></p>
+<p><strong>In general</strong>, however, even <span class="math inline">\(q=1\)</span> does not imply closeness of <span class="math inline">\(P(A|BI)\)</span> and <span class="math inline">\(P(A|CI)\)</span>. Suppose we have a fair 4 sided die. Let <span class="math inline">\(C\)</span> be the event “<span class="math inline">\(4\)</span> is rolled”, <span class="math inline">\(B\)</span> the event “the result is even”, <span class="math inline">\(A\)</span> the event “the result is 1 or 2”. Then <span class="math inline">\(q=P(B|C)=1\)</span>, but <span class="math inline">\(P(A|C)=0\)</span> while <span class="math inline">\(P(A|B)=1/2\)</span>.</p>
+<p>Remark: By taking more-sided dice we can even make <span class="math inline">\(P(A|B)\)</span> arbitrarily small while keeping the other implications.</p>
 </body>
 </html>
