@@ -36,4 +36,6 @@ and since $P(A|\overline{B}I)$ is bounded by $1$, as $q\to 1$ we do have $P(A|CI
 
 **In general**, however, even $q=1$ does not imply closeness of $P(A|BI)$ and $P(A|CI)$. Suppose we have a fair 4 sided die. Let $C$ be the event "$4$ is rolled", $B$ the event "the result is even", $A$ the event "the result is 1 or 2". Then $q=P(B|C)=1$, but $P(A|C)=0$ while $P(A|B)=1/2$. 
 
-Remark: By taking more-sided dice we can even make  $P(A|B)$ arbitrarily small while keeping the other implications.
+By taking more-sided dice we can even make  $P(A|B)$ arbitrarily small while keeping the other implications.
+
+An example "from life": $B=$"I'm in San Francisco" implies that the probability that $A|B=$"It is snowing around me" is very low. However, if I know $C=$"I'm in San Francisco and the date is February 5, 1976" then I am certain of $B|C$ (so $q=1$), but also certain of $A|C$.  
