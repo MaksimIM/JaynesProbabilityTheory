@@ -272,7 +272,7 @@ Suppose prior odds of hypothesis $H_i$ are $s_i$, and the probability of good wi
 
 For $n_0$ bad widgets and $n_1$ good ones the posterior odds are 
 
-$$ \ldots   :L_i=s_i p_i^{n_0} q_i^{n_1}: \ldots$$
+$$ \ldots   : L_i : \ldots  = \ldots  : s_i p_i^{n_0} q_i^{n_1}: \ldots$$
 
 If the fraction of bad widgets is $f$ then we have $n_0=f n$, $n_1=(1-f)n$ and posterior odds
 
