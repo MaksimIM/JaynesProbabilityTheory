@@ -195,8 +195,10 @@ So when $k$ reaches 16 even the most advantageous color counts $\vec{N}$ are sup
  Version 1: The population has $K$ colors, with frequencies $p_1, \ldots, p_K$. The set of such populations is the union of $K-1$ dimensional simplexes for $K=1, 2, \ldots$.
 
  Version 2: The population has infinitely many colors and probabilities of each color $p_i$.  The set of such populations is the "infinite dimensional simplex" $p_i\geq 0$, $\sum p_i=1$. 
+ 
+  These two versions are actually in a way equivalent, the infinite simplex being union of by finite simplex strata (the difference being that each $d$-dimensional simplex appears countably many times). Because of this I will only consider Version 1. 
 
- For each population (of either kind), the probability of every $\vec{N}$ is determined. So if we had a prior over the population types it would determine a corresponding prior over fully specified (though maybe still intractable) inference problem.
+ For each population, the probability of every $\vec{N}$ is determined. So if we had a prior over the population types it would determine a corresponding prior over fully specified (though maybe still intractable) inference problem.
 
 How to get a prior over population types also seems unclear. One could try to take some maximal entropy priors, or do some further hierarchical modeling, but since I do not plan to actually implement the inference, I will not go into details of this.
 
