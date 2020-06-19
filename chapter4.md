@@ -43,7 +43,7 @@ Note that independence always means $P(D_1=x, D_2=y|H)=P(D_1=x|H) P(D_2=y|H)$ an
 With this in mind, we pick any pair of possible value pairs $D_1=x_1, D_2=y_1$ and $D_1=x_2, D_2=y_2$, fixed from now on, and form vectors $v_i=\begin{bmatrix}v_{i1} \\ v_{i2}\end{bmatrix}$ and $u_i=\begin{bmatrix}u_{i1} \\u_{i2}\end{bmatrix}$
 <!---$P(D_1=x_1|H_iX)=v^i_1$ and $P(D_1=x_2|H_iX)=v^i_2$, $P(D_2=y_1|H_iX)=u^i_1$ and $P(D_2=y_2|H_iX)=u^i_2$
 --->
-  
+
   
 
 
@@ -141,13 +141,13 @@ We will use the following property of 2D determinants. If $M$ and $N$ are 2 by 2
 $$D(M, N) :=\frac{1}{2}(\det (M+N)-\det M -\det N)$$
 
  is symmetric and bilinear in $M, N$.  This means 
- 
+
  $$D(M, N)=D(N, M)$$
- 
+
   and
-  
+
    $$D(M_1+M_2, N)=D(M_1, N)+D(M_1, N)$$
- 
+
   (and hence the same for second variable). Indeed, one computes
 
   $D(M, N)=\frac{1}{2}(M_{11}N_{22}+M_{22}N_{11}-M_{12}N_{21}-M_{21}N_{12})$
@@ -162,7 +162,7 @@ $\det (\sum M_i)=D(\sum M_i, \sum M_j)=\sum_{i, j} D(M_i, M_j)$
 Remark 5: We also have $D(\lambda M, N)=\lambda D(M, N)$, as usual in bilinearity, but we don't need this.
 
  Remark 6: In higher (possibly) dimensions, and using tensor language, we are saying that taking second exterior power, which is quadratic in the matrix input, is a restriction of a symmetric bilinear operation (on two inputs), $(M\wedge N)(\vec{a}\wedge\vec{b})=\frac{1}{2}[(M\vec{a})\wedge (N\vec{b})+(N\vec{a})\wedge (M\vec{b})]$
- 
+
  <!--- compare https://math.stackexchange.com/questions/1604461/action-of-a-matrix-on-the-exterior-algebra----->
 
 <!---Remrk 5: This is a little strange, but perhaps the following will fact can make slightly more palatable: if matrix $M$ a matrix encoding a PMF of a pair of binary random variables $X_1$ and $X_2$, and we assign value 0 to first outcome and 1 to the second one (or, equivalently, -1/2 to first and 1/2 to the second), then $\det M$ is the covariance $Cov(X_1, X_2)$
@@ -176,38 +176,38 @@ Now we can apply this to our problem. Let $M_i=h_i v_i u_i^T$ and $N_i=\sum_{i\n
 
 Our assumptions are that all $M_i$ and $N_j$ are rank 1 (i.e. have zero determinant). We now show that $M$ has rank $1$ (i.e. has zero determinant). 
 
- 
+
 To that end we write 
- 
+
  $$\det M=\sum_{j, k} D(M_j, M_k)$$
- 
+
  We want to see that this is zero. We know
- 
+
  $$0=\det (N_i)=\sum_{j\neq i, k\neq i} D(M_j, M_k)$$
- 
+
  Summing over $i$  we get (taking note that each $D(M_l, M_l)$ will apear $n-1$ times, while those $D(M_j, M_k)$ with $j\neq k$ will appear only $n-2$ times):
- 
+
  $$\sum_l D(M_l, M_l) +  (n-2)\sum_{j,k} D(M_j, M_k)=0$$
- 
+
  So, since $D(M_l, M_l)=0$,  as long as $n\neq 2$ we have what we want.
- 
- 
+
+
  This gives $M=vu^T$. Going back to $M=M_i+N_i$ we again see two rank one matrices add up to a rank one matrix. We  conclude, just as in the case of 3 hypothesis, that for each specific $i$, either $V^c_i=V_i$  and hence $\frac{P(D_1|H_iX)}{P(D_1|\overline{H}_iX)}=1$ 
- 
+
  OR 
- 
+
  $U^c_i=U_i$  and hence $\frac{P(D_2|H_iX)}{P(D_2|\overline{H}_iX)}=1$. This is exactly what we wanted to prove.
- 
- 
+
+
  ## Some remarks on sequential vs. batch updates.
- 
+
  (See formula 4.11; the discussion is in the context of section  4.4 and formula 4.44.)
- 
+
  We are considering a batch of widgets from a single machine.
  We have three hypothesis, $A$ -- the machine has failure rate $\frac{1}{3}$ (prior probability $\frac{1}{11}$), $B$ -- the machine has failure rate $\frac{1}{6}$ (prior probability $\frac{10}{11}$), and $C$ -- the machine has failure rate $\frac{99}{100}$ (prior probability $\frac{1}{10^6}$).
- 
+
  Prior odds ratio is then (to a very good approximation) $\frac{10^6}{11} :  \frac{10^7}{11} : 1$.
- 
+
 
 
 The update rule for arbitrary data tells us how to compute the posterior odds  $A$ vs $B$ vs $C$: one takes the prior odds and multiplies each number by the likeliehood of data under corresponding hypothesis. For data of $m$ bad widgets  the likeliehhods are $\frac{1}{3^m},\frac{1}{6^m},\frac{99^m}{100^m}$.  This gives posterior odds:
@@ -260,7 +260,7 @@ This means that seeing the second bad widget is giving somewhat less evidence fo
 We can now finish the computation for the second update:
 
 $$ C_2 : \overline{C}_2 = \frac{99}{100} \frac{99}{100} :  \frac{2\cdot10^6}{11} \frac{7}{36}=\frac{99^2}{100^2}: \frac{14 \cdot 10^6}{11\cdot 6^2}$$
- 
+
 and compare it to the "batch" calculation:
 
 $$C_2:A_2+B_2= \frac{99^2}{100^2}: \frac{10^6}{11}\frac{1}{3^2}+ \frac{10^7}{11} \frac{1}{6^2}=\frac{99^2}{100^2}: \frac{14 \cdot 10^6}{11\cdot 6^2}.$$
@@ -276,16 +276,16 @@ $$ \ldots   : L_i : \ldots  = \ldots  : s_i p_i^{n_0} q_i^{n_1}: \ldots$$
 
 If the fraction of bad widgets is $f$ then we have $n_0=f n$, $n_1=(1-f)n$ and posterior odds
 
-$$ \ldots   :L_i=s_i (p_i^{1-f})^n (q_i^{f})^{n}: \ldots$$
+$$ \ldots   :L_i: \ldots = \ldots : s_i (p_i^{1-f})^n (q_i^{f})^{n}: \ldots$$
 
-For two different hypothesis the ratio $L_i: L_j$ does not go to zero or infinity precisely when $p_i^{1-f} q_i^{f}=p_j^{1-f} q_j^{f}$. Solving for $f$ we get:
+For two different hypotheses the ratio $L_i: L_j$ does not go to zero or infinity precisely when $p_i^{1-f} q_i^{f}=p_j^{1-f} q_j^{f}$. Solving for $f$ we get:
 
 $$\frac{p_i}{p_j}=(\frac{q_j p_i}{q_i p_j})^f$$
- 
 
-$$\ln \frac{p_i}{pj}=f\ln \frac{q_j p_i}{q_i p_j}$$
 
-$$f= \frac{\ln \frac{p_i}{pj}}{\ln \frac{q_j}{q_i}+\ln \frac{p_i}{pj}}$$
+$$\ln \frac{p_i}{p_j}=f\ln \frac{q_j p_i}{q_i p_j}$$
+
+$$f= \frac{\ln \frac{p_i}{p_j}}{\ln \frac{q_j}{q_i}+\ln \frac{p_i}{p_j}}$$
 
 $$f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}$$
 
@@ -312,7 +312,7 @@ So the evidence for $F$ is (in Jaynesean db) $10(\log_{10} 0.5699^n- \log_{10} (
 This problem is simplified if we assume that $A$ and $B$ are the only hypothesis under consideration. Then evidence for $A$ is evidence against $B$ and vice versa. In addition, the individual widget tests are independent both under $A=\overline{B}$ and $B=\overline{A}$.
 
  So each negative test gives $10 \log_{10} \frac{1/3}{1/6}=3$ db  evidence for $A$. If $B$ is true, the probability of this is $\frac{1}{6}$.
- 
+
   And a positive gives $10 \log_{10} \frac{2/3}{5/6}=-0.97$ db evidence against $A$. If $B$ is true, the probability of this is $\frac{5}{6}$.
 
 We now indeed have a random walk.  We start at $0$ db of evidence, and then at each step we either, with probability $\frac{1}{6}$ take a step of size $3$, or, with probability $\frac{5}{6}$ take a step of size $-0.97$.
@@ -394,31 +394,31 @@ $$a_k=\frac{-U(s_k)}{V'(s_k)}$$
  and
 
  $$p_{i-2}=\frac{a_1}{s_1^{i+1}}+\frac{a_2}{s_2^{i+1}}+\frac{a_3}{s_3^{i+1}}+\frac{a_4}{s_4^{i+1}}.$$  
- 
+
  We note that the roosts $s_k$ of $V(s)$ are the inverses of the roots $r_k$ in our previous "direct approach", and the formula above is thus identical with the one we got before.
-  
+
  One of the roots of $V(s)$ is $1$, but the corresponding coefficient $c_1$ must be $0$ otherwise the limit $p_i$ will not be zero. This gives $U(1)=0$ meaning $\frac{5}{6}(p+3)-3=0$, or $p=\frac{3}{5}.$
- 
+
  The next smallest in absolute value root is $s_2\approx 1.278$. The corresponding coefficient 
- 
+
  $$a_2=\frac{-U(s_2)}{V'(s_2)}\approx\frac{0.696}{1.225424}\approx1.775215$$
- 
+
  giving 
- 
+
  $$p_{20}\approx \frac{1.775215}{(1.2781)^{23}}\approx 0.0062772128$$
- 
+
  as before (within precision of calculations). We could compute $a_3$ and $a_4$ to make sure they are not huge and ignoring the other terms is justified, but we have already seen this in the previous method, so we omit this calculation.
- 
+
  **Remark**: The fact that one can use these two methods to compute the coefficients $c_k$ in the expansion of $p_i$ means that the inverse of the Vandermonde matrix is computable via partial fractions expansion. This has been noted in the literature.
+
  
- 
- 
+
  <!--
  c_2=0.850143379135273
- 
+
  0.7823728
  1.278163
- 
+
  s_2=1.278163072798148594862153110738810942822842764694097321941
  \frac{2.086860726169758341196705432583458069289117363026753422832365}{1.2254240576913640671052130911121400436831404124458669595926648}=1.702970260026799764438894848068807946323626715997234302853$
  ---->
@@ -490,11 +490,11 @@ For general $k$ we get $E(T_k^2)=k((k-1)9+66) +3k$, $Var(T_k)=60k$
 **Alternative solution using Wald identities.**
 
  We have in general $E(T_k)=3k$. Can be deduced much more quickly from the general First Wald Identity: if $T$ is a stopping time with respect to i.i.d. $Z_i$s with $E(T)$ finite, and $X=\sum_{i=1}^T Z_i$ then 
- 
+
  $$E(X)=E(T)E(Z_1).$$
- 
+
   In our case, assuming $E(T_k)$ is finite, we have $E_{Z_1}=3\frac{1}{6}-\frac{5}{6}=-\frac{1}{3}$, $X=-k$ (always), so $E(T_k)=3k$.
-  
+
   We still need to check  $E(T_k)<\infty$. This follows from (a generalization) of our analysis of the random walk on $\mathbb{Z}$, but in fact Hoeffding's inequality implies exponentially small bond on probability $T_k>n$, so $T_k$ actually has all moments finite.
 
 
@@ -507,10 +507,10 @@ For us $X=-k$, $E(Z_i)=-\frac{1}{3}$,   $E(T_k)=3k$  and
 
 $$Var{Z_i}=\frac{1}{6}(3
   +\frac{1}{3})^2+\frac{5}{6}(-1+\frac{1}{3})^2=100/54+20/54=120/54$$ 
-  
-  
+
+
   Plugging in, this gives:
-  
+
 $$k^2 -2 (-k) (-1/3) 3k +1/9 E(T_k^2)=120/54 \cdot 3k $$
 
 
@@ -556,5 +556,5 @@ Probability of this event is $\Phi_n(\frac{\sqrt{n}}{3}-\frac{k}{\sqrt{n}})$ whe
 
 <!----
 Consider the probability $p$ of ever getting $-1$ db of evidence. To compute it, we condition on the first step. Either, with probability $1/6$, we move we get that $-1$ right away, or with probability $5/6$ we move $3$ to the right, after which the probability of ever obtaining $-1$ db of evidence is $p^4$ (since the walk is skip-free, we would need to obtain $-1$ evidence 4 times, 3 times to undo the first step, and then one more (we are using the fact that the random walk is memoryless, so that probability of eventually moving left by one is the same no matter from what moment we start counting). We get $p=\frac{1}{6}+\frac{5}{6}p^4$. This has positive second derivative, so is convex, and so has at most 2 roots. One of them is $1$ and another is approximately $0.16732$. We argue below that $p=1$ is not possible, so $p\approx 0.16732$. The probability of 
- 
+
  ----->

@@ -142,9 +142,9 @@ $p(\overline{A_1}\overline{A_2}\overline{A_3}A_4...A_k|k, N_1, N_2, ... N_k)$ ca
 
 $$p(\overline{A_1}\overline{A_2}\overline{A_3}|A_4...A_k...)p(A_4...A_k|...) =[1-p(A_1+A_2+A_3|A_4...A_k...)]p(A_4...A_k|...)$$
 
-An equivalent but more efficient formula for this likelihood can be found below in the alternative approach below. From either formula it's similar to the calculations from Exercise 3.2, and straightforward to implement in python.
+An equivalent but more efficient formula for this likelihood can be found in the alternative approach below. From either formula it's similar to the calculations from Exercise 3.2, and straightforward to implement in python.
 
-We run the calculations using python in the same [Colab](https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing) as above, and show that we can be *at least* 99% confident that $3 \leq k \leq 20$. Priors $p(k)$ that favor lower $k$ will tighten the bound.
+We run the calculations using python in the same [Colab](https://colab.research.google.com/drive/1tkkGN7qkx3PzTtrOiNu0DY0EdcZp9p0F?usp=sharing) as above, and show that we can be *at least* 99% confident that $3 \leq k \leq 20$. Changing the prior $p(k)$ to one that favors lower $k$ will tighten the bound.
 
 
 
