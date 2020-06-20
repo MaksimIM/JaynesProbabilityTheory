@@ -133,14 +133,17 @@ Now consider the sum $X_1,X_2$ and $Y_1, Y_2$ independent. Form $X_1+Y_1, X_2Y_2
 <p>For <span class="math inline">\(n_0\)</span> bad widgets and <span class="math inline">\(n_1\)</span> good ones the posterior odds are</p>
 <p><span class="math display">\[ \ldots   : L_i : \ldots  = \ldots  : s_i p_i^{n_0} q_i^{n_1}: \ldots\]</span></p>
 <p>If the fraction of bad widgets is <span class="math inline">\(f\)</span> then we have <span class="math inline">\(n_0=f n\)</span>, <span class="math inline">\(n_1=(1-f)n\)</span> and posterior odds</p>
-<p><span class="math display">\[ \ldots   :L_i=s_i (p_i^{1-f})^n (q_i^{f})^{n}: \ldots\]</span></p>
-<p>For two different hypothesis the ratio <span class="math inline">\(L_i: L_j\)</span> does not go to zero or infinity precisely when <span class="math inline">\(p_i^{1-f} q_i^{f}=p_j^{1-f} q_j^{f}\)</span>. Solving for <span class="math inline">\(f\)</span> we get:</p>
+<p><span class="math display">\[ \ldots   :L_i: \ldots = \ldots : s_i (p_i^{1-f})^n (q_i^{f})^{n}: \ldots\]</span></p>
+<p>For two different hypotheses the ratio <span class="math inline">\(L_i: L_j\)</span> does not go to zero or infinity precisely when <span class="math inline">\(p_i^{1-f} q_i^{f}=p_j^{1-f} q_j^{f}\)</span>. Solving for <span class="math inline">\(f\)</span> we get:</p>
 <p><span class="math display">\[\frac{p_i}{p_j}=(\frac{q_j p_i}{q_i p_j})^f\]</span></p>
-<p><span class="math display">\[\ln \frac{p_i}{pj}=f\ln \frac{q_j p_i}{q_i p_j}\]</span></p>
-<p><span class="math display">\[f= \frac{\ln \frac{p_i}{pj}}{\ln \frac{q_j}{q_i}+\ln \frac{p_i}{pj}}\]</span></p>
+<p><span class="math display">\[\ln \frac{p_i}{p_j}=f\ln \frac{q_j p_i}{q_i p_j}\]</span></p>
+<p><span class="math display">\[f= \frac{\ln \frac{p_i}{p_j}}{\ln \frac{q_j}{q_i}+\ln \frac{p_i}{p_j}}\]</span></p>
 <p><span class="math display">\[f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}\]</span></p>
 <p>For the case in section 4.4 we have <span class="math inline">\(p_C=1/100\)</span>, <span class="math inline">\(p_A=2/3\)</span>, <span class="math inline">\(q_C=99/100\)</span>, <span class="math inline">\(q_A=1/3\)</span>,</p>
 <p><span class="math inline">\(f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}=\frac{1}{\frac{\ln \frac{297}{100}}{\ln \frac{200}{3} }+1}=0.7941552598429126932775507544006687123649252334748242\)</span></p>
+<h3 id="additional-notes-on-4.2-proof">Additional notes on 4.2 proof</h3>
+<p>The likelihood of hypothesis B is irrelevant to calculating the threshold <span class="math inline">\(f_t\)</span> because the the point where the evidence is balanced (in the limit) between hypotheses A and C only depends on the relationship between the two likelihoods. The prior probability of C is also irrelevant to the calculation.</p>
+<p><strong>Note</strong>: the value of <span class="math inline">\(f_t\)</span> given in the book is incorrect, the correct answer is above. This is noted in the <a href="http://ksvanhorn.com/bayes/jaynes/node7.html">errata</a>.</p>
 <h2 id="some-of-exercise-4.3">Some of Exercise 4.3</h2>
 <p>We now consider the case of 4 hypothesis <span class="math inline">\(A, B, C\)</span> as before and <span class="math inline">\(F\)</span>. We remark that since we will study the evolution of our beliefs in the scenario where about <span class="math inline">\(1/4\)</span> of widgets are defective, neither <span class="math inline">\(C\)</span> nor the hypothetical <span class="math inline">\(E\)</span> from the first part of this exercise under which most widgets are good are of any importance, so we can, in fact just study how <span class="math inline">\(F\)</span> fairs against <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
 <p>The likeliehoods of data of <span class="math inline">\(n/4\)</span> bad widgets and <span class="math inline">\(3n/4\)</span> good ones under <span class="math inline">\(A:B:F\)</span> are</p>
@@ -193,10 +196,10 @@ Now consider the sum $X_1,X_2$ and $Y_1, Y_2$ independent. Form $X_1+Y_1, X_2Y_2
 <p><strong>Remark</strong>: The fact that one can use these two methods to compute the coefficients <span class="math inline">\(c_k\)</span> in the expansion of <span class="math inline">\(p_i\)</span> means that the inverse of the Vandermonde matrix is computable via partial fractions expansion. This has been noted in the literature.</p>
 <p><!--
  c_2=0.850143379135273
- 
+
  0.7823728
  1.278163
- 
+
  s_2=1.278163072798148594862153110738810942822842764694097321941
  \frac{2.086860726169758341196705432583458069289117363026753422832365}{1.2254240576913640671052130911121400436831404124458669595926648}=1.702970260026799764438894848068807946323626715997234302853$
  ----></p>
@@ -266,7 +269,7 @@ Probability of this event is $\Phi_n(\frac{\sqrt{n}}{3}-\frac{k}{\sqrt{n}})$ whe
 
 <!----
 Consider the probability $p$ of ever getting $-1$ db of evidence. To compute it, we condition on the first step. Either, with probability $1/6$, we move we get that $-1$ right away, or with probability $5/6$ we move $3$ to the right, after which the probability of ever obtaining $-1$ db of evidence is $p^4$ (since the walk is skip-free, we would need to obtain $-1$ evidence 4 times, 3 times to undo the first step, and then one more (we are using the fact that the random walk is memoryless, so that probability of eventually moving left by one is the same no matter from what moment we start counting). We get $p=\frac{1}{6}+\frac{5}{6}p^4$. This has positive second derivative, so is convex, and so has at most 2 roots. One of them is $1$ and another is approximately $0.16732$. We argue below that $p=1$ is not possible, so $p\approx 0.16732$. The probability of 
- 
+
  ----->
 </body>
 </html>

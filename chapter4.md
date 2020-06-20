@@ -293,6 +293,14 @@ For the case in section 4.4 we have $p_C=1/100$, $p_A=2/3$, $q_C=99/100$, $q_A=1
 
 $f=\frac{1}{\frac{\ln \frac{q_j}{q_i}}{\ln \frac{p_j}{p_i}}+1}=\frac{1}{\frac{\ln \frac{297}{100}}{\ln \frac{200}{3} }+1}=0.7941552598429126932775507544006687123649252334748242$
 
+### Additional notes on 4.2 proof
+
+The likelihood of hypothesis B is irrelevant to calculating the threshold $f_t$ because the the point where the evidence is balanced (in the limit) between hypotheses A and C only depends on the relationship between the two likelihoods. The prior probability of C is also irrelevant to the calculation.
+
+**Note**: the value of $f_t$ given in the book is incorrect, the correct answer is above. This is noted in the [errata](http://ksvanhorn.com/bayes/jaynes/node7.html). 
+
+
+
 
 ## Some of Exercise 4.3
 We now consider the case of 4 hypothesis $A, B, C$ as before and $F$. We remark that since we will study the evolution of our beliefs in the scenario where about $1/4$ of widgets are defective, neither $C$ nor the hypothetical $E$ from the first part of this exercise under which most widgets are good are of any importance, so we can, in fact just study how $F$ fairs against $A$ and $B$.
