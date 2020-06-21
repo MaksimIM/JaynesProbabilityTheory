@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>chapter6</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="elementary-parameter-estimation">Elementary parameter estimation</h1>
+<p><span class="math inline">\(\leftarrow\)</span> <a href="./index.html">Back to Chapters</a></p>
+<h2 id="prior-6.14">Prior 6.14</h2>
+<p>Suppose we draw <span class="math inline">\(N\)</span> balls from a Bernoulli distribution of probability <span class="math inline">\(p\)</span> (i.e. each ball is red with probebility <span class="math inline">\(p\)</span> and white with probability <span class="math inline">\(1-p\)</span>). The probability we get <span class="math inline">\(R\)</span> reds is <span class="math inline">\({N \choose R} p^R (1-p)^{(N-R)}\)</span>. Now, if our prior probability for <span class="math inline">\(p\)</span> is uniform, then the probability of getting <span class="math inline">\(R\)</span> reds is <span class="math inline">\(\int_0^1 {N \choose R} p^R (1-p)^{(N-R)}\)</span>. Bayes 1763 paper tells us this is <span class="math inline">\(\frac{1}{N+1}\)</span> (see “Bayes’ billiards”, for example Story 8.3.2 in Blitzstein-Hwang, “Introduction to Probability”). So indeed, 6.14 is an uniformed prior in this sense as well.</p>
+<p>Remark: This works in multicolor setting as well: Suppose <span class="math inline">\(N\)</span> balls drawn from a large vat of balls in which there are balls of <span class="math inline">\(K\)</span> colors in total, with unknown fractions <span class="math inline">\(p_1, \ldots, p_K\)</span> of balls of each color. Then the probability of getting <span class="math inline">\(N_1\)</span> balls of the first color, <span class="math inline">\(N_2\)</span> balls of the second color etc. - averaged over all possible tuples <span class="math inline">\(p_1, \ldots, p_K\)</span> - is always the same, no matter what the numbers <span class="math inline">\(N_i\)</span> are. Since there are <span class="math inline">\({N+K-1\choose K-1}\)</span> such tuples, each one has probability <span class="math inline">\({N+K-1\choose K-1}^{-1}\)</span>; for <span class="math inline">\(K=2\)</span> this is <span class="math inline">\(\frac{1}{N+1}\)</span> as before.</p>
+<h2 id="summation-formula-6.16">Summation formula 6.16</h2>
+<p>To choose <span class="math inline">\(n+1\)</span> balls from <span class="math inline">\(N+1\)</span>: first choose the number <span class="math inline">\(R+1\)</span> of the <span class="math inline">\(r+1\)</span>st chosen ball; then choose <span class="math inline">\(r\)</span> balls from the first <span class="math inline">\(R\)</span>; and, finally, <span class="math inline">\(n-r\)</span> from the last <span class="math inline">\(N-R\)</span>.</p>
+<p>Remark: This also follows from the more obvious Vandermonde identity <span class="math inline">\(\sum_r {R \choose r}{N-R\choose n-r}={N \choose n}\)</span> by “upper index negation”, see <a href="https://trans4mind.com/personal_development/mathematics/series/summingBinomialCoefficients.htm">here</a>.</p>
+<h2 id="most-probable-value-6.21">Most probable value 6.21</h2>
+<p>This is the same as derivation of formulas 3.26 and 3.27 in Chapter 3 (see notes for that chapter).</p>
+<h2 id="and-6.29">6.25 and 6.29</h2>
+<p><span class="math display">\[E\left[\frac{R-r}{N-n}\right]=\frac{E[R+1]-(r+1)}{N-n}=\]</span></p>
+<p><span class="math display">\[\frac{\frac{(N+2)(r+1)}{n+2}-(r+1)}{N-n}=\frac{r+1}{n+2} \]</span></p>
+<p>In light of our remarks about the Prior 6.14 this <strong>is</strong> equivalent the fact that uniform is the <span class="math inline">\(\beta(1,1)\)</span>, conjugate prior to Bernoulli with the two parameters <span class="math inline">\(\alpha=1\)</span> and <span class="math inline">\(\beta=1\)</span> equal to the number of prior imaginary successes and failures.</p>
+</body>
+</html>
