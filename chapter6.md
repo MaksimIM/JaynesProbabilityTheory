@@ -253,4 +253,60 @@ $$\frac{S(N)}{S(0)}=\sum_{k=0}^{c}{N \choose k} \phi^{k}(1-\phi)^{N-k}\approx  \
 as wanted.
 
 
+Pluggin in $\phi=0.1, c=10, N=270$ gives $\frac{S(N)}{S(0)}\approx 10^{-4}$, etc.
+
+
+## 6.121, 6.122
+
+$$ p(n_1|I_J)=\int_0^s \frac{1}{s} \frac{s^{n_1}\exp\{-s\}}{n_1!} ds=\frac{1}{n_1}=\int_0^s \frac{s^{n_1-1}\exp\{-s\}}{(n_1-1)!}ds=\frac{1}{n_1}$$
+
+With help of  6.108 we also compute:
+
+$$p(c_1|I_J)=\sum_n p(c_1|n_1 I_J)p(n_1|I_J)=\sum_{n_1=c_1}^{\infty} {n_1 \choose n_1-c_1} \phi^{c_1}(1-\phi)^{n_1-c_1}\frac{1}{n_1}$$
+
+
+
+$$=\frac{\phi^{c_1}}{c_1}\sum_{n_1=c_1}^{\infty} {n_1-1\choose c_1-1}(1-\phi)^{n_1-c_1}= \frac{\phi^{c_1}}{c_1} \sum_{m=0}^{\infty} {m+c_1-1 \choose m} (1-\phi)^{m}= $$ 
+
+$$=\frac{\phi^{c_1}}{c_1} \frac{1}{\phi^{c_1}}=\frac{1}{c_1} $$
+
+And so
+
+$$p(n_1|c_1 \phi I_J)=p(n_1|I_J)\frac{p(c_1|n_1 \phi I_J)}{p(c_1|\phi I_J)}=\frac{c_1}{n_1}p(c_1|n_1 \phi I_J)$$
+
+confirming 6.121.
  
+ Now 
+ 
+ $$ p(n_1|c_1 \phi I_J)= \frac{c_1}{n_1}{n_1 \choose n_1-c_1} \phi^{c_1}(1-\phi)^{n_1-c_1} ={n-1\choose c_1-1}\phi^{c_1}(1-\phi)^{n_1-c_1}$$
+ 
+ So $\hat{n}_J$ is found by Jaynes' favorite method of equating 
+ 
+ $${n-2\choose c_1-1}\phi^{c_1}(1-\phi)^{n_1-1-c_1}={n-1\choose c_1-1}\phi^{c_1}(1-\phi)^{n_1-c_1}$$
+ 
+ $$ (n-c_1+1)=(n-1)(1-\phi)$$
+ 
+ $$n \phi =\phi+c_1-1$$
+ 
+$$\hat{n}_J=\frac{c_1-1+\phi}{\phi}$$
+
+And, finally, the expectation is (again, using 6.108)
+
+$$\sum_{n_1=c_1}^{\infty} n_1\frac{c_1}{n_1}{n_1 \choose n_1-c_1} \phi^{c_1}(1-\phi)^{n_1-c_1}=$$
+
+$$c_1 \phi^{c_1}\sum_m {m+c_1\choose m} (1-\phi)^m = \frac{c_1}{\phi}$$
+
+as wanted.
+
+## 6.140, 6.141, 6.142 
+
+TO DO
+
+
+## Exercise 6.8
+
+TO DO
+
+## Exercise 6.9 
+
+TO DO
