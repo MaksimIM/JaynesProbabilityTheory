@@ -21,17 +21,118 @@
 <body>
 <h1 id="elementary-parameter-estimation">Elementary parameter estimation</h1>
 <p><span class="math inline">\(\leftarrow\)</span> <a href="./index.html">Back to Chapters</a></p>
-<h2 id="prior-6.14">Prior 6.14</h2>
-<p>Suppose we draw <span class="math inline">\(N\)</span> balls from a Bernoulli distribution of probability <span class="math inline">\(p\)</span> (i.e. each ball is red with probebility <span class="math inline">\(p\)</span> and white with probability <span class="math inline">\(1-p\)</span>). The probability we get <span class="math inline">\(R\)</span> reds is <span class="math inline">\({N \choose R} p^R (1-p)^{(N-R)}\)</span>. Now, if our prior probability for <span class="math inline">\(p\)</span> is uniform, then the probability of getting <span class="math inline">\(R\)</span> reds is <span class="math inline">\(\int_0^1 {N \choose R} p^R (1-p)^{(N-R)}\)</span>. Bayes 1763 paper tells us this is <span class="math inline">\(\frac{1}{N+1}\)</span> (see “Bayes’ billiards”, for example Story 8.3.2 in Blitzstein-Hwang, “Introduction to Probability”). So indeed, 6.14 is an uniformed prior in this sense as well.</p>
+<h2 id="prior-6.14-and-formula-6.70">Prior 6.14 and formula 6.70</h2>
+<p>Suppose we draw <span class="math inline">\(N\)</span> balls from a Bernoulli distribution of probability <span class="math inline">\(p\)</span> (i.e. each ball is red with probability <span class="math inline">\(g\)</span> and white with probability <span class="math inline">\(1-g\)</span>). The probability we get <span class="math inline">\(R\)</span> reds is <span class="math inline">\({N \choose R} g^R (1-g)^{(N-R)}\)</span> (this is the “binomial monkey prior” of section 6.7). Now, if our prior probability for <span class="math inline">\(p\)</span> is uniform, then the probability of getting <span class="math inline">\(R\)</span> reds is <span class="math inline">\(\int_0^1 {N \choose R} g^R (1-g)^{(N-R)} dg\)</span>. Bayes 1763 paper tells us this is <span class="math inline">\(\frac{1}{N+1}\)</span> (see “Bayes’ billiards”, for example Story 8.3.2 in Blitzstein-Hwang, “Introduction to Probability”); in Jaynes’ book this is formula 6.70. So indeed, 6.14 is an uniformed prior in this sense as well.</p>
+<p>Remark: This is very different from “binomial monkey prior” because in this model data informs us about <span class="math inline">\(g\)</span>, whereas in the “binomial monkey prior” <span class="math inline">\(g\)</span> is fixed and can not be influenced by data.</p>
 <p>Remark: This works in multicolor setting as well: Suppose <span class="math inline">\(N\)</span> balls drawn from a large vat of balls in which there are balls of <span class="math inline">\(K\)</span> colors in total, with unknown fractions <span class="math inline">\(p_1, \ldots, p_K\)</span> of balls of each color. Then the probability of getting <span class="math inline">\(N_1\)</span> balls of the first color, <span class="math inline">\(N_2\)</span> balls of the second color etc. - averaged over all possible tuples <span class="math inline">\(p_1, \ldots, p_K\)</span> - is always the same, no matter what the numbers <span class="math inline">\(N_i\)</span> are. Since there are <span class="math inline">\({N+K-1\choose K-1}\)</span> such tuples, each one has probability <span class="math inline">\({N+K-1\choose K-1}^{-1}\)</span>; for <span class="math inline">\(K=2\)</span> this is <span class="math inline">\(\frac{1}{N+1}\)</span> as before.</p>
+<h2 id="section">6.15</h2>
+<p>No computation needed: with <span class="math inline">\(p(R|NI)\)</span> independent of <span class="math inline">\(R\)</span>, the only term in 6.13 left dependent on <span class="math inline">\(R\)</span> is <span class="math inline">\(p(D|NRI_0)\)</span>, so <span class="math inline">\(p(R|DNI)\sim p(D|NRI_0) \sim {R \choose r}{N-R\choose n-r}\)</span>.</p>
 <h2 id="summation-formula-6.16">Summation formula 6.16</h2>
 <p>To choose <span class="math inline">\(n+1\)</span> balls from <span class="math inline">\(N+1\)</span>: first choose the number <span class="math inline">\(R+1\)</span> of the <span class="math inline">\(r+1\)</span>st chosen ball; then choose <span class="math inline">\(r\)</span> balls from the first <span class="math inline">\(R\)</span>; and, finally, <span class="math inline">\(n-r\)</span> from the last <span class="math inline">\(N-R\)</span>.</p>
 <p>Remark: This also follows from the more obvious Vandermonde identity <span class="math inline">\(\sum_r {R \choose r}{N-R\choose n-r}={N \choose n}\)</span> by “upper index negation”, see <a href="https://trans4mind.com/personal_development/mathematics/series/summingBinomialCoefficients.htm">here</a>.</p>
 <h2 id="most-probable-value-6.21">Most probable value 6.21</h2>
 <p>This is the same as derivation of formulas 3.26 and 3.27 in Chapter 3 (see notes for that chapter).</p>
-<h2 id="and-6.29">6.25 and 6.29</h2>
+<h2 id="laplace-rule-6.25-6.29-and-6.73">Laplace rule: 6.25, 6.29 and 6.73</h2>
 <p><span class="math display">\[E\left[\frac{R-r}{N-n}\right]=\frac{E[R+1]-(r+1)}{N-n}=\]</span></p>
 <p><span class="math display">\[\frac{\frac{(N+2)(r+1)}{n+2}-(r+1)}{N-n}=\frac{r+1}{n+2} \]</span></p>
-<p>In light of our remarks about the Prior 6.14 this <strong>is</strong> equivalent the fact that uniform is the <span class="math inline">\(\beta(1,1)\)</span>, conjugate prior to Bernoulli with the two parameters <span class="math inline">\(\alpha=1\)</span> and <span class="math inline">\(\beta=1\)</span> equal to the number of prior imaginary successes and failures.</p>
+<p>In light of our remarks about the Prior 6.14 this <strong>is</strong> equivalent the fact that uniform is the <span class="math inline">\(\text{Beta}(1,1)\)</span>, conjugate prior to Bernoulli with the two parameters <span class="math inline">\(\alpha=1\)</span> and <span class="math inline">\(\beta=1\)</span> equal to the number of prior imaginary successes and failures, which is another instance of Laplace rule of succession, formula 6.73</p>
+<h2 id="formula-6.44">Formula 6.44</h2>
+<p>“Some calculation” is <span class="math inline">\({N+1\choose n+1}-{N\choose n}={N\choose n+1}\)</span>, leading to the correct formula 6.44</p>
+<p><span class="math display">\[p(R|r=0, NI_1)= {N\choose n+1}^{-1} {N-R\choose n}\]</span></p>
+<p>This is noted in the <a href="http://ksvanhorn.com/bayes/jaynes/node8.html">unofficial errata</a>.</p>
+<h2 id="some-of-exercise-6.1">Some of Exercise 6.1</h2>
+<p>As in Section 6.5</p>
+<p><span class="math display">\[P(R|r=n, NI_1) =S^{-1}{R \choose n}\]</span></p>
+<p>for <span class="math inline">\(R=1,\ldots, N-1\)</span>, and</p>
+<p><span class="math display">\[S={N+1\choose n+1}- {0 \choose n}-{N\choose n}={N+1\choose n+1}-{N\choose n}={N\choose n+1}\]</span></p>
+<p><span class="math display">\[p(R|r=n, DI_1)={N\choose n+1}^{-1}{R \choose n} \]</span></p>
+<p>for <span class="math inline">\(R=1,\ldots, N-1\)</span>, identical with <span class="math inline">\(p(R|r=n, DI_1)={N+1\choose n+1}^{-1}{R \choose n}\)</span> in that range, just renormailzed.</p>
+<p><strong>Expectation of <span class="math inline">\(R\)</span>:</strong></p>
+<p>Using <span class="math inline">\((R+1){R \choose n}=(n+1){R+1 \choose n+1}\)</span> get</p>
+<p><span class="math display">\[\sum_{R=1}^{N-1} (R+1) {R \choose n} = \sum_{R=1}^{N-1}  (n+1){R+1 \choose n+1}=(n+1) {N+1\choose n+2}\]</span></p>
+<p><span class="math display">\[E[R+1]=(n+1) {N\choose n+1}^{-1} {N+1\choose n+2}=\frac{(N+1)(n+1)}{n+2}\]</span></p>
+<p><strong>Expectation of <span class="math inline">\(R^2\)</span>:</strong></p>
+<p>Using <span class="math inline">\((R+2)(R+1){R \choose n}=(n+2)(n+1){R+2 \choose n+2}\)</span> get</p>
+<p><span class="math display">\[\sum_{R=1}^{N-1} (R+2)(R+1) {R \choose n} = \sum_{R=1}^{N-1} (n+2) (n+1){R+2 \choose n+2}=(n+2)(n+1) {N+2\choose n+3}\]</span></p>
+<p><span class="math display">\[E[(R+2)(R+1)]=\frac{n+1}{n+3} (N+1)(N+2)\]</span></p>
+<p>All the formulas for this case are the same as for uniform prior (with <span class="math inline">\(r=n\)</span>) with <span class="math inline">\(N\)</span> replaced by <span class="math inline">\(N-1\)</span>.</p>
+<p>So with <span class="math inline">\(p=\frac{r+1}{n+2}=\frac{n+1}{n+2}\)</span> as before, the mean is <span class="math inline">\(m=n+(N-1-n)p\)</span>, variance <span class="math inline">\(v=\frac{p(1-p)}{n+3} (N+1)(N-1-n)\)</span>.</p>
+<h2 id="concave-prior-on-r-via-improper-beta-prior-on-p.">Concave prior on <span class="math inline">\(R\)</span> via improper <span class="math inline">\(\beta\)</span> prior on <span class="math inline">\(p\)</span>.</h2>
+<p>Suppose we still fill the urn by random tossing, but our prior over <span class="math inline">\(g\)</span> is now non-uniform, but rather is given by (imporper, concave) prior</p>
+<p><span class="math display">\[\text{Beta}(0, 0)(g)\sim g^{-1}(1-g)^{-1}.\]</span></p>
+<p>Then the probability that from <span class="math inline">\(N\)</span> balls we have <span class="math inline">\(R\)</span> red ones is proportional to</p>
+<p><span class="math display">\[\int_0^1 {N \choose R} g^R (1-g)^{(N-R)} g^{-1}(1-g)^{-1} dg =\]</span></p>
+<p><span class="math display">\[ {N \choose R}\frac{1}{{N-2\choose R-1} (N-1)}\sim \frac{1}{R(N-R)}\]</span></p>
+<p>which is the “concave prior” 6.49.</p>
+<!----
+
+Suppose we still fill the urn by random tossing, but our prior over $g$ is now non-uniform, but rather is given by 
+
+$$\text{Beta}(\alpha, \beta)(g)\sim g^{\alpha-1}(1-g)^{\beta-1}.$$
+
+
+ When  $\alpha>0, \beta >0$ the integral of the right hand side is  $\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}= \text{B}(\alpha,\beta)$, and for $\alpha, \beta$ natural numbers this is $\frac{1}{(\alpha+\beta-1) {\alpha+\beta-2\choose \alpha-1}}$.  
+
+Then the probability that from $N$ balls we have $R$ red ones is proportional to 
+
+$$\int_0^1 {N \choose R} g^R (1-g)^{(N-R)} g^{\alpha-1}(1-g)^{\beta-1} dg =$$
+
+$${N \choose R} \frac{1}{N+\alpha+\beta -1} \frac{1}{\text{B}(\alpha+R, \beta+N-R))}$$
+
+Consider case $\alpha=\beta=0$ (this is not normalizable). We get ${N \choose R}\frac{1}{N-1}\frac{1}{{N-2\choose R-1} N}\sim \frac{1}{R(N-R)}$ which is the "concave prior" 6.49.
+----->
+<p>In general, if we start with <span class="math inline">\(\text{Beta}(\alpha, \beta)\)</span> and observe <span class="math inline">\(r\)</span> reds on <span class="math inline">\(n\)</span> draws, our posterior over the <strong>remainder of the bin</strong> is the same as the prior we would’ve gotten with <span class="math inline">\(\text{Beta}(\alpha+r, \beta+n-r)\)</span>. This is why the formula 6.52 looks like 6.17 with <span class="math inline">\(N\)</span> and <span class="math inline">\(n\)</span> reduced by <span class="math inline">\(2\)</span> and <span class="math inline">\(R\)</span> and <span class="math inline">\(r\)</span> reduced by <span class="math inline">\(1\)</span>. This also gives an alternative solution to Exercise 6.2 – under hypothesis <span class="math inline">\(r\geq 1\)</span>, <span class="math inline">\(n-r\geq 1\)</span> we can update on one of the red and one of the white samples first, so that posterior distribution of <span class="math inline">\(R\)</span> under concave prior and data of <span class="math inline">\(r\)</span> reds on <span class="math inline">\(n\)</span> draws is the same as the posterior distribution of <span class="math inline">\(R-1\)</span> from uniform prior on urn with <span class="math inline">\(N-2\)</span> balls with data of <span class="math inline">\(r-1\)</span> reds on <span class="math inline">\(n-2\)</span> draws.</p>
+<p>## Exercise 6.3</p>
+<p><span class="math display">\[p(R|r=0, NI_{00})= \frac{A}{R(N-R)}{N-R\choose n}\]</span></p>
+<p>This would still be infinite if <span class="math inline">\(R=0\)</span>, but is ok if we condition on/only consider <span class="math inline">\(1\leq R\leq N-1\)</span>. Then <span class="math inline">\(A^{-1}=\sum_{R=1}^{N-1}\frac{1}{R(N-R)}{N-R\choose n}\)</span>.</p>
+<p>Similarly <span class="math display">\[p(R|r=n, NI_{00})= \frac{A}{R(N-R)}{R\choose n}\]</span></p>
+<p>This would be infinite if <span class="math inline">\(R=N\)</span>.</p>
+<p>Now consider <span class="math inline">\(n=1\)</span>, <span class="math inline">\(r=0\)</span> case. Then <span class="math inline">\(p(R|r=0, NI_{00})=\frac{A}{R}\)</span> with <span class="math display">\[A=\sum_{R=1}^{R=N-1}\frac{1}{R}\approx \ln N\]</span> (<a href="https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant">famously</a>) and <span class="math inline">\(E[R]\approx \frac{N}{\ln N}\)</span>, so expected fraction of red balls is approximately <span class="math inline">\(\frac{1}{\ln N}\)</span>.</p>
+<p>## Exercise 6.4</p>
+<p><span class="math display">\[P(R|DI) P(D|I)=P(D|RI)P(R|I).\]</span></p>
+<p>Writing this for <span class="math inline">\(R=R_1\)</span>, <span class="math inline">\(R=R_2\)</span> and multiplying we get</p>
+<p><span class="math display">\[P(R_1|DI)P(R_2|DI)P(D|I)^2=P(D|R_1I)P(D|R_2 I)P(R_1|I)P(R_2|I)\]</span></p>
+<p>Writing the same for <span class="math inline">\(R=R_1R_2\)</span> and using <span class="math inline">\(P(R_1R_2|I)=P(R_1|I)P(R_2|I)\)</span> we get</p>
+<p><span class="math display">\[P(R_1R_2|DI) P(D|I)=P(D|R_1R_2I)P(R_1R_2|I)=P(D|R_1R_2I)P(R_1|I)P(R_2|I).\]</span></p>
+<p>We see that <span class="math inline">\(P(R_1R_2|DI)=P(R_1|DI)P(R_2|DI)\)</span> is equivalent to</p>
+<p><span class="math display">\[P(D|R_1R_2I)P(D|I)= P(D|R_1I)P(D|R_2 I) \]</span></p>
+<p>or</p>
+<p><span class="math display">\[\frac{P(D|R_1R_2I)}{P(D|R_2 I) }=\frac{P(D|R_1I)}{P(D|I)}.\]</span></p>
+<p>Any further insight into the meaning of this condition would be appreciated.</p>
+<p>## Discussion of 6.9.1</p>
+<p>TO BE EXTENDED.</p>
+<p>This is related to Chapter 4, Exercise 4.4 – suppose I decide to keep getting samples until I accept hypothesis A. If A is false (B is true) I may still end up accepting A (in exercise 4.4 the probability of this is low, but that’s because the evidence cutoff is chosen to be high).</p>
+<p>Relevant: Anscombe, 1954 Fixed-Sample-Size Analysis of Sequential Observations, p.92, and the Anscombe-Armitage discussion.</p>
+<p><a href="https://statmodeling.stat.columbia.edu/2014/02/13/stopping-rules-bayesian-analysis/">Also relevant</a>.</p>
+<p>## Formula 6.86</p>
+<p><span class="math display">\[ \sum_{n=c}^{\infty} \frac{n!}{c! (n-c)!}\phi^c (1-\phi)^{(n-c)}\frac{\exp\{-s\}s^n}{n!}=\]</span></p>
+<p><span class="math display">\[\sum_{i=0}^{\infty} \frac{1}{c! i!}\phi^c (1-\phi)^{i}\exp\{-s\}s^i s^c=\frac{1}{c!}(\phi s)^c\exp\{-s\} \exp\{s(1-\phi)\}=\]</span></p>
+<p><span class="math display">\[ \frac{(s\phi)^c \exp\{-s\phi )\} }{c!}\]</span></p>
+<p>## Formula 6.89</p>
+<p><span class="math display">\[\frac{\text{Pois}_s(n) \text{Bin}_{n,\phi}(c)}{\text{Pois}_{s\phi }(c)}=\frac{\exp\{-(1-\phi)s\} s^n \phi^c (1-\phi)^{n-c} }{ (s\phi )^c (n-c)!}=\text{Pois}_{s(1-\phi)}(n-c)\]</span></p>
+<p>This can be interpreted as saying that in addition to <span class="math inline">\(c\)</span> detected particles there were some undetected ones, distributed by poisson with rate <span class="math inline">\(s(1-\phi)\)</span>.</p>
+<h2 id="possible-start-of-exercise-6.5">Possible start of Exercise 6.5</h2>
+<p>As usual, the problem statement is ambiguous. One formalization is as follows: after a particle is registered, for time <span class="math inline">\(\Delta\)</span> no further registrations are possible, after which probability of registration for an incident particle reverts to (known) <span class="math inline">\(\phi\)</span>. We suppose that the counter has registered <span class="math inline">\(c\)</span> particles in time <span class="math inline">\(T=1s\)</span>, with the emission still driven by Poisson process with rate <span class="math inline">\(s\)</span> so that for any set of times <span class="math inline">\(B\)</span> with total duration <span class="math inline">\(t\)</span> we have <span class="math inline">\(p_B(n)=\frac{\exp \{-st\} (st)^n}{n!}\)</span>. For more sophisticated versions and solutions see the referred paper of Takács and references therein.</p>
+<p>Intuitively, we expect <span class="math inline">\(p(n|\phi c s)=\text{Pois}_{s(1-\phi)(1-c\Delta)+sc\Delta}(n-c)\)</span> (the “undetected” rate being <span class="math inline">\(s(1-\phi)\)</span> during the non-locked phases and <span class="math inline">\(s\)</span> during the locked phases). Let’s see if this holds up.</p>
+<p>Bayes fhtagn: <span class="math inline">\(p(n|\phi c s)=p(n|s)\frac{p(c|n\phi s)}{p(c|\phi s)}\)</span></p>
+<p>Here <span class="math inline">\(p(n|s)=\text{Pois}_s(n)\)</span> as before, and <span class="math inline">\(p(c|\phi s)\)</span> is as usual a normalization constant independent of <span class="math inline">\(n\)</span> and the main point is to compute <span class="math inline">\(p(c|n\phi s)\)</span>.</p>
+<p>Conditional on <span class="math inline">\(n\)</span> the Poisson arrival times <span class="math inline">\(\vec{t}=(t_1, \ldots, t_n)\)</span> are equivalent to being order statistics of iid uniform r.v.s., and are uniformly distributed over the simplex <span class="math inline">\(0\leq t_1, \ldots, t_n \ldots 1\)</span>. The problem suggests dividing this simplex into regions depending on which inequalities <span class="math inline">\(t_i+\Delta &gt; t_{i+s}\)</span> hold, and obtain <span class="math inline">\(p(c|n \phi \vec{t})\)</span> for each region separately, and then marginalize over <span class="math inline">\(\vec{t}\)</span>. This seems not entirely straightforward (the combinatorics is somewhat manageable, but unless one gets insight/miracle the marginalization would be tough). One could: a) consider <span class="math inline">\(\Delta\)</span> to be small, justifying ignoring cases where more than one of <span class="math inline">\(t_i+\Delta &lt; t_{i+s}\)</span> hold and dividing only into two regions, plus possible further simplifications from ignoring terma that are higher-order in <span class="math inline">\(\Delta\)</span> b) do something clever, possibly withe MGFs, possibly borrowed from the counter literature (Feller, Takács and others) or c) abandon this line of attack.</p>
+<p>We choose c) for now but hope to return to this at a later occasion.</p>
+<h2 id="formula-6.108">Formula 6.108</h2>
+<p><span class="math display">\[ \frac{1}{(1-x)^{a+1}}=(\sum_{i=0}^{\infty} x^i)^{a+1}=\sum_{m=0}^{\infty} c_m x^m \]</span></p>
+<p>where <span class="math inline">\(c_m\)</span> is the number of ways of partitioning <span class="math inline">\(m\)</span> into <span class="math inline">\(a+1\)</span> ordered parts, which is done by selecting <span class="math inline">\(a\)</span> dividers among <span class="math inline">\(m+a\)</span> places, and so <span class="math inline">\(c_m={m+a\choose a}={m+a\choose m}\)</span>. Now <span class="math inline">\((x \frac{d}{dx}) x^m=m x^m\)</span>, so <span class="math inline">\((x \frac{d}{dx}^n) x^m=m^n x^m\)</span>, hence all together <span class="math display">\[ \left(x \frac{d}{dx}^n\right) \frac{1}{(1-x)^{a+1}}=\sum_{m=0}^{\infty} {m+a\choose m} m^n x^m\]</span></p>
+<p>as wanted.</p>
+<h2 id="exercise-6.6">Exercise 6.6</h2>
+<p><span class="math display">\[ S(N)=\sum_{n=N}^{\infty} p(c|\phi n)= \sum_{n=N}^{\infty} {n\choose c}  \phi^{c}(1-\phi)^{n-c}\]</span></p>
+<p>Let <span class="math inline">\(1-\phi=x\)</span>. Then the <span class="math inline">\(c\)</span>th derivative <span class="math inline">\((x^n)^{(c)}=c! {n\choose c}x^{n-c}\)</span> and</p>
+<p><span class="math display">\[ S(N)= \frac{\phi^c}{c!} \left(\frac{x^N}{1-x}\right)^{(c)}  \]</span></p>
+<p>This reproduces <span class="math inline">\(S(0)= \frac{\phi^c}{c!} \frac{c!}{(1-x)^{c+1}}=\frac{1}{\phi}\)</span> and generally gives, using the “higher derivative of product” rule <span class="math inline">\((fg)^{(c)}=\sum_{k=0}^c {c \choose k}f^{(c-k)} g^{(k)}\)</span>,</p>
+<p><span class="math display">\[S(N)= \frac{\phi^c}{c!} \sum_{k=0}^{c} {c\choose k} (c-k)! (1-x)^{-(c-k+1)} \frac{N!}{(N-k)!}x^{N-k}= \]</span></p>
+<p><span class="math display">\[\frac{1}{\phi} \sum_{k=0}^{c}{N \choose k} \phi^{k}(1-\phi)^{N-k} \]</span></p>
+<p>This is a subsum of binomial distribution and one can apply for large <span class="math inline">\(N\)</span> the <a href="https://en.wikipedia.org/wiki/Poisson_limit_theorem">Poisson approximation to binomial</a>:</p>
+<p><span class="math display">\[{N \choose k} \phi^{k}(1-\phi)^{N-k} \approx \frac{\exp\{-N\phi\} (N\phi)^k}{k!}\]</span></p>
+<p>For large <span class="math inline">\(N\)</span> either before or after approximating one sees that the term is with <span class="math inline">\(k=c\)</span> dominates all the other ones, so indeed</p>
+<p><span class="math display">\[\frac{S(N)}{S(0)}=\sum_{k=0}^{c}{N \choose k} \phi^{k}(1-\phi)^{N-k}\approx  \frac{\exp\{-N\phi\} (N\phi)^c}{c!}\]</span></p>
+<p>as wanted.</p>
 </body>
 </html>

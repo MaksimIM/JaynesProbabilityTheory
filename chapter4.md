@@ -387,7 +387,7 @@ This can probably be described as "negligibly small".
 
 $$p_{i}=\frac{1}{6} p_{i-3}+ \frac{5}{6} p_{i+1}$$
 
- multiplying by $s^i$, and summing over $i\geq 1$ and summing, using $p_{-2}=p_{-1}=p_0=1$ and  $p_1=p$ gives:
+ multiplying by $s^i$, and summing over $i\geq 1$, using $p_{-2}=p_{-1}=p_0=1$ and  $p_1=p$ gives:
 
 $$Q(s)-1-s^{-1}-s^{-2}= \frac{1}{6}s^3Q(s)+\frac{5}{6}(\frac{1}{s}(Q(s)-sp-1-s^{-1}-s^{-2}))$$
 
@@ -503,7 +503,7 @@ For general $k$ we get $E(T_k^2)=k((k-1)9+66) +3k$, $Var(T_k)=60k$
 
   In our case, assuming $E(T_k)$ is finite, we have $E_{Z_1}=3\frac{1}{6}-\frac{5}{6}=-\frac{1}{3}$, $X=-k$ (always), so $E(T_k)=3k$.
 
-  We still need to check  $E(T_k)<\infty$. This follows from (a generalization) of our analysis of the random walk on $\mathbb{Z}$, but in fact Hoeffding's inequality implies exponentially small bond on probability $T_k>n$, so $T_k$ actually has all moments finite.
+  We still need to check  $E(T_k)<\infty$. This follows from (a generalization) of our analysis of the random walk on $\mathbb{Z}$, but in fact Hoeffding's inequality implies exponentially small bond on probability $T_k>n$, so $T_k$ actually has all moments finite (for a general study of moments of $T_k$ see [this paper of A. Gut](https://projecteuclid.org/euclid.aop/1176996709)).
 
 
 Wald's second identity  (under same assumption $E(T)$ finite) is 
@@ -537,13 +537,15 @@ Indeed, if we keep the leftward step $0.97$ instead of making it $1$, $E(Z_1)$ c
 
 
 
-##Exercise 4.5
+## Exercise 4.5
 
 It seems that from a Bayesian perspective the conjecture is tautological. If "reliability of conclusion" means some precise minimum of posterior odds ratio in favor of the $i$th hypothesis, then one has to keep collecting data until that odds ratio is achieved. So, tautologically, the minimum ASN is obtained by the procedure in which one stops collecting further data after the requisite odds ratio (for any of the hypothesis under consideration) is attained for the first time.
 
 From the frequentist point of view the situation is more complicated. Instead of posterior probability/odds for a specific hypothesis, the frequentist guarantee on a procedure is in a form of a bound on probability of Type I (falsely rejecting a true hypothesis, low p value) and Type II (accepting a false hypothesis, high power) errors is posited, and a procedure that confirms to these bounds is evaluated based on  its ASN.  It is relatively easy to see tha for testing binary hypothesis, if Bayesian/sequential procedure always hits the required posterior odds exactly, without overshooting (for example, in the setup of Exercise 4.4 the evidence is always either plus or minus 1 and the bounds are integers), then sequential test will have the smallest ASN, and, thus, in general, it will have closed to the smallest ASN (this is Section A.7 of Wald's "Sequential Analysis" book). However without such an assumption such optimality of sequential tests is harder to establish. Nonetheless it was done by Wald and Wolfowitz in 1948 ("Optimum character of the sequential ratio test"). 
 
+## Formula 4.67
 
+"The complete beta function" $\int_0^1 f^n (1-f)^{N-n}$ can be evaluated using Bayes' billiards, see notes on Chapter 6 for details.
 
 
 <!----
