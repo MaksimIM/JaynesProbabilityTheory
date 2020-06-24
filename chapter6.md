@@ -388,10 +388,40 @@ $$\text{var}(n_1)=\frac{c_1}{\phi^2}-\frac{c_1}{\phi}=\frac{c_1(1-\phi)}{\phi^2}
 
 as wanted.
 
-## Exercise 6.8
 
-TO DO
 
 ## Exercise 6.9 
 
-TO DO
+Formula 6.164 says
+
+$$p(\alpha|DI)=\frac{(n-1)\alpha^{-n}}{\alpha_0^{1-n}-\alpha_1^{1-n}}$$
+
+for $\alpha_0\leq \alpha\leq \alpha_1$, $n>1$.
+
+As $\alpha_1 \to \infty$ this converges to $p(\alpha|DI)=\frac{(n-1)\alpha^{-n}}{\alpha_0^{1-n}}$ on $\alpha_0\leq \alpha$.
+
+For $n=1$ 6.165 gives
+
+$$p(\alpha|DI)=\frac{\alpha^{-1}}{\log{\alpha_1}-\log{\alpha_0}}$$
+
+
+
+For $n=0$ of course one is back to the improper uniform distribution on $[\alpha_0, \infty)$.
+
+In all cases the posterior is proportional to $\alpha^{-n}$ on $[\alpha_0, \infty)$, and has $n-2$ first moments finite. The cases of 0 or 1 observations are most troublesome - no median or quartiles, and certainly no finite mean or standard deviation.
+The cases of two observations  has well-defined median and quartiles, but infinite expectation. Three observations give finite mean, but infinite variance.   C'est la vie. 
+
+## Exercise 6.8
+
+
+With one observation above  the posterior is proportional to $\alpha^{-1}$ on $[\alpha_0, \alpha_1]$.  If $n=1$ the CDF is $F(\alpha)=\frac{\ln \alpha-\ln \alpha_0}{\ln \alpha_1-\ln \alpha_0}$, so the median $m$ is the geometric mean of $\alpha_0$ and $\alpha_1$, and the interquartile range is between geometric mean of $m$ and $\alpha_0$ and of $m$ and $\alpha_1$. If $\alpha_1 \approx  53333=3^{-1} 2^4 10^4$ and $\alpha_0=27$ the estimate is $m=1200$ and quartiles are $180$ and $8000$. 
+
+The mean, meanwhile is $\frac{\alpha_1-27}{\ln \alpha_1 -\ln 27}\approx 7025$, variance $\frac{\alpha_1^2-27^2}{2(\ln \alpha_1 -\ln 27)}- E[\alpha]^2\approx  138071335$, standard deviation $11750$. Since the distribution is very overweighted on the left, the mean is far to the right of the median (the torgue due to far-flung right part of the distribution is high, making fulcrum/center of mass/mean move to the right of the "half-mass line"/median to balance.)
+
+Both of these are sensitive to the $\alpha_1$, but, at least the median, in a power one-half way, so a hundredford change in maximum $\alpha_1$ gives a tenfold change in posterior median, reasonably consistent with weakness of data.  
+
+If $n=2$ or, equivalently, one uses Jeffrey's prior the posterior is proportional to $\frac{1}{\alpha^2}$. In terms of density and median/quartiles this is insensitive to $\alpha_1$ and for large $\alpha_1$ the CDF is $F(\alpha)=27(\frac{1}{27}-\frac{1}{\alpha})$, so $m=54$, and quartiles are $36$ and $108$, a substantially narrower range.
+
+The mean is, for lagre $\alpha_1$, about $27 \ln(\alpha_1/27)$. In our $\alpha_1=53333$ case this is about $205$, with $E(\alpha^2)\approx 27\cdot  53333=1440000$ and $\text{var}(\alpha)\approx 1440000$, standard deviation $1200$. The standard deviation is reduced from order of magnitude of $\alpha_1/\ln \alpha_1$ to order of magnitude $\alpha_1^{1/2}$, but is still much larger than interquartile range which is now independent of $\alpha_1$.
+
+With higher $n$ both mean and variance become insensitive to $\alpha_1$.
