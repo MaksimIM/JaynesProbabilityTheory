@@ -490,14 +490,14 @@ Again, everything is conditional on $C$, but we don't write it.
 
 Then 
 
-$P(AB)=P(B|A)P(A)\leq P(A)=a,$
+$$P(AB)=P(B|A)P(A)\leq P(A)=a,$$
 
-$P(A+B)=P(A)+P(B)-P(AB)=a+b-P(AB)\geq b.$
+$$P(A+B)=P(A)+P(B)-P(AB)=a+b-P(AB)\geq b.$$
 
 Also 
 
-$P(AB)=P(A)+P(B)-P(A+B)\geq a+b-1$
+$$P(AB)=P(A)+P(B)-P(A+B)\geq a+b-1$$
 
 and 
 
-$P(A+B)=P(A)+P(B)-P(AB)\leq a+b.$
+$$P(A+B)=P(A)+P(B)-P(AB)\leq a+b.$$

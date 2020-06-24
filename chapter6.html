@@ -82,13 +82,13 @@ $${N \choose R} \frac{1}{N+\alpha+\beta -1} \frac{1}{\text{B}(\alpha+R, \beta+N-
 Consider case $\alpha=\beta=0$ (this is not normalizable). We get ${N \choose R}\frac{1}{N-1}\frac{1}{{N-2\choose R-1} N}\sim \frac{1}{R(N-R)}$ which is the "concave prior" 6.49.
 ----->
 <p>In general, if we start with <span class="math inline">\(\text{Beta}(\alpha, \beta)\)</span> and observe <span class="math inline">\(r\)</span> reds on <span class="math inline">\(n\)</span> draws, our posterior over the <strong>remainder of the bin</strong> is the same as the prior we would’ve gotten with <span class="math inline">\(\text{Beta}(\alpha+r, \beta+n-r)\)</span>. This is why the formula 6.52 looks like 6.17 with <span class="math inline">\(N\)</span> and <span class="math inline">\(n\)</span> reduced by <span class="math inline">\(2\)</span> and <span class="math inline">\(R\)</span> and <span class="math inline">\(r\)</span> reduced by <span class="math inline">\(1\)</span>. This also gives an alternative solution to Exercise 6.2 – under hypothesis <span class="math inline">\(r\geq 1\)</span>, <span class="math inline">\(n-r\geq 1\)</span> we can update on one of the red and one of the white samples first, so that posterior distribution of <span class="math inline">\(R\)</span> under concave prior and data of <span class="math inline">\(r\)</span> reds on <span class="math inline">\(n\)</span> draws is the same as the posterior distribution of <span class="math inline">\(R-1\)</span> from uniform prior on urn with <span class="math inline">\(N-2\)</span> balls with data of <span class="math inline">\(r-1\)</span> reds on <span class="math inline">\(n-2\)</span> draws.</p>
-<p>## Exercise 6.3</p>
+<h2 id="exercise-6.3">Exercise 6.3</h2>
 <p><span class="math display">\[p(R|r=0, NI_{00})= \frac{A}{R(N-R)}{N-R\choose n}\]</span></p>
 <p>This would still be infinite if <span class="math inline">\(R=0\)</span>, but is ok if we condition on/only consider <span class="math inline">\(1\leq R\leq N-1\)</span>. Then <span class="math inline">\(A^{-1}=\sum_{R=1}^{N-1}\frac{1}{R(N-R)}{N-R\choose n}\)</span>.</p>
 <p>Similarly <span class="math display">\[p(R|r=n, NI_{00})= \frac{A}{R(N-R)}{R\choose n}\]</span></p>
 <p>This would be infinite if <span class="math inline">\(R=N\)</span>.</p>
 <p>Now consider <span class="math inline">\(n=1\)</span>, <span class="math inline">\(r=0\)</span> case. Then <span class="math inline">\(p(R|r=0, NI_{00})=\frac{A}{R}\)</span> with <span class="math display">\[A=\sum_{R=1}^{R=N-1}\frac{1}{R}\approx \ln N\]</span> (<a href="https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant">famously</a>) and <span class="math inline">\(E[R]\approx \frac{N}{\ln N}\)</span>, so expected fraction of red balls is approximately <span class="math inline">\(\frac{1}{\ln N}\)</span>.</p>
-<p>## Exercise 6.4</p>
+<h2 id="exercise-6.4">Exercise 6.4</h2>
 <p><span class="math display">\[P(R|DI) P(D|I)=P(D|RI)P(R|I).\]</span></p>
 <p>Writing this for <span class="math inline">\(R=R_1\)</span>, <span class="math inline">\(R=R_2\)</span> and multiplying we get</p>
 <p><span class="math display">\[P(R_1|DI)P(R_2|DI)P(D|I)^2=P(D|R_1I)P(D|R_2 I)P(R_1|I)P(R_2|I)\]</span></p>
@@ -99,16 +99,16 @@ Consider case $\alpha=\beta=0$ (this is not normalizable). We get ${N \choose R}
 <p>or</p>
 <p><span class="math display">\[\frac{P(D|R_1R_2I)}{P(D|R_2 I) }=\frac{P(D|R_1I)}{P(D|I)}.\]</span></p>
 <p>Any further insight into the meaning of this condition would be appreciated.</p>
-<p>## Discussion of 6.9.1</p>
+<h2 id="discussion-of-6.9.1">Discussion of 6.9.1</h2>
 <p>TO BE EXTENDED.</p>
 <p>This is related to Chapter 4, Exercise 4.4 – suppose I decide to keep getting samples until I accept hypothesis A. If A is false (B is true) I may still end up accepting A (in exercise 4.4 the probability of this is low, but that’s because the evidence cutoff is chosen to be high).</p>
 <p>Relevant: Anscombe, 1954 Fixed-Sample-Size Analysis of Sequential Observations, p.92, and the Anscombe-Armitage discussion.</p>
 <p><a href="https://statmodeling.stat.columbia.edu/2014/02/13/stopping-rules-bayesian-analysis/">Also relevant</a>.</p>
-<p>## Formula 6.86</p>
+<h2 id="formula-6.86">Formula 6.86</h2>
 <p><span class="math display">\[ \sum_{n=c}^{\infty} \frac{n!}{c! (n-c)!}\phi^c (1-\phi)^{(n-c)}\frac{\exp\{-s\}s^n}{n!}=\]</span></p>
 <p><span class="math display">\[\sum_{i=0}^{\infty} \frac{1}{c! i!}\phi^c (1-\phi)^{i}\exp\{-s\}s^i s^c=\frac{1}{c!}(\phi s)^c\exp\{-s\} \exp\{s(1-\phi)\}=\]</span></p>
 <p><span class="math display">\[ \frac{(s\phi)^c \exp\{-s\phi )\} }{c!}\]</span></p>
-<p>## Formula 6.89</p>
+<h2 id="formula-6.89">Formula 6.89</h2>
 <p><span class="math display">\[\frac{\text{Pois}_s(n) \text{Bin}_{n,\phi}(c)}{\text{Pois}_{s\phi }(c)}=\frac{\exp\{-(1-\phi)s\} s^n \phi^c (1-\phi)^{n-c} }{ (s\phi )^c (n-c)!}=\text{Pois}_{s(1-\phi)}(n-c)\]</span></p>
 <p>This can be interpreted as saying that in addition to <span class="math inline">\(c\)</span> detected particles there were some undetected ones, distributed by poisson with rate <span class="math inline">\(s(1-\phi)\)</span>.</p>
 <h2 id="possible-start-of-exercise-6.5">Possible start of Exercise 6.5</h2>

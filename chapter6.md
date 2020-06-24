@@ -126,7 +126,9 @@ Consider case $\alpha=\beta=0$ (this is not normalizable). We get ${N \choose R}
 
  In general, if we start with $\text{Beta}(\alpha, \beta)$ and observe $r$ reds on $n$ draws, our posterior over the **remainder of the bin** is the same as the prior we would've gotten with  $\text{Beta}(\alpha+r, \beta+n-r)$. This is why the formula 6.52 looks like 6.17 with $N$ and $n$ reduced by $2$ and $R$ and $r$ reduced by $1$. This also gives an alternative solution to Exercise 6.2 -- under hypothesis $r\geq 1$, $n-r\geq 1$  we can update on one of the red and one of the white samples first, so that posterior distribution of $R$ under concave prior and data of $r$ reds on $n$ draws is the same as the posterior distribution of $R-1$ from uniform prior on urn with $N-2$ balls with data of $r-1$ reds on $n-2$ draws. 
  
- ## Exercise 6.3
+ 
+## Exercise 6.3
+ 
  
  $$p(R|r=0, NI_{00})= \frac{A}{R(N-R)}{N-R\choose n}$$
  
@@ -146,7 +148,9 @@ Consider case $\alpha=\beta=0$ (this is not normalizable). We get ${N \choose R}
   $E[R]\approx \frac{N}{\ln N}$, so expected fraction of red balls is approximately $\frac{1}{\ln N}$.
  
  
- ## Exercise 6.4
+ 
+## Exercise 6.4
+ 
  
  $$P(R|DI) P(D|I)=P(D|RI)P(R|I).$$
  
@@ -169,7 +173,7 @@ $$\frac{P(D|R_1R_2I)}{P(D|R_2 I) }=\frac{P(D|R_1I)}{P(D|I)}.$$
  
  Any further insight into the meaning of this condition would be appreciated.
  
- ## Discussion of 6.9.1
+## Discussion of 6.9.1
  
  TO BE EXTENDED.
  
@@ -179,7 +183,7 @@ $$\frac{P(D|R_1R_2I)}{P(D|R_2 I) }=\frac{P(D|R_1I)}{P(D|I)}.$$
  
  [Also relevant](https://statmodeling.stat.columbia.edu/2014/02/13/stopping-rules-bayesian-analysis/).
  
- ## Formula 6.86
+## Formula 6.86
  
  $$ \sum_{n=c}^{\infty} \frac{n!}{c! (n-c)!}\phi^c (1-\phi)^{(n-c)}\frac{\exp\{-s\}s^n}{n!}=$$ 
  
@@ -187,7 +191,7 @@ $$\frac{P(D|R_1R_2I)}{P(D|R_2 I) }=\frac{P(D|R_1I)}{P(D|I)}.$$
  
  $$ \frac{(s\phi)^c \exp\{-s\phi )\} }{c!}$$
  
-  ## Formula 6.89
+## Formula 6.89
   
 $$\frac{\text{Pois}_s(n) \text{Bin}_{n,\phi}(c)}{\text{Pois}_{s\phi }(c)}=\frac{\exp\{-(1-\phi)s\} s^n \phi^c (1-\phi)^{n-c} }{ (s\phi )^c (n-c)!}=\text{Pois}_{s(1-\phi)}(n-c)$$
 
@@ -222,7 +226,7 @@ as wanted.
 
 
 
-##  Exercise 6.6
+## Exercise 6.6
 
 
 $$ S(N)=\sum_{n=N}^{\infty} p(c|\phi n)= \sum_{n=N}^{\infty} {n\choose c}  \phi^{c}(1-\phi)^{n-c}$$

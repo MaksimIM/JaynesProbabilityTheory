@@ -27,7 +27,7 @@
 <p><span class="math display">\[U_z=G_2(x,v)F_2(y,z)F_1(y,z)+ G(x,v)F_{21}(y,z).\]</span></p>
 <p>Similarly <span class="math inline">\(V=G(x,v)F_2(y,z)\)</span> so</p>
 <p><span class="math display">\[V_y=G_2(x,v)F_1(y,z)F_2(y,z)+G(x,v)F_{12}(y,z).\]</span></p>
-<p>Of course mixed partials are equal (under some continuity of second derivatives assumption, Clairot’s theorem), so the two expressions are the same.</p>
+<p>Of course mixed partials are equal (under some continuity of second derivatives assumption, Clairaut’s theorem), so the two expressions are the same.</p>
 <p>Continuing to get 2.19 from 2.18:</p>
 <p>We have then <span class="math inline">\(G(x,y)G(y,z)=P(x,z)\)</span>. Pick any fixed <span class="math inline">\(z\)</span>. Denote <span class="math inline">\(P(x,z)=A(x)\)</span> and <span class="math inline">\(G(y,z)=B(y)\)</span>. Then <span class="math inline">\(G(x,y)=\frac{A(x)}{B(y)}\)</span> [and <span class="math inline">\(G(y,z)=\frac{A(y)}{B(z)}\)</span>].</p>
 <p>Plug this in to <span class="math inline">\(G(x,y)G(y,z)=P(x,z)\)</span> to get <span class="math inline">\(\frac{A(x)A(y)}{B(y)B(z)}=P(x,z)\)</span>.</p>
@@ -76,7 +76,7 @@
 <p><span class="math display">\[S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S&#39;[S(x)]S(x)\delta + O(\delta^2) + O((\delta+O(\delta^2))^2)\]</span></p>
 <p>With big O notation we can also get rid terms that drop asymptotically faster than the largest term.</p>
 <p><span class="math display">\[S[S(x) + S(x)\delta + S(x)O(\delta^2)] = S[S(x)]+S&#39;[S(x)]S(x)\delta + O(\delta^2)\]</span></p>
-<h2 id="explanation-of-2.52-2.53-incomplete">Explanation of 2.52, 2.53 (incomplete)</h2>
+<h2 id="explanation-of-2.52-2.53-mildly-incomplete">Explanation of 2.52, 2.53 (mildly incomplete)</h2>
 <p>2.45 says <span class="math inline">\(S[S(x)]=x\)</span>. Differentiating in <span class="math inline">\(x\)</span> we get <span class="math inline">\(S&#39;[S(x)]S&#39;(x)=1\)</span>, or <span class="math inline">\(S&#39;[S(x)]=1/S&#39;(x)\)</span>. Now we plug in into 2.50 to get</p>
 <p><span class="math display">\[S(y)=x+\exp\{-q\} S(x)/S&#39;(x)+O(\exp\{-2q\}) \]</span></p>
 <p>Denoting by <span class="math inline">\(\alpha(x)=\log \left[\frac{-xS&#39;(x)}{S(x)}\right]\)</span> we get</p>
@@ -88,7 +88,7 @@
 <p>Then we can write</p>
 <p><span class="math display">\[\frac{S(y)}{x}=1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\}),\]</span></p>
 <p>which is 2.51.</p>
-<p>Now we want to deduce 2.53. We make some progress but ultimately do not succeed (yet).</p>
+<p>Now we want to deduce 2.53. We make some progress but ultimately do not succeed, deriving a weaker statement, sufficient for continuing.</p>
 <p>We start with 2.45</p>
 <p><span class="math display">\[x S\left[\frac{S(y)}{x}\right]=y S\left[\frac{S(x)}{y}\right]\]</span></p>
 <p>and plug in 2.51 and 2.48 to get</p>
@@ -100,7 +100,7 @@
 <p><span class="math display">\[ =\log S(x)-J(q)-\log(1-\exp\{q\})\]</span></p>
 <p>Now if we could write</p>
 <p><span class="math display">\[\log  S[1-\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})]=\]</span> <span class="math display">\[\log  S[1-\exp\{-(q+\alpha)\}]+ O(\exp\{-2q\})\]</span></p>
-<p>we would get <span class="math inline">\(J(q+\alpha)+O(\exp\{-2q\})\)</span> and 2.53 would follow.</p>
+<p>we would get <span class="math inline">\(J(q+\alpha)+O(\exp\{-2q\})\)</span> and 2.53 would follow. We don’t get that, but we get almost the same thing - just without the 2 in the last exponent.</p>
 <p>We use the following fact: If <span class="math inline">\(f(q)=O(g(q))\)</span> then, for any eventually non-zero <span class="math inline">\(h(q)\)</span> one has <span class="math inline">\(f(q)=h(q) O(g(q)/h(q))\)</span>. This is simply from definition: both mean <span class="math inline">\(\lim_{q\to something} \frac{g(q)}{f(q)}=\lim_{q\to something} \frac{g(q)/h(q)}{f(q)/h(q)}=0\)</span></p>
 <p>So, since <span class="math inline">\(q\)</span> is the variable and so single <span class="math inline">\(\exp{\alpha}\)</span> is a constant and can be absorbed into any <span class="math inline">\(O(g(q))\)</span>, we write</p>
 <p><span class="math display">\[\exp\{-(q+\alpha)\}+ O(\exp\{-2q\})=\]</span></p>
@@ -183,15 +183,16 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 </ol>
 <p><!---    
   We can now get the asymptotic expansion as well. We have:
-  
+
   $$ J(q + \alpha) - J (q) = b \alpha+O(\exp\{-q\})$$ 
-  
+
   Define $G(q)=J(q)-bq$. 
-  
+
   Then we have  $G(q+\alpha)=G(q)+O(\exp\{-q\})$ and we want $G(q)=a+O(\exp\{-q\})$.
-  
+
     ---></p>
-<h2 id="proof-of-2.57">Proof of 2.57</h2>
+<p>​<br />
+## Proof of 2.57</p>
 <p>Start with 2.56 and doing a bit of manipulation to isolate <span class="math inline">\(S^{\prime}(x)\)</span></p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -210,6 +211,8 @@ Recall that notation $O(f(q))$ means "some unspecified function $g(q)$ of $q$ su
 \]</span></p>
 <h2 id="proof-of-2.58">Proof of 2.58</h2>
 <p><span class="math inline">\(S^{m-1}S&#39;=-x^{m-1}\)</span> is equivalent to <span class="math inline">\((S^m)&#39;=-mx^{m-1}\)</span>, so that <span class="math inline">\(S^m=C-x^m\)</span>. Initial value <span class="math inline">\(S(0)=1\)</span> fixes <span class="math inline">\(C=1\)</span> and <span class="math inline">\(S(x)=(1-x^m)^{1/m}\)</span> as wanted.</p>
+<h2 id="alternative-proof-of-sum-rule">Alternative proof of sum rule</h2>
+<p><a href="https://wwwusers.ts.infn.it/~milotti/Didattica/Bayes/Cox_1946.pdf">Cox (1946)</a>, page 12, starting at equation (15).</p>
 <h2 id="exercise-2.1">Exercise 2.1</h2>
 <p>I think this problem is ambiguous and can be interpreted in multiple ways, see <a href="http://www-cs-students.stanford.edu/~blynn//pr/jaynes.html">here</a> for a different interpretation. But I think the following interpretation makes more sense.</p>
 <p>With <span class="math inline">\(X\)</span> representing any background information: <span class="math display">\[
@@ -250,11 +253,11 @@ p(C|(A+B)X) &amp;= \frac{p(A+B|CX)p(C|X)}{p(A+B|X)}\\
 <h2 id="exercise-2.3">Exercise 2.3</h2>
 <p>Again, everything is conditional on <span class="math inline">\(C\)</span>, but we don’t write it.</p>
 <p>Then</p>
-<p><span class="math inline">\(P(AB)=P(B|A)P(A)\leq P(A)=a,\)</span></p>
-<p><span class="math inline">\(P(A+B)=P(A)+P(B)-P(AB)=a+b-P(AB)\geq b.\)</span></p>
+<p><span class="math display">\[P(AB)=P(B|A)P(A)\leq P(A)=a,\]</span></p>
+<p><span class="math display">\[P(A+B)=P(A)+P(B)-P(AB)=a+b-P(AB)\geq b.\]</span></p>
 <p>Also</p>
-<p><span class="math inline">\(P(AB)=P(A)+P(B)-P(A+B)\geq a+b-1\)</span></p>
+<p><span class="math display">\[P(AB)=P(A)+P(B)-P(A+B)\geq a+b-1\]</span></p>
 <p>and</p>
-<p><span class="math inline">\(P(A+B)=P(A)+P(B)-P(AB)\leq a+b.\)</span></p>
+<p><span class="math display">\[P(A+B)=P(A)+P(B)-P(AB)\leq a+b.\]</span></p>
 </body>
 </html>

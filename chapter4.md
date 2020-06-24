@@ -199,7 +199,7 @@ To that end we write
  $U^c_i=U_i$  and hence $\frac{P(D_2|H_iX)}{P(D_2|\overline{H}_iX)}=1$. This is exactly what we wanted to prove.
 
 
- ## Some remarks on sequential vs. batch updates.
+## Some remarks on sequential vs. batch updates.
 
  (See formula 4.11; the discussion is in the context of section  4.4 and formula 4.44.)
 
