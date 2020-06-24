@@ -101,7 +101,7 @@ Then the probability that from $N$ balls we have $R$ red ones is proportional to
 
 $$\int_0^1 {N \choose R} g^R (1-g)^{(N-R)} g^{-1}(1-g)^{-1} dg =$$
 
-$$ {N \choose R}\frac{1}{{N-2\choose R-1} (N-1)}\sim \frac{1}{R(N-R)}$$
+$$ {N \choose R}\frac{1}{ {N-2\choose R-1} (N-1)}\sim \frac{1}{R(N-R)}$$
 
  which is the "concave prior" 6.49.
 
