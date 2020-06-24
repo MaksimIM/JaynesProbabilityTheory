@@ -155,8 +155,58 @@ Consider case $\alpha=\beta=0$ (this is not normalizable). We get ${N \choose R}
 <p><span class="math display">\[\sum_{n_1=c_1}^{\infty} n_1\frac{c_1}{n_1}{n_1 \choose n_1-c_1} \phi^{c_1}(1-\phi)^{n_1-c_1}=\]</span></p>
 <p><span class="math display">\[c_1 \phi^{c_1}\sum_m {m+c_1\choose m} (1-\phi)^m = \frac{c_1}{\phi}\]</span></p>
 <p>as wanted.</p>
-<h2 id="section-2">6.140, 6.141, 6.142</h2>
-<p>TO DO</p>
+<h2 id="section-2">6.140</h2>
+<p>Formula 6.112 says <span class="math inline">\(p(n_1|\phi c_1 I_A)={n_1\choose c_1} \phi^{c_1+1}(1-\phi)^{n_1-c_1}\)</span> and 6.116 says <span class="math inline">\(E_A[n_1]=\frac{c_1+1-\phi}{\phi}=c_1+\frac{(c_1+1)(1-\phi)}{\phi}\)</span>.</p>
+<p>Continuing in same vein</p>
+<p><span class="math display">\[E_A[(n_1-c_1)(n_1-c_1-1)] =\]</span></p>
+<p><span class="math display">\[\phi^{c_1+1}(1-\phi)^2(c_1+1)(c_1+2) \sum_{n_1}{n_1\choose n_1-c_1-2} (1-\phi)^{n_1-c_1-2}=\]</span></p>
+<p><span class="math display">\[\phi^{c_1+1}(1-\phi)^2(c_1+1)(c_1+2) \frac{1}{\phi^{c_1+3}}=(c_1+1)(c_1+2)\frac{(1-\phi)^2}{\phi^2}\]</span></p>
+<p><span class="math display">\[E[(n-c_1)^2]= (c_1+1)(c_1+2)\frac{(1-\phi)^2}{\phi^2}+ \frac{(c_1+1)(1-\phi)}{\phi}\]</span></p>
+<p><span class="math display">\[\text{var}(n_1)= \text{var}(n_1-c_1)= E[(n-c_1)^2]-E[(n-c_1)]^2=\]</span></p>
+<p><span class="math display">\[(c_1+1)[\frac{(1-\phi)^2}{\phi^2}+ \frac{(1-\phi)}{\phi}]\]</span></p>
+<p><span class="math display">\[=(c_1+1)\frac{(1-\phi)}{\phi^2}\]</span></p>
+<p>as wanted.</p>
+<!---
+
+À la recherche du temps perdu:
+
+$$E_A[n_1^2]=(c_1+1)(c_1+2)\frac{(1-\phi)^2}{\phi^2}+(2c_1+1)E_A[n_1]-c_1(c_1+1)=$$
+
+$$(c_1+1)(c_1+2)\frac{(1-\phi)^2}{\phi^2}+(2c_1+1)\frac{c_1+1-\phi}{\phi}-c_1(c_1+1) $$
+
+Denoting $c_1+1=C$:
+
+$$\text{var}_A(n_1)=(c_1+1)(c_1+2)\frac{(1-\phi)^2}{\phi^2}+(2c_1+1)\frac{c_1+1-\phi}{\phi}$$
+
+$$-c_1(c_1+1)-\left(\frac{c_1+1-\phi}{\phi}\right)^2=$$
+
+$$\frac{1}{\phi^2}[C(C+1)(1-\phi)^2+(2C-1)(C-\phi)\phi -(C-1)C\phi^2 -(C-\phi)^2]= $$
+
+$$[C(C+1)-C^2] +[-2C(C+1)+C(2C-1)+2C ] \phi+$$
+
+$$+[C(C+1)-(2C-1)-(C-1)C-1]\phi^2 =\frac{C -C\phi}{\phi^2}=\frac{(c_1+1)(1-\phi)}{\phi^2}$$
+
+as wanted.
+
+---->
+<h2 id="section-3">6.141</h2>
+<p>Formula 6.129 says <span class="math display">\[p(n_1|\phi c_2c_1 I_B)={n_1+c_2\choose c_1+c_2}\left(\frac{2\phi}{1+\phi}\right)^{c_1+c_2+1}\left(\frac{1-\phi}{1+\phi}\right)^{n_1-c_1}\]</span></p>
+<p>and 6.133 says <span class="math inline">\(E_B[n_1]=\frac{c_1+c_2+1-\phi}{2\phi}+\frac{c_1-c_2}{2}=c_1+(c_1+c_2+1)\left(\frac{1-\phi}{2\phi}\right)\)</span></p>
+<p><span class="math display">\[E[(n_1-c_1)(n_1-c_1-1)]= \left(\frac{2\phi}{1+\phi}\right)^{c_1+c_2+1}\left(\frac{1-\phi}{1+\phi}\right)^{2} (c_1+c_2+1)(c_1+c_2+2) \sum_{m=n_1-c_1-2=0}^{\infty} {m+(c_1+c_2+2)\choose m} \left(\frac{1-\phi}{1+\phi}\right)^{m}\]</span></p>
+<p><span class="math display">\[ \left(\frac{2\phi}{1+\phi}\right)^{c_1+c_2+1}\left(\frac{1-\phi}{1+\phi}\right)^{2} (c_1+c_2+1)(c_1+c_2+2) \left(\frac{2\phi}{1+\phi}\right)^{-(c_1+c_2+3)}\]</span></p>
+<p><span class="math display">\[=(c_1+c_2+1)(c_1+c_2+2) \left(\frac{1-\phi}{2\phi}\right)^{2} \]</span></p>
+<p><span class="math display">\[E[(n_1-c_1)^2]= (c_1+c_2+1)(c_1+c_2+2) \left(\frac{1-\phi}{2\phi}\right)^{2}+(c_1+c_2+1)\left(\frac{1-\phi}{2\phi}\right)\]</span></p>
+<p><span class="math display">\[\text{var}(n_1)= \text{var}(n_1-c_1)=E[(n_1-c_1)^2]-E[(n_1-c_1)]^2\]</span></p>
+<p><span class="math display">\[(c_1+c_2+1)[\left(\frac{1-\phi}{2\phi}\right)^{2}+\left(\frac{1-\phi}{2\phi}\right)]= (c_1+c_2+1)\frac{1-\phi^2}{4\phi^2}\]</span></p>
+<p>as wanted.</p>
+<h2 id="section-4">6.142</h2>
+<p>We have from 6.121 <span class="math inline">\(p(n_1|c_1 \phi I_J)=\frac{c_1}{n_1}{n\choose c_1}\phi^{c_1}(1-\phi)^{n_1-c_1} ={n-1\choose c_1-1}\phi^{c_1}(1-\phi)^{n_1-c_1}\)</span> and from 6.122 also <span class="math inline">\(E_J[n_1]=\frac{c_1}{\phi}\)</span></p>
+<p>We get</p>
+<p><span class="math display">\[ E[n(n+1)]= c_1 (c_1+1) \phi^{c_1} \sum_{n_1=c_1}^{\infty}{ n_1+1\choose c_1+1}(1-\phi)^{n_1-c_1}= \]</span></p>
+<p><span class="math display">\[ c_1 (c_1+1) \phi^{c_1} \sum_{m=n_1-c_1=0}^{\infty}{ m+c_1+1\choose m}(1-\phi)^{m}=\frac{c_1(c_1+1)}{\phi^2}\]</span></p>
+<p>so</p>
+<p><span class="math display">\[\text{var}(n_1)=\frac{c_1}{\phi^2}-\frac{c_1}{\phi}=\frac{c_1(1-\phi)}{\phi^2}\]</span></p>
+<p>as wanted.</p>
 <h2 id="exercise-6.8">Exercise 6.8</h2>
 <p>TO DO</p>
 <h2 id="exercise-6.9">Exercise 6.9</h2>
