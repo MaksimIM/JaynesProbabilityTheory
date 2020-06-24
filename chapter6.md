@@ -354,7 +354,9 @@ $$p(n_1|\phi c_2c_1 I_B)={n_1+c_2\choose c_1+c_2}\left(\frac{2\phi}{1+\phi}\righ
 
  and 6.133 says $E_B[n_1]=\frac{c_1+c_2+1-\phi}{2\phi}+\frac{c_1-c_2}{2}=c_1+(c_1+c_2+1)\left(\frac{1-\phi}{2\phi}\right)$
 
-$$E[(n_1-c_1)(n_1-c_1-1)]= \left(\frac{2\phi}{1+\phi}\right)^{c_1+c_2+1}\left(\frac{1-\phi}{1+\phi}\right)^{2} (c_1+c_2+1)(c_1+c_2+2) \sum_{m=n_1-c_1-2=0}^{\infty} {m+(c_1+c_2+2)\choose m} \left(\frac{1-\phi}{1+\phi}\right)^{m}$$
+$$E[(n_1-c_1)(n_1-c_1-1)]= $$
+
+$$\left(\frac{2\phi}{1+\phi}\right)^{c_1+c_2+1}\left(\frac{1-\phi}{1+\phi}\right)^{2} (c_1+c_2+1)(c_1+c_2+2) \sum_{m=n_1-c_1-2=0}^{\infty} {m+(c_1+c_2+2)\choose m} \left(\frac{1-\phi}{1+\phi}\right)^{m}$$
 
 $$ \left(\frac{2\phi}{1+\phi}\right)^{c_1+c_2+1}\left(\frac{1-\phi}{1+\phi}\right)^{2} (c_1+c_2+1)(c_1+c_2+2) \left(\frac{2\phi}{1+\phi}\right)^{-(c_1+c_2+3)}$$
 

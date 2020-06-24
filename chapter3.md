@@ -200,7 +200,7 @@ So when $k$ reaches 16 even the most advantageous color counts $\vec{N}$ are sup
 
  For each population, the probability of every $\vec{N}$ is determined. So if we had a prior over the population types it would determine a corresponding prior over fully specified (though maybe still intractable) inference problem.
 
-How to get a prior over population types also seems unclear. One could try to take some maximal entropy priors, or do some further hierarchical modeling, but since I do not plan to actually implement the inference, I will not go into details of this.
+How to get a prior over population types also seems unclear. One could try to take some maximal entropy priors, or do some further hierarchical modeling, but since I do not plan to actually implement the inference, I will not go into details of this, other than to mention that, for a fixed $K$,  uniform prior over the probability simplex implies that every **ordered** color tuple $N_1, \ldots, N_K$  is equally likely (this follows from "multicolored Bayes' billiards", which are discussed in the notes for chapter 6). 
 
 
 ## Exercise 3.4
