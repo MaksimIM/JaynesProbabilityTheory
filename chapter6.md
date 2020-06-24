@@ -120,7 +120,7 @@ $$\int_0^1 {N \choose R} g^R (1-g)^{(N-R)} g^{\alpha-1}(1-g)^{\beta-1} dg =$$
 
 $${N \choose R} \frac{1}{N+\alpha+\beta -1} \frac{1}{\text{B}(\alpha+R, \beta+N-R))}$$
 
-Consider case $\alpha=\beta=0$ (this is not normalizable). We get ${N \choose R}\frac{1}{N-1}\frac{1}{{N-2\choose R-1} N}\sim \frac{1}{R(N-R)}$ which is the "concave prior" 6.49.
+Consider case $\alpha=\beta=0$ (this is not normalizable). We get ${N \choose R}\frac{1}{N-1}\frac{1}{ \ {N-2\choose R-1} N}\sim \frac{1}{R(N-R)}$ which is the "concave prior" 6.49.
 ----->
 
 
