@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>chapter7</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="the-central-gaussian-or-normal-distribution">The central, Gaussian or normal distribution</h1>
+<p><span class="math inline">\(\leftarrow\)</span> <a href="./index.html">Back to Chapters</a></p>
+<h2 id="exercise-7.1">Exercise 7.1</h2>
+<p>TO DO</p>
+<!---
+
+Possible interpretations: 
+
+1) We literally take $\epsilon_n=\sum_1^n \varepsilon_i$ with $\varepsilon_i\sim \epsilon$ and i.i.d. Then $\langle \epsilon_n^2 \rangle=n \langle \epsilon^2\rangle$. 
+
+
+
+2) We suppose $\epsilon=\sum_{i=1}^{n}\epsilon_i$ of i.i.d. random noises $\epsilon_i$, with $\epsilon_i$ therefore satisfying $\langle \epsilon_i \rangle=0$ and  $n\langle \epsilon_i^2 \rangle=\langle \epsilon^2 \rangle$. 
+
+--->
+<h2 id="exercise-7.2">Exercise 7.2</h2>
+<p>Consider the family of distributions <span class="math inline">\(p_{\mu, \sigma}(v)\)</span>.</p>
+<p>We want to express fact that convolution of <span class="math inline">\(p_{\mu, \sigma}(v)\)</span> with <span class="math inline">\(q(v)\)</span> still belongs to the same family. I will prefer to work with parameter <span class="math inline">\(\nu=\sigma^2\)</span> instead. To avoid confusion the variable <span class="math inline">\(v\)</span> will be replaced by <span class="math inline">\(x\)</span>. So we work with the family <span class="math inline">\(p_{\mu, \nu}(x)\)</span>.</p>
+<p>Let <span class="math inline">\(\mu_q=\langle \epsilon\rangle_q\)</span> be the mean and <span class="math inline">\(\nu_q=\langle \epsilon^2\rangle_q-\langle \epsilon\rangle_q^2\)</span> the variance of <span class="math inline">\(q\)</span>. Then the new distribution must be <span class="math inline">\(p_{\mu+\mu_q, \nu+\nu_q}(x)\)</span>. At the same time the expansion 7.20 becomes</p>
+<p><span class="math display">\[p_{\mu+\mu_q, \nu+\nu_q}(x)=p_{\mu, \nu}(x)-\mu_q \frac{\partial}{\partial x} p_{\mu, \nu}(x)+\frac{1}{2}(\nu_q+\mu_q^2)\frac{\partial^2}{\partial^2 x} p_{\mu, \nu}(x)+\ldots\]</span></p>
+<p>Taylor expanding around <span class="math inline">\(\mu, \nu\)</span></p>
+<p><span class="math display">\[p_{\mu+\mu_q, \nu+\nu_q}(x)= p_{\mu, \nu}(x)+\mu_q\frac{\partial}{\partial \mu}p_{\mu, \nu}(x)+ \nu_q\frac{\partial}{\partial \nu}p_{\mu, \nu}(x)+ \]</span></p>
+<p><span class="math display">\[\frac{1}{2} \mu_q^2 \frac{\partial^2}{\partial^2 \mu}p_{\mu, \nu}(x) +\frac{1}{2}\nu_q^2 \frac{\partial^2}{\partial^2 \nu}p_{\mu, \nu}(x)+  \mu_q \nu_q \frac{\partial^2}{\partial \mu \partial \nu} p_{\mu, \nu}(x)\]</span></p>
+<p><span class="math display">\[ \]</span></p>
+<p>Now <strong>if</strong> we wanted this to be true for arbitrary (small) <span class="math inline">\(\mu_q, \nu_q\)</span> we would have equality of Taylor coefficients:</p>
+<p><span class="math display">\[-\frac{\partial}{\partial x}p_{\mu, \nu}(x)=\frac{\partial}{\partial \mu}p_{\mu, \nu}(x)\]</span></p>
+<p><span class="math display">\[\frac{1}{2}\frac{\partial^2}{\partial^2 x} p_{\mu, \nu}(x)=\frac{\partial}{\partial \nu}p_{\mu, \nu}(x)= \frac{1}{2} \frac{\partial^2}{\partial^2 \mu}p_{\mu, \nu}(x)\]</span></p>
+<p>where the first equation says that <span class="math inline">\(p_{\mu, \nu}(x)\)</span> is a function of <span class="math inline">\(x-\mu\)</span> and not of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(x\)</span> separately, <span class="math inline">\(p_{\mu, \nu}(x)=f_\nu(x-\mu)\)</span>. From this <span class="math inline">\(\frac{\partial^2}{\partial^2 x} p_{\mu, \nu}(x)=\frac{\partial^2}{\partial^2 \mu} p_{\mu, \nu}(x)\)</span> follows, and we simply recover the more general Gaussina family <span class="math inline">\(p_{\mu,\nu}(x)=\frac{1}{\sqrt{2 \pi \nu}} \exp\{-\frac{(x-\mu)^2}{2 \nu}\}\)</span> as in 7.23.</p>
+<p>However, <strong>if</strong> we instead think of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> as <span class="math inline">\(\mu(t)\)</span> and <span class="math inline">\(\nu(t)\)</span> so that the family <span class="math inline">\(p_t(x)=p_{\mu(t), \nu(t)}(x)\)</span> is a single-parameter family, then the expansions become expansions in terms of <span class="math inline">\(t\)</span>: with <span class="math inline">\(\mu_q(t)=\mu_q&#39;(0)t+o(t^2)\)</span>, <span class="math inline">\(\nu_q(t)=\nu_q&#39;(0)t+o(t^2)\)</span></p>
+<p><span class="math display">\[p_{\mu+\mu_q(t), \nu+\nu_q(t)}(x)=p_{\mu, \nu}(x)+[-\mu_q&#39;(0) \frac{\partial}{\partial x} p_{\mu, \nu}(x)+\frac{1}{2}\nu_q&#39;(0)\frac{\partial^2}{\partial^2 x} p_{\mu, \nu}(x)]t+\]</span></p>
+<p><span class="math display">\[p_{\mu+\mu_q(t), \nu+\nu_q(t)}(x)=p_{\mu, \nu}(x)+\frac{\partial}{\partial t}p_{\mu, \nu}(x) t+o(t^2)\]</span></p>
+<!--
+$$p_{\mu+\mu_q(t), \nu+\nu_q(t)}(x)= p_{\mu, \nu}(x)+[\mu_q'\frac{\partial}{\partial \mu}p_{\mu, \nu}(x)+ \nu_q'\frac{\partial}{\partial \nu}p_{\mu, \nu}(x)]t+ o(t^2)$$
+
+--->
+<p>Equating Taylor coefficients:</p>
+<p><span class="math display">\[ \frac{\partial}{\partial t}p_{t}(x)= -\mu_q&#39; \frac{\partial}{\partial x} p_{t}(x)+\frac{1}{2}\nu_q&#39;\frac{\partial^2}{\partial^2 x} p_{t}(x)\]</span></p>
+<p>This is a <a href="https://en.wikipedia.org/wiki/Fokker%E2%80%93Planck_equation">Fokker-Plank equation</a>, albeit a very special one, with <span class="math inline">\(\mu(x,t)=\mu&#39;(0)\)</span>, <span class="math inline">\(\sigma^2(x,t)=\nu&#39;(0)\)</span>, corresponding to the stochastic process where the drift <span class="math inline">\(\mu\)</span> and diffusion coefficient <span class="math inline">\(\nu/2\)</span> are both constant. Denote <span class="math inline">\(\mu&#39;(0)=m\)</span> and <span class="math inline">\(\nu&#39;(0)=v\)</span>.</p>
+<p>Changing coordinates to <span class="math inline">\(y(x,t)=x-mt\)</span> aka <span class="math inline">\(x(y,t)=y+mt\)</span>, we have <span class="math display">\[p_t(x(y,t))=p_t(y+mt)=:q_t(y)\]</span></p>
+<p>and compute by chin rule</p>
+<p><span class="math display">\[\frac{\partial}{\partial t}q_{t}(y)=\frac{\partial}{\partial t}p_{t}(x(y,t))=\frac{\partial}{\partial t}p_{t}(y+mt)+ m  \frac{\partial}{\partial x}p_{t}(y+mt)\]</span></p>
+<p>while <span class="math display">\[\frac{1}{2}v\frac{\partial^2}{\partial^2 y} q_{t}(y)=\frac{1}{2}v\frac{\partial^2}{\partial^2 y} p_{t}(x(y,t))=\frac{1}{2}v\frac{\partial^2}{\partial^2 x} p_{t}(y+mt) \]</span></p>
+<p>So the substitution we made reduces the Fokker-Plank equation we have (with drift) to the diffusion equation (without drift) i.e. 7.22 (with <span class="math inline">\(\sigma^2=t\)</span>), which by 7.23 has solution <span class="math inline">\(q_t(y)=\frac{1}{\sqrt{2\pi t }}\exp\{-\frac{y^2}{2t}\}\)</span>, or, after substitution</p>
+<p><span class="math display">\[p_t(x)=\frac{1}{\sqrt{2\pi t }}\exp\{-\frac{(x-mt)^2}{2t}\}\]</span></p>
+<p>This has variance <span class="math inline">\(\sigma^2=t\)</span> so we can rewrite it as <span class="math inline">\(p(x)=\frac{1}{\sqrt{2\pi \sigma^2 }}\exp\{-\frac{(x-m\sigma^2)^2}{2\sigma^2}\}\)</span>, as in the formulation of the exercise.</p>
+<p><!---
+ 
+ $$=\mu_q'\frac{\partial}{\partial \mu}p_{\mu, \nu}(x)+ \nu_q'\frac{\partial}{\partial \nu}p_{\mu, \nu}(x)$$
+ 
+ ---></p>
+</body>
+</html>
