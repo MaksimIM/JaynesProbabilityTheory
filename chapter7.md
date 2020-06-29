@@ -89,3 +89,23 @@ $$p_{\mu+\mu_q(t), \nu+\nu_q(t)}(x)= p_{\mu, \nu}(x)+[\mu_q'\frac{\partial}{\par
  
  --->
  
+
+ 
+ 
+ ##  Exercise 7.3 preliminary remarks.
+ 
+
+ 
+ I interpret this as follows. We are now considering evolution of beliefs about noise-generating process, and want to update this based on data and see that as the amount of data grows our posterior beliefs about the noise-generating process will imply beliefs about frequencies of noise that will converge to those produced by true frequencies $f(e)$. 
+ 
+In order to talk about the above meaningfully in mathematical sense, one needs to define some space of noise-genera processes in such a way that formulating a prior probability over it is possible, and also define in what sense the posterior beliefs about frequencies "converge". 
+
+Since we only observe real-valued noise data (and no other type of information about the noise-generating processes) the space of noise-generating processes can be taken to be the set of real-valued stochastic processes. Now this is still very large. Now one could either 1) take only noise-generating processes that generate noise in i.i.d. way 2) focus only on the beliefs about "frequencies" i.e. how often various values (close to) various $e$s are observed - or both.
+
+
+The intuition is that those processes that produce incorrect frequency of $e$s will be suppressed in he update (due to a mechanism like that in the Borel's law of large numbers), leaving only the process that do have the correct frequencies in the "posterior distribution over processes", whatever that means. To illustrate some of the difficulties, consider the simple case of discrete time and processes that just i.i.d. sample from some probability distribution. Consider a distribution which moreover has a density $p$. Then a particular dataset $e_1, \ldots, e_n$ has likelihood $\prod_{i=1}^{N} p(e_i)$. At each finite $N$ the closer our distribution $p$ is to the empirical distribution(of $\frac{1}{N}\sum_i \delta{e_i}$) the higher the likelihood; this seems problematic. Perhaps one has to discretize the set of possible $e$s and then take limit, or simply use some more sophisticated analysis.
+
+
+ 
+ ## Footnote 12
+ 
