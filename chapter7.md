@@ -109,3 +109,57 @@ The intuition is that those processes that produce incorrect frequency of $e$s w
  
  ## Footnote 12
  
+ 
+Suppose the sampling distribution is Cauchy $p(y|\mu)=\frac{1}{\pi}\frac{1}{1+(y-\mu)^2}$  and the sample is $y_1, \ldots, y_n$. Then likelihood is $\prod_{i=1}^n   \frac{1}{\pi}\frac{1}{1+(y_i-\mu)^2}$, and log likeliehood is up to a constant $L_{\vec{y}}(\mu)=\sum_i -\ln(1+(y_i-\mu)^2)$. The extremality condition  is $\frac{d}{d\mu}L_{\vec{y}}(\mu)=0$ i.e. $\sum_i^n \frac{y_i-\mu}{1+(y_i-\mu)^2}=0.$ This is in general equivalent to a degree $2n-1$ polynomial equation in $\mu$ - there are many local optima for the likelihood. 
+
+Consider the case $n=2$. Then, since the whole problem is equivariant to shifts, without loss of generality we can assume $y_1=-y_2=y$ (then the general solution is obtained by substituting $y=\frac{y_1-y_2}{2}$ and  shifting by $\frac{y_1+y_2}{2}$). 
+
+
+
+ The  optimality equation becomes $\frac{y-\mu}{1+(y-\mu)^2}-\frac{y+\mu}{1+(y+\mu)^2}=0$ so $f(x)=\frac{x}{1+x^2}=\frac{1}{x+\frac{1}{x}}$ has $f(y-\mu)=f(y+\mu)$. Either $y-\mu=y+\mu$, i.e. $\mu=0$ or $(y-\mu)(y+\mu)=1$, $\mu=\pm\sqrt{y^2-1}$. This last pair of solution is real  only if $|y|>1$.
+ 
+ Supose that in fact $|y|>1$. Then  one over the likeliehood is a positive fourth degree polynomial which we now know has three local extrema -  $-\sqrt{y^2-1}, 0, \sqrt{y^2-1}$.  Therefore these extrema must be non-degenerate and be min, max, min. Correspondingly, the  (log)likeliehood extrema must be max, min, max. 
+ 
+ The MLE estimate is thus indifferent between $\mu=\frac{y_1+y_2}{2}+\sqrt{(\frac{y_1-y_2}{2})^2-1}$ and $\mu=\frac{y_1+y_2}{2}-\sqrt{(\frac{y_1-y_2}{2})^2-1}$. Let's see how this can be written in the form $\mu=y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)$.
+ 
+ Supposing 
+ 
+ $$\frac{y_1+y_2}{2}+\sqrt{(\frac{y_1-y_2}{2})^2-1}=$$
+ 
+ $$=y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)$$
+ 
+ Plug in $y_2=0$ to get  
+ 
+ $$\frac{y_1}{2}+\sqrt{(\frac{y_1}{2})^2-1}=y_1w_1(y_1)$$
+
+ 
+ $$w_1(y_1)=\frac{1}{2}+sgn(y_1)\sqrt{\frac{1}{4}-\frac{1}{y_1^2}}$$
+ 
+  Plug in $y_1=0$ to get 
+  
+  $$w_2(-y_2)=\frac{1}{2}+sgn(y_2)\sqrt{\frac{1}{4}-\frac{1}{y_2^2}}$$
+  
+  or
+  
+  $$w_2(y)=\frac{1}{2}-sgn(y_2)\sqrt{\frac{1}{4}-\frac{1}{y^2}}$$
+  
+  Now plugging back we should have  if $y_1>y_2$
+  
+  $$\frac{y_1+y_2}{2}+\sqrt{(\frac{y_1-y_2}{2})^2-1}=$$
+  
+  
+  $$y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)= $$
+  
+  $$y_1\left(\frac{1}{2}+\sqrt{\frac{1}{4}-\frac{1}{(y_1-y_2)^2}}\right)+$$
+  
+  $$+y_2\left(\frac{1}{2}-\sqrt{\frac{1}{4}-\frac{1}{(y_1-y_2)^2}} \right)$$
+  
+  
+ $\sqrt{(\frac{y_1-y_2}{2})^2-1}=(y_1-y_2)\left(\sqrt{\frac{1}{4}-\frac{1}{(y_1-y_2)^2}}\right)$
+ 
+ $$y_1-y_2=y_1-y_2$$
+ 
+ which indeed holds.
+
+
+ 
