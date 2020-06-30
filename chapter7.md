@@ -112,7 +112,10 @@ The intuition is that those processes that produce incorrect frequency of $e$s w
  
 Suppose the sampling distribution is Cauchy $p(y|\mu)=\frac{1}{\pi}\frac{1}{1+(y-\mu)^2}$  and the sample is $y_1, \ldots, y_n$. Then likelihood is $\prod_{i=1}^n   \frac{1}{\pi}\frac{1}{1+(y_i-\mu)^2}$, and log likeliehood is up to a constant $L_{\vec{y}}(\mu)=\sum_i -\ln(1+(y_i-\mu)^2)$. The extremality condition  is $\frac{d}{d\mu}L_{\vec{y}}(\mu)=0$ i.e. $\sum_i^n \frac{y_i-\mu}{1+(y_i-\mu)^2}=0.$ This is in general equivalent to a degree $2n-1$ polynomial equation in $\mu$ - there are many local optima for the likelihood. 
 
-Consider the case $n=2$. Then, since the whole problem is equivariant to shifts, without loss of generality we can assume $y_1=-y_2=y$ (then the general solution is obtained by substituting $y=\frac{y_1-y_2}{2}$ and  shifting by $\frac{y_1+y_2}{2}$). 
+
+We only treat the case $n=2$ fully. 
+
+In that case, since the whole problem is equivariant to shifts, without loss of generality we can assume $y_1=-y_2=y$ (then the general solution is obtained by substituting $y=\frac{y_1-y_2}{2}$ and  shifting by $\frac{y_1+y_2}{2}$). 
 
 
 
@@ -141,7 +144,7 @@ Consider the case $n=2$. Then, since the whole problem is equivariant to shifts,
   
   or
   
-  $$w_2(y)=\frac{1}{2}-sgn(y_2)\sqrt{\frac{1}{4}-\frac{1}{y^2}}$$
+  $$w_2(y)=\frac{1}{2}-sgn(y)\sqrt{\frac{1}{4}-\frac{1}{y^2}}$$
   
   Now plugging back we should have  if $y_1>y_2$
   
@@ -159,7 +162,70 @@ Consider the case $n=2$. Then, since the whole problem is equivariant to shifts,
  
  $$y_1-y_2=y_1-y_2$$
  
- which indeed holds.
-
-
+ which indeed holds. Other cases are similar. Observe, moreover, that $w_1+w_2=1$.
  
+For general $n$, the inverse of likelihood is a polynomial in $\mu$ of degree $2n$ with coefficients some symmetric polynomials in $y_i$, and its derivative is a polynomial in $\mu$ of degree $2n-1$ with coefficients some symmetric polynomials in $y_i$, which we can write as $Q(\mu, y_1, \ldots, y_n)$. The hypersurface $Q(\mu, y_1, \ldots, y_n)=Q(\mu, \vec{y})=0$ in $\mathbb{R}^{n+1}$ projects to $\vec{y}=y_1, \ldots, y_n$. In the $\vec{y}$ space  and if we exclude those $\vec{y}$ tuples for which the discriminant of $Q$ is zero we have over $\mathbb{R}^n\setminus D$  a covering map, with varying number of sheets $k$, being the number of soultions of $Q(\mu, \vec{y})=0$ in $\mu$ for given $\vec{k}$. Locally in $\mathbb{R}\setminus D$, there are $k$ "inverse of projection" maps $M:C\to \mathbb{R}$ that pick out a particular solution out of the $k$ in a continuous (and in fact smooth) way (a solution of $Q(\mu, \vec{y})=0$ is a local extremum of the likelihood function). Our task is to show that at least those $M$ that correspond to maxima of likeliehood can be written as $M(\vec{y})=\sum_i y_i w_i(\vec{d})$ where $\vec{d}$ is the vector of pairwise differences $y_k-y_l$ and $\sum w_i(\vec{d})=1$.  I have failed to prove this or find it in the literature. 
+
+ ## Exercise 7.4
+ 
+ We are minimizing $\vec{w}^T C \vec{w}$.
+ Let's minimize over the hyperplane $\sum w_i=1$. Since $C$ is positive definite on $\mathbb{R}^n$, at infinity the values are large and positive. So the minimum is achieved at finite distance and must satisfy the Lagrange multiplier equation is $C\vec{w}=\lambda \vec{1}$, so $\vec{w}=\lambda C^{-1}\vec{1}$ and $\sum w_i=1$ gives, with $C^{-1}=K$ the answer $w_i=\sum_j K_{ij}/\sum_{i,j}K_{ij}$, as wanted (note that the denominator is $\vec{1}^T K \vec{1}>0$). 
+
+Corresponding value is 
+
+$$\vec{w}^T C \vec{w}=\lambda^2 (C^{-1}\vec{1})^T C (C^{-1}\vec{1})=\lambda=(\sum_{ij} K_{ij})^{-1}$$
+ 
+ 
+ HOWEVER this answer satisfies does not always satisfy the constraints $w_i\geq 0$: consider $C=\begin{pmatrix}1 & 4\\
+4& 17\end{pmatrix}$ so that $K=\begin{pmatrix}17 & -4\\
+-4& 1\end{pmatrix}$; then $w=(1.3, -0.3)^T$.
+
+## Exercise 7.5
+
+See https://www.cs.toronto.edu/~yuvalf/CLT.pdf
+
+
+## 7.84
+
+$$\exp\{xa-\frac{a^2}{2}\}=\exp\{\frac{x^2}{2}\}\exp\{-\frac{(x-a)^2}{2}\}$$
+
+so 
+
+$$\frac{d^n}{da^n} \exp\{xa-\frac{a^2}{2}\}=\exp\{\frac{x^2}{2}\} \frac{d^n}{da^n}\left(\exp\{-\frac{(x-a)^2}{2}\}\right)$$
+
+## 7.85
+
+$$\frac{\phi(x-a)\phi(x-b)}{\phi(x)}= \phi(x)\left(\sum_n R_n(x)\frac{a^n}{n!}\right)\left(\sum_m R_m(x)\frac{b^m}{m!}\right)$$
+
+LHS:
+Observe 
+$$\phi(x-a)\phi(x-b)= \phi(x)\phi(x-(a+b)) \exp\{ab\}$$
+
+Then 
+
+$$ \int \frac{\phi(x-a)\phi(x-b)}{\phi(x)} dx=\int \phi(x-(a+b)) \exp\{ab\} dx=\exp\{ab\}$$
+
+As a power series in $ab$ it is $\sum_i \frac{a^ib^i}{i!}$.
+
+RHS:
+
+$\sum_{n,m} (\int \phi(x) R_n(x)R_m(x)dx) \frac{a^n b^m}{n! m!}$
+
+Equating coefficients we get 7.85.
+
+## 7.86
+
+From 7.83 $\phi(x-y)=\phi(x)\sum_m R_m(x)\frac{y^m}{m!}$
+so 
+
+$$\phi(x-y)R_n(x)=R_n(x)\phi(x)\sum_m R_m(x)\frac{y^m}{m!}$$
+
+and integrating and using 7.85 we get 
+
+$$\int \phi(x-y) R_n(x)dx= y^n.$$
+
+## 7.89
+
+$$\exp\{xa\}\exp\{-a^2/2\}=\sum_k \frac{x^k a^k}{k!}\sum_m \frac{a^{2m}}{(-2)^m m!}$$
+
+Isolating the term in front of $n=k+2m$ gives 7.89

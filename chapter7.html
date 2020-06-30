@@ -69,5 +69,64 @@ $$p_{\mu+\mu_q(t), \nu+\nu_q(t)}(x)= p_{\mu, \nu}(x)+[\mu_q'\frac{\partial}{\par
  $$=\mu_q'\frac{\partial}{\partial \mu}p_{\mu, \nu}(x)+ \nu_q'\frac{\partial}{\partial \nu}p_{\mu, \nu}(x)$$
  
  ---></p>
+<p>## Exercise 7.3 preliminary remarks.</p>
+<p>I interpret this as follows. We are now considering evolution of beliefs about noise-generating process, and want to update this based on data and see that as the amount of data grows our posterior beliefs about the noise-generating process will imply beliefs about frequencies of noise that will converge to those produced by true frequencies <span class="math inline">\(f(e)\)</span>.</p>
+<p>In order to talk about the above meaningfully in mathematical sense, one needs to define some space of noise-genera processes in such a way that formulating a prior probability over it is possible, and also define in what sense the posterior beliefs about frequencies “converge”.</p>
+<p>Since we only observe real-valued noise data (and no other type of information about the noise-generating processes) the space of noise-generating processes can be taken to be the set of real-valued stochastic processes. Now this is still very large. Now one could either 1) take only noise-generating processes that generate noise in i.i.d. way 2) focus only on the beliefs about “frequencies” i.e. how often various values (close to) various <span class="math inline">\(e\)</span>s are observed - or both.</p>
+<p>The intuition is that those processes that produce incorrect frequency of <span class="math inline">\(e\)</span>s will be suppressed in he update (due to a mechanism like that in the Borel’s law of large numbers), leaving only the process that do have the correct frequencies in the “posterior distribution over processes”, whatever that means. To illustrate some of the difficulties, consider the simple case of discrete time and processes that just i.i.d. sample from some probability distribution. Consider a distribution which moreover has a density <span class="math inline">\(p\)</span>. Then a particular dataset <span class="math inline">\(e_1, \ldots, e_n\)</span> has likelihood <span class="math inline">\(\prod_{i=1}^{N} p(e_i)\)</span>. At each finite <span class="math inline">\(N\)</span> the closer our distribution <span class="math inline">\(p\)</span> is to the empirical distribution(of <span class="math inline">\(\frac{1}{N}\sum_i \delta{e_i}\)</span>) the higher the likelihood; this seems problematic. Perhaps one has to discretize the set of possible <span class="math inline">\(e\)</span>s and then take limit, or simply use some more sophisticated analysis.</p>
+<p>## Footnote 12</p>
+<p>Suppose the sampling distribution is Cauchy <span class="math inline">\(p(y|\mu)=\frac{1}{\pi}\frac{1}{1+(y-\mu)^2}\)</span> and the sample is <span class="math inline">\(y_1, \ldots, y_n\)</span>. Then likelihood is <span class="math inline">\(\prod_{i=1}^n \frac{1}{\pi}\frac{1}{1+(y_i-\mu)^2}\)</span>, and log likeliehood is up to a constant <span class="math inline">\(L_{\vec{y}}(\mu)=\sum_i -\ln(1+(y_i-\mu)^2)\)</span>. The extremality condition is <span class="math inline">\(\frac{d}{d\mu}L_{\vec{y}}(\mu)=0\)</span> i.e. <span class="math inline">\(\sum_i^n \frac{y_i-\mu}{1+(y_i-\mu)^2}=0.\)</span> This is in general equivalent to a degree <span class="math inline">\(2n-1\)</span> polynomial equation in <span class="math inline">\(\mu\)</span> - there are many local optima for the likelihood.</p>
+<p>We only treat the case <span class="math inline">\(n=2\)</span> fully.</p>
+<p>In that case, since the whole problem is equivariant to shifts, without loss of generality we can assume <span class="math inline">\(y_1=-y_2=y\)</span> (then the general solution is obtained by substituting <span class="math inline">\(y=\frac{y_1-y_2}{2}\)</span> and shifting by <span class="math inline">\(\frac{y_1+y_2}{2}\)</span>).</p>
+<p>The optimality equation becomes <span class="math inline">\(\frac{y-\mu}{1+(y-\mu)^2}-\frac{y+\mu}{1+(y+\mu)^2}=0\)</span> so <span class="math inline">\(f(x)=\frac{x}{1+x^2}=\frac{1}{x+\frac{1}{x}}\)</span> has <span class="math inline">\(f(y-\mu)=f(y+\mu)\)</span>. Either <span class="math inline">\(y-\mu=y+\mu\)</span>, i.e. <span class="math inline">\(\mu=0\)</span> or <span class="math inline">\((y-\mu)(y+\mu)=1\)</span>, <span class="math inline">\(\mu=\pm\sqrt{y^2-1}\)</span>. This last pair of solution is real only if <span class="math inline">\(|y|&gt;1\)</span>.</p>
+<p>Supose that in fact <span class="math inline">\(|y|&gt;1\)</span>. Then one over the likeliehood is a positive fourth degree polynomial which we now know has three local extrema - <span class="math inline">\(-\sqrt{y^2-1}, 0, \sqrt{y^2-1}\)</span>. Therefore these extrema must be non-degenerate and be min, max, min. Correspondingly, the (log)likeliehood extrema must be max, min, max.</p>
+<p>The MLE estimate is thus indifferent between <span class="math inline">\(\mu=\frac{y_1+y_2}{2}+\sqrt{(\frac{y_1-y_2}{2})^2-1}\)</span> and <span class="math inline">\(\mu=\frac{y_1+y_2}{2}-\sqrt{(\frac{y_1-y_2}{2})^2-1}\)</span>. Let’s see how this can be written in the form <span class="math inline">\(\mu=y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)\)</span>.</p>
+<p>Supposing</p>
+<p><span class="math display">\[\frac{y_1+y_2}{2}+\sqrt{(\frac{y_1-y_2}{2})^2-1}=\]</span></p>
+<p><span class="math display">\[=y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)\]</span></p>
+<p>Plug in <span class="math inline">\(y_2=0\)</span> to get</p>
+<p><span class="math display">\[\frac{y_1}{2}+\sqrt{(\frac{y_1}{2})^2-1}=y_1w_1(y_1)\]</span></p>
+<p><span class="math display">\[w_1(y_1)=\frac{1}{2}+sgn(y_1)\sqrt{\frac{1}{4}-\frac{1}{y_1^2}}\]</span></p>
+<p>Plug in <span class="math inline">\(y_1=0\)</span> to get</p>
+<p><span class="math display">\[w_2(-y_2)=\frac{1}{2}+sgn(y_2)\sqrt{\frac{1}{4}-\frac{1}{y_2^2}}\]</span></p>
+<p>or</p>
+<p><span class="math display">\[w_2(y)=\frac{1}{2}-sgn(y)\sqrt{\frac{1}{4}-\frac{1}{y^2}}\]</span></p>
+<p>Now plugging back we should have if <span class="math inline">\(y_1&gt;y_2\)</span></p>
+<p><span class="math display">\[\frac{y_1+y_2}{2}+\sqrt{(\frac{y_1-y_2}{2})^2-1}=\]</span></p>
+<p><span class="math display">\[y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)= \]</span></p>
+<p><span class="math display">\[y_1\left(\frac{1}{2}+\sqrt{\frac{1}{4}-\frac{1}{(y_1-y_2)^2}}\right)+\]</span></p>
+<p><span class="math display">\[+y_2\left(\frac{1}{2}-\sqrt{\frac{1}{4}-\frac{1}{(y_1-y_2)^2}} \right)\]</span></p>
+<p><span class="math inline">\(\sqrt{(\frac{y_1-y_2}{2})^2-1}=(y_1-y_2)\left(\sqrt{\frac{1}{4}-\frac{1}{(y_1-y_2)^2}}\right)\)</span></p>
+<p><span class="math display">\[y_1-y_2=y_1-y_2\]</span></p>
+<p>which indeed holds. Other cases are similar. Observe, moreover, that <span class="math inline">\(w_1+w_2=1\)</span>.</p>
+<p>For general <span class="math inline">\(n\)</span>, the inverse of likelihood is a polynomial in <span class="math inline">\(\mu\)</span> of degree <span class="math inline">\(2n\)</span> with coefficients some symmetric polynomials in <span class="math inline">\(y_i\)</span>, and its derivative is a polynomial in <span class="math inline">\(\mu\)</span> of degree <span class="math inline">\(2n-1\)</span> with coefficients some symmetric polynomials in <span class="math inline">\(y_i\)</span>, which we can write as <span class="math inline">\(Q(\mu, y_1, \ldots, y_n)\)</span>. The hypersurface <span class="math inline">\(Q(\mu, y_1, \ldots, y_n)=Q(\mu, \vec{y})=0\)</span> in <span class="math inline">\(\mathbb{R}^{n+1}\)</span> projects to <span class="math inline">\(\vec{y}=y_1, \ldots, y_n\)</span>. In the <span class="math inline">\(\vec{y}\)</span> space and if we exclude those <span class="math inline">\(\vec{y}\)</span> tuples for which the discriminant of <span class="math inline">\(Q\)</span> is zero we have over <span class="math inline">\(\mathbb{R}^n\setminus D\)</span> a covering map, with varying number of sheets <span class="math inline">\(k\)</span>, being the number of soultions of <span class="math inline">\(Q(\mu, \vec{y})=0\)</span> in <span class="math inline">\(\mu\)</span> for given <span class="math inline">\(\vec{k}\)</span>. Locally in <span class="math inline">\(\mathbb{R}\setminus D\)</span>, there are <span class="math inline">\(k\)</span> “inverse of projection” maps <span class="math inline">\(M:C\to \mathbb{R}\)</span> that pick out a particular solution out of the <span class="math inline">\(k\)</span> in a continuous (and in fact smooth) way (a solution of <span class="math inline">\(Q(\mu, \vec{y})=0\)</span> is a local extremum of the likelihood function). Our task is to show that at least those <span class="math inline">\(M\)</span> that correspond to maxima of likeliehood can be written as <span class="math inline">\(M(\vec{y})=\sum_i y_i w_i(\vec{d})\)</span> where <span class="math inline">\(\vec{d}\)</span> is the vector of pairwise differences <span class="math inline">\(y_k-y_l\)</span> and <span class="math inline">\(\sum w_i(\vec{d})=1\)</span>. I have failed to prove this or find it in the literature.</p>
+<p>## Exercise 7.4</p>
+<p>We are minimizing <span class="math inline">\(\vec{w}^T C \vec{w}\)</span>. Let’s minimize over the hyperplane <span class="math inline">\(\sum w_i=1\)</span>. Since <span class="math inline">\(C\)</span> is positive definite on <span class="math inline">\(\mathbb{R}^n\)</span>, at infinity the values are large and positive. So the minimum is achieved at finite distance and must satisfy the Lagrange multiplier equation is <span class="math inline">\(C\vec{w}=\lambda \vec{1}\)</span>, so <span class="math inline">\(\vec{w}=\lambda C^{-1}\vec{1}\)</span> and <span class="math inline">\(\sum w_i=1\)</span> gives, with <span class="math inline">\(C^{-1}=K\)</span> the answer <span class="math inline">\(w_i=\sum_j K_{ij}/\sum_{i,j}K_{ij}\)</span>, as wanted (note that the denominator is <span class="math inline">\(\vec{1}^T K \vec{1}&gt;0\)</span>).</p>
+<p>Corresponding value is</p>
+<p><span class="math display">\[\vec{w}^T C \vec{w}=\lambda^2 (C^{-1}\vec{1})^T C (C^{-1}\vec{1})=\lambda=(\sum_{ij} K_{ij})^{-1}\]</span></p>
+<p>HOWEVER this answer satisfies does not always satisfy the constraints <span class="math inline">\(w_i\geq 0\)</span>: consider <span class="math inline">\(C=\begin{pmatrix}1 &amp; 4\\ 4&amp; 17\end{pmatrix}\)</span> so that <span class="math inline">\(K=\begin{pmatrix}17 &amp; -4\\ -4&amp; 1\end{pmatrix}\)</span>; then <span class="math inline">\(w=(1.3, -0.3)^T\)</span>.</p>
+<h2 id="exercise-7.5">Exercise 7.5</h2>
+<p>See https://www.cs.toronto.edu/~yuvalf/CLT.pdf</p>
+<h2 id="section">7.84</h2>
+<p><span class="math display">\[\exp\{xa-\frac{a^2}{2}\}=\exp\{\frac{x^2}{2}\}\exp\{-\frac{(x-a)^2}{2}\}\]</span></p>
+<p>so</p>
+<p><span class="math display">\[\frac{d^n}{da^n} \exp\{xa-\frac{a^2}{2}\}=\exp\{\frac{x^2}{2}\} \frac{d^n}{da^n}\left(\exp\{-\frac{(x-a)^2}{2}\}\right)\]</span></p>
+<h2 id="section-1">7.85</h2>
+<p><span class="math display">\[\frac{\phi(x-a)\phi(x-b)}{\phi(x)}= \phi(x)\left(\sum_n R_n(x)\frac{a^n}{n!}\right)\left(\sum_m R_m(x)\frac{b^m}{m!}\right)\]</span></p>
+<p>LHS: Observe <span class="math display">\[\phi(x-a)\phi(x-b)= \phi(x)\phi(x-(a+b)) \exp\{ab\}\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[ \int \frac{\phi(x-a)\phi(x-b)}{\phi(x)} dx=\int \phi(x-(a+b)) \exp\{ab\} dx=\exp\{ab\}\]</span></p>
+<p>As a power series in <span class="math inline">\(ab\)</span> it is <span class="math inline">\(\sum_i \frac{a^ib^i}{i!}\)</span>.</p>
+<p>RHS:</p>
+<p><span class="math inline">\(\sum_{n,m} (\int \phi(x) R_n(x)R_m(x)dx) \frac{a^n b^m}{n! m!}\)</span></p>
+<p>Equating coefficients we get 7.85.</p>
+<h2 id="section-2">7.86</h2>
+<p>From 7.83 <span class="math inline">\(\phi(x-y)=\phi(x)\sum_m R_m(x)\frac{y^m}{m!}\)</span> so</p>
+<p><span class="math display">\[\phi(x-y)R_n(x)=R_n(x)\phi(x)\sum_m R_m(x)\frac{y^m}{m!}\]</span></p>
+<p>and integrating and using 7.85 we get</p>
+<p><span class="math display">\[\int \phi(x-y) R_n(x)dx= y^n.\]</span></p>
+<h2 id="section-3">7.89</h2>
+<p><span class="math display">\[\exp\{xa\}\exp\{-a^2/2\}=\sum_k \frac{x^k a^k}{k!}\sum_m \frac{a^{2m}}{(-2)^m m!}\]</span></p>
+<p>Isolating the term in front of <span class="math inline">\(n=k+2m\)</span> gives 7.89</p>
 </body>
 </html>
