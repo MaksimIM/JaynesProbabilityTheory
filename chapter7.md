@@ -110,61 +110,110 @@ The intuition is that those processes that produce incorrect frequency of $e$s w
  ## Footnote 12
  
  
-Suppose the sampling distribution is Cauchy $p(y|\mu)=\frac{1}{\pi}\frac{1}{1+(y-\mu)^2}$  and the sample is $y_1, \ldots, y_n$. Then likelihood is $\prod_{i=1}^n   \frac{1}{\pi}\frac{1}{1+(y_i-\mu)^2}$, and log likeliehood is up to a constant $L_{\vec{y}}(\mu)=\sum_i -\ln(1+(y_i-\mu)^2)$. The extremality condition  is $\frac{d}{d\mu}L_{\vec{y}}(\mu)=0$ i.e. $\sum_i^n \frac{y_i-\mu}{1+(y_i-\mu)^2}=0.$ This is in general equivalent to a degree $2n-1$ polynomial equation in $\mu$ - there are many local optima for the likelihood. 
-
-
-We only treat the case $n=2$ fully. 
-
-In that case, since the whole problem is equivariant to shifts, without loss of generality we can assume $y_1=-y_2=y$ (then the general solution is obtained by substituting $y=\frac{y_1-y_2}{2}$ and  shifting by $\frac{y_1+y_2}{2}$). 
-
-
-
- The  optimality equation becomes $\frac{y-\mu}{1+(y-\mu)^2}-\frac{y+\mu}{1+(y+\mu)^2}=0$ so $f(x)=\frac{x}{1+x^2}=\frac{1}{x+\frac{1}{x}}$ has $f(y-\mu)=f(y+\mu)$. Either $y-\mu=y+\mu$, i.e. $\mu=0$ or $(y-\mu)(y+\mu)=1$, $\mu=\pm\sqrt{y^2-1}$. This last pair of solution is real  only if $|y|>1$.
+ ####General distributions
  
- Supose that in fact $|y|>1$. Then  one over the likeliehood is a positive fourth degree polynomial which we now know has three local extrema -  $-\sqrt{y^2-1}, 0, \sqrt{y^2-1}$.  Therefore these extrema must be non-degenerate and be min, max, min. Correspondingly, the  (log)likeliehood extrema must be max, min, max. 
+ **Sum of weights.**
  
- The MLE estimate is thus indifferent between $\mu=\frac{y_1+y_2}{2}+\sqrt{(\frac{y_1-y_2}{2})^2-1}$ and $\mu=\frac{y_1+y_2}{2}-\sqrt{(\frac{y_1-y_2}{2})^2-1}$. Let's see how this can be written in the form $\mu=y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)$.
  
- Supposing 
+ We are doing MLE for the location parameter $\mu$, meaning $p(\mu, y)=f(\mu-y)$. The likelihood $L_{\vec{y}}(\mu)=\prod_i f(\mu-y_i)$.
+ 
+ Suppose we have, for all $\vec{y}$ near $\vec{y}_0$, an isolated local minimum of $L_{\vec{y}}$ at $\hat{\mu}(\vec{y})$. Suppose further  we can  write $\hat{\mu}(\vec{y}) = \sum y_i w_i(\vec{y})$ with $w_i$ (continuous) functions of the differences $y_k-y_l$. Shift each $y_i$ by a small $\delta$, to $\tilde{y}_i=y_i+\delta$. Then, since $\mu$ is a location parameter,  likelihood is also shifted: $L_{\tilde{\vec{y}}}(\mu+\delta)=L_{\vec{y}}(\mu)$ so
+ 
+  $$\hat{\mu}(\tilde{\vec{y}})=\hat{\mu}(\vec{y})+\delta.$$
+  
+On other hand we have $\hat{\mu}(\vec{y})=\sum y_i w_i(\vec{y})$  and since all $w_i(\vec{y})$ are unchanged by the shift plugging in $\tilde{y}$ we get
+
+ $$\hat{\mu}(\tilde{\vec{y}})=\sum (y_i+\delta)w_i=\hat{\mu}(y)+\delta(\sum w_i(\vec{y})).$$
+ 
+ We conclude $\sum_i w_i(\vec{y})=1$.
+ 
+ 
+  **Is MLE for location parameter a weighted average? Cases $n=1$ and $n=2$.**
+  
+  
+ Now we look at wether $\hat{\mu}(\vec{y}) = \sum y_i w_i(\vec{y})$ is indeed true.
+ 
+ It is instructive to examine the case $n=1$. Then we are just looking at local optima of $f(\mu-y_1)$. If $f$ is unimodular with unique maximum at $0$ then $\hat{mu}=y$ and of course $w$ is - as prescribed - function of no inputs that "sums" to 1, i.e. is the constant 1. For general $f$ we have various local maxima $m_j$ and MLE $\hat{\mu}_j=y+m_j$ which are not in the required form. It may be prudent to assume unimodality and peak at $0$ for this problem. 
+ 
+ 
+ For $n=2$ such a form $\hat{\mu}(y_1, y_2)= y_1 w_1(y_1-y_2)+y_2 w_2(y_1-y_2)$ is achievable as follows.  Denote $\frac{y_1-y_2}{2}$ by $y$. If $y=0$ the two data points coincide and $L_{\vec{y}}(\mu)=f(\mu-y_1)^2$ which has the same minima as $f(\mu-y_1)$ - we effectively have only one data point, a case which we have examined above. So below we assume $y\neq 0$.   
+ 
+ Then by translating by $\delta=\frac{y_1+y_2}{2}$ we have  $\hat{\mu}(y_1, y_2)=\frac{y_1+y_2}{2}+\hat{\mu}(-y, y)$. Write $\hat{\mu}(-y, y)=y w(y)$. Then 
+ 
+ $$\hat{\mu}(y_1, y_2)=\frac{y_1+y_2}{2}+\hat{\mu}(-y, y)$$
+ 
+ $$=\frac{y_1+y_2}{2}+\frac{y_1-y_2}{2} w(y_1-y_2)=$$
+ 
+ $$y_1(w_1(y_1-y_2)) +y_2 w_2(y_1-y_2)$$
+ 
+ where 
+ 
+ $$w_1(y_1-y_2)=\frac{1}{2}+\frac{1}{2}w(y_1-y_2)$$
+ $$w_2(y_1-y_2)=\frac{1}{2}-\frac{1}{2}w(y_1-y_2).$$
+ 
+ 
+ **Cauchy distribution, mostly $n=2$.**
+ 
+ We illustrate this in the case when 
+ the sampling distribution is Cauchy: $p(y|\mu)=\frac{1}{\pi}\frac{1}{1+(y-\mu)^2}$. 
+ 
+ For general $n$  and the sample  $y_1, \ldots, y_n$ the likelihood is $\prod_{i=1}^n   \frac{1}{\pi}\frac{1}{1+(y_i-\mu)^2}$, and log likeliehood is up to a constant $L_{\vec{y}}(\mu)=\sum_i -\ln(1+(y_i-\mu)^2)$. The extremality condition  is $\frac{d}{d\mu}L_{\vec{y}}(\mu)=0$ i.e. $\sum_i^n \frac{y_i-\mu}{1+(y_i-\mu)^2}=0.$ This is in general equivalent to a degree $2n-1$ polynomial equation in $\mu$ - there are many local optima for the likelihood. 
+
+
+Consider now the case $n=2$. 
+
+As before, we write $y=\frac{y_1-y_2}{2}$ consider the problem shifted by $\delta=\frac{y_1+y_2}{2}$. 
+
+
+
+ The  optimality equation becomes $\frac{y-\hat{\mu}}{1+(y-\hat{\mu})^2}-\frac{y+\hat{\mu}}{1+(y+\hat{\mu})^2}=0$ so $f(x)=\frac{x}{1+x^2}=\frac{1}{x+\frac{1}{x}}$ has $f(y-\hat{\mu})=f(y+\hat{\mu})$. Either $y-\hat{\mu}=y+\hat{\mu}$, i.e. $\hat{\mu}=0$ or $(y-\hat{\mu})(y+\hat{\mu})=1$, $\hat{\mu}=\pm\sqrt{y^2-1}$. This last pair of solution is real  only if $|y|>1$.
+ 
+ Suppose that in fact $|y|>1$. Then  one over the likelihood is a positive fourth degree polynomial which we now know has three local extrema -  $-\sqrt{y^2-1}, 0, \sqrt{y^2-1}$.  Therefore these extrema must be non-degenerate and be min, max, min. Correspondingly, the  (log)likelihood extrema must be max, min, max. 
+ 
+ The MLE estimate is thus indifferent between
+  $$\hat{\mu}_1=\frac{y_1+y_2}{2}+\sqrt{(\frac{y_1-y_2}{2})^2-1}$$ 
+ and 
+ 
+ $$\hat{\mu}_2=\frac{y_1+y_2}{2}-\sqrt{(\frac{y_1-y_2}{2})^2-1}.$$ 
+ 
+ Let's see how this can be written in the form $\hat{\mu}=y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)$. We treat $\hat{\mu}_1$
+ 
+ 
+ As prescribed, 
+ 
+ $$w(y)=\sqrt{y^2-1}=y\cdot sgn(y) \sqrt{\frac{1}{4}-\frac{1}{y^2}}$$ 
+ 
+ so 
+ 
+ $$w_1(y)=\frac{1}{2}+ sgn(y) \sqrt{\frac{1}{4}-\frac{1}{y^2}}$$ 
+ 
+ and 
+ 
+ $$w_2(y)=\frac{1}{2}- sgn(y) \sqrt{\frac{1}{4}-\frac{1}{y^2}}$$
+ 
+ and indeed,
+ 
+ $$y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)=$$
+ 
+ $$\frac{y_1+y_2}{2}+(y_1-y_2)\cdot sgn(y_1-y_2) \sqrt{\frac{1}{4}-\frac{1}{(y_1-y_2)^2}}=$$
+ 
  
  $$\frac{y_1+y_2}{2}+\sqrt{(\frac{y_1-y_2}{2})^2-1}=$$
+  
+  
+  $$y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)= \hat{\mu}_1$$
+  
+  
+  Observe that $w_1(y)+w_2(y)=1$ as expected. Observe also that for $\hat{\mu}_2$ we would obtain $\tilde{w}_1=w_2$ and $\tilde{w}_2=w_1$ - the individual $\mu_i$ and $w_i$ are not symmetric in exchanging $y_i$s, but the sets of $\mu$s and $w$s are. 
+  
  
- $$=y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)$$
+ **Incomplete remarks on $n>2$.**
  
- Plug in $y_2=0$ to get  
  
- $$\frac{y_1}{2}+\sqrt{(\frac{y_1}{2})^2-1}=y_1w_1(y_1)$$
+Still considering Cauchy distribution, but for general $n$, the inverse of likelihood is a polynomial in $\mu$ of degree $2n$ with coefficients some symmetric polynomials in $y_i$, and its derivative is a polynomial in $\mu$ of degree $2n-1$ with coefficients some symmetric polynomials in $y_i$, which we can write as $Q(\mu, y_1, \ldots, y_n)$. The hypersurface $Q(\mu, y_1, \ldots, y_n)=Q(\mu, \vec{y})=0$ in $\mathbb{R}^{n+1}$ projects to $\vec{y}=y_1, \ldots, y_n$. In the $\vec{y}$ space  and if we exclude those $\vec{y}$ tuples for which the discriminant of $Q$ is zero we have over $\mathbb{R}^n\setminus D$  a covering map, with varying number of sheets $k$, being the number of soultions of $Q(\mu, \vec{y})=0$ in $\mu$ for given $\vec{k}$. Locally in $\mathbb{R}\setminus D$, there are $k$ "inverse of projection" maps $M:C\to \mathbb{R}$ that pick out a particular solution out of the $k$ in a continuous (and in fact smooth) way (a solution of $Q(\mu, \vec{y})=0$ is a local extremum of the likelihood function). Our task is to show that at least those $M$ that correspond to maxima of likeliehood can be written as $M(\vec{y})=\sum_i y_i w_i(\vec{d})$ where $\vec{d}$ is the vector of pairwise differences $y_k-y_l$ and $\sum w_i(\vec{d})=1$. (Similar description applies to other distributions, except everything is no longer necessarily polynomial.)  I have failed to prove this or find it in the literature. 
 
- 
- $$w_1(y_1)=\frac{1}{2}+sgn(y_1)\sqrt{\frac{1}{4}-\frac{1}{y_1^2}}$$
- 
-  Plug in $y_1=0$ to get 
-  
-  $$w_2(-y_2)=\frac{1}{2}+sgn(y_2)\sqrt{\frac{1}{4}-\frac{1}{y_2^2}}$$
-  
-  or
-  
-  $$w_2(y)=\frac{1}{2}-sgn(y)\sqrt{\frac{1}{4}-\frac{1}{y^2}}$$
-  
-  Now plugging back we should have  if $y_1>y_2$
-  
-  $$\frac{y_1+y_2}{2}+\sqrt{(\frac{y_1-y_2}{2})^2-1}=$$
-  
-  
-  $$y_1w_1(y_1-y_2)+y_2w_2(y_1-y_2)= $$
-  
-  $$y_1\left(\frac{1}{2}+\sqrt{\frac{1}{4}-\frac{1}{(y_1-y_2)^2}}\right)+$$
-  
-  $$+y_2\left(\frac{1}{2}-\sqrt{\frac{1}{4}-\frac{1}{(y_1-y_2)^2}} \right)$$
-  
-  
- $\sqrt{(\frac{y_1-y_2}{2})^2-1}=(y_1-y_2)\left(\sqrt{\frac{1}{4}-\frac{1}{(y_1-y_2)^2}}\right)$
- 
- $$y_1-y_2=y_1-y_2$$
- 
- which indeed holds. Other cases are similar. Observe, moreover, that $w_1+w_2=1$.
- 
-For general $n$, the inverse of likelihood is a polynomial in $\mu$ of degree $2n$ with coefficients some symmetric polynomials in $y_i$, and its derivative is a polynomial in $\mu$ of degree $2n-1$ with coefficients some symmetric polynomials in $y_i$, which we can write as $Q(\mu, y_1, \ldots, y_n)$. The hypersurface $Q(\mu, y_1, \ldots, y_n)=Q(\mu, \vec{y})=0$ in $\mathbb{R}^{n+1}$ projects to $\vec{y}=y_1, \ldots, y_n$. In the $\vec{y}$ space  and if we exclude those $\vec{y}$ tuples for which the discriminant of $Q$ is zero we have over $\mathbb{R}^n\setminus D$  a covering map, with varying number of sheets $k$, being the number of soultions of $Q(\mu, \vec{y})=0$ in $\mu$ for given $\vec{k}$. Locally in $\mathbb{R}\setminus D$, there are $k$ "inverse of projection" maps $M:C\to \mathbb{R}$ that pick out a particular solution out of the $k$ in a continuous (and in fact smooth) way (a solution of $Q(\mu, \vec{y})=0$ is a local extremum of the likelihood function). Our task is to show that at least those $M$ that correspond to maxima of likeliehood can be written as $M(\vec{y})=\sum_i y_i w_i(\vec{d})$ where $\vec{d}$ is the vector of pairwise differences $y_k-y_l$ and $\sum w_i(\vec{d})=1$.  I have failed to prove this or find it in the literature. 
+<!---I suspect considering the action of the permutation group on $y_i$ would be helpful;
+---->
 
  ## Exercise 7.4
  
