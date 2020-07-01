@@ -28,6 +28,36 @@ Remark: This also follows from the more obvious Vandermonde identity $\sum_r {R 
 
 This is the same as derivation of formulas 3.26 and 3.27 in Chapter 3 (see notes for that chapter).
 
+## 6.24
+
+$$\<R\> = \sum_{R=0}^{N}R\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}$$
+$$\<R\> = \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}$$
+$$\<R\> + \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}= \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}+\binom{N+1}{n+1}^{-1}\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}$$
+
+
+Due to (6.16) we have:
+
+$$\<R\> + \binom{N+1}{n+1}^{-1}\binom{N+1}{n+1} = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}+\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}\Biggl\}$$
+
+Since $(R+1)\binom{R}{r}=R\binom{R}{r} + \binom{R}{r}$, we have:
+
+$$\<R\> +1 = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} (R+1)\binom{R}{r}\binom{N-R}{n-r}\Biggl\}$$
+
+Due to (6.23) we have:
+
+$$\<R\> +1 = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} (r+1)\binom{R+1}{r+1}\binom{N-R}{n-r}\Biggl\}$$
+
+$$\<R\> +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R=0}^{N}\binom{R+1}{r+1}\binom{N-R}{n-r}\Biggl\}$$
+
+Set $R_q=R+1$ and $r_q=r+1$
+
+$$\<R\> +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R_q=1}^{N+1}\binom{R_q}{r_q}\binom{N-(R_q-1)}{n-(r_q-1)}\Biggl\}$$
+$$\<R\> +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R_q=1}^{N+1}\binom{R_q}{r_q}\binom{N+1-R_q)}{n+1-r_q)}\Biggl\}$$
+
+Apply (6.19) again
+
+$$\<R\> +1 = \binom{N+1}{n+1}^{-1}(r+1)\binom{N+2}{n+2}$$
+
 ##  Laplace rule: 6.25, 6.29 and 6.73
 
 $$E\left[\frac{R-r}{N-n}\right]=\frac{E[R+1]-(r+1)}{N-n}=$$
