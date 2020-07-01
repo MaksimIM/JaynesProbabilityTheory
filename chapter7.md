@@ -128,7 +128,9 @@ On other hand we have $\hat{\mu}(\vec{y})=\sum y_i w_i(\vec{y})$  and since all 
  We conclude $\sum_i w_i(\vec{y})=1$.
  
  
-  **Is MLE for location parameter a weighted average? Cases $n=1$ and $n=2$.**
+  **Is MLE for location parameter a weighted average?**
+  
+   **Cases $n=1$ and $n=2$.**
   
   
  Now we look at wether $\hat{\mu}(\vec{y}) = \sum y_i w_i(\vec{y})$ is indeed true.
@@ -150,6 +152,67 @@ On other hand we have $\hat{\mu}(\vec{y})=\sum y_i w_i(\vec{y})$  and since all 
  
  $$w_1(y_1-y_2)=\frac{1}{2}+\frac{1}{2}w(y_1-y_2)$$
  $$w_2(y_1-y_2)=\frac{1}{2}-\frac{1}{2}w(y_1-y_2).$$
+ 
+ 
+ We note that if $f$ is unimodular with maximum at $0$ then $|\hat{\mu}(-y,y)|\leq |y|$ so $|w(y)|\leq 1$ and so $w_1, w_2\geq 0.$
+
+**MLE as weighted average, $n>2$.**
+    
+For larger $n$ we can still look at $\delta=\frac{1}{n} \sum y_i$, take $\tilde{\vec{y}}=(y_1-\delta, \ldots, y_n-\delta)$. Observe that $\tilde{\vec{y}}$ is a vector that depends only on $\vec{d}$ where $\vec{d}$ is the vector of all pairwise differences $y_k-y_l$.
+
+Now 
+
+$$\hat{\mu}(\vec{y})=\delta+\hat{\mu}(\tilde{\vec{y}})=\delta+\mu(\vec{d})$$
+
+
+Pick ANY $\vec{\alpha}=(\alpha_1, \ldots, \alpha_n)$ with $\sum \alpha_i=0$. Then   $\vec{\alpha}\cdot \vec{y}=\sum \alpha_i y_i$ is a function of $\vec{d}$.
+ 
+ We can then define $w(\vec{d})$ via 
+ 
+  $$\mu(\vec{d})= (\vec{\alpha}\cdot \vec{y}) w(\vec{d})$$ 
+ 
+ and recover 
+
+
+$$\hat{\mu}(\vec{y})=\sum y_i w_i(\vec{d})$$
+
+with 
+
+
+
+$$w_i=\frac{1}{n}+\alpha_i w(\vec{d})$$
+
+for all $i$.
+
+This is  non-unique if $n>2$ (ther are many $\vec{\alpha}$ leding to different $w_i(\vec{d})$). 
+
+
+
+
+Locally near a specific $\vec{y}$ we can pick $\alpha=\tilde{\vec{y}}$. 
+
+Then $w(\vec{d})=\frac{\hat{\mu}(\tilde{\vec{y}})}{|\tilde{\vec{y}}|^2 }$, so that $|\tilde{\vec{y}}|^2 \geq \tilde{y}^2_{min}+\tilde{y}^2_{max}\geq 2 |\tilde{y}_{min} \tilde{y}_{max}|$. For unimodal $f$ peaked at zero we still have  $\tilde{y}_{min}\leq\hat{\mu}(\tilde{\vec{y}})\leq \tilde{y}_{max}$. Putting these together we have 
+
+$$\alpha_i w(\vec{d})=\tilde{y}_i w(\vec{d}) \geq -\frac{\tilde{y}_{min}\tilde{y}_{max}}{|\tilde{\vec{y}}|^2}\geq -\frac{1}{2}$$
+
+implying $w_i(\vec{d})\geq \frac{1}{n}-\frac{1}{2}$. 
+Similarly, 
+
+$$\alpha_i w(\vec{d})\leq \max (\frac{\tilde{y}^2_{min}}{|\tilde{\vec{y}}|^2}, \frac{\tilde{y}^2_{max}}{|\tilde{\vec{y}}|^2})\leq \frac{n-1}{n}$$
+
+implying $w_i(\vec{d})\leq \frac{n-1}{n}+\frac{1}{n}=1$.
+
+
+
+Perhaps more clever choice  can guarantee positivity of $w_i$s as well.
+
+
+<!--Moreover, it is not clear if one could pick $w_i(\vec{d})$ in such a way that $w_i(\vec{d})\geq 0$ for all $\vec{d}$.
+--->
+
+
+
+
  
  
  **Cauchy distribution, mostly $n=2$.**
@@ -206,13 +269,13 @@ As before, we write $y=\frac{y_1-y_2}{2}$ consider the problem shifted by $\delt
   
   Observe that $w_1(y)+w_2(y)=1$ as expected. Observe also that for $\hat{\mu}_2$ we would obtain $\tilde{w}_1=w_2$ and $\tilde{w}_2=w_1$ - the individual $\mu_i$ and $w_i$ are not symmetric in exchanging $y_i$s, but the sets of $\mu$s and $w$s are. 
   
+ <!---
+ **Some more on $n>2$.**
  
- **Incomplete remarks on $n>2$.**
  
- 
-Still considering Cauchy distribution, but for general $n$, the inverse of likelihood is a polynomial in $\mu$ of degree $2n$ with coefficients some symmetric polynomials in $y_i$, and its derivative is a polynomial in $\mu$ of degree $2n-1$ with coefficients some symmetric polynomials in $y_i$, which we can write as $Q(\mu, y_1, \ldots, y_n)$. The hypersurface $Q(\mu, y_1, \ldots, y_n)=Q(\mu, \vec{y})=0$ in $\mathbb{R}^{n+1}$ projects to $\vec{y}=y_1, \ldots, y_n$. In the $\vec{y}$ space  and if we exclude those $\vec{y}$ tuples for which the discriminant of $Q$ is zero we have over $\mathbb{R}^n\setminus D$  a covering map, with varying number of sheets $k$, being the number of soultions of $Q(\mu, \vec{y})=0$ in $\mu$ for given $\vec{k}$. Locally in $\mathbb{R}\setminus D$, there are $k$ "inverse of projection" maps $M:C\to \mathbb{R}$ that pick out a particular solution out of the $k$ in a continuous (and in fact smooth) way (a solution of $Q(\mu, \vec{y})=0$ is a local extremum of the likelihood function). Our task is to show that at least those $M$ that correspond to maxima of likeliehood can be written as $M(\vec{y})=\sum_i y_i w_i(\vec{d})$ where $\vec{d}$ is the vector of pairwise differences $y_k-y_l$ and $\sum w_i(\vec{d})=1$. (Similar description applies to other distributions, except everything is no longer necessarily polynomial.)  I have failed to prove this or find it in the literature. 
+Still considering Cauchy distribution, but for general $n$, the inverse of likelihood is a polynomial in $\mu$ of degree $2n$ with coefficients some symmetric polynomials in $y_i$, and its derivative is a polynomial in $\mu$ of degree $2n-1$ with coefficients some symmetric polynomials in $y_i$, which we can write as $Q(\mu, y_1, \ldots, y_n)$. The hypersurface $Q(\mu, y_1, \ldots, y_n)=Q(\mu, \vec{y})=0$ in $\mathbb{R}^{n+1}$ projects to $\vec{y}=y_1, \ldots, y_n$. In the $\vec{y}$ space  and if we exclude those $\vec{y}$ tuples for which the discriminant of $Q$ is zero we have over $\mathbb{R}^n\setminus D$  a covering map, with varying number of sheets $k$, being the number of soultions of $Q(\mu, \vec{y})=0$ in $\mu$ for given $\vec{k}$. Locally in $\mathbb{R}\setminus D$, there are $k$ "inverse of projection" maps $M:C\to \mathbb{R}$ that pick out a particular solution out of the $k$ in a continuous (and in fact smooth) way (a solution of $Q(\mu, \vec{y})=0$ is a local extremum of the likelihood function). Our task is to show that at least those $M$ that correspond to maxima of likeliehood can be written as $M(\vec{y})=\sum_i y_i w_i(\vec{d})$ where $\vec{d}$ is the vector of pairwise differences $y_k-y_l$ and $w_i(\vec{d})>0$. (Similar description applies to other distributions, except everything is no longer necessarily polynomial.)   
 
-<!---I suspect considering the action of the permutation group on $y_i$ would be helpful;
+I suspect considering the action of the permutation group on $y_i$ would be helpful.
 ---->
 
  ## Exercise 7.4
