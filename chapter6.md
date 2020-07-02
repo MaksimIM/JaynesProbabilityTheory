@@ -58,6 +58,21 @@ Apply (6.19) again
 
 $$\<R\> +1 = \binom{N+1}{n+1}^{-1}(r+1)\binom{N+2}{n+2}$$
 
+## 6.29
+$$p(R_{n+1}|DNI_0)=\sum_{R=0}^{N}\frac{R-r}{N-n}\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}$$
+$$p(R_{n+1}|DNI_0)=\frac{1}{N-n}\sum_{R=0}^{N}(R-r)\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}$$
+$$p(R_{n+1}|DNI_0)=\frac{1}{N-n}\sum_{R=0}^{N}\Biggl\{R\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}-\sum_{R=0}^{N}r\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}\Biggl\}$$
+$$p(R_{n+1}|DNI_0)=\frac{1}{N-n}\Biggl\{\sum_{R=0}^{N}R\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}-\binom{N+1}{n+1}^{-1}r\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}\Biggl\}$$
+
+Due to 6.16, we have:
+$$p(R_{n+1}|DNI_0)=\frac{1}{N-n}\Biggl\{\sum_{R=0}^{N}R\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}-r\Biggl\}$$
+
+As already proven for 6.24, we get.
+
+$$p(R_{n+1}|DNI_0)=\frac{1}{N-n}\frac{(N+2)(r+1)}{(n+2)}-1-r$$
+
+$$p(R_{n+1}|DNI_0)=\frac{r+1}{n+2}$$
+
 ##  Laplace rule: 6.25, 6.29 and 6.73
 
 $$E\left[\frac{R-r}{N-n}\right]=\frac{E[R+1]-(r+1)}{N-n}=$$
