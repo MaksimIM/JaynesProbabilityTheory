@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>chapter9</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="repetitive-experiments-probability-and-frequency">Repetitive experiments: probability and frequency</h1>
+<p><span class="math inline">\(\leftarrow\)</span> <a href="./index.html">Back to Chapters</a></p>
+<h2 id="a-version-of-exercise-9.1">A version of Exercise 9.1</h2>
+<p>For more on the “missing species” problem see <a href="https://en.wikipedia.org/wiki/Unseen_species_problem">Wikipedia</a>, the <a href="https://www.jstor.org/stable/1411">paper of Fisher</a> and Section 6.2 of the <a href="https://doi.org/10.1017/CBO9781316576533">Computer Age Statistical Inference</a>by Efron and Hastie.</p>
+<p>We follow the above references answer a different, albeit related, question: namely, how many new species we may hope to find if we sample more i.e. collect more specimens.</p>
+<p>According to Fisher,</p>
+<p><span class="math inline">\(S=-\alpha \ln (1-x)\)</span>, <span class="math inline">\(N=\alpha \frac{x}{1-x}\)</span></p>
+<p>where <span class="math inline">\(\alpha\)</span> is some kind of “average Poisson rate” parameter and is independent of size of sample, while <span class="math inline">\(x=\frac{\sigma}{\sigma+1}\)</span> where <span class="math inline">\(\sigma=\frac{x}{1-x}\)</span> the scale parameter in the prior Gamma distribution over rates of Poissons, and grows linearly with sample size/sample time.</p>
+<p>Then</p>
+<p><span class="math inline">\(S=\alpha \ln(1+\sigma)\)</span>, <span class="math inline">\(N=\alpha \sigma\)</span>, <span class="math inline">\(\frac{S}{N}=\frac{\ln(1+\sigma)}{\sigma}\)</span>.</p>
+<p>For <span class="math inline">\(N=122\)</span>, <span class="math inline">\(S=19\)</span> this gives <span class="math inline">\(\frac{\ln (1+t)}{t}=\frac{19}{122}\)</span></p>
+<p>and</p>
+<p><span class="math display">\[\sigma=19.34583762707454276246963164708576325676864924349274639666\]</span> <!---
+ $$\alpha=6.306266099807471184873899660081665374943243555421222377981$$
+ ---></p>
+<p>This can be expected to be reasonably accurate up to about doubling the sample size/<span class="math inline">\(\sigma\)</span>.</p>
+<p>After double the sample size i.e. doubling <span class="math inline">\(\sigma\)</span>, the expected number of species <span class="math inline">\(S\)</span> becomes</p>
+<p><span class="math display">\[S_{new}=S_{init}\frac{\ln (1+2\sigma)}{\ln (1+\sigma)}=23.21425768843744049107893270266974263904162495024301691901\]</span></p>
+<p>So after collecting <span class="math inline">\(122\)</span> more samples we expect to discover about <span class="math inline">\(4\)</span> new species.</p>
+<p>## Exercise 9.2</p>
+<p>Presumably we are to rederive formula 3.89 (and no 3.77).</p>
+<p>Given <span class="math inline">\(k\)</span> linear functions <span class="math inline">\(\mathcal{G}_1, \ldots \mathcal{G}_k\)</span> of <span class="math inline">\(n_j\)</span> with <span class="math inline">\(\mathcal{G}_l(n_1, \ldots, n_m)=\sum g^l_j n_j\)</span> we introduce <span class="math inline">\(M(n, G_1, \ldots, G_k)\)</span> as the number of tuples <span class="math inline">\(\vec{n}=(n_1, \ldots, n_m)\)</span> such that <span class="math inline">\(\mathcal{G}_l(\vec{n})=G_l\)</span>.</p>
+<p>Recursion 9.19 becomes</p>
+<p><span class="math display">\[M(n, G_1, \ldots, G_k)=\sum_{j=1}^m M(n-1, G_1-g^1_j,  \ldots, G_k-g^k_j)\]</span></p>
+<p>Ansatz 9.20 becomes</p>
+<p><span class="math display">\[M(n, G_1, \ldots, G_k)=\exp\{\alpha n +\sum_l \lambda_l G_l\} \]</span></p>
+<p>and condition 9.21</p>
+<p><span class="math display">\[\exp\{\alpha\}=Z(\lambda_1, \ldots, \lambda_k)=\sum_{j=1}^m \exp\{\sum_{l=1}^k -\lambda_l g^l_j\}\]</span></p>
+<p>To shorten notation we write <span class="math inline">\(\vec{G}=(G_1, \ldots, G_k)\)</span> and <span class="math inline">\(\vec{\lambda}=(\lambda_1, \ldots, \lambda_k)\)</span>. Then general solution 9.22 becomes</p>
+<p><span class="math display">\[H(n, \vec{G})=\int d \vec{\lambda}  \;\;Z^n(\vec{\lambda}) \exp\{\vec{\lambda} \cdot \vec{G}\}\,h(\vec{\lambda})\]</span></p>
+<p>Then with initial condition <span class="math inline">\(M(0, \vec{G})=\delta(\vec{G},\vec{0})\)</span> we have as before</p>
+<p><span class="math display">\[Z^n(\vec{\lambda})=\sum_{\vec{G}} M(n, \vec{G})\exp\{-\vec{\lambda} \cdot \vec{g}\} \]</span></p>
+<p>Now we apply this to derive multinomial distribution. Partition outcomes <span class="math inline">\(n_j\)</span> into <span class="math inline">\(k\)</span> sets <span class="math inline">\(S_1, \ldots, S_k\)</span> of size <span class="math inline">\(s_1, \ldots,s_k\)</span> and let <span class="math inline">\(\mathcal{G}_l(n_j)=\begin{cases}1 \text{ if } n_j\in S_l\\0 \text{ else } \end{cases}\)</span></p>
+<p>Then <span class="math inline">\(M(n, c_1, \ldots, c_k)\)</span> is the number of ways to get a tuple <span class="math inline">\(\vec{n}\)</span> with <span class="math inline">\(\sum_{j\in S_l} n_j=c_l\)</span> and we can compute</p>
+<p><span class="math display">\[Z(\vec{\lambda})=\sum_l s_l \exp\{-\lambda_l\}=\sum_l s_l x_l\]</span></p>
+<p><span class="math display">\[Z^n(\vec{\lambda})=\sum_{(c_1, \ldots c_k)} {n\choose c_1, \ldots c_k}\prod_l (s_l x_l)^{c_l}\]</span></p>
+<p>and so</p>
+<p><span class="math display">\[M(n, c_1, \ldots, c_k)= {n\choose c_1, \ldots c_k}\prod_l s_l^{c_l}\]</span></p>
+<p>Probability of getting sequence of this type is <span class="math inline">\(\frac{M(n, c_1, \ldots, c_k)}{n^m}\)</span> and denoting <span class="math inline">\(\frac{s_l}{n}=f_l\)</span> we have</p>
+<p><span class="math display">\[ P(c_1, \ldots, c_k)= {n\choose c_1, \ldots c_k}\prod_l f_l^{c_l}\]</span></p>
+<p>in agreement with 3.89.</p>
+<p>## Comments on Section 9.7</p>
+<p>“If A is linear in the <span class="math inline">\(n_j\)</span>, then it is the same as our <span class="math inline">\(G\)</span> in (9.17)” – I think Jaynes means that “for a given linear function <span class="math inline">\(\mathcal{G}\)</span> of <span class="math inline">\(n_j\)</span>s, let <span class="math inline">\(A\)</span> be the proposition ‘<span class="math inline">\(\mathcal{G}\)</span> takes value <span class="math inline">\(G\)</span>’”. In that case, indeed, <span class="math inline">\(M(n, G)=M(n, A)\)</span> by definition.</p>
+<p><!--
+ -- for $n>1$ this is only possible if both are zero: a non-zero linear function would have to attain at least 3  values, unlike a characteristic one. One should probably consider a generalization of both where $A$ is an arbitrary function of $n_j$s -- neither "proposition", nor a linear function.
+ ---></p>
+<p>“the notion of entropy inherent in probability theory independently of the work of Shannon” – in the work of Shannon, the notion of entropy is derived from combinatorics of sequences, much like here.</p>
+<p>## Exercise 9.3 (the first one)</p>
+<p><span class="math display">\[f&#39;&#39;_{k}=\frac{n_k-\delta_{jk}-\delta_{tk}}{n-2}\]</span></p>
+<p><span class="math display">\[\delta f_k=f&#39;&#39;_k-f_k=f&#39;&#39;_k-\frac{n_k}{n}=\frac{2f_k-\delta_{jk}-\delta_{tk}}{n-2}\]</span></p>
+<p>so</p>
+<p><span class="math display">\[\delta H=\sum_k (-1-\ln(f_k))\frac{2f_k-\delta_{jk}-\delta_{tk}}{n-2}\]</span></p>
+<p><span class="math display">\[\frac{2H+\ln(f_j)+\ln(f_t)}{n-2}\]</span></p>
+<p>and</p>
+<p><span class="math display">\[H&#39;&#39;=\frac{nH+\ln(f_j)+\ln(f_t)}{n-2}\]</span></p>
+<p><span class="math display">\[M(n-2, G-g_j-g_t)=\exp\{(n-2)H&#39;&#39;\}=f_jf_t \exp\{nH\}\]</span></p>
+<p>so</p>
+<p><span class="math display">\[p(r_i=j, r_s=t|GnI_0)=f_jf_t\]</span></p>
+<p>The trials are still pairwise independent (and by similar analysis <span class="math inline">\(l\)</span>-wise independent as long as <span class="math inline">\(k\ll n\)</span>).</p>
+<h2 id="formula-9.78">Formula 9.78</h2>
+<p>Assuming not all <span class="math inline">\(g_j\)</span> are the same, strict convexity of <span class="math inline">\(\ln Z\)</span> implies that the derivative <span class="math inline">\(-\frac{\partial \ln Z}{\partial \lambda}\)</span> attains each value in its range once. However, it only attains values <span class="math inline">\(\min g_j&lt;\lambda &lt;\max g_j\)</span>. Averages <span class="math inline">\(\bar{G}\)</span> outside this range - with exception of the endpoints <span class="math inline">\(\min g_j\)</span> and <span class="math inline">\(\max g_j\)</span> - are impossible (the endpoints correspond to <span class="math inline">\(\lambda=\pm \infty\)</span> and would require those <span class="math inline">\(u_i\)</span> with non-extremal <span class="math inline">\(g_i\)</span> to be set to zero, while not restricting the others; this is a rather special case, not directly covered by Jaynes’ analysis in this section). We better condition on an achievable average.</p>
+</body>
+</html>
