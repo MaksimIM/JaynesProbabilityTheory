@@ -3,8 +3,18 @@
 $\leftarrow$ [Back to Chapters](./index.html)
 
 
+## The Herschel–Maxwell derivation and kinetic energy.
+
+Observe that if we postulate that kinetic $E$ energy of a point particle is a function of its velocity $\vec{v}=(v_x, v_y)$ then we can write postulates analogous to the ones in Section 7.2:
 
 
+
+- (P1) The total energy is sum of the energies doe to the $x$ and $y$ motion: $E(x,y)=E(x,0)+E(0,y)$  
+
+
+- (P2) This energy should be independent of the angle: $E(r, \theta) = E(r)$ 
+
+These are log versions of the conditions in 7.2, so the function that satisfies them $E(x,y)=c (x^2+y^2)$ is (minus) log of Gaussian density. This fact is of use in [Hamiltonian Monte Carlo](https://en.wikipedia.org/wiki/Hamiltonian_Monte_Carlo).
 
 ## Exercise 7.1
 TO DO
