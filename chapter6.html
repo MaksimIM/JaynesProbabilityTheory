@@ -19,6 +19,9 @@
   <![endif]-->
 </head>
 <body>
+<header id="title-block-header">
+<h1 class="title">chapter6</h1>
+</header>
 <h1 id="elementary-parameter-estimation">Elementary parameter estimation</h1>
 <p><span class="math inline">\(\leftarrow\)</span> <a href="./index.html">Back to Chapters</a></p>
 <h2 id="prior-6.14-and-formula-6.70">Prior 6.14 and formula 6.70</h2>
@@ -32,6 +35,25 @@
 <p>Remark: This also follows from the more obvious Vandermonde identity <span class="math inline">\(\sum_r {R \choose r}{N-R\choose n-r}={N \choose n}\)</span> by “upper index negation”, see <a href="https://trans4mind.com/personal_development/mathematics/series/summingBinomialCoefficients.htm">here</a>.</p>
 <h2 id="most-probable-value-6.21">Most probable value 6.21</h2>
 <p>This is the same as derivation of formulas 3.26 and 3.27 in Chapter 3 (see notes for that chapter).</p>
+<h2 id="section-1">6.24</h2>
+<p><span class="math display">\[\langle  R\rangle = \sum_{R=0}^{N}R\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}\]</span> <span class="math display">\[\langle R\rangle  = \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}\]</span> <span class="math display">\[\langle R\rangle  + \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}= \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}+\binom{N+1}{n+1}^{-1}\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}\]</span></p>
+<p>Due to (6.16) we have:</p>
+<p><span class="math display">\[\langle R\rangle  + \binom{N+1}{n+1}^{-1}\binom{N+1}{n+1} = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}+\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}\Biggl\}\]</span></p>
+<p>Since <span class="math inline">\((R+1)\binom{R}{r}=R\binom{R}{r} + \binom{R}{r}\)</span>, we have:</p>
+<p><span class="math display">\[\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} (R+1)\binom{R}{r}\binom{N-R}{n-r}\Biggl\}\]</span></p>
+<p>Due to (6.23) we have:</p>
+<p><span class="math display">\[\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} (r+1)\binom{R+1}{r+1}\binom{N-R}{n-r}\Biggl\}\]</span></p>
+<p><span class="math display">\[\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R=0}^{N}\binom{R+1}{r+1}\binom{N-R}{n-r}\Biggl\}\]</span></p>
+<p>Set <span class="math inline">\(R_q=R+1\)</span> and <span class="math inline">\(r_q=r+1\)</span></p>
+<p><span class="math display">\[\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R_q=1}^{N+1}\binom{R_q}{r_q}\binom{N-(R_q-1)}{n-(r_q-1)}\Biggl\}\]</span> <span class="math display">\[\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R_q=1}^{N+1}\binom{R_q}{r_q}\binom{N+1-R_q)}{n+1-r_q)}\Biggl\}\]</span></p>
+<p>Apply (6.19) again</p>
+<p><span class="math display">\[\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}(r+1)\binom{N+2}{n+2}\]</span></p>
+<h2 id="section-2">6.29</h2>
+<p><span class="math display">\[p(R_{n+1}|DNI_0)=\sum_{R=0}^{N}\frac{R-r}{N-n}\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}\]</span> <span class="math display">\[p(R_{n+1}|DNI_0)=\frac{1}{N-n}\sum_{R=0}^{N}(R-r)\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}\]</span> <span class="math display">\[p(R_{n+1}|DNI_0)=\frac{1}{N-n}\sum_{R=0}^{N}\Biggl\{R\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}-\sum_{R=0}^{N}r\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}\Biggl\}\]</span> <span class="math display">\[p(R_{n+1}|DNI_0)=\frac{1}{N-n}\Biggl\{\sum_{R=0}^{N}R\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}-\binom{N+1}{n+1}^{-1}r\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}\Biggl\}\]</span></p>
+<p>Due to 6.16, we have: <span class="math display">\[p(R_{n+1}|DNI_0)=\frac{1}{N-n}\Biggl\{\sum_{R=0}^{N}R\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}-r\Biggl\}\]</span></p>
+<p>As already proven for 6.24, we get.</p>
+<p><span class="math display">\[p(R_{n+1}|DNI_0)=\frac{1}{N-n}\frac{(N+2)(r+1)}{(n+2)}-1-r\]</span></p>
+<p><span class="math display">\[p(R_{n+1}|DNI_0)=\frac{r+1}{n+2}\]</span></p>
 <h2 id="laplace-rule-6.25-6.29-and-6.73">Laplace rule: 6.25, 6.29 and 6.73</h2>
 <p><span class="math display">\[E\left[\frac{R-r}{N-n}\right]=\frac{E[R+1]-(r+1)}{N-n}=\]</span></p>
 <p><span class="math display">\[\frac{\frac{(N+2)(r+1)}{n+2}-(r+1)}{N-n}=\frac{r+1}{n+2} \]</span></p>
@@ -135,7 +157,7 @@ Consider case $\alpha=\beta=0$ (this is not normalizable). We get ${N \choose R}
 <p><span class="math display">\[\frac{S(N)}{S(0)}=\sum_{k=0}^{c}{N \choose k} \phi^{k}(1-\phi)^{N-k}\approx  \frac{\exp\{-N\phi\} (N\phi)^c}{c!}\]</span></p>
 <p>as wanted.</p>
 <p>Pluggin in <span class="math inline">\(\phi=0.1, c=10, N=270\)</span> gives <span class="math inline">\(\frac{S(N)}{S(0)}\approx 10^{-4}\)</span>, etc.</p>
-<h2 id="section-1">6.121, 6.122</h2>
+<h2 id="section-3">6.121, 6.122</h2>
 <p><span class="math display">\[ p(n_1|I_J)=\int_0^s \frac{1}{s} \frac{s^{n_1}\exp\{-s\}}{n_1!} ds=\frac{1}{n_1}=\int_0^s \frac{s^{n_1-1}\exp\{-s\}}{(n_1-1)!}ds=\frac{1}{n_1}\]</span></p>
 <p>With help of 6.108 we also compute:</p>
 <p><span class="math display">\[p(c_1|I_J)=\sum_n p(c_1|n_1 I_J)p(n_1|I_J)=\sum_{n_1=c_1}^{\infty} {n_1 \choose n_1-c_1} \phi^{c_1}(1-\phi)^{n_1-c_1}\frac{1}{n_1}\]</span></p>
@@ -155,7 +177,7 @@ Consider case $\alpha=\beta=0$ (this is not normalizable). We get ${N \choose R}
 <p><span class="math display">\[\sum_{n_1=c_1}^{\infty} n_1\frac{c_1}{n_1}{n_1 \choose n_1-c_1} \phi^{c_1}(1-\phi)^{n_1-c_1}=\]</span></p>
 <p><span class="math display">\[c_1 \phi^{c_1}\sum_m {m+c_1\choose m} (1-\phi)^m = \frac{c_1}{\phi}\]</span></p>
 <p>as wanted.</p>
-<h2 id="section-2">6.140</h2>
+<h2 id="section-4">6.140</h2>
 <p>Formula 6.112 says <span class="math inline">\(p(n_1|\phi c_1 I_A)={n_1\choose c_1} \phi^{c_1+1}(1-\phi)^{n_1-c_1}\)</span> and 6.116 says <span class="math inline">\(E_A[n_1]=\frac{c_1+1-\phi}{\phi}=c_1+\frac{(c_1+1)(1-\phi)}{\phi}\)</span>.</p>
 <p>Continuing in same vein</p>
 <p><span class="math display">\[E_A[(n_1-c_1)(n_1-c_1-1)] =\]</span></p>
@@ -189,7 +211,7 @@ $$+[C(C+1)-(2C-1)-(C-1)C-1]\phi^2 =\frac{C -C\phi}{\phi^2}=\frac{(c_1+1)(1-\phi)
 as wanted.
 
 ---->
-<h2 id="section-3">6.141</h2>
+<h2 id="section-5">6.141</h2>
 <p>Formula 6.129 says <span class="math display">\[p(n_1|\phi c_2c_1 I_B)={n_1+c_2\choose c_1+c_2}\left(\frac{2\phi}{1+\phi}\right)^{c_1+c_2+1}\left(\frac{1-\phi}{1+\phi}\right)^{n_1-c_1}\]</span></p>
 <p>and 6.133 says <span class="math inline">\(E_B[n_1]=\frac{c_1+c_2+1-\phi}{2\phi}+\frac{c_1-c_2}{2}=c_1+(c_1+c_2+1)\left(\frac{1-\phi}{2\phi}\right)\)</span></p>
 <p><span class="math display">\[E[(n_1-c_1)(n_1-c_1-1)]= \]</span></p>
@@ -200,7 +222,7 @@ as wanted.
 <p><span class="math display">\[\text{var}(n_1)= \text{var}(n_1-c_1)=E[(n_1-c_1)^2]-E[(n_1-c_1)]^2\]</span></p>
 <p><span class="math display">\[(c_1+c_2+1)[\left(\frac{1-\phi}{2\phi}\right)^{2}+\left(\frac{1-\phi}{2\phi}\right)]= (c_1+c_2+1)\frac{1-\phi^2}{4\phi^2}\]</span></p>
 <p>as wanted.</p>
-<h2 id="section-4">6.142</h2>
+<h2 id="section-6">6.142</h2>
 <p>We have from 6.121 <span class="math inline">\(p(n_1|c_1 \phi I_J)=\frac{c_1}{n_1}{n\choose c_1}\phi^{c_1}(1-\phi)^{n_1-c_1} ={n-1\choose c_1-1}\phi^{c_1}(1-\phi)^{n_1-c_1}\)</span> and from 6.122 also <span class="math inline">\(E_J[n_1]=\frac{c_1}{\phi}\)</span></p>
 <p>We get</p>
 <p><span class="math display">\[ E[n(n+1)]= c_1 (c_1+1) \phi^{c_1} \sum_{n_1=c_1}^{\infty}{ n_1+1\choose c_1+1}(1-\phi)^{n_1-c_1}= \]</span></p>

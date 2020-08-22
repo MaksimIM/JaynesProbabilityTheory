@@ -19,10 +19,13 @@
   <![endif]-->
 </head>
 <body>
+<header id="title-block-header">
+<h1 class="title">chapter9</h1>
+</header>
 <h1 id="repetitive-experiments-probability-and-frequency">Repetitive experiments: probability and frequency</h1>
 <p><span class="math inline">\(\leftarrow\)</span> <a href="./index.html">Back to Chapters</a></p>
 <h2 id="a-version-of-exercise-9.1">A version of Exercise 9.1</h2>
-<p>For more on the “missing species” problem see <a href="https://en.wikipedia.org/wiki/Unseen_species_problem">Wikipedia</a>, the <a href="https://www.jstor.org/stable/1411">paper of Fisher</a> and Section 6.2 of the <a href="https://doi.org/10.1017/CBO9781316576533">Computer Age Statistical Inference</a>by Efron and Hastie.</p>
+<p>For more on the “missing species” problem see <a href="https://en.wikipedia.org/wiki/Unseen_species_problem">Wikipedia</a>, the <a href="https://www.jstor.org/stable/1411">paper of Fisher</a> and Section 6.2 of the <a href="https://doi.org/10.1017/CBO9781316576533">Computer Age Statistical Inference</a> by Efron and Hastie.</p>
 <p>We follow the above references answer a different, albeit related, question: namely, how many new species we may hope to find if we sample more i.e. collect more specimens.</p>
 <p>According to Fisher,</p>
 <p><span class="math inline">\(S=-\alpha \ln (1-x)\)</span>, <span class="math inline">\(N=\alpha \frac{x}{1-x}\)</span></p>
@@ -38,7 +41,7 @@
 <p>After double the sample size i.e. doubling <span class="math inline">\(\sigma\)</span>, the expected number of species <span class="math inline">\(S\)</span> becomes</p>
 <p><span class="math display">\[S_{new}=S_{init}\frac{\ln (1+2\sigma)}{\ln (1+\sigma)}=23.21425768843744049107893270266974263904162495024301691901\]</span></p>
 <p>So after collecting <span class="math inline">\(122\)</span> more samples we expect to discover about <span class="math inline">\(4\)</span> new species.</p>
-<p>## Exercise 9.2</p>
+<h2 id="exercise-9.2">Exercise 9.2</h2>
 <p>Presumably we are to rederive formula 3.89 (and no 3.77).</p>
 <p>Given <span class="math inline">\(k\)</span> linear functions <span class="math inline">\(\mathcal{G}_1, \ldots \mathcal{G}_k\)</span> of <span class="math inline">\(n_j\)</span> with <span class="math inline">\(\mathcal{G}_l(n_1, \ldots, n_m)=\sum g^l_j n_j\)</span> we introduce <span class="math inline">\(M(n, G_1, \ldots, G_k)\)</span> as the number of tuples <span class="math inline">\(\vec{n}=(n_1, \ldots, n_m)\)</span> such that <span class="math inline">\(\mathcal{G}_l(\vec{n})=G_l\)</span>.</p>
 <p>Recursion 9.19 becomes</p>
@@ -60,13 +63,13 @@
 <p>Probability of getting sequence of this type is <span class="math inline">\(\frac{M(n, c_1, \ldots, c_k)}{n^m}\)</span> and denoting <span class="math inline">\(\frac{s_l}{n}=f_l\)</span> we have</p>
 <p><span class="math display">\[ P(c_1, \ldots, c_k)= {n\choose c_1, \ldots c_k}\prod_l f_l^{c_l}\]</span></p>
 <p>in agreement with 3.89.</p>
-<p>## Comments on Section 9.7</p>
+<h2 id="comments-on-section-9.7">Comments on Section 9.7</h2>
 <p>“If A is linear in the <span class="math inline">\(n_j\)</span>, then it is the same as our <span class="math inline">\(G\)</span> in (9.17)” – I think Jaynes means that “for a given linear function <span class="math inline">\(\mathcal{G}\)</span> of <span class="math inline">\(n_j\)</span>s, let <span class="math inline">\(A\)</span> be the proposition ‘<span class="math inline">\(\mathcal{G}\)</span> takes value <span class="math inline">\(G\)</span>’”. In that case, indeed, <span class="math inline">\(M(n, G)=M(n, A)\)</span> by definition.</p>
 <p><!--
  -- for $n>1$ this is only possible if both are zero: a non-zero linear function would have to attain at least 3  values, unlike a characteristic one. One should probably consider a generalization of both where $A$ is an arbitrary function of $n_j$s -- neither "proposition", nor a linear function.
  ---></p>
 <p>“the notion of entropy inherent in probability theory independently of the work of Shannon” – in the work of Shannon, the notion of entropy is derived from combinatorics of sequences, much like here.</p>
-<p>## Exercise 9.3 (the first one)</p>
+<h2 id="exercise-9.3-the-first-one">Exercise 9.3 (the first one)</h2>
 <p><span class="math display">\[f&#39;&#39;_{k}=\frac{n_k-\delta_{jk}-\delta_{tk}}{n-2}\]</span></p>
 <p><span class="math display">\[\delta f_k=f&#39;&#39;_k-f_k=f&#39;&#39;_k-\frac{n_k}{n}=\frac{2f_k-\delta_{jk}-\delta_{tk}}{n-2}\]</span></p>
 <p>so</p>

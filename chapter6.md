@@ -30,33 +30,33 @@ This is the same as derivation of formulas 3.26 and 3.27 in Chapter 3 (see notes
 
 ## 6.24
 
-$$\<R\> = \sum_{R=0}^{N}R\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}$$
-$$\<R\> = \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}$$
-$$\<R\> + \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}= \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}+\binom{N+1}{n+1}^{-1}\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}$$
+$$\langle  R\rangle = \sum_{R=0}^{N}R\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}$$
+$$\langle R\rangle  = \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}$$
+$$\langle R\rangle  + \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}= \binom{N+1}{n+1}^{-1}\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}+\binom{N+1}{n+1}^{-1}\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}$$
 
 
 Due to (6.16) we have:
 
-$$\<R\> + \binom{N+1}{n+1}^{-1}\binom{N+1}{n+1} = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}+\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}\Biggl\}$$
+$$\langle R\rangle  + \binom{N+1}{n+1}^{-1}\binom{N+1}{n+1} = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} R\binom{R}{r}\binom{N-R}{n-r}+\sum_{R=0}^{N}\binom{R}{r}\binom{N-R}{n-r}\Biggl\}$$
 
 Since $(R+1)\binom{R}{r}=R\binom{R}{r} + \binom{R}{r}$, we have:
 
-$$\<R\> +1 = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} (R+1)\binom{R}{r}\binom{N-R}{n-r}\Biggl\}$$
+$$\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} (R+1)\binom{R}{r}\binom{N-R}{n-r}\Biggl\}$$
 
 Due to (6.23) we have:
 
-$$\<R\> +1 = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} (r+1)\binom{R+1}{r+1}\binom{N-R}{n-r}\Biggl\}$$
+$$\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}\Biggl\{\sum_{R=0}^{N} (r+1)\binom{R+1}{r+1}\binom{N-R}{n-r}\Biggl\}$$
 
-$$\<R\> +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R=0}^{N}\binom{R+1}{r+1}\binom{N-R}{n-r}\Biggl\}$$
+$$\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R=0}^{N}\binom{R+1}{r+1}\binom{N-R}{n-r}\Biggl\}$$
 
 Set $R_q=R+1$ and $r_q=r+1$
 
-$$\<R\> +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R_q=1}^{N+1}\binom{R_q}{r_q}\binom{N-(R_q-1)}{n-(r_q-1)}\Biggl\}$$
-$$\<R\> +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R_q=1}^{N+1}\binom{R_q}{r_q}\binom{N+1-R_q)}{n+1-r_q)}\Biggl\}$$
+$$\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R_q=1}^{N+1}\binom{R_q}{r_q}\binom{N-(R_q-1)}{n-(r_q-1)}\Biggl\}$$
+$$\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}(r+1)\Biggl\{\sum_{R_q=1}^{N+1}\binom{R_q}{r_q}\binom{N+1-R_q)}{n+1-r_q)}\Biggl\}$$
 
 Apply (6.19) again
 
-$$\<R\> +1 = \binom{N+1}{n+1}^{-1}(r+1)\binom{N+2}{n+2}$$
+$$\langle R\rangle  +1 = \binom{N+1}{n+1}^{-1}(r+1)\binom{N+2}{n+2}$$
 
 ## 6.29
 $$p(R_{n+1}|DNI_0)=\sum_{R=0}^{N}\frac{R-r}{N-n}\binom{N+1}{n+1}^{-1}\binom{R}{r}\binom{N-R}{n-r}$$
@@ -90,7 +90,7 @@ In light of our remarks about the Prior 6.14 this **is** equivalent the fact tha
 $$p(R|r=0, NI_1)= {N\choose n+1}^{-1} {N-R\choose n}$$
 
 This is noted in the [unofficial errata](http://ksvanhorn.com/bayes/jaynes/node8.html).
- 
+
 ## Some of Exercise 6.1
 
 As in Section 6.5
@@ -130,7 +130,7 @@ All the formulas for this case are the same as for uniform prior (with $r=n$) wi
 So with $p=\frac{r+1}{n+2}=\frac{n+1}{n+2}$ as before, the mean is $m=n+(N-1-n)p$, variance $v=\frac{p(1-p)}{n+3} (N+1)(N-1-n)$.
 
  
- 
+
 
 
 
@@ -170,41 +170,41 @@ Consider case $\alpha=\beta=0$ (this is not normalizable). We get ${N \choose R}
 
 
  In general, if we start with $\text{Beta}(\alpha, \beta)$ and observe $r$ reds on $n$ draws, our posterior over the **remainder of the bin** is the same as the prior we would've gotten with  $\text{Beta}(\alpha+r, \beta+n-r)$. This is why the formula 6.52 looks like 6.17 with $N$ and $n$ reduced by $2$ and $R$ and $r$ reduced by $1$. This also gives an alternative solution to Exercise 6.2 -- under hypothesis $r\geq 1$, $n-r\geq 1$  we can update on one of the red and one of the white samples first, so that posterior distribution of $R$ under concave prior and data of $r$ reds on $n$ draws is the same as the posterior distribution of $R-1$ from uniform prior on urn with $N-2$ balls with data of $r-1$ reds on $n-2$ draws. 
- 
- 
-## Exercise 6.3
- 
- 
- $$p(R|r=0, NI_{00})= \frac{A}{R(N-R)}{N-R\choose n}$$
- 
- This would still be infinite if  $R=0$, but is ok if we condition on/only consider $1\leq R\leq N-1$. Then $A^{-1}=\sum_{R=1}^{N-1}\frac{1}{R(N-R)}{N-R\choose n}$.
- 
 
- 
+
+## Exercise 6.3
+
+
+ $$p(R|r=0, NI_{00})= \frac{A}{R(N-R)}{N-R\choose n}$$
+
+ This would still be infinite if  $R=0$, but is ok if we condition on/only consider $1\leq R\leq N-1$. Then $A^{-1}=\sum_{R=1}^{N-1}\frac{1}{R(N-R)}{N-R\choose n}$.
+
+
+
  Similarly 
  $$p(R|r=n, NI_{00})= \frac{A}{R(N-R)}{R\choose n}$$
- 
+
  This would be infinite if  $R=N$.
- 
- 
+
+
   Now consider $n=1$, $r=0$ case. Then $p(R|r=0, NI_{00})=\frac{A}{R}$ with 
   $$A=\sum_{R=1}^{R=N-1}\frac{1}{R}\approx \ln N$$ 
   ([famously](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant)) and 
   $E[R]\approx \frac{N}{\ln N}$, so expected fraction of red balls is approximately $\frac{1}{\ln N}$.
+
  
- 
- 
+
 ## Exercise 6.4
- 
- 
+
+
  $$P(R|DI) P(D|I)=P(D|RI)P(R|I).$$
- 
+
  Writing this for $R=R_1$, $R=R_2$  and multiplying we get 
- 
+
  $$P(R_1|DI)P(R_2|DI)P(D|I)^2=P(D|R_1I)P(D|R_2 I)P(R_1|I)P(R_2|I)$$
- 
+
  Writing the same for $R=R_1R_2$ and using $P(R_1R_2|I)=P(R_1|I)P(R_2|I)$ we get
- 
+
   $$P(R_1R_2|DI) P(D|I)=P(D|R_1R_2I)P(R_1R_2|I)=P(D|R_1R_2I)P(R_1|I)P(R_2|I).$$
 
 We see that $P(R_1R_2|DI)=P(R_1|DI)P(R_2|DI)$ is equivalent to
@@ -215,29 +215,29 @@ or
 
 
 $$\frac{P(D|R_1R_2I)}{P(D|R_2 I) }=\frac{P(D|R_1I)}{P(D|I)}.$$ 
- 
+
  Any further insight into the meaning of this condition would be appreciated.
- 
+
 ## Discussion of 6.9.1
- 
+
  TO BE EXTENDED.
- 
+
  This is related to Chapter 4, Exercise 4.4 -- suppose I decide to keep getting samples until I accept hypothesis A. If A is false (B is true) I may still end up accepting A (in exercise 4.4 the probability of this is low, but that's because the evidence cutoff is chosen to be high).
- 
+
  Relevant: Anscombe, 1954 Fixed-Sample-Size Analysis of Sequential Observations, p.92, and the Anscombe-Armitage discussion.
- 
+
  [Also relevant](https://statmodeling.stat.columbia.edu/2014/02/13/stopping-rules-bayesian-analysis/).
- 
+
 ## Formula 6.86
- 
+
  $$ \sum_{n=c}^{\infty} \frac{n!}{c! (n-c)!}\phi^c (1-\phi)^{(n-c)}\frac{\exp\{-s\}s^n}{n!}=$$ 
- 
+
  $$\sum_{i=0}^{\infty} \frac{1}{c! i!}\phi^c (1-\phi)^{i}\exp\{-s\}s^i s^c=\frac{1}{c!}(\phi s)^c\exp\{-s\} \exp\{s(1-\phi)\}=$$
- 
+
  $$ \frac{(s\phi)^c \exp\{-s\phi )\} }{c!}$$
- 
+
 ## Formula 6.89
-  
+
 $$\frac{\text{Pois}_s(n) \text{Bin}_{n,\phi}(c)}{\text{Pois}_{s\phi }(c)}=\frac{\exp\{-(1-\phi)s\} s^n \phi^c (1-\phi)^{n-c} }{ (s\phi )^c (n-c)!}=\text{Pois}_{s(1-\phi)}(n-c)$$
 
 This can be interpreted as saying that in addition to $c$ detected particles there were some undetected ones, distributed by poisson with rate $s(1-\phi)$.
@@ -259,7 +259,7 @@ Conditional on $n$ the Poisson arrival times $\vec{t}=(t_1, \ldots, t_n)$ are eq
 
 We choose c) for now but hope to return to this at a later occasion.
 
- 
+
 ## Formula 6.108
 
 $$ \frac{1}{(1-x)^{a+1}}=(\sum_{i=0}^{\infty} x^i)^{a+1}=\sum_{m=0}^{\infty} c_m x^m $$
@@ -324,19 +324,19 @@ And so
 $$p(n_1|c_1 \phi I_J)=p(n_1|I_J)\frac{p(c_1|n_1 \phi I_J)}{p(c_1|\phi I_J)}=\frac{c_1}{n_1}p(c_1|n_1 \phi I_J)$$
 
 confirming 6.121.
- 
+
  Now 
- 
+
  $$ p(n_1|c_1 \phi I_J)= \frac{c_1}{n_1}{n_1 \choose n_1-c_1} \phi^{c_1}(1-\phi)^{n_1-c_1} ={n-1\choose c_1-1}\phi^{c_1}(1-\phi)^{n_1-c_1}$$
- 
+
  So $\hat{n}_J$ is found by Jaynes' favorite method of equating 
- 
+
  $${n-2\choose c_1-1}\phi^{c_1}(1-\phi)^{n_1-1-c_1}={n-1\choose c_1-1}\phi^{c_1}(1-\phi)^{n_1-c_1}$$
- 
+
  $$ (n-c_1+1)=(n-1)(1-\phi)$$
- 
+
  $$n \phi =\phi+c_1-1$$
- 
+
 $$\hat{n}_J=\frac{c_1-1+\phi}{\phi}$$
 
 And, finally, the expectation is (again, using 6.108)
