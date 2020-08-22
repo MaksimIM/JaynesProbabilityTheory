@@ -8,7 +8,7 @@ for file in chapter*.md appendix*.md; do
     filename="${file%.*}";
     pandoc $file -f markdown -s -o  "$filename.pdf"
     echo "created $filename.pdf";
-    pandoc $file -f markdown --mathjax -s -o  "$filename.html" --metadata title="$filename"
+    pandoc $file -f markdown --mathjax -s -o  "$filename.html" 2> /dev/null
     echo "created $filename.html";
 done
 
