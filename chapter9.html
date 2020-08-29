@@ -21,6 +21,52 @@
 <body>
 <h1 id="repetitive-experiments-probability-and-frequency">Repetitive experiments: probability and frequency</h1>
 <p><span class="math inline">\(\leftarrow\)</span> <a href="./index.html">Back to Chapters</a></p>
+<h2 id="formulas-9.19-to-9.22">Formulas 9.19 to 9.22</h2>
+<p>We are trying to solve a recurrence relation 9.19</p>
+<p><span class="math inline">\(M(n, G)=\sum_{j=1}^{m} M(n-1, G-g_j)\)</span></p>
+<p>subject to the boundary condition</p>
+<p><span class="math inline">\(M(0, G)=\delta(G, 0).\)</span></p>
+<p>Divinely inspired (but see below for some comments) we pretend that there exists some <span class="math inline">\(h(\lambda)\)</span> such that <span class="math inline">\(M(0, -G)\)</span> is a Laplace transform of <span class="math inline">\(h(\lambda)\)</span>, i.e. </p>
+<p><span class="math display">\[\delta(G, 0)=M(0, G)=\int d \lambda \; \exp\{\lambda G\} h(\lambda)\]</span></p>
+<p>Of course this prompts the question of whether such an <span class="math inline">\(h\)</span> actually exists. We ignore this for now (but see below).</p>
+<p>Then, we compute <span class="math inline">\(M(n, G)\)</span> by induction on <span class="math inline">\(n\)</span>. Let’s start with <span class="math inline">\(n=1\)</span> from <span class="math inline">\(n=0\)</span>:</p>
+<p><span class="math display">\[M(1, G)=\sum_{j=1}^{m} M(0, G-g_j)=\\
+\sum_{j=1}^{m}\int d \lambda \; \exp\{\lambda (G-g_i)\} h(\lambda)= \\
+\int d \lambda \; \left(\sum_{j=1}^{m} \exp\{-\lambda g_j\}\right) \exp\{ \lambda (G-g_i)\} h(\lambda)=\\
+\int d \lambda \; Z(\lambda) \exp\{\lambda G\} h(\lambda)
+\]</span></p>
+<p>where <span class="math inline">\(Z(\lambda)=\sum_{j=1}^{m} \exp\{-\lambda g_j\}\)</span>.</p>
+<p>Of course we then have in the same way</p>
+<p><span class="math display">\[M(n,G)=\int d \lambda \; Z^n(\lambda) \exp\{\lambda G\} h(\lambda)\]</span></p>
+<p>aka 9.22.</p>
+<p><strong>Remark 1, inspiration</strong>: This is an idea as old as Fourier. IF the initial condition was <span class="math inline">\(M(0, G)=\exp\{\lambda_0 G\}\)</span> for some fixed <span class="math inline">\(\lambda\)</span> then the fact that for such exponential functions shifting input <span class="math inline">\(G\)</span> to <span class="math inline">\(G-g_j\)</span> simply multiplies the result by <span class="math inline">\(\exp\{-\lambda_0 g_j\}\)</span>, we would have by induction <span class="math inline">\(M(n, G)=Z^n(\lambda_0) M(0, G)\)</span>. In other words, the function <span class="math inline">\(\exp\{\lambda_0 G\}\)</span> is an eigenfunction of the operator <span class="math inline">\(M(\cdot)\to \sum_{j=1}^{m} M(\cdot-g_j)\)</span> with eigenvalue <span class="math inline">\(Z(\lambda_0)\)</span>, so repeated application of this operator to increase <span class="math inline">\(n\)</span> just keeps multiplying the function by <span class="math inline">\(Z(\lambda_0)\)</span>. This is the content of the formulas 9.20 and 9.21: setting <span class="math inline">\(n=0\)</span> in 9.20 gives the boundary value <span class="math inline">\(M(0, G)=\exp\{\lambda_0 G\}\)</span>, and then the eigenvalue <span class="math inline">\(\exp\{\alpha\}\)</span> has to be equal to <span class="math inline">\(Z(\lambda_0)\)</span> .</p>
+<p>Now the equation 9.19 is linear. So if we can make the initial condition <span class="math inline">\(M(0,n)\)</span> a sum of exponentials, the solution is the sum of corresponding solutions. This is what we did above.</p>
+<p>This is analogous to how any exponential function <span class="math inline">\(\exp\{\lambda_0 x\}\)</span> being boundary condition to heat equation (at <span class="math inline">\(t=0\)</span>) leads to <span class="math inline">\(F(t,x)=\exp\{\lambda_0^2 t\}\exp\{\lambda_0 x\}\)</span> solution, and so if one can write <span class="math inline">\(F(0, x)\)</span> as sum of exponentials then the solution follows. The heat equation is second order, so one <em>can</em> use sines and cosines as boundary conditions instead, and then decompose the actual boundary values into those (aka Fouries analysis). We have a first order difference equation, so use exponentials.</p>
+<p><strong>Remark 2, finding <span class="math inline">\(h\)</span></strong>: I don’t think there is such an <span class="math inline">\(h(\lambda)\)</span> (but have not proved this). If one iterprets <span class="math inline">\(\delta(G, 0)\)</span> as a delta function (aka a distribution), then one can get arbitrarrily close by taking <span class="math inline">\(h\)</span> to be zero-mean Gaussian with ever increasing variance (the two-sided Laplace transformis then a zero-mean Gaussina with ever decreasing vriance, which converges to the delta function).</p>
+<p><strong>Remark 3</strong>: I don’t think any of this matters. As far as I can tell, we are only going to be using 9.27, and not 9.22. That said, I’d Jaynes’s derivation of 9.27 is suspect (and the talk of “inverse Laplace transform” seems doubly suspect; this would be right if we were doing Fourier transforms, but <a href="https://en.wikipedia.org/wiki/Inverse_Laplace_transform">not for Laplace</a>.) So we better derive 9.27. We do this after an unnecessary detour through the 1D linear recurrences.</p>
+<h4 id="bonus-1d-case-for-no-good-reason-maybe-for-motivation.">Bonus: 1D case for no good reason (maybe for motivation).</h4>
+<p>The 9.19 is a 2-variable version of <a href="https://en.wikipedia.org/wiki/Recurrence_relation">recurrence relation</a>, more particularly of <a href="https://en.wikipedia.org/wiki/Constant-recursive_sequence">a constant-recursive sequence</a>,</p>
+<p><span class="math inline">\(M(n)=\sum_{k=1}^d c_k M(n-k)\)</span></p>
+<p>or putting <span class="math inline">\(c_0=-1\)</span>:</p>
+<p><span class="math inline">\(\sum_{k=0}^d c_k M(n-k)=0\)</span></p>
+<p>The answer is that if <span class="math inline">\(P(x)=\sum_{k=0}^{d} c_k x^k\)</span> has <strong>distinct</strong> roots <span class="math inline">\(\mu_j\)</span>, then <span class="math inline">\(M(n)\)</span> has the form <span class="math inline">\(\sum_{j=0}^{d} k_j \mu_j^n\)</span>. This is perhaps reminiscent of 9.20 (bearing in mind <span class="math inline">\(\mu_j^n=\exp\{ \alpha_j n \}\)</span> where <span class="math inline">\(\alpha_j=\log \mu_j\)</span>, with the caveat that <span class="math inline">\(\mu_j\)</span> are complex and could be 0).</p>
+<p>One common approach to such equations is to study a <em>generating function</em> of the <span class="math inline">\(M(n)\)</span>, i.e.</p>
+<p><span class="math display">\[f_0(x):=\sum_{n\geq 0} M(n) x^n\]</span></p>
+<p>One sees that – modulo the edge effects – shifting the sequence to <span class="math inline">\(M(n-k)\)</span> just multiplies <span class="math inline">\(f_0\)</span> by <span class="math inline">\(x^{k}\)</span>:</p>
+<p><span class="math display">\[f_k(x):=\sum_{n\geq k} M(n-k) x^n=\\
+\sum_{n-k \geq 0 } M(n-k) x^{n-k} x^k=x^kf_0(x)\]</span></p>
+<p>Then multiplying this by <span class="math inline">\(c_k\)</span> and summing over <span class="math inline">\(k=1, \ldots d\)</span> one sees that all the terms of degree <span class="math inline">\(\geq d\)</span> cancel, so that</p>
+<p><span class="math inline">\(\sum_{k=0}^{d} c_k x^k f_0(x)=Q(x)\)</span></p>
+<p>where <span class="math inline">\(Q(x)\)</span> is a polynomial of degree of at most <span class="math inline">\(d-1\)</span> consisting of all the terms that don’t cancel. Note that the <span class="math inline">\(Q(x)\)</span> will vary depending on the initial values <span class="math inline">\(M(0), M(1), \ldots M(d-1)\)</span>. Then</p>
+<p><span class="math inline">\(f_0(x)=\frac{Q(x)}{\sum_{k=0}^{d} c_k x^k}\)</span></p>
+<p>Then one can factorize the polynomial <span class="math inline">\(P(x)=\sum_{k=0}^{d} c_k x^k\)</span> and use partial fraction expansion of <span class="math inline">\(\frac{Q(x)}{P(x)}\)</span> to get a formula fo the coefficients <span class="math inline">\(M(n)\)</span>.</p>
+<p>We want to make the following remarks about this procedure:</p>
+<ol type="1">
+<li><p>Upon substitution <span class="math inline">\(x=\frac{1}{z}\)</span> the generating function becomes <a href="https://en.wikipedia.org/wiki/Z-transform">Z-transform</a>, a discrete time analog of Laplace transform (think <span class="math inline">\(z=\exp(s)\)</span> and <span class="math inline">\(\sum_{n\geq 0} M(n) z^{-n}\)</span> as <span class="math inline">\(\int_{t\geq 0} M(t) (\exp{s})^{-t})\)</span>.<br />
+The “shifting the signal multiplies the transform” property that we used is the analogue of the corresponding property of Laplace transform. In fact the very recurrence we are solving is a discrete time analogue of an ODE. So we are using the “Laplace transform method for ODEs”, just in discrete time.</p></li>
+<li><p>An advantage of working with generating functions is that they are <em>formal power series</em>, meaning we don’t worry about convergence.</p></li>
+<li><p>From this perspective what we did is instead of solving for <span class="math inline">\(M(n)\)</span> directly, we solved for it’s Z/Laplace transform and then deduced what <span class="math inline">\(M(n)\)</span> must be.</p></li>
+</ol>
 <h2 id="a-version-of-exercise-9.1">A version of Exercise 9.1</h2>
 <p>For more on the “missing species” problem see <a href="https://en.wikipedia.org/wiki/Unseen_species_problem">Wikipedia</a>, the <a href="https://www.jstor.org/stable/1411">paper of Fisher</a> and Section 6.2 of the <a href="https://doi.org/10.1017/CBO9781316576533">Computer Age Statistical Inference</a> by Efron and Hastie.</p>
 <p>We follow the above references answer a different, albeit related, question: namely, how many new species we may hope to find if we sample more i.e. collect more specimens.</p>
