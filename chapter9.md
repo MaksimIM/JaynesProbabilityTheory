@@ -25,12 +25,16 @@ Of course this prompts the question of whether such an $h$ actually exists. We i
 
 Then, we compute $M(n, G)$ by induction on $n$. Let's start with $n=1$ from $n=0$:
 
-$$M(1, G)=\sum_{j=1}^{m} M(0, G-g_j)=\\
-\sum_{j=1}^{m}\int d \lambda \; \exp\{\lambda (G-g_i)\} h(\lambda)= \\
-\int d \lambda \; \left(\sum_{j=1}^{m} \exp\{-\lambda g_j\}\right) \exp\{ \lambda (G-g_i)\} h(\lambda)=\\
-\int d \lambda \; Z(\lambda) \exp\{\lambda G\} h(\lambda)
-$$
- 
+$$M(1, G)= \sum_{j=1}^{m} M(0, G-g_j)=$$
+
+
+$$\sum_{j=1}^{m}\int d \lambda \; \exp\{\lambda (G-g_i)\} h(\lambda)=$$
+
+$$\int d \lambda \; \left(\sum_{j=1}^{m} \exp\{-\lambda g_j\}\right) \exp\{ \lambda (G-g_i)\} h(\lambda)=$$
+
+$$\int d \lambda \; Z(\lambda) \exp\{\lambda G\} h(\lambda)$$
+
+
  where $Z(\lambda)=\sum_{j=1}^{m} \exp\{-\lambda g_j\}$.
 
 Of course we then have in the same way
