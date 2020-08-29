@@ -30,11 +30,10 @@
 <p><span class="math display">\[\delta(G, 0)=M(0, G)=\int d \lambda \; \exp\{\lambda G\} h(\lambda)\]</span></p>
 <p>Of course this prompts the question of whether such an <span class="math inline">\(h\)</span> actually exists. We ignore this for now (but see below).</p>
 <p>Then, we compute <span class="math inline">\(M(n, G)\)</span> by induction on <span class="math inline">\(n\)</span>. Let’s start with <span class="math inline">\(n=1\)</span> from <span class="math inline">\(n=0\)</span>:</p>
-<p><span class="math display">\[M(1, G)=\sum_{j=1}^{m} M(0, G-g_j)=\\
-\sum_{j=1}^{m}\int d \lambda \; \exp\{\lambda (G-g_i)\} h(\lambda)= \\
-\int d \lambda \; \left(\sum_{j=1}^{m} \exp\{-\lambda g_j\}\right) \exp\{ \lambda (G-g_i)\} h(\lambda)=\\
-\int d \lambda \; Z(\lambda) \exp\{\lambda G\} h(\lambda)
-\]</span></p>
+<p><span class="math display">\[M(1, G)= \sum_{j=1}^{m} M(0, G-g_j)=\]</span></p>
+<p><span class="math display">\[\sum_{j=1}^{m}\int d \lambda \; \exp\{\lambda (G-g_i)\} h(\lambda)=\]</span></p>
+<p><span class="math display">\[\int d \lambda \; \left(\sum_{j=1}^{m} \exp\{-\lambda g_j\}\right) \exp\{ \lambda (G-g_i)\} h(\lambda)=\]</span></p>
+<p><span class="math display">\[\int d \lambda \; Z(\lambda) \exp\{\lambda G\} h(\lambda)\]</span></p>
 <p>where <span class="math inline">\(Z(\lambda)=\sum_{j=1}^{m} \exp\{-\lambda g_j\}\)</span>.</p>
 <p>Of course we then have in the same way</p>
 <p><span class="math display">\[M(n,G)=\int d \lambda \; Z^n(\lambda) \exp\{\lambda G\} h(\lambda)\]</span></p>
@@ -67,6 +66,29 @@ The “shifting the signal multiplies the transform” property that we used is 
 <li><p>An advantage of working with generating functions is that they are <em>formal power series</em>, meaning we don’t worry about convergence.</p></li>
 <li><p>From this perspective what we did is instead of solving for <span class="math inline">\(M(n)\)</span> directly, we solved for it’s Z/Laplace transform and then deduced what <span class="math inline">\(M(n)\)</span> must be.</p></li>
 </ol>
+<h2 id="getting-9.23-and-then-9.27.">Getting 9.23 (and then 9.27).</h2>
+<p>The main point is to get 9.23. That is:</p>
+<p><span class="math display">\[ \sum_G \exp\{-\lambda G\}M(n, G)=\sum_{(n_1, \ldots, n_m)} W(n_1, \ldots, n_m) \exp\{-\lambda \sum n_j g_j \}\]</span></p>
+<p>with the sum over tuples of non-negative integers <span class="math inline">\((n_1, \ldots, n_m)\)</span> with <span class="math inline">\(\sum n_j=n\)</span> and</p>
+<p><span class="math display">\[W(n_1, \ldots, n_m)=\frac{n!}{n_1! \cdot \ldots \cdot n_m!}.\]</span></p>
+<p>This can be proven by induction on <span class="math inline">\(n\)</span>; we will do so below. But right now, we argue why it’s true directly: both sides simply sum over all possible sequences <span class="math inline">\(\vec{o}=(o_1,o_2, \ldots, o_n)\)</span> of length <span class="math inline">\(n\)</span> of outcomes <span class="math inline">\(o_t\in \{1, \ldots, m\}\)</span> the value</p>
+<p><span class="math display">\[V(\vec{o})=\exp\{-\lambda \sum_{t=1}^n g_{o_t}\}.\]</span></p>
+<p>The left hand side groups the outcome sequences <span class="math inline">\(\vec{o}\)</span> by their “total amount generated” i.e. <span class="math inline">\(G=\sum g_{o_t}\)</span>. The number of sequences with this <span class="math inline">\(G\)</span> is by definition <span class="math inline">\(M(n, G)\)</span>, and each one contributes <span class="math inline">\(\exp\{-\lambda \sum_{t=1}^{m} g_{o_t} \}\)</span>, hence the left hand side.</p>
+<p>The right hand side groups the outcome sequences by frequncies <span class="math inline">\(n_j\)</span> of the outcome <span class="math inline">\(j\in \{1, \ldots, m  \}\)</span>. There are <span class="math inline">\(W(n_1, \ldots, n_m)\)</span> such sequences, each generating <span class="math inline">\(\exp\{-\lambda \sum n_j g_j \}\)</span>, hence the right hand side.</p>
+<p>Thus 9.23 follows. The passage from 9.23 to 9.27 is reasonably well explained in Jaynes.</p>
+<h4 id="bonus-induction-proof-of-9.23">Bonus: induction proof of 9.23</h4>
+<p>Base: The <span class="math inline">\(n=0\)</span> case is simply <span class="math inline">\(\exp\{-\lambda \}=\exp\{-\lambda \}\)</span>, which is true.</p>
+<p>Step: Using 9.19 ( i.e. <span class="math inline">\(M(n, G)=\sum_{j=1}^{m} M(n-1, G-g_j)\)</span>) we have:</p>
+<p><span class="math display">\[ \sum_G \exp\{-\lambda G\}M(n, G)=\sum_G \exp\{-\lambda G\} \left(\sum_{j=1}^{m} M(n-1, G-g_j)\right)\]</span></p>
+<p>We massage this a bit to make it fit the formulas we have in the induction hypothesis (note that we use that all the sums are over finite sets to exchange order of summation as we see fit):</p>
+<p><span class="math display">\[= \sum_G \sum_{j=1}^{m}    \exp\{-\lambda g_j\} \exp\{-\lambda (G-g_j)\} M(n-1, G-g_j)\]</span></p>
+<p><span class="math display">\[= \sum_{j=1}^{m}\exp\{-\lambda g_j\}   \sum_G   \exp\{-\lambda (G-g_j)\} M(n-1, G-g_j)\]</span></p>
+<p>Now by induction hypothesis (we don’t say this separately, but the summands where one of the elements of the tuple becomes negative are excluded from the corresponding sum):</p>
+<p><span class="math display">\[ =\sum_{j=1}^{m}\exp\{-\lambda g_j\}   \sum_{(n_1, \ldots, n_j-1,\ldots, n_m)}  W(n_1, \ldots, n_j-1,\ldots, n_m) \exp\{-\lambda (\sum n_j g_j -g_j) \}  \]</span></p>
+<p><span class="math display">\[ =\sum_{j=1}^{m}   \sum_{(n_1, \ldots, n_j-1, \ldots, n_m)}  W(n_1, \ldots, n_j-1,\ldots, n_m) \exp\{-\lambda (\sum n_j g_j) \}  \]</span></p>
+<p>Now since <span class="math inline">\(W(n_1, \ldots, n_j-1,\ldots, n_m)=\frac{n_j}{n}W(n_1, \ldots, n_j,\ldots, n_m)\)</span> we get:</p>
+<p><span class="math display">\[ =\sum_{j=1}^{m}   \sum_{(n_1, \ldots, n_j-1, \ldots, n_m)}  \frac{n_j}{n}W(n_1, \ldots, n_j,\ldots, n_m) \exp\{-\lambda (\sum n_j g_j) \}  \]</span></p>
+<p><span class="math display">\[ = \sum_{(n_1, \ldots, n_j,\ldots, n_m)}  W(n_1, \ldots, n_j,\ldots, n_m) \exp\{-\lambda (\sum n_j g_j) \}  \]</span></p>
 <h2 id="a-version-of-exercise-9.1">A version of Exercise 9.1</h2>
 <p>For more on the “missing species” problem see <a href="https://en.wikipedia.org/wiki/Unseen_species_problem">Wikipedia</a>, the <a href="https://www.jstor.org/stable/1411">paper of Fisher</a> and Section 6.2 of the <a href="https://doi.org/10.1017/CBO9781316576533">Computer Age Statistical Inference</a> by Efron and Hastie.</p>
 <p>We follow the above references answer a different, albeit related, question: namely, how many new species we may hope to find if we sample more i.e. collect more specimens.</p>

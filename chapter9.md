@@ -59,10 +59,6 @@ This is analogous to how any exponential function $\exp\{\lambda_0 x\}$ being bo
 
 
 
-
-
-
-
 #### Bonus: 1D case for no good reason (maybe for motivation).
  
 The 9.19 is a 2-variable version of [recurrence relation](https://en.wikipedia.org/wiki/Recurrence_relation), more particularly of [a constant-recursive sequence](https://en.wikipedia.org/wiki/Constant-recursive_sequence), 
@@ -102,6 +98,59 @@ The "shifting the signal multiplies the transform" property that we used is the 
 2) An advantage of working with generating functions is that they are _formal power series_, meaning we don't worry about convergence. 
 
 3) From this perspective what we did is instead of solving for $M(n)$ directly, we solved for it's Z/Laplace transform and then deduced what $M(n)$ must be.
+
+## Getting 9.23 (and then 9.27).
+
+The main point is to get 9.23. That is:
+
+$$ \sum_G \exp\{-\lambda G\}M(n, G)=\sum_{(n_1, \ldots, n_m)} W(n_1, \ldots, n_m) \exp\{-\lambda \sum n_j g_j \}$$
+
+with the sum over tuples of non-negative integers $(n_1, \ldots, n_m)$ with $\sum n_j=n$ and
+
+$$W(n_1, \ldots, n_m)=\frac{n!}{n_1! \cdot \ldots \cdot n_m!}.$$
+
+This can be proven by induction on $n$; we will do so below. But right now, we argue why it's true directly: both sides simply sum over all possible sequences $\vec{o}=(o_1,o_2, \ldots, o_n)$ of length $n$ of outcomes $o_t\in \{1, \ldots, m\}$ the value 
+
+$$V(\vec{o})=\exp\{-\lambda \sum_{t=1}^n g_{o_t}\}.$$
+
+
+The left hand side groups the outcome sequences $\vec{o}$ by their "total amount generated" i.e.  $G=\sum g_{o_t}$. The number of sequences with this $G$ is by definition $M(n, G)$, and each one contributes $\exp\{-\lambda \sum_{t=1}^{m} g_{o_t} \}$, hence the left hand side.
+
+The right hand side groups the outcome sequences by frequncies $n_j$ of the outcome $j\in \{1, \ldots, m
+  \}$. There are $W(n_1, \ldots, n_m)$ such sequences, each generating $\exp\{-\lambda \sum n_j g_j \}$, hence the right hand side.
+  
+  
+  Thus 9.23 follows. The passage from 9.23 to 9.27 is reasonably well explained in Jaynes.
+  
+  
+  
+
+#### Bonus: induction proof of 9.23
+
+Base: The $n=0$ case is simply $\exp\{-\lambda \}=\exp\{-\lambda \}$, which is true.
+
+Step: Using 9.19 ( i.e. $M(n, G)=\sum_{j=1}^{m} M(n-1, G-g_j)$) we have:
+
+$$ \sum_G \exp\{-\lambda G\}M(n, G)=\sum_G \exp\{-\lambda G\} \left(\sum_{j=1}^{m} M(n-1, G-g_j)\right)$$
+
+We massage this a bit to make it fit the formulas we have in the induction hypothesis (note that we use that all the sums are over finite sets to exchange order of summation as we see fit):
+
+$$= \sum_G \sum_{j=1}^{m}    \exp\{-\lambda g_j\} \exp\{-\lambda (G-g_j)\} M(n-1, G-g_j)$$
+
+$$= \sum_{j=1}^{m}\exp\{-\lambda g_j\}   \sum_G   \exp\{-\lambda (G-g_j)\} M(n-1, G-g_j)$$
+
+Now by induction hypothesis (we don't say this separately, but the summands where one of the elements of the tuple becomes negative are excluded from the corresponding sum):
+
+$$ =\sum_{j=1}^{m}\exp\{-\lambda g_j\}   \sum_{(n_1, \ldots, n_j-1,\ldots, n_m)}  W(n_1, \ldots, n_j-1,\ldots, n_m) \exp\{-\lambda (\sum n_j g_j -g_j) \}  $$
+
+$$ =\sum_{j=1}^{m}   \sum_{(n_1, \ldots, n_j-1, \ldots, n_m)}  W(n_1, \ldots, n_j-1,\ldots, n_m) \exp\{-\lambda (\sum n_j g_j) \}  $$
+
+Now since $W(n_1, \ldots, n_j-1,\ldots, n_m)=\frac{n_j}{n}W(n_1, \ldots, n_j,\ldots, n_m)$ we get:
+
+$$ =\sum_{j=1}^{m}   \sum_{(n_1, \ldots, n_j-1, \ldots, n_m)}  \frac{n_j}{n}W(n_1, \ldots, n_j,\ldots, n_m) \exp\{-\lambda (\sum n_j g_j) \}  $$
+
+$$ = \sum_{(n_1, \ldots, n_j,\ldots, n_m)}  W(n_1, \ldots, n_j,\ldots, n_m) \exp\{-\lambda (\sum n_j g_j) \}  $$
+
 
 
 
