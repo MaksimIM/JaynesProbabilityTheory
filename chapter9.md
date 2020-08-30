@@ -15,8 +15,7 @@ subject to the boundary condition
 $M(0, G)=\delta(G, 0).$
 
 
-
-Divinely inspired (but see below for some comments) we pretend that there exists some $h(\lambda)$ such that $M(0, -G)$ is a Laplace transform of $h(\lambda)$, i.e.  
+Divinely inspired (or, rather, inspired by the fact that this is a kind of discretized version of a linear first order partial differential equation; but see below for more comments on this) we pretend that there exists some $h(\lambda)$ such that $M(0, -G)$ is a Laplace transform of $h(\lambda)$, i.e.  
 
 $$\delta(G, 0)=M(0, G)=\int d \lambda \; \exp\{\lambda G\} h(\lambda)$$
 
@@ -48,12 +47,12 @@ aka 9.22.
 
 Now the equation 9.19 is linear. So if we can make the initial condition $M(0,n)$ a sum of exponentials, the solution is the sum of corresponding solutions. This is what we did above.
 
-This is analogous to how any exponential function $\exp\{\lambda_0 x\}$ being boundary condition to heat equation (at $t=0$) leads to $F(t,x)=\exp\{\lambda_0^2 t\}\exp\{\lambda_0 x\}$ solution, and so if one can write $F(0, x)$ as sum of exponentials then the solution follows. The heat equation is second order, so one _can_ use sines and cosines as boundary conditions instead, and then decompose the actual boundary values into those (aka Fouries analysis). We have a first order difference equation, so use exponentials.
+This is analogous to how any exponential function $\exp\{\lambda_0 x\}$ being boundary condition to heat equation (at $t=0$) leads to $F(t,x)=\exp\{\lambda_0^2 t\}\exp\{\lambda_0 x\}$ solution. In that setting, if one can write $F(0, x)$ as sum of exponentials then the solution follows. The heat equation is second order, so one _can_ use sines and cosines as boundary conditions instead, and then decompose the actual boundary values into those (aka Fouries analysis). We have a first order difference equation, so we use exponentials.
 
-**Remark 2, finding $h$**: I don't think there is such an $h(\lambda)$ (but have not proved this). If one iterprets $\delta(G, 0)$ as a delta function (aka a distribution), then one can get arbitrarrily close by taking $h$ to be zero-mean Gaussian with ever increasing variance (the two-sided Laplace transformis then a zero-mean Gaussina with ever decreasing vriance, which converges to the delta function).
+**Remark 2, finding $h$**: I don't think there is such an $h(\lambda)$ (but have not proved this). If one iterprets $\delta(G, 0)$ as a delta function (aka a distribution), then one can get arbitrarrily close by taking $h$ to be zero-mean Gaussian with ever increasing variance (the two-sided Laplace transform is then a zero-mean Gaussina with ever decreasing vriance, which converges to the delta function).
 
 
-**Remark 3**: I don't think any of this matters. As far as I can tell, we are only going to be using 9.27, and not 9.22. That said, I'd Jaynes's derivation of 9.27 is suspect (and the talk of "inverse Laplace transform" seems doubly suspect; this would be right if we were doing Fourier transforms, but [not for Laplace](https://en.wikipedia.org/wiki/Inverse_Laplace_transform).) So we better derive 9.27. We do this after an unnecessary detour through the 1D linear recurrences.
+**Remark 3**: I don't think any of this matters. As far as I can tell, we are only going to be using 9.27, and not 9.22. That said, Jaynes's derivation of 9.27 is suspect (and the talk of "inverse Laplace transform" seems doubly suspect; this would be right if we were doing Fourier transforms, but [not for Laplace](https://en.wikipedia.org/wiki/Inverse_Laplace_transform)). So we better derive 9.27. We do this after an unnecessary detour through the 1D linear recurrences.
 
 
 
@@ -114,10 +113,10 @@ This can be proven by induction on $n$; we will do so below. But right now, we a
 $$V(\vec{o})=\exp\{-\lambda \sum_{t=1}^n g_{o_t}\}.$$
 
 
-The left hand side groups the outcome sequences $\vec{o}$ by their "total amount generated" i.e.  $G=\sum g_{o_t}$. The number of sequences with this $G$ is by definition $M(n, G)$, and each one contributes $\exp\{-\lambda \sum_{t=1}^{m} g_{o_t} \}$, hence the left hand side.
+The left hand side groups the outcome sequences $\vec{o}$ by their "total amount generated" i.e. by  $G=\sum g_{o_t}$. The number of sequences with this $G$ is by definition $M(n, G)$, and each one contributes $\exp\{-\lambda \sum_{t=1}^{m} g_{o_t} \}$, hence the left hand side.
 
-The right hand side groups the outcome sequences by frequncies $n_j$ of the outcome $j\in \{1, \ldots, m
-  \}$. There are $W(n_1, \ldots, n_m)$ such sequences, each generating $\exp\{-\lambda \sum n_j g_j \}$, hence the right hand side.
+The right hand side groups the outcome sequences by frequencies $n_j$ of the outcome $j\in \{1, \ldots, m
+  \}$. For a fixed tuple $(n_1, \ldots, n_m)$ of frequencies there are $W(n_1, \ldots, n_m)$  sequences $\vec{o}$, each generating $\exp\{-\lambda \sum n_j g_j \}$, hence the right hand side.
   
   
   Thus 9.23 follows. The passage from 9.23 to 9.27 is reasonably well explained in Jaynes.
@@ -127,7 +126,7 @@ The right hand side groups the outcome sequences by frequncies $n_j$ of the outc
 
 #### Bonus: induction proof of 9.23
 
-Base: The $n=0$ case is simply $\exp\{-\lambda \}=\exp\{-\lambda \}$, which is true.
+Base: The $n=0$ case is simply $1=1$, which is true.
 
 Step: Using 9.19 ( i.e. $M(n, G)=\sum_{j=1}^{m} M(n-1, G-g_j)$) we have:
 
