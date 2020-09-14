@@ -49,7 +49,8 @@ Now the equation 9.19 is linear. So if we can make the initial condition $M(0,n)
 
 This is analogous to how any exponential function $\exp\{\lambda_0 x\}$ being boundary condition to heat equation (at $t=0$) leads to $F(t,x)=\exp\{\lambda_0^2 t\}\exp\{\lambda_0 x\}$ solution. In that setting, if one can write $F(0, x)$ as sum of exponentials then the solution follows. The heat equation is second order, so one _can_ use sines and cosines as boundary conditions instead, and then decompose the actual boundary values into those (aka Fouries analysis). We have a first order difference equation, so we use exponentials.
 
-**Remark 2, finding $h$**: I don't think there is such an $h(\lambda)$ (but have not proved this). If one iterprets $\delta(G, 0)$ as a delta function (aka a distribution), then one can get arbitrarrily close by taking $h$ to be zero-mean Gaussian with ever increasing variance (the two-sided Laplace transform is then a zero-mean Gaussina with ever decreasing vriance, which converges to the delta function).
+**Remark 2, finding $h$**: I don't think there is such an $h(\lambda)$ (but have not proved this). 
+
 
 
 **Remark 3**: I don't think any of this matters. As far as I can tell, we are only going to be using 9.27, and not 9.22. That said, Jaynes's derivation of 9.27 is suspect (and the talk of "inverse Laplace transform" seems doubly suspect; this would be right if we were doing Fourier transforms, but [not for Laplace](https://en.wikipedia.org/wiki/Inverse_Laplace_transform)). So we better derive 9.27. We do this after an unnecessary detour through the 1D linear recurrences.
