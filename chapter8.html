@@ -27,6 +27,35 @@
 <li><p>Is 8.6 of that form?</p></li>
 <li><p>Is that of use for anything?</p></li>
 </ol>
+<h2 id="random-things-about-fisher-information.">Random things about Fisher information.</h2>
+<p>We assume various regularity conditions.</p>
+<ol start="0" type="1">
+<li>If <span class="math inline">\(p_\theta(x)\)</span> is a family of probability distributions,</li>
+</ol>
+<p><span class="math inline">\(E[\frac{\partial\log p_\theta}{\partial \theta_i}]=\int \frac{\partial p_\theta}{\partial \theta_i} \frac{1}{p_\theta} p_\theta d x=\int \frac{\partial p_\theta}{\partial \theta_i} dx=\frac{\partial }{\partial \theta_i} \int p_\theta dx=0\)</span></p>
+<ol type="1">
+<li>We define <span class="math inline">\(I(\theta)=E[\frac{\partial \log p(x|\theta) }{\partial \theta_i }\frac{\partial \log p(x|\theta) }{\partial \theta_j}]\)</span> to be the covariance of the derivative of score function. Then under some regularity conditions,</li>
+</ol>
+<p><span class="math display">\[I(\theta)=-E[\frac{\partial \log p(x|\theta) }{\partial \theta_i \partial \theta_j}],\]</span> minus the Hessian of the score.</p>
+<p>Proof: Abusing notation by writing <span class="math inline">\(f_i(\theta)=\frac{\partial f}{\partial \theta_i}\)</span> and <span class="math inline">\(p\)</span> for <span class="math inline">\(p(x|\theta)\)</span> we have</p>
+<p><span class="math inline">\((\log p)_i=\frac{p_i}{p}\)</span>,</p>
+<p><span class="math inline">\((\log p)_{ij}=\left(\frac{p_i}{p}\right)_j=\frac{p_{ij}}{p}-\frac{p_i p_j}{p^2}=\frac{p_{ij}}{p}-(\log p)_i (\log p)_j\)</span></p>
+<p>So we just need to show that <span class="math inline">\(E[\frac{p_{ij}}{p}]=0.\)</span> This is similar to the previous item. Here goes:</p>
+<p><span class="math inline">\(\int_X \frac{p_{ij}}{p} p d x=\int_X p_{ij} d x=(\int_X p dx )_{ij}=1_{ij} =0\)</span></p>
+<ol start="2" type="1">
+<li>From <a href="https://en.wikipedia.org/wiki/Fisher_information#Sufficient_statistic">Wikipedia</a>: Suppose <span class="math inline">\(X\)</span> has pdf <span class="math inline">\(f_\theta(X)\)</span> , and <span class="math inline">\(T=T(X)\)</span> of <span class="math inline">\(\theta\)</span> has pdf <span class="math inline">\(g_\theta(T)\)</span>. Let <span class="math inline">\(I(\theta)\)</span> be the Fisher information of <span class="math inline">\(f_\theta\)</span> and <span class="math inline">\(J(\theta)\)</span> be the Fisher information of <span class="math inline">\(g_\theta\)</span>. Then <span class="math inline">\(I(\theta)\geq J(\theta)\)</span> (meaning difference is positive semidefinite) with equality if and only if <span class="math inline">\(T\)</span> is sufficient.</li>
+</ol>
+<p>Proof:</p>
+<p>Write</p>
+<p><span class="math inline">\(f_\theta(X)=p_\theta(X|T)g_\theta(T)\)</span></p>
+<p><span class="math inline">\((\log f_\theta (X))_i = (\log p_\theta(X|T))_i +(\log g_\theta(T))_i\)</span></p>
+<p>By the <a href="https://en.wikipedia.org/wiki/Sufficient_statistic#Fisher%E2%80%93Neyman_factorization_theorem">factorization theorem</a>, <span class="math inline">\(T\)</span> is sufficient precisely when <span class="math inline">\(p_\theta(X|T)\)</span> is constant (in <span class="math inline">\(\theta\)</span>) i.e. the first term of the right hand side is zero. In that case the two Fisher information matrices are indeed identical. The result we are after follows from the fact that the two terms on the right hand side are uncorrelated. Since they have zero mean (by the 0th item), we covariance is expectation of product. We compute by conditioning on <span class="math inline">\(T\)</span> and using item 0 again:</p>
+<p><span class="math display">\[E_X[(\log p_\theta(X|T))_i (\log g_\theta(T))_j] =\]</span></p>
+<p><span class="math display">\[E_T[E_{X|T}[(\log p_\theta(X|T))_i (\log g_\theta(T))_j]]\]</span></p>
+<p><span class="math display">\[E_T[ (\log g_\theta(T))_j E_{X|T}[(\log p_\theta(X|T))_i] ]\]</span></p>
+<p><span class="math display">\[E_T[ (\log g_\theta(T))_j 0]=0 \]</span></p>
+<p>as wanted.</p>
+<p>Remark: This last computation is related to the one in <a href="https://en.wikipedia.org/wiki/Fisher_information#Chain_rule">Chain rule for mutual information</a>.</p>
 <h2 id="section-8.10.1">Section 8.10.1</h2>
 <p>This line of reasoning about “disjunction of elementary ‘atomic’ propositions” seems equally inappropriate as a criticism of either Bayesean or frequentist probability, as long as one keeps in mind distinction between events (which have probabilities, but are often not ‘atomic’), and outcomes (which are ‘atomic’, but often have no probability). See section 8.11 instead.</p>
 <h2 id="section-8.12.4">Section 8.12.4</h2>
