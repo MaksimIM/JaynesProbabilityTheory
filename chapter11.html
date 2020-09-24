@@ -19,10 +19,16 @@
   <![endif]-->
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">chapter11</h1>
-</header>
 <h1 id="discrete-prior-probabilities-the-entropy-principle">Discrete prior probabilities: the entropy principle</h1>
 <p><span class="math inline">\(\leftarrow\)</span> <a href="./index.html">Back to Chapters</a></p>
+<h3 id="comments-on-11.6">Comments on 11.6</h3>
+<p>First of all, Lagrange multipliers method can give rigorous proofs. Of course the presentation in 11.6 is not rigorous, but that is a feature of the particular situation and presentation, not a general comment on Lagrange multipliers method.</p>
+<p>Secondly, from “modern” perspective we see that the constraints <span class="math inline">\(E_p[f_k]=F_k\)</span> imply that the cross-entropy</p>
+<p><span class="math display">\[H(p, u)=E_p[-\log u]=\]</span> <span class="math display">\[E_p[\log Z(\vec{\lambda})]+E_p[\sum \lambda_i f_i]=\]</span> <span class="math display">\[\log Z(\vec{\lambda})+\vec{\lambda}\cdot \vec{F}\]</span></p>
+<p>is fixed — and equal to <span class="math inline">\(H(u)\)</span>.</p>
+<p>Then</p>
+<p><span class="math display">\[H(p)=H(p, u)-D_{KL}(p,u) =\]</span></p>
+<p><span class="math display">\[H(u)-D_{KL}(p,u) \leq H(u)\]</span></p>
+<p>with equality precisely when <span class="math inline">\(p=u\)</span>.</p>
 </body>
 </html>
