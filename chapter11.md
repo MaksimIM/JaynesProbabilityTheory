@@ -23,3 +23,8 @@ $$H(p)=H(p, u)-D_{KL}(p,u) =$$
 $$H(u)-D_{KL}(p,u) \leq H(u)$$
 
 with equality precisely when $p=u$.
+
+
+### Comment on 10.7 and 10.8
+
+This seems to ignore completely the debate on foundations of quantum mechanics, and such topics as "alternative" formulations of de Broglie–Bohm pilot wave and Everett many world interpretation, as well as the Bell's theorem. Jaynes's views on a lot of this are in  his paper "[Clearing up the mysteries -- the original goal](https://bayes.wustl.edu/etj/articles/cmystery.pdf)".
