@@ -3,7 +3,7 @@
 $\leftarrow$ [Back to Chapters](./index.html)
 
 
-### Comments on 12.4
+### Comments on 12.4.1
 
 I find the discussion in 12.4 somewhat challenging. "Statistical decision theory and bayesian analysis" by James O. Berger was a better reference for me.  
 
@@ -79,6 +79,8 @@ Example 3: Consider the family $\mathcal{P}$ of all Gamma distributions on $X=\m
 Now a **prior** is a probability distribution $\pi$ over $\mathcal{P}$. This is easiest to understand when the collection $\mathcal{P}$ is parametric, so that we have $\Theta \subset \mathbb{R}^d$. When $\Theta$ is open, we may, as usual, describe the prior by its pdf, which we by abuse of notation will denote by $\pi(\theta)$. Since $G$ acts on $\Theta$, this action will transform the prior; namely, given $g \in G$, we obtain new distribution $g_*\pi$. When the action is differentiable, we have
   
   $$[g_*\pi](\theta)=\pi(g^{-1}(\theta)) |J_{g^{-1}}(\theta)| $$
+  
+  (Recall: If $g(\psi)=\theta$ then $p(\psi) d\psi= p(g^{-1}(\theta)) \frac{d\psi}{d \theta} d\theta=p(g^{-1}(\theta)) |J_{g^{-1}}(\theta)| d\theta$.)
 
   
   
@@ -184,5 +186,27 @@ $$ \pi(g') = \pi(g^{-1}g') \frac{1}{a}$$
  
  So, why right invariant priors as opposed to left invariant ones? I don't feel that I understand the answer completely. One thing I can say is that, roughly speaking, this may be considered to arize as follows: Suppose that you have a function of parameter and data $f(x, \theta)$ invariant under action $(x, 
    \theta) \to f(g x, g\theta)$ (say, a loss function of some decision procedure). Then integrating "over $X$" $\int f(x, \theta_0) dx$ can be rewritten as integrating "over $G$" via  $\int f(gx_0, \theta) dg$, then as $\int f(x_0, g^{-1}\theta) dg$ and then, finally, as integration "over $\Theta$"" i.e. $\int f(x_0, g^{-1}\theta) d\theta$. In the $X$ to $G$ transition "preserves left-invariance" but $G$ to $X$ transition has a $g^{-1}$ and "moves left-invariance to right-invariance".   
-   
-   
+
+
+----
+
+### Comments on 12.4.3 
+
+The derivation in 12.4.3 is suspect. Apart from dubious justifcation for invariance through "total confusion", should we not ask why is it that $a=\frac{p(E|Sx)}{p(E|FX)}$ is the same for every member of this imaginary population of individuals?
+
+Would it not be better to say that the group that is acting is the translation group acting on log likeliehoods (aka "evidence")? I.e. that in terms of the odds ratio parameter $l=log \frac{\theta}{1-\theta}$ the (left and right) invariant prior is uniform? That, is the invariant prior is  $C dl$, which is $C dl =C \frac{d l}{d\theta} d \theta= C \frac{1-\theta}{\theta} \frac{1}{(1-\theta)^2}=\frac{C}{\theta (1-\theta)}$. 
+
+(See Example 8 in Section 3.4.3 in Berger for further options.)
+
+### 12.50 from 12.48
+
+Plug in $\theta=1/2$ to get $af(\frac{a}{1+a})=\frac{(1+a)^2}{4} f(1/2)$
+
+If $\theta=\frac{a}{1+a}$ then $(1+a)(1-\theta)=1$ so $a=\frac{\theta}{1-\theta}$ and $(1+a)=\frac{1}{1-\theta}$; plugging this in we have
+
+$$  \frac{\theta}{1-\theta} f(\theta)=\frac{C}{(1-\theta)^2}$$
+$$f(\theta)=\frac{C}{\theta(1-\theta)}.$$
+
+### Comments on 12.4.4
+
+It certainly **does** violence to Bertrand's paradox to rephrase it in terms of throwing strawes. The point of this paradox from the probability theory point of view os that saying "at random" is meaningless -- one has to provide a probability distribution; replacing the words "at random" by the "throwing straws" procedure makes this point moot -- the issue then becomes not the fact that the probability is unspecified, but, rather, that it is specified via a "physical" procedure, and one has to deduce the probability distribution from this procedure. This is what Jaynes proceed to do. But this is an entirely different matter! 
