@@ -5,9 +5,12 @@ $\leftarrow$ [Back to Chapters](./index.html)
 
 ### Comments on 12.4
 
-I find the discussion in 12.4 somewhat off the mark. "Statistical decision theory and bayesian analysis" by James O. Berger is a better reference.  
+I find the discussion in 12.4 somewhat challenging. "Statistical decision theory and bayesian analysis" by James O. Berger was a better reference for me.  
 
 To put the main issue up first: The prior 12.27 is in fact "best" in this problem, but not because 12.18 (which has multiple issues) is better than 12.30, but because the deduction of 12.36 from 12.30 is flawed, and a better analysis of 12.30 (using the framework of invarinat decision rules) does indeed lead to 12.27!
+
+Jaynes's paragraph (page 381) trying to find problem with 12.30 is itself flawed.  There is in fact no prefered  choice of the $x=0$ point. However, this does not invalidate 12.30. The equations 12.30 take a particular form once the origin $x=0$ is chosen, but even when the origin is not selected, the group of affine transformations encoded in 12.30 acts on the affine line $\mathbb{A}^1$. This action is abstract, and is only represented in coordinates via 12.30. This is in contrast to 12.18 which represents an action of the commutative group $\mathbb{R}\times \mathbb{R}_+$ on the 2D space of parameters, as well as the 3D space of "parameters together with coordinates", but not any action on the space of $x$s from which we draw the observed data. 
+
 
 I flesh some of this out in the writeup below, which is largely based Berger's book, particularly sections 3.3.2 and 6.6.
 
