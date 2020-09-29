@@ -22,5 +22,59 @@
 <h1 id="ignorance-priors-and-transformation-groups">Ignorance priors and transformation groups</h1>
 <p><span class="math inline">\(\leftarrow\)</span> <a href="./index.html">Back to Chapters</a></p>
 <h3 id="comments-on-12.4">Comments on 12.4</h3>
+<p>I find the discussion in 12.4 somewhat off the mark. “Statistical decision theory and bayesian analysis” by James O. Berger is a better reference. The summary below is largely based on it, particularly sections 3.3.2 and 6.6.</p>
+<p>The word “invariance” presupposes a group action. The most natural setting is that in which a group <span class="math inline">\(G\)</span> acts on the space <span class="math inline">\(X\)</span> in which we get data.</p>
+<table style="width:7%;">
+<colgroup>
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Example 1: (location-scale in 1D) Take <span class="math inline">\(X=\mathbb{A}^1\)</span> the affine line, and <span class="math inline">\(G\)</span> the group of (orientation-preserving) affine transformations of <span class="math inline">\(X\)</span>. As is common (for example in computer graphics), we represent elements of <span class="math inline">\(X\)</span> as vectors <span class="math inline">\(\vec{x}=\begin{pmatrix}x\\1\end{pmatrix}\)</span> (the line <span class="math inline">\(y=1\)</span> inside <span class="math inline">\(\mathbb{R}^2\)</span>) and then every element of <span class="math inline">\(G\)</span> has unique representation as <span class="math inline">\(g=\begin{pmatrix}a&amp;b\\0&amp;1\end{pmatrix}\)</span> with <span class="math inline">\(a&gt;0\)</span> (i.e. the set of linear transforms of <span class="math inline">\(\mathbb{R}^2\)</span> that take the line <span class="math inline">\(y=1\)</span> to itself in orientation-preserving way) so that <span class="math display">\[g\cdot \vec{x}=\begin{pmatrix}a&amp;b\\0&amp;1\end{pmatrix}\begin{pmatrix}x\\1\end{pmatrix} =\begin{pmatrix}ax+b\\1\end{pmatrix}\]</span></td>
+</tr>
+<tr class="even">
+<td>is indeed affine-linear.</td>
+</tr>
+<tr class="odd">
+<td>The product in <span class="math inline">\(G\)</span> is then:</td>
+</tr>
+<tr class="even">
+<td><span class="math display">\[\begin{pmatrix}a&amp;b\\0&amp;1\end{pmatrix} \begin{pmatrix}a&#39;&amp;b&#39;\\0&amp;1\end{pmatrix}=\begin{pmatrix}aa&#39;&amp;ab&#39;+b\\0&amp;1\end{pmatrix}\]</span></td>
+</tr>
+<tr class="odd">
+<td>This is a non-commutative group.</td>
+</tr>
+<tr class="even">
+<td>We have the following pair of group homomorphisms (known as a short exact sequence):</td>
+</tr>
+<tr class="odd">
+<td><span class="math display">\[\mathbb{R}\hookrightarrow G\twoheadrightarrow \mathbb{R}_+ \]</span></td>
+</tr>
+<tr class="even">
+<td>Here <span class="math inline">\(\mathbb{R}\)</span> is the real numbers under addition, and <span class="math inline">\(\hookrightarrow\)</span> sends a number to a translation by that amount; on the other hand <span class="math inline">\(\mathbb{R}_{+}\)</span> is positive reals under multiplication, and <span class="math inline">\(\twoheadrightarrow\)</span> sends an affine map to its stretching factor.</td>
+</tr>
+<tr class="odd">
+<td>These maps do not depend on any particular way of representing <span class="math inline">\(X\)</span> and <span class="math inline">\(G\)</span>. On the other hand, there are “backward maps” <span class="math inline">\(\mathbb{R}_+ \to G\)</span> and <span class="math inline">\(G\to \mathbb{R}\)</span>, but those are depend on additional choices, like the choice to represent <span class="math inline">\(X\)</span> and <span class="math inline">\(G\)</span> in terms of vectors and matrices as above. (In group theory one says that the sequence above is split, and thus <span class="math inline">\(G\)</span> is “semi-direct product of <span class="math inline">\(\mathbb{R}_+\)</span> acting on <span class="math inline">\(\mathbb{R}\)</span>, or”a split extension of <span class="math inline">\(\mathbb{R}_+\)</span> by <span class="math inline">\(\mathbb{R}\)</span>"")</td>
+</tr>
+<tr class="even">
+<td>Example 2: (Location-scale in higher dimensions) When <span class="math inline">\(X=\mathbb{A}^n\)</span> the location-scale group <span class="math inline">\(G\)</span> is the subgroup of those affine transforms of <span class="math inline">\(X\)</span> whose linear part is a pure rescaling by a (positive) factor. We then have <span class="math inline">\(\mathbb{R}^n \hookrightarrow G \twoheadrightarrow \mathbb{R}_+\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p>We are interested in distribution of the data, i.e. in probability distributions over <span class="math inline">\(X\)</span>. Thus we consider a collection of <span class="math inline">\(\mathcal{P}\)</span> of distributions over <span class="math inline">\(X\)</span>.</p>
+<p>Defintion: The collection <span class="math inline">\(\mathcal{P}\)</span> is said to be invariant under the action of <span class="math inline">\(G\)</span> if for any <span class="math inline">\(p\in P\)</span> and any <span class="math inline">\(g\in G\)</span> the pushforward distribution <span class="math inline">\(g_* p\)</span> is also in <span class="math inline">\(\mathcal{P}\)</span>.</p>
+<p>Since <span class="math inline">\((g\cdot h)_* p=g_*( h_* p)\)</span>, this means that <span class="math inline">\(G\)</span> acts on <span class="math inline">\(\mathcal{P}\)</span> as well. If <span class="math inline">\(\mathcal{P}\)</span> is a parametric family, parametrized by space <span class="math inline">\(\Theta\)</span> then weconclude that <span class="math inline">\(G\)</span> acts on <span class="math inline">\(\Theta\)</span>.</p>
+<hr />
+<p>Example 1 continued:</p>
+<ol type="a">
+<li>Let <span class="math inline">\(\mathcal{P}\)</span> be the collection of all normal distributions on <span class="math inline">\(\mathbb{A}^1\)</span>. Note that in order to talk about the collection <span class="math inline">\(\mathcal{P}\)</span> specifying the origin is not necessary. This collection is a invariant under the action of <span class="math inline">\(G\)</span>. If we pick an origin, then we can use mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> as parameters for <span class="math inline">\(\mathcal{P}\)</span>. We can also use representation of <span class="math inline">\(G\)</span> by matrices that we have discussed above. Then <span class="math inline">\(\Theta=\mathbb{R}\times \mathbb{R}_+\)</span> is the parameter space and <span class="math inline">\(G\)</span> acts on by sending <span class="math inline">\((\mu, \sigma)\)</span> to <span class="math inline">\((a\mu+b,a\sigma)\)</span>.</li>
+</ol>
+<p>(Together with <span class="math inline">\(x\)</span> being sent to <span class="math inline">\(ax+b\)</span> this appears as 12.30 in Jaynes.)</p>
+<ol start="2" type="a">
+<li><p>Let <span class="math inline">\(\mathcal{P}\)</span> be the collection of all normal distributions on <span class="math inline">\(\mathbb{A}^1\)</span>; after choice of the origin this is the family with pdfs <span class="math inline">\(\frac{1}{\pi \gamma \left[ 1+ \left(\frac{(x-x_0)}{\gamma}\right)^2 \right]}\)</span>. We no longer have mean or standard deviation available as a parameters, but we do have location <span class="math inline">\(x_0\)</span> and scale <span class="math inline">\(\gamma\)</span>. They transform under <span class="math inline">\(G\)</span> by the same formulas as <span class="math inline">\((\mu, \sigma)\)</span> did before.</p></li>
+<li><p>Let <span class="math inline">\(\mathcal{P}\)</span> be the collection of all mixures of normal distributions on <span class="math inline">\(\mathbb{A}^1\)</span>. After picking the origin, this is the collection of distributions which can be written as <span class="math inline">\(p=\sum_i^m w_i \mathcal{N}(\mu_i, \sigma_i^2)\)</span> for some <span class="math inline">\(m\in \mathbb{N}\)</span> and <span class="math inline">\(w_i&gt;0\)</span> with <span class="math inline">\(\sum w_i=1\)</span>. This collection is invariant under <span class="math inline">\(G\)</span>. When <span class="math inline">\(m\)</span> is fixed the supbfamily <span class="math inline">\(\mathcal{P}_m\)</span> it is parametric, with parameters being <span class="math inline">\(3m\)</span> dimensional vectors <span class="math inline">\((\mu_i, \sigma_i, w_i)\)</span>. If <span class="math inline">\(m\)</span> is not fixed, however, the collection <span class="math inline">\(\mathcal{P}\)</span> is not parametric in the usual sense of the word.</p></li>
+</ol>
+<p>Example 3: Consider the family <span class="math inline">\(\mathcal{P}\)</span> of all Gamma distributions on <span class="math inline">\(X=\mathbb{R}_+\)</span>, with pdfs <span class="math inline">\(\Gamma_{(k, \theta)}(x)=\frac{1}{\Gamma(k)\theta} (\frac{x}{\theta})^{k-1} \exp(-\frac{x}{\theta})\)</span>. Here <span class="math inline">\(G=\mathbb{R}+\)</span> acts on <span class="math inline">\(X\)</span> by multiplication, <span class="math inline">\(\mathcal{P}\)</span> is invariant, and the action of <span class="math inline">\(a\in G\)</span> sends <span class="math inline">\((k, \theta)\)</span> to <span class="math inline">\((k, a\theta)\)</span>.</p>
+<hr />
 </body>
 </html>
