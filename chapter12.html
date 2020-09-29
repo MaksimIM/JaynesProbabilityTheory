@@ -22,7 +22,10 @@
 <h1 id="ignorance-priors-and-transformation-groups">Ignorance priors and transformation groups</h1>
 <p><span class="math inline">\(\leftarrow\)</span> <a href="./index.html">Back to Chapters</a></p>
 <h3 id="comments-on-12.4">Comments on 12.4</h3>
-<p>I find the discussion in 12.4 somewhat off the mark. “Statistical decision theory and bayesian analysis” by James O. Berger is a better reference. The summary below is largely based on it, particularly sections 3.3.2 and 6.6.</p>
+<p>I find the discussion in 12.4 somewhat off the mark. “Statistical decision theory and bayesian analysis” by James O. Berger is a better reference.</p>
+<p>To put the main issue up first: The prior 12.27 is in fact “best” in this problem, but not because 12.18 (which has multiple issues) is better than 12.30, but because the deduction of 12.36 from 12.30 is flawed, and a better analysis of 12.30 (using the framework of invarinat decision rules) does indeed lead to 12.27!</p>
+<p>I flesh some of this out in the writeup below, which is largely based Berger’s book, particularly sections 3.3.2 and 6.6.</p>
+<hr />
 <p>The word “invariance” presupposes a group action. The most natural setting is that in which a group <span class="math inline">\(G\)</span> acts on the space <span class="math inline">\(X\)</span> in which we get data.</p>
 <table style="width:7%;">
 <colgroup>
@@ -62,19 +65,73 @@
 </tbody>
 </table>
 <p>We are interested in distribution of the data, i.e. in probability distributions over <span class="math inline">\(X\)</span>. Thus we consider a collection of <span class="math inline">\(\mathcal{P}\)</span> of distributions over <span class="math inline">\(X\)</span>.</p>
-<p>Defintion: The collection <span class="math inline">\(\mathcal{P}\)</span> is said to be invariant under the action of <span class="math inline">\(G\)</span> if for any <span class="math inline">\(p\in P\)</span> and any <span class="math inline">\(g\in G\)</span> the pushforward distribution <span class="math inline">\(g_* p\)</span> is also in <span class="math inline">\(\mathcal{P}\)</span>.</p>
+<p><strong>Defintion</strong>: The collection <span class="math inline">\(\mathcal{P}\)</span> is said to be invariant under the action of <span class="math inline">\(G\)</span> if for any <span class="math inline">\(p\in P\)</span> and any <span class="math inline">\(g\in G\)</span> the pushforward distribution <span class="math inline">\(g_* p\)</span> is also in <span class="math inline">\(\mathcal{P}\)</span>.</p>
 <p>Since <span class="math inline">\((g\cdot h)_* p=g_*( h_* p)\)</span>, this means that <span class="math inline">\(G\)</span> acts on <span class="math inline">\(\mathcal{P}\)</span> as well. If <span class="math inline">\(\mathcal{P}\)</span> is a parametric family, parametrized by space <span class="math inline">\(\Theta\)</span> then weconclude that <span class="math inline">\(G\)</span> acts on <span class="math inline">\(\Theta\)</span>.</p>
 <hr />
 <p>Example 1 continued:</p>
 <ol type="a">
-<li>Let <span class="math inline">\(\mathcal{P}\)</span> be the collection of all normal distributions on <span class="math inline">\(\mathbb{A}^1\)</span>. Note that in order to talk about the collection <span class="math inline">\(\mathcal{P}\)</span> specifying the origin is not necessary. This collection is a invariant under the action of <span class="math inline">\(G\)</span>. If we pick an origin, then we can use mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> as parameters for <span class="math inline">\(\mathcal{P}\)</span>. We can also use representation of <span class="math inline">\(G\)</span> by matrices that we have discussed above. Then <span class="math inline">\(\Theta=\mathbb{R}\times \mathbb{R}_+\)</span> is the parameter space and <span class="math inline">\(G\)</span> acts on by sending <span class="math inline">\((\mu, \sigma)\)</span> to <span class="math inline">\((a\mu+b,a\sigma)\)</span>.</li>
+<li>Let <span class="math inline">\(\mathcal{P}\)</span> be the collection of all Gaussian distributions on <span class="math inline">\(\mathbb{A}^1\)</span>. Note that in order to talk about the collection <span class="math inline">\(\mathcal{P}\)</span> specifying the origin is not necessary. This collection is a invariant under the action of <span class="math inline">\(G\)</span>. If we pick an origin, then we can use mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> as parameters for <span class="math inline">\(\mathcal{P}\)</span>. We can also use representation of <span class="math inline">\(G\)</span> by matrices that we have discussed above. Then <span class="math inline">\(\Theta=\mathbb{R}\times \mathbb{R}_+\)</span> is the parameter space and <span class="math inline">\(G\)</span> acts on by sending <span class="math inline">\((\mu, \sigma)\)</span> to <span class="math inline">\((a\mu+b,a\sigma)\)</span>.</li>
 </ol>
 <p>(Together with <span class="math inline">\(x\)</span> being sent to <span class="math inline">\(ax+b\)</span> this appears as 12.30 in Jaynes.)</p>
 <ol start="2" type="a">
-<li><p>Let <span class="math inline">\(\mathcal{P}\)</span> be the collection of all normal distributions on <span class="math inline">\(\mathbb{A}^1\)</span>; after choice of the origin this is the family with pdfs <span class="math inline">\(\frac{1}{\pi \gamma \left[ 1+ \left(\frac{(x-x_0)}{\gamma}\right)^2 \right]}\)</span>. We no longer have mean or standard deviation available as a parameters, but we do have location <span class="math inline">\(x_0\)</span> and scale <span class="math inline">\(\gamma\)</span>. They transform under <span class="math inline">\(G\)</span> by the same formulas as <span class="math inline">\((\mu, \sigma)\)</span> did before.</p></li>
+<li><p>Let <span class="math inline">\(\mathcal{P}\)</span> be the collection of all Cauchy distributions on <span class="math inline">\(\mathbb{A}^1\)</span>; after choice of the origin this is the family with pdfs <span class="math inline">\(\frac{1}{\pi \gamma \left[ 1+ \left(\frac{(x-x_0)}{\gamma}\right)^2 \right]}\)</span>. We no longer have mean or standard deviation available as a parameters, but we do have location <span class="math inline">\(x_0\)</span> and scale <span class="math inline">\(\gamma\)</span>. They transform under <span class="math inline">\(G\)</span> by the same formulas as <span class="math inline">\((\mu, \sigma)\)</span> did before.</p></li>
 <li><p>Let <span class="math inline">\(\mathcal{P}\)</span> be the collection of all mixures of normal distributions on <span class="math inline">\(\mathbb{A}^1\)</span>. After picking the origin, this is the collection of distributions which can be written as <span class="math inline">\(p=\sum_i^m w_i \mathcal{N}(\mu_i, \sigma_i^2)\)</span> for some <span class="math inline">\(m\in \mathbb{N}\)</span> and <span class="math inline">\(w_i&gt;0\)</span> with <span class="math inline">\(\sum w_i=1\)</span>. This collection is invariant under <span class="math inline">\(G\)</span>. When <span class="math inline">\(m\)</span> is fixed the supbfamily <span class="math inline">\(\mathcal{P}_m\)</span> it is parametric, with parameters being <span class="math inline">\(3m\)</span> dimensional vectors <span class="math inline">\((\mu_i, \sigma_i, w_i)\)</span>. If <span class="math inline">\(m\)</span> is not fixed, however, the collection <span class="math inline">\(\mathcal{P}\)</span> is not parametric in the usual sense of the word.</p></li>
 </ol>
 <p>Example 3: Consider the family <span class="math inline">\(\mathcal{P}\)</span> of all Gamma distributions on <span class="math inline">\(X=\mathbb{R}_+\)</span>, with pdfs <span class="math inline">\(\Gamma_{(k, \theta)}(x)=\frac{1}{\Gamma(k)\theta} (\frac{x}{\theta})^{k-1} \exp(-\frac{x}{\theta})\)</span>. Here <span class="math inline">\(G=\mathbb{R}+\)</span> acts on <span class="math inline">\(X\)</span> by multiplication, <span class="math inline">\(\mathcal{P}\)</span> is invariant, and the action of <span class="math inline">\(a\in G\)</span> sends <span class="math inline">\((k, \theta)\)</span> to <span class="math inline">\((k, a\theta)\)</span>.</p>
+<table style="width:7%;">
+<colgroup>
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Now a <strong>prior</strong> is a probability distribution <span class="math inline">\(\pi\)</span> over <span class="math inline">\(\mathcal{P}\)</span>. This is easiest to understand when the collection <span class="math inline">\(\mathcal{P}\)</span> is parametric, so that we have <span class="math inline">\(\Theta \subset \mathbb{R}^d\)</span>. When <span class="math inline">\(\Theta\)</span> is open, we may, as usual, describe the prior by its pdf, which we by abuse of notation will denote by <span class="math inline">\(\pi(\theta)\)</span>. Since <span class="math inline">\(G\)</span> acts on <span class="math inline">\(\Theta\)</span>, this action will transform the prior; namely, given <span class="math inline">\(g \in G\)</span>, we obtain new distribution <span class="math inline">\(g_*\pi\)</span>. When the action is differentiable, we have</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math display">\[[g_*\pi](\theta)=\pi(g^{-1}(\theta)) |J_{g^{-1}}(\theta)| \]</span></td>
+</tr>
+</tbody>
+</table>
+<p>Example 1 continued: For the location-scale <span class="math inline">\(g=\begin{pmatrix}a&amp;b\\0&amp;1 \end{pmatrix}\)</span> sends <span class="math inline">\(\theta=(m, s)\)</span> to <span class="math inline">\(g(\theta)=(am+b, as)\)</span>.</p>
+<p>Then <span class="math inline">\(J_g(\theta)=\begin{pmatrix}a&amp;b\\0&amp;a\end{pmatrix}\)</span>, and so <span class="math inline">\(|J_g|=a^2\)</span>, <span class="math inline">\(|J_{g^{-1}}|=\frac{1}{a^2}\)</span></p>
+<p><span class="math display">\[[g_*\pi](\theta)=\frac{1}{a^2}\pi(g^{-1}(\theta)). \]</span></p>
 <hr />
+<p>Now, one may argue that a transformation induced by <span class="math inline">\(g\)</span> is simply a “change of coordinates” and the problems of forming a prior about <span class="math inline">\(\theta\)</span> and about <span class="math inline">\(g(\theta)\)</span> are equivalent, and so we should posit</p>
+<p><span class="math display">\[[g_*\pi](\theta)=\pi(\theta)\]</span></p>
+<p>A prior satisfying this is called <strong>left invariant</strong>. For such a prior we have in the differentiable case</p>
+<p><span class="math display">\[\pi(\theta)=\pi(g^{-1}(\theta)) |J_{g^{-1}}(\theta)| \]</span></p>
+<p>In the cases where <span class="math inline">\(G\)</span> acts transitively on <span class="math inline">\(\Theta\)</span> this specifies <span class="math inline">\(\pi\)</span> uniquely, up to a constant since if we set <span class="math inline">\(\pi(\theta_0)=C\)</span> then for any <span class="math inline">\(\theta\)</span> there exists <span class="math inline">\(g\)</span> such that <span class="math inline">\(\theta=g(\theta_0)\)</span> and then</p>
+<h2 id="pithetapig-1theta-j_g-1thetac-j_g-1theta"><span class="math display">\[\pi(\theta)=\pi(g^{-1}(\theta)) |J_{g^{-1}}(\theta)|=C |J_{g^{-1}}(\theta)|\]</span></h2>
+<p>Example 1 continued: If <span class="math inline">\(\pi\)</span> is left-invariant then taking <span class="math inline">\(\theta_0=(m_0=0, s_0=1)\)</span> and given <span class="math inline">\(\theta=(m,s)\)</span> we have <span class="math inline">\(g=\begin{pmatrix} m&amp;s\\0&amp;1\end{pmatrix}\)</span> and</p>
+<p><span class="math display">\[\pi(m, s)= \frac{C}{s^2}.\]</span></p>
+<p>(This agrees with 12.36 in Jaynes.)</p>
+<hr />
+<p>However, as pointed out by Berger (p.86) there is a logical flaw in requiring <span class="math inline">\([g_*\pi](\theta)=\pi(\theta)\)</span>. In fact, often the prior <span class="math inline">\(\pi\)</span> in question is improper, and so is only determined up to a constant. Thus we can only require a weaker equality</p>
+<p><span class="math display">\[[g_*\pi](\theta)=K(g)\pi(\theta)\]</span></p>
+<p>for some <span class="math inline">\(g\)</span>-dependent scaling function <span class="math inline">\(K(g)\)</span>.</p>
+<p>We will call priors satisfying this “weakly” invariant, and the ones with <span class="math inline">\(K(g)=1\)</span> “strictly” invariant.</p>
+<p>In the differentiable case this leads to</p>
+<p><span class="math display">\[K(g)\pi(\theta)=\pi(g^{-1}(\theta)) |J_{g^{-1}}(\theta)|,\]</span></p>
+<p>which can have many solutions.</p>
+<hr />
+<p>Example 1 continued: Take <span class="math inline">\(\pi(\theta)=C s^\alpha\)</span>, <span class="math inline">\(K(\begin{pmatrix}a&amp;b\\0&amp;1 \end{pmatrix})=a^{-(\alpha+2)}\)</span>. All of these solve the above equation.</p>
+<!---
+We will further abuse notation and denote $g=\begin{pmatrix} m&s\\0&1\end{pmatrix}$ by $(m, s)$ as well. We also define $k$ by $k(g^{-1})=K(g)$. Now plugging in $g^{-1}=(m,s)$ 
+  $$k(m, s)\pi(m', s')= \pi(m's+m,ss' )\frac{1}{s^2}.$$
+--->
+<hr />
+<p>The question of how to choose “invariant prior” (even when the transformation group is known) is hence not settled. One method is to use the framework of “invariant decision problems”, which suggests, that when the action of <span class="math inline">\(G\)</span> on <span class="math inline">\(\Theta\)</span> is “simply transitive”, one should use the <strong>right invariant</strong> prior. The story goes s follows:</p>
+<p>Suppose that the group <span class="math inline">\(G\)</span> acts on <span class="math inline">\(\Theta\)</span> ins such a way that picking some starting <span class="math inline">\(\theta_0\)</span> we have for any <span class="math inline">\(\theta\in \Theta\)</span> a unique <span class="math inline">\(g\in G\)</span> with <span class="math inline">\(g_ \theta \theta_0=\theta\)</span>. Thus after making this choice of <span class="math inline">\(\theta_0\)</span> we can identify this <span class="math inline">\(\theta\)</span> with that unique <span class="math inline">\(g=f(\theta)\)</span>. (Note that this <span class="math inline">\(f\)</span> is a "map of <span class="math inline">\(G\)</span>-sets: <span class="math inline">\(f(g\theta)=g\cdot f(\theta)\)</span>, where <span class="math inline">\(\cdot\)</span> is the multiplication in <span class="math inline">\(G\)</span>.)</p>
+<p>Now a distributions/measure over <span class="math inline">\(\Theta\)</span> is a measure over <span class="math inline">\(G\)</span>. “Strictly” invariant measures on <span class="math inline">\(\Theta\)</span> correspond to what’s known as “left-invariant” measures on <span class="math inline">\(G\)</span> (they are invariant under all left multiplication maps <span class="math inline">\(L_g:G\to G\)</span> sending <span class="math inline">\(g&#39;\in G\)</span> to <span class="math inline">\(L_g(g&#39;)=gg&#39;\)</span>). It is a theorem that such a measure is uniques up to scaling. There are, however, more “weakly” invariant measures (as we have seen), those that are “invarinat up to scaling function <span class="math inline">\(K(g)\)</span>”. Among those, there is unique up to scaling measure which is what is called <strong>right-invariant</strong>: it is invariant under all maps <span class="math inline">\(R_g:G\to G\)</span> sending <span class="math inline">\(g&#39;\)</span> to <span class="math inline">\(R_g(g&#39;)=g&#39;g\)</span> (the uniqueness up to scale and the fact that right invariant measures are “weakly” left invariant are basic facts of the theory of Haar measures on groups).</p>
+<p>We illustrate the result on the location-scale example.</p>
+<p>(We postpone more the discussion of <strong>why</strong> the right-invarinat prior is the best; see section 6.6 in Berger).</p>
+<hr />
+<p>Example 1 continued: Using <span class="math inline">\(\theta_0=(m_0=0, s_0=1)\)</span> the map <span class="math inline">\(f:\Theta \to G\)</span> sends <span class="math inline">\((m, s)\)</span> to <span class="math inline">\(\begin{pmatrix}s&amp;m\\0&amp;1\end{pmatrix}\)</span>.</p>
+<p>The map <span class="math inline">\(R_g=R_{(a,b)}\)</span> sends <span class="math inline">\(\begin{pmatrix}s&amp;m\\0&amp;1\end{pmatrix}\)</span> to</p>
+<p><span class="math inline">\(\begin{pmatrix}s&amp;m\\0&amp;1\end{pmatrix}\begin{pmatrix}a&amp;b\\0&amp;1\end{pmatrix}=\begin{pmatrix}as&amp;bs+m\\0&amp;1\end{pmatrix}\)</span>, and thus has Jacobian matrix in <span class="math inline">\((s, m)\)</span> coordinates equal to <span class="math inline">\(\begin{pmatrix}a&amp;0\\b&amp;1\end{pmatrix}\)</span>, and determinant <span class="math inline">\(|J_{R_g}|=a\)</span>, and <span class="math inline">\(|J_{R_{g^{-1}}}|=\frac{1}{a}\)</span>.</p>
+<p>The invariance condition <span class="math inline">\(R_g* \pi (g&#39;)=\pi(g&#39;)\)</span> is then</p>
+<p><span class="math display">\[ \pi(g&#39;) = \pi(g^{-1}g&#39;) \frac{1}{a}\]</span> and, setting <span class="math inline">\(\pi(e)=C\)</span> and <span class="math inline">\(g&#39;=g\)</span> we get</p>
+<p><span class="math inline">\(\pi(g)=\frac{C}{a}\)</span>.</p>
+<p>This is in fact the “invariant prior” 12.27.</p>
+<p>So, to repeat what we said in the beginning, 12.27 is in fact “best” in this problem, but not because 12.18 (which has multiple issues) is better than 12.30, but because the deduction of 12.36 from 12.30 is flawed, and a better analysis of 12.30 (using the framework of invariant decision rules) does indeed lead to 12.27.</p>
 </body>
 </html>
