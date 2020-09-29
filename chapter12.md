@@ -177,3 +177,12 @@ $$ \pi(g') = \pi(g^{-1}g') \frac{1}{a}$$
  This is in fact the "invariant prior" 12.27.
  
  So, to repeat what we said in the beginning, 12.27 is in fact "best" in this problem, but not because 12.18 (which has multiple issues) is better than 12.30, but because the deduction of 12.36 from 12.30 is flawed, and a better analysis of 12.30 (using the framework of invariant decision rules) does indeed lead to 12.27.
+ 
+ 
+ -----
+ 
+ 
+ So, why right invariant priors as opposed to left invariant ones? I don't feel that I understand the answer completely. One thing I can say is that, roughly speaking, this may be considered to arize as follows: Suppose that you have a function of parameter and data $f(x, \theta)$ invariant under action $(x, 
+   \theta) \to f(g x, g\theta)$ (say, a loss function of some decision procedure). Then integrating "over $X$" $\int f(x, \theta_0) dx$ can be rewritten as integrating "over $G$" via  $\int f(gx_0, \theta) dg$, then as $\int f(x_0, g^{-1}\theta) dg$ and then, finally, as integration "over $\Theta$"" i.e. $\int f(x_0, g^{-1}\theta) d\theta$. In the $X$ to $G$ transition "preserves left-invariance" but $G$ to $X$ transition has a $g^{-1}$ and "moves left-invariance to right-invariance".   
+   
+   
