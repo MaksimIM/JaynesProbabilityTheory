@@ -17,6 +17,7 @@ I flesh some of this out in the writeup below, which is largely based Berger's b
 The word "invariance" presupposes a group action. The most natural setting is that in which a group $G$ acts on the space $X$ in which we get data. 
 
 ----
+
 Example 1: (location-scale in 1D) Take $X=\mathbb{A}^1$ the affine line, and $G$ the group of (orientation-preserving) affine transformations of $X$. As is common (for example in computer graphics), we represent elements of $X$ as vectors $\vec{x}=\begin{pmatrix}x\\1\end{pmatrix}$ (the line $y=1$ inside $\mathbb{R}^2$) and then every element of $G$ has unique representation as $g=\begin{pmatrix}a&b\\0&1\end{pmatrix}$ with $a>0$ (i.e. the set of linear transforms of $\mathbb{R}^2$ that take the line $y=1$ to itself in orientation-preserving way) so that 
 $$g\cdot \vec{x}=\begin{pmatrix}a&b\\0&1\end{pmatrix}\begin{pmatrix}x\\1\end{pmatrix} =\begin{pmatrix}ax+b\\1\end{pmatrix}$$
 
@@ -70,24 +71,28 @@ Example 3: Consider the family $\mathcal{P}$ of all Gamma distributions on $X=\m
 
 
 ----
-  Now a **prior** is a probability distribution $\pi$ over $\mathcal{P}$. This is easiest to understand when the collection $\mathcal{P}$ is parametric, so that we have $\Theta \subset \mathbb{R}^d$. When $\Theta$ is open, we may, as usual, describe the prior by its pdf, which we by abuse of notation will denote by $\pi(\theta)$. Since $G$ acts on $\Theta$, this action will transform the prior; namely, given $g \in G$, we obtain new distribution $g_*\pi$. When the action is differentiable, we have
+
+
+Now a **prior** is a probability distribution $\pi$ over $\mathcal{P}$. This is easiest to understand when the collection $\mathcal{P}$ is parametric, so that we have $\Theta \subset \mathbb{R}^d$. When $\Theta$ is open, we may, as usual, describe the prior by its pdf, which we by abuse of notation will denote by $\pi(\theta)$. Since $G$ acts on $\Theta$, this action will transform the prior; namely, given $g \in G$, we obtain new distribution $g_*\pi$. When the action is differentiable, we have
   
   $$[g_*\pi](\theta)=\pi(g^{-1}(\theta)) |J_{g^{-1}}(\theta)| $$
 
   
   
-  ----
+----
+
   
-  Example 1 continued: For the location-scale $g=\begin{pmatrix}a&b\\0&1 \end{pmatrix}$ sends $\theta=(m, s)$ to $g(\theta)=(am+b, as)$. 
+Example 1 continued: For the location-scale $g=\begin{pmatrix}a&b\\0&1 \end{pmatrix}$ sends $\theta=(m, s)$ to $g(\theta)=(am+b, as)$. 
   
-  Then $J_g(\theta)=\begin{pmatrix}a&b\\0&a\end{pmatrix}$, and so $|J_g|=a^2$, $|J_{g^{-1}}|=\frac{1}{a^2}$
+Then $J_g(\theta)=\begin{pmatrix}a&b\\0&a\end{pmatrix}$, and so $|J_g|=a^2$, $|J_{g^{-1}}|=\frac{1}{a^2}$
   
   
-  $$[g_*\pi](\theta)=\frac{1}{a^2}\pi(g^{-1}(\theta)). $$
+$$[g_*\pi](\theta)=\frac{1}{a^2}\pi(g^{-1}(\theta)). $$
   
-  -----
+
+-----
   
-  Now, one may argue that a transformation induced by $g$ is simply a "change of coordinates" and the problems of forming a prior about $\theta$ and about $g(\theta)$ are equivalent, and so we should posit 
+Now, one may argue that a transformation induced by $g$ is simply a "change of coordinates" and the problems of forming a prior about $\theta$ and about $g(\theta)$ are equivalent, and so we should posit 
   
   $$[g_*\pi](\theta)=\pi(\theta)$$
   
@@ -99,6 +104,8 @@ Example 3: Consider the family $\mathcal{P}$ of all Gamma distributions on $X=\m
   In the cases where  $G$ acts transitively on $\Theta$ this specifies $\pi$ uniquely, up to a constant since if we set $\pi(\theta_0)=C$ then for any $\theta$ there exists $g$ such that $\theta=g(\theta_0)$ and then
   
   $$\pi(\theta)=\pi(g^{-1}(\theta)) |J_{g^{-1}}(\theta)|=C |J_{g^{-1}}(\theta)|$$
+  
+
 ----
 
   Example 1 continued: If $\pi$ is left-invariant then taking $\theta_0=(m_0=0, s_0=1)$ and given $\theta=(m,s)$ we have $g=\begin{pmatrix} m&s\\0&1\end{pmatrix}$ and   
@@ -107,9 +114,9 @@ Example 3: Consider the family $\mathcal{P}$ of all Gamma distributions on $X=\m
   $$\pi(m, s)= \frac{C}{s^2}.$$
   
   (This agrees with 12.36 in Jaynes.)
-  
+
   ----
-  
+
   However, as pointed out by Berger (p.86) there is a logical flaw in requiring $[g_*\pi](\theta)=\pi(\theta)$. In fact, often the prior $\pi$ in question is improper, and so is only determined up to a constant. Thus we can only require a weaker equality
   
   $$[g_*\pi](\theta)=K(g)\pi(\theta)$$
