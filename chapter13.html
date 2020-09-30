@@ -26,11 +26,12 @@
 <p>Thus the expected log fortune is</p>
 <p><span class="math display">\[p  \log (M+N)+ (1-p)\log(M-N)\]</span></p>
 <p>Maximizing this in <span class="math inline">\(N\)</span> yields</p>
-<p><span class="math display">\[\frac{p}{M+N}=\frac{1-p}{M-N}\]</span></p>
+<p><span class="math display">\[\frac{p}{M+N}=\frac{1-p}{M-N}.\]</span></p>
 <p>Denoting <span class="math inline">\(r=\frac{N}{M}\)</span> we get <span class="math inline">\(p(1-r)=(1-p)(1+r)\)</span>, or <span class="math inline">\(p-rp=1-p+r-rp\)</span>, and <span class="math inline">\(r=2p-1\)</span>.</p>
 <p>The expected log fortune is then</p>
 <p><span class="math display">\[\log M+ p \log 2p +(1-p) \log 2(1-p)=\log M + H_{0.5}-H_p,\]</span></p>
 <p>where <span class="math inline">\(H_p\)</span> is the entropy of the entropy of the Bernoulli distribution with parameter <span class="math inline">\(p\)</span>.</p>
+<p>(The fact that this is higher than <span class="math inline">\(\log M\)</span> which is what one would obtain at <span class="math inline">\(N=0\)</span> (and of course higher than <span class="math inline">\(-\infty\)</span> that one would obtain at <span class="math inline">\(N=1\)</span>) also shows that this is a global maximum (as opposed to just local stationary point), which we could’ve verified by second derivative test, but were too lazy to do.)</p>
 <p>After <span class="math inline">\(n\)</span> iterations of this the expected log fortune is <span class="math inline">\(\log M +n(H_{0.5}-H_p)\)</span>, and the exponent of that is <span class="math inline">\(M\exp\{n \alpha\}\)</span> with <span class="math inline">\(\alpha=H_{0.5}-H_p\)</span>, as per the exercise.</p>
 <p>Demonstration that this is actually the best (with respect to expected log fortune) strategy not only for single step, but over any number <span class="math inline">\(n\)</span> of steps is via dynamic programming aka Bellman optimality principle, and can be found in Bellman-Kalaba, “On the Role of Dynamic Programming in Statistical Communication Theory”, Sections VII-IX.</p>
 </body>
