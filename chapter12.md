@@ -196,7 +196,7 @@ The derivation in 12.4.3 is suspect. Apart from dubious justification for invari
 
 Would it not be better to say that the group that is acting is the translation group acting on log likeliehoods (aka "evidence")? I.e. that in terms of the odds ratio parameter $l=log \frac{\theta}{1-\theta}$ the (left and right) invariant prior is uniform? That, is the invariant prior is  $C dl$, which is $C dl =C \frac{d l}{d\theta} d \theta= C \frac{1-\theta}{\theta} \frac{1}{(1-\theta)^2}=\frac{C}{\theta (1-\theta)}$. 
 
-(See Example 8 in Section 3.4.3 in Berger and the Kevin Van Horn's [page](http://ksvanhorn.com/bayes/jaynes/node14.html) for further options and discussion.)
+(See Example 8 in Section 3.4.3 in Berger and the Kevin Van Horn's [page](http://ksvanhorn.com/bayes/jaynes/node14.html) for further options and discussion (though I find Van Horn's limiting procedure unjustifiable as well.))
 
 ### 12.50 from 12.48
 
