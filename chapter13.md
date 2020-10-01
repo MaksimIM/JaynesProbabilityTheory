@@ -31,3 +31,12 @@ After $n$ iterations of this the expected log fortune is $\log M +n(H_{0.5}-H_p)
 
 Demonstration that this is actually the best (with respect to expected log fortune) strategy not only for single step, but over any number $n$ of steps is via dynamic programming aka  Bellman optimality principle, and can be found in Bellman-Kalaba, "On the Role of Dynamic Programming in
 Statistical Communication Theory", Sections VII-IX.
+
+
+### Comments on 13.6
+
+Some of this seems strange.
+
+1) If we reformulate St. Petersburg paradox to pay out in utility rather than money, some of the same issues remain. Of course, it may be that these are not the issues Jaynes cares about, but, then, maybe they are the ones that Feller and others care about -- so much so that the observation of non-linear utility of money does nothing to resolve their concerns with this paradox.
+
+2) "Admissible" does not mean "good", it just means others are bad. So this line of criticism seems moot. (And besides, if our prior information is a certainty that $\theta=5$ than the strategy based on the estimate $\theta^*=5$ seems perfect.)

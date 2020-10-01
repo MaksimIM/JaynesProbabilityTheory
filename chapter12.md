@@ -192,11 +192,11 @@ $$ \pi(g') = \pi(g^{-1}g') \frac{1}{a}$$
 
 ### Comments on 12.4.3 
 
-The derivation in 12.4.3 is suspect. Apart from dubious justifcation for invariance through "total confusion", should we not ask why is it that $a=\frac{p(E|Sx)}{p(E|FX)}$ is the same for every member of this imaginary population of individuals?
+The derivation in 12.4.3 is suspect. Apart from dubious justification for invariance through "total confusion", should we not ask why is it that $a=\frac{p(E|Sx)}{p(E|FX)}$ is the same for every member of this imaginary population of individuals?
 
 Would it not be better to say that the group that is acting is the translation group acting on log likeliehoods (aka "evidence")? I.e. that in terms of the odds ratio parameter $l=log \frac{\theta}{1-\theta}$ the (left and right) invariant prior is uniform? That, is the invariant prior is  $C dl$, which is $C dl =C \frac{d l}{d\theta} d \theta= C \frac{1-\theta}{\theta} \frac{1}{(1-\theta)^2}=\frac{C}{\theta (1-\theta)}$. 
 
-(See Example 8 in Section 3.4.3 in Berger for further options.)
+(See Example 8 in Section 3.4.3 in Berger and the Kevin Van Horn's [page](http://ksvanhorn.com/bayes/jaynes/node14.html) for further options and discussion.)
 
 ### 12.50 from 12.48
 
