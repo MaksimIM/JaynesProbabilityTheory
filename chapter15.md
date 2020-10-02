@@ -68,9 +68,9 @@ $$38 192 689 856 872\approx0.38\times10^{14}.$$
 The recurrence relation above confirms that (again, as per Jaynes in section 15.5) "it is a standard textbook random walk problem".
 
 
-The removal of the reflection at 0 gives the following approximation: there are ${40}\choose{10} 3^{30}$ total paths of length $40$ with exactly $10$ annihilations (aka "steps to the left"). They are distributed between $4 3^{19}$ final records. Thus the number per record is 
+The removal of the reflection at 0 gives the following approximation: there are $\binom{40}{10} 3^{30}$ total paths of length $40$ with exactly $10$ annihilations (aka "steps to the left"). They are distributed between $4\times 3^{19}$ final records. Thus the number per record is 
 
-$${{40}\choose{10}} \times 3^{11}/4=37540129888404 \approx 0.38 \times10^{14},$$
+$$\binom{40}{10} \times 3^{11}/4=37540129888404 \approx 0.38 \times10^{14},$$
 
 which is in good agreement with the exact result.
 

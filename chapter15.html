@@ -48,8 +48,8 @@
 <p>The problem asks for <span class="math inline">\(N(20, 10)\)</span>. A small dynamic programming script gives</p>
 <p><span class="math display">\[38 192 689 856 872\approx0.38\times10^{14}.\]</span></p>
 <p>The recurrence relation above confirms that (again, as per Jaynes in section 15.5) “it is a standard textbook random walk problem”.</p>
-<p>The removal of the reflection at 0 gives the following approximation: there are <span class="math inline">\({40}\choose{10} 3^{30}\)</span> total paths of length <span class="math inline">\(40\)</span> with exactly <span class="math inline">\(10\)</span> annihilations (aka “steps to the left”). They are distributed between <span class="math inline">\(4 3^{19}\)</span> final records. Thus the number per record is</p>
-<p><span class="math display">\[{{40}\choose{10}} \times 3^{11}/4=37540129888404 \approx 0.38 \times10^{14},\]</span></p>
+<p>The removal of the reflection at 0 gives the following approximation: there are <span class="math inline">\(\binom{40}{10} 3^{30}\)</span> total paths of length <span class="math inline">\(40\)</span> with exactly <span class="math inline">\(10\)</span> annihilations (aka “steps to the left”). They are distributed between <span class="math inline">\(4\times 3^{19}\)</span> final records. Thus the number per record is</p>
+<p><span class="math display">\[\binom{40}{10} \times 3^{11}/4=37540129888404 \approx 0.38 \times10^{14},\]</span></p>
 <p>which is in good agreement with the exact result.</p>
 <!---(then $N(l, a)=N(|l|, a)$ corresponds to removing the reflective boundary at $l=0$ -- but of course the probability of increase for positive $l$ is now the probability of  decrease for negative $l$ )--->
 <h3 id="comments-15.7">Comments 15.7</h3>
