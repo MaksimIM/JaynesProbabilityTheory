@@ -25,15 +25,17 @@
 <p>Here is a mathematical take: Since no contradiction in mainstream mathematics has been fount yet, there are no actual paradoxes. There are two types of things that get called “paradoxes”: 1) unintuitive results (a la Banach-Tarski theorem) and 2) fallacious arguments, resulting in incorrect conclusions.</p>
 <p>The “paradoxes” of the first type are useful in order refine one’s intuition: they shed light on the framework on is operating in (in the case of Banach-Tarski, roughly speaking, mesaure theory), elucidating this framework’s strengths or weaknesses (in the case of Banach-Tarski, restriction to measurable sets). One is then free to reject the framework or to keep it – augmented with appropriate warning labels about the range of its validity.</p>
 <p>The “paradoxes” of the second type (like inappropriately “summing” infinite sequences to prove <span class="math inline">\(0=1\)</span>) are useful in highlighting non-obvious errors and, hopefully, preventing one from committing similar errors later. Thus, one learns not to do unjustified things. One then may also learn, separately, how to do things in a more appropriate way. In the specific example of “summing infinite sequences” we say that one learns mathematical analysis – a more appropriate and contradiction-free (as far as we know) framework. Failure to use analysis properly does not constitute an indictment of methods of analysis – an ironic parallel with the statements Jaynes makes about critics of Bayeseanism.</p>
-<p>### Comments on 15.3 – 15.6.</p>
+<h3 id="comments-on-15.3-15.6.">Comments on 15.3 – 15.6.</h3>
 <p>What Jaynes is arguing, in effect, is that finitely-additive axiomatization is too weak, as manifest by the fact that it allows pathologies like “nonconglomerability”. This means that some other axiomatization is needed; the mainstream mathematicians of today seem to agree, as it is the countably-additive axioms that are universally taught to students.</p>
 <p>It is a curious linguistic phenomenon: who is “more careful” 1) the mathematician who works with weaker axioms, so as to not put in more assumptions than they deem justified OR 2) the mathematician works with more restrictive axioms, so as to avoid “pathological” examples allowed by the more permissive axioms. I’ll leave the judgement up to linguist (though Jaynes seems to have a particular position).</p>
 <p>Indeed, “nonconglomerability” is a phenomenon that does not appear in mainstream probability theory – the paper of Kadane, Schervish and Seidenfeld, to which this section addresses itself, is explisitely set in the context of finitely-additive, but not countably additive, probability. In fact, one of the points of the KSS paper is to advocate for finitely-additive measures (despite their “pathologies” like nonconglomerability) as good fit for Bayesean framework (in particular for their ability to handle improper non-informative priors).</p>
 <p>One way of reading section 15.3 is to see it as an argument against both the finitely-additive and countably-additive approaches, pointing out that some alternative, third way of thinking about probability is needed, perhaps more directly based on the “taking the limit in the end” idea. Coming up with a rigorous (which is to say, fully specified) version of such an alternative theory is an interesting, but unsolved and probably difficult question.</p>
-<p>### Exercise 15.1</p>
-<p>Let <span class="math inline">\(N(l, a)\)</span> be the number of sequences of results producing a specific record <span class="math inline">\(x\)</span> of length <span class="math inline">\(l\)</span> in with <span class="math inline">\(a\)</span> annihilations (that is, in <span class="math inline">\(l+2a\)</span> tosses). We will find a recursion relation for <span class="math inline">\(N(l, a)\)</span> (which will also establish that this number depends on <span class="math inline">\(x\)</span> only via <span class="math inline">\(l\)</span>, and so is well-defined). Now, clearly,</p>
+<h3 id="exercise-15.1">Exercise 15.1</h3>
+<p>For a quicker approximate result see in the end.</p>
+<p>An exact calculation is as follows:</p>
+<p>Let <span class="math inline">\(N(l, a)\)</span> be the number of sequences of results producing a specific record <span class="math inline">\(x\)</span> of length <span class="math inline">\(l\)</span> in with <span class="math inline">\(a\)</span> annihilations (that is, in <span class="math inline">\(n=l+2a\)</span> tosses). We will find a recursion relation for <span class="math inline">\(N(l, a)\)</span> (which will also establish that this number depends on <span class="math inline">\(x\)</span> only via <span class="math inline">\(l\)</span>, and so is well-defined; compare Jaybes in 15.5 “<span class="math inline">\(n\)</span> and <span class="math inline">\(y = y(n)\)</span> are sufficient statistics” – his <span class="math inline">\(y\)</span> is what we called <span class="math inline">\(l\)</span>). Now, clearly,</p>
 <p><span class="math display">\[N(l, 0)=1.\]</span></p>
-<p>Observe that <span class="math inline">\(N(1, a)\)</span> is independent of the one character <span class="math inline">\(x=\alpha\)</span> – given any sequence generating some other <span class="math inline">\(\hat{x}=\hat{\alpha}\)</span> we can relabel the characters to get a sequence generating <span class="math inline">\(\alpha\)</span>, and vice versa, establishing a bijection between the sequances generating <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\hat{\alpha}\)</span>.</p>
+<p>Observe that <span class="math inline">\(N(1, a)\)</span> is independent of the one character <span class="math inline">\(x=\alpha\)</span> – given any sequence generating some other <span class="math inline">\(\hat{x}=\hat{\alpha}\)</span> we can relabel the characters to get a sequence generating <span class="math inline">\(\alpha\)</span>, and vice versa, establishing a bijection between the sequences generating <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\hat{\alpha}\)</span>.</p>
 <p>(In group theoretic language, we are studying paths in the Cayley graph of the free group on 2 generators <span class="math inline">\(e, \mu\)</span>; we will call all four of the <span class="math inline">\(e=e^+, e^{-1}=e^-, \mu=\mu^+, \mu^{-1}=\mu^-\)</span> “generators”. The groups admits an automorphism sending any generator <span class="math inline">\(\alpha\)</span> to any other generator <span class="math inline">\(\hat{\alpha}\)</span>; this automorphism produces an automorphism of the Cayley graph and hence bijections on paths from the identity to <span class="math inline">\(\alpha\)</span> and paths from identity to <span class="math inline">\(\hat{\alpha}\)</span>. )</p>
 <p>Now, observe that <span class="math display">\[N(0, a)=4N(1, a-1),\]</span></p>
 <p>because the way to obtain empty word in the end is to start with some symbol <span class="math inline">\(\alpha\)</span> (4 options), and then produce a word that is equal to <span class="math inline">\(\alpha^{-1}\)</span>, which one can do in <span class="math inline">\(N(1, a-1)\)</span> ways.</p>
@@ -42,9 +44,54 @@
 <p>because the first toss either produces the first symbol in <span class="math inline">\(x\)</span> – after which one has to generate the rest of the symbols of <span class="math inline">\(x\)</span> with <span class="math inline">\(a\)</span> annihilations; or it produces one of 3 other symbols, after which one has to produce the inverse of that symbol and then <span class="math inline">\(x\)</span>, with <span class="math inline">\(a-1\)</span> annihilations (one annihilation being taken up by cancelling the first tossed symbol with its inverse).</p>
 <p>Thus we have our recurrence relation and boundary conditions:</p>
 <p><span class="math display">\[N(l, 0)=1\]</span> <span class="math display">\[N(0, a)=4N(1, a-1)\]</span> <span class="math display">\[N(l, a)=N(l-1, a)+3N(l+1, a-1)\]</span></p>
-<!---(Note that if we but $N(l, a)=N(|l|, a)$ for $l<0$ the relation in second line becomes identical with the one on the third line.)--->
-<p>The problem asks for <span class="math inline">\(N(20, 10)\)</span>. A small dynamic programming script gives <span class="math inline">\(38 192 689 856 872\approx0.4\times10^{14}\)</span>.</p>
+<!---(Note that if we but $N(l, a)=N(|l|, a)$ for $l<0$ the relation in second line becomes identical with the one on the third line. But the coefficients 3 and 1 are switched on last line for negative $l$)--->
+<p>The problem asks for <span class="math inline">\(N(20, 10)\)</span>. A small dynamic programming script gives</p>
+<p><span class="math display">\[38 192 689 856 872\approx0.38\times10^{14}.\]</span></p>
+<p>The recurrence relation above confirms that (again, as per Jaynes in section 15.5) “it is a standard textbook random walk problem”.</p>
+<p>The removal of the reflection at 0 gives the following approximation: there are <span class="math inline">\({40}\choose{10} 3^{30}\)</span> total paths of length <span class="math inline">\(40\)</span> with exactly <span class="math inline">\(10\)</span> annihilations (aka “steps to the left”). They are distributed between <span class="math inline">\(4 3^{19}\)</span> final records. Thus the number per record is</p>
+<p><span class="math display">\[{{40}\choose{10}} \times 3^{11}/4=37540129888404 \approx 0.38 \times10^{14},\]</span></p>
+<p>which is in good agreement with the exact result.</p>
+<!---(then $N(l, a)=N(|l|, a)$ corresponds to removing the reflective boundary at $l=0$ -- but of course the probability of increase for positive $l$ is now the probability of  decrease for negative $l$ )--->
+<h3 id="comments-15.7">Comments 15.7</h3>
+<p>Mathematically, one says these days that there is no procedure for conditioning on an event of probability zero (aka a circle on a sphere). There are rigorous procedures for defining conditional expectations with respect to a random variable (e.g. latitude or longitude), or, more generally, a “sigma subalgebra”, see <a href="https://en.wikipedia.org/wiki/Conditional_expectation#Formal_definition">Wiki</a> and this <a href="http://www.stat.yale.edu/~jtc5/papers/ConditioningAsDisintegration.pdf">paper</a> of Chang and Pollard.</p>
+<p>However, this is not the same as conditional probability. The later can be defined in some more restrictive context via “disintegration”. See section 4 of Terry Tao’s <a href="https://terrytao.wordpress.com/2010/01/01/254a-notes-0-a-review-of-probability-theory/">blog post</a> and, again, Chang and Pollard’s <a href="http://www.stat.yale.edu/~jtc5/papers/ConditioningAsDisintegration.pdf">paper</a>.</p>
+<h3 id="comments-on-15.8">Comments on 15.8</h3>
+<p>Some of Jaynes’s points seem to be: 1) proper priors are incompatible with 15.60 removing the paradox, but not in the way DSZ thought 2) improper uninformative priors do not suffer from the paradox 3) for improper informative priors the paradox is resolved by observing that <span class="math inline">\(B_1\)</span> and <span class="math inline">\(B_2\)</span> start with different information.</p>
+<p>It seems that 3) is somewhat doubtful. See Kevin Van Horn’s <a href="http://ksvanhorn.com/bayes/jaynes/node17.html">page</a> and his alternative <a href="http://ksvanhorn.com/bayes/Papers/mp.pdf">resolution</a> of the paradox via approximation by proper priors (and attributing the “paradox” to improper handling of infinities and non-uniform convergence). His basic point is echoed by a <a href="https://arxiv.org/abs/math/0310006">paper</a> of Wallstrom, and from the perspective of disintegration by Examples 11 and 12 in Chang and Pollard’s <a href="http://www.stat.yale.edu/~jtc5/papers/ConditioningAsDisintegration.pdf">paper</a>.</p>
+<h3 id="exercise-15.2">Exercise 15.2</h3>
+<p>Without checking convergence (!) we wirte:</p>
+<p><span class="math display">\[p(\xi|z) \propto \int d\eta \;\; p(z|\eta \xi) \pi(\eta, \xi)\]</span></p>
+<p><span class="math display">\[= \int d\eta \int dy \;\; p(z, y |\eta, \xi) \pi(\eta, \xi)\]</span></p>
+<p>by 15.59 the inner integral is <span class="math inline">\(p(z| \xi)\)</span> so</p>
+<p><span class="math display">\[= \int d\eta  \;\;  p(z| \xi) \pi(\eta, \xi)= p(z| \xi)\int d\eta \;\;  \pi(\eta, \xi)=p(z| \xi) \pi(\xi)\]</span></p>
+<p>which after normalization is 15.61.</p>
+<h3 id="exercise-15.3">Exercise 15.3</h3>
+<p>First of all, note that in the change-point problem it is <span class="math inline">\(s=\frac{1}{\eta}\)</span> which is the scale parameter. However, if distribution of the scale is <span class="math inline">\(p(s)ds= s^{-1}ds\)</span> then for the inverse scale <span class="math inline">\(\eta(s)=\frac{1}{s}\)</span> we have <span class="math inline">\(|d\eta|=|\frac{1}{s^2}| |ds|\)</span> then <span class="math inline">\(p(s)ds=s^{-1} s^2 d\eta=\frac{1}{\eta}d\eta\)</span> (and conversely). So scale being distributed via <span class="math inline">\(s^{-1}\)</span> and inverse scale being distributed via <span class="math inline">\(\eta^{-1}\)</span> is equivalent.</p>
+<p>Now, to the exercise itself. Let <span class="math inline">\(u=\frac{y}{\eta}\)</span>. Then, assuming <span class="math inline">\(y\)</span> is 1D, <span class="math inline">\(dy =\eta du\)</span></p>
+<p><span class="math display">\[\int dy \;\;p(z, y| \eta, \xi)=\int dy \;\;\frac{1}{\eta} h(z, \xi, u)=\int du \;\; h(z, \xi, u)\]</span></p>
+<p>is independent of <span class="math inline">\(\eta\)</span>, so indeed 15.59 holds.</p>
+<p>Then 15.58 becomes</p>
+<p><span class="math display">\[p(\xi|x)\propto \int d\eta \;\; h(z,\xi, y/\eta)\frac{1}{\eta} \pi(\eta, \xi) \]</span></p>
+<p>while 15.61 is</p>
+<p><span class="math display">\[ p(\xi|x) \propto   \pi(\xi) \pi(z|\xi)=\pi(\xi) \int du \;\; h(z, \xi, u)\]</span></p>
+<p>Now if we assume <span class="math inline">\(\pi(\eta, \xi)\propto \pi(\xi)\times \frac{1}{\eta}\)</span> then the two match up:</p>
+<p>Put <span class="math inline">\(\frac{y}{\eta}=v\)</span>, so <span class="math inline">\(d\eta =-\eta^2 dv\)</span>. Then (noting that limit reversal in the integral kills the minus sign) we get from 15.58</p>
+<p><span class="math display">\[p(\xi|x)\propto \int d\eta \;\; h(z,\xi, y/\eta)\frac{1}{\eta} \pi(\eta, \xi)\]</span></p>
+<p><span class="math display">\[\propto \int dv \;\;  h(z,\xi, v)\pi(\xi)=\pi(\xi) \int du \;\;  h(z,\xi, u)\]</span></p>
+<p>matching 15.61.</p>
+<!----### Exercise 15.4
+
+Note, like in Exercise 15.3, that a power law for the scale parameter is the same as a power law (with different power, unless that power is 1) for the inverse scale.
+
+Now:
+
+
+$$\int d \eta  \;\; h(z, \xi, y/\eta) \eta^{-(k+1)}= \int d s  \;\; h(z, \xi, ys) s^{d}$$
+----->
 <!----
+
+Links: 
+
 http://ksvanhorn.com/bayes/jaynes/node17.html
 http://ksvanhorn.com/bayes/Papers/mp.pdf
 https://www.ucl.ac.uk/drupal/site_statistics/sites/statistics/files/rr172.pdf
