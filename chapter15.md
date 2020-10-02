@@ -79,8 +79,10 @@ which is in good agreement with the exact result.
 ### Comments 15.7
 
 Mathematically, one says these days that there is no procedure for conditioning on an event of probability zero (aka a circle on a sphere). There are rigorous procedures for defining conditional expectations with respect to a random variable (e.g. latitude or longitude), or, more generally, a "sigma subalgebra", see [Wiki](https://en.wikipedia.org/wiki/Conditional_expectation#Formal_definition) and this [paper](http://www.stat.yale.edu/~jtc5/papers/ConditioningAsDisintegration.pdf) of Chang and Pollard.
+Then one can define conditional probability of an event as conditional expectation of its characteristic function. 
 
-However, this is not the same as conditional probability. The later can be defined in some more restrictive context via "disintegration". See section 4 of Terry Tao's [blog post](https://terrytao.wordpress.com/2010/01/01/254a-notes-0-a-review-of-probability-theory/) and, again, Chang and Pollard's [paper](http://www.stat.yale.edu/~jtc5/papers/ConditioningAsDisintegration.pdf).
+
+Alternatively, conditional probability can be defined in some more restrictive context via "disintegration". See section 4 of Terry Tao's [blog post](https://terrytao.wordpress.com/2010/01/01/254a-notes-0-a-review-of-probability-theory/) and, again, Chang and Pollard's [paper](http://www.stat.yale.edu/~jtc5/papers/ConditioningAsDisintegration.pdf).
 
 
 
