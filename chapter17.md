@@ -1,0 +1,21 @@
+#Principles and pathology of orthodox statistics.
+
+$\leftarrow$ [Back to Chapters](./index.html)
+
+
+### Comments on 17.1.
+
+Given a fixed prior and model, a Bayesean estimator (MAP, posterior mean, or minimizing some other posterior risk insetad of MSE, or of any type at all) is still an estimator - it is a number $f(X)$ produced from data $X$. It still partitions the data manifold into parts on which it gives the same estimate.  Thus this line of Jaynes's reasoning does not seem to distinguish between frequentist ("orthodox") and Bayesean procedures. 
+
+
+### Comments on 17.5.1
+
+Here is how Jaynes's criticism of "rejection of null hypothesis" statistical method transfers to a criticism of mathematical technique of "proof by contradiction" (quote from 15.5.1 with italics for modifications)""
+
+This is the kind of logic that underlies *all proofs by contradiction*. In order to argue
+for a *conclusion C*, one does it indirectly: invent a 
+hypothesis *"not C"* that denies *C*, then argue against *"not C"* in a way that makes
+no reference to *C* at all (that is, using only *deductions based* on *"not C"*). To see how
+far this procedure takes us from elementary logic, suppose we decide that the *conclusion holds*;
+that is, we reject *"not C"*. Surely, we must also reject *reasoning* based on *"not C"*; but
+then what was the logical justification for *the deduction*? *Proof by contradiction* saws off its own limb.
