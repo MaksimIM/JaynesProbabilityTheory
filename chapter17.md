@@ -14,6 +14,8 @@ The formula 17.29 just expresses the following: covariance is a dot product (pos
 
 The cool thing is that the score -- the derivative (in the parameter) of the log-likeliehood is -- a zero mean random variable, whose variance is the Fisher information, and whose covariance with an estimator $\beta$ is the derivative (in the parameter) of the estimator's expectation. This is why we get that standard deviation of the estimator is bounded below by (1+derivative of bias) over root of the Fisher information. 
 
+The equality condition is that the estimator and the score are proportional: that is, that the parameter is the parameter of exponential family, aka the "maximal entropy" family.
+
 ### Comments on 17.5.1
 
 Here is how Jaynes's criticism of "rejection of null hypothesis" statistical method transfers to a criticism of mathematical technique of "proof by contradiction" (quote from 15.5.1 with italics for modifications)""
