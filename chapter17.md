@@ -7,6 +7,10 @@ $\leftarrow$ [Back to Chapters](./index.html)
 
 Given a fixed prior and model, a Bayesean estimator (MAP, posterior mean, or minimizing some other posterior risk insetad of MSE, or of any type at all) is still an estimator - it is a number $f(X)$ produced from data $X$. It still partitions the data manifold into parts on which it gives the same estimate.  Thus this line of Jaynes's reasoning does not seem to distinguish between frequentist ("orthodox") and Bayesean procedures. 
 
+### Formula 17.25
+
+"This decreases monotonically from $1$ at $n=0$ to $1/2$ as $n\to \infty$" -- see this [MathOverflow answer](https://mathoverflow.net/questions/373943/is-gammas-x-s-1-gammas-decreasing-for-real-s1-is-gammas-x-s-g) for a confirmation of monotonicity.
+
 ### Comments on 17.4
 Short summary of derivation of Cramer-Rao bound 17.30: apply Cauchy-Schwarts to the "covarince dot-product" of the score and the estimator. Slightly longer summary is as follows.
 
