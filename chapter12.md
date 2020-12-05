@@ -209,4 +209,21 @@ $$f(\theta)=\frac{C}{\theta(1-\theta)}.$$
 
 ### Comments on 12.4.4
 
-It certainly **does** violence to Bertrand's paradox to rephrase it in terms of throwing strawes. The point of this paradox from the probability theory point of view os that saying "at random" is meaningless -- one has to provide a probability distribution; replacing the words "at random" by the "throwing straws" procedure makes this point moot -- the issue then becomes not the fact that the probability is unspecified, but, rather, that it is specified via a "physical" procedure, and one has to deduce the probability distribution from this procedure. This is what Jaynes proceed to do. But this is an entirely different matter! 
+It certainly **does** violence to Bertrand's paradox to rephrase it in terms of throwing straws. The point of this paradox from the probability theory point of view os that saying "at random" is meaningless -- one has to provide a probability distribution; replacing the words "at random" by the "throwing straws" procedure makes this point moot -- the issue then becomes not the fact that the probability is unspecified, but, rather, that it is specified via a "physical" procedure, and one has to deduce the probability distribution from this procedure. This is what Jaynes proceeds to do. But this is an entirely different matter! 
+
+### 12.62 from 12.61
+
+$$2af(ar)+a^2 r f'(ar)=2\pi f(r)R aRf(aR) $$
+
+Plug in $a=1$ we get $2f(r)+rf'(r)=2\pi f(r) R^2f(R)$. This can be solved directly, but we just say $rf'(r)=Af(r)$ for some constant $A$, which implies $f(r)=Br^A$ (either use logarithmic differentiation $(\ln f)'=\frac{A}{r}$ and integrate, or observe this is 1-D [Euler equation for homogeneous function](https://en.wikipedia.org/wiki/Homogeneous_function#Euler's_homogeneous_function_theorem) or degree $A$).
+ Now we plug back in to 2.61
+ 
+ $$ a^2 B(ar)^A=2\pi Br^A \int_0^{aR} B u^{A+1} du$$
+ 
+ $$a^{2+A} B r^A= 2\pi B r^A B\frac{a^{A+2} R^{A+2}}{A+2}$$
+ 
+ $$1=B\frac{2\pi R^{A+2}}{A+2}$$
+ 
+ Setting $q=A+2$ we get $B=\frac{q}{2\pi R^q}$, and 
+ $$f(r)=\frac{qr^{q-2}}{2\pi R^q}$$
+ i.e. 12.62. We also see that this function does satisfy 12.61.
