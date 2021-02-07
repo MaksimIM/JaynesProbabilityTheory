@@ -57,9 +57,9 @@ $$=\begin{bmatrix}v_{i1}u_{i1}& v_{i1}u_{i2}  \\v_{i2}u_{i1} & v_{i2}u_{i2}\end{
 It follows from this that the (joint) probability matrix of $D_1D_2$ ( again, at $x= x_1, x_2$ and $y=y_1, y_2$) conditional on $\overline{H_i}X$ is obtained by taking all the matrices of $H_j$ with $j\neq i$ weighing them by (prior) probabilities $h_j$ of $H_j$  and adding them (and then dividing by the sum of the weights, but this is an overall normalizing factor which will not be important for us). That is, the matrix is proportional to 
 
 
-$$\sum_{j\neq i} h_j  M_i=\sum_{j\neq i} h_j v_j u_j^T=$$
+$$\sum_{j\neq i} h_j  M_j=\sum_{j\neq i} h_j v_j u_j^T=$$
 
-$$\begin{bmatrix}\sum_{j\neq i} h_j v_{i1}u_{i1}& \sum_{j\neq i} h_j v_{i1}u_{i2}  \\\sum_{j\neq i} h_j v_{i2} u_{i1} & \sum_{j\neq i} h_j v_{i2} u_{i2}\end{bmatrix}$$
+$$\begin{bmatrix}\sum_{j\neq i} h_j v_{j1}u_{j1}& \sum_{j\neq i} h_j v_{j1}u_{j2}  \\\sum_{j\neq i} h_j v_{j2} u_{j1} & \sum_{j\neq i} h_j v_{j2} u_{j2}\end{bmatrix}$$
 
 
 
@@ -70,12 +70,13 @@ Let's start with the case of only 3 hypothesis $H_1, H_2,H_3$.  Start with $i=3$
 
 
 
-#####Lemma: A sum $M$ of two rank 1 matrices  $M=h_1 v_1 u^T_1 +h_2 v_2 u^T_2$ can only be rank 1 if either $v_1$ and $v_2$ are linearly dependent or $u_1$ and $u_2$ are linearly dependent.
+##### Lemma: A sum $M$ of two rank 1 matrices  $M=h_1 v_1 u^T_1 +h_2 v_2 u^T_2$ can only be rank 1 if either $v_1$ and $v_2$ are linearly dependent or $u_1$ and $u_2$ are linearly dependent.
 
 
-A "conceptual" proof is as follows:
-Consider the image of $M$. Vectors $M(u_1)$ and $M
-(u_2)$  are both linear combinations of $h_1 v_1$ and $h_2 v_2$, so, to get that the image of $M$ is the span of $v_1$ and $v_2$, it is enough that the matrix of coefficients $G=\begin{pmatrix} u_1^T u_1& u_1^T u_2\\u_2^T u_1& u_2^T u_2\end{pmatrix}$ is invertible. But $G$ is the Grammian of $u_1, u_2$ and is invertible precisely when $u_1$ and $u_2$ are linearly independent (its determinant is the square of the area of the parallelogram spanned by $u_1$ and $u_2,$ as you can easily verify). In that case (of independent $u$s), the rank of $M$ is the dimension of the span of $v_1, v_2$ and if $v_1, v_2$ were independent, it would be 2. So if rank of $M$ is below 2, then either $u$s or $v$s are dependent, as   wanted.
+A "conceptual" proof is as follows: Suppoe $u_1$ and $u_2$ are linearly independent. Then the image of $M$ is spanned by the  vectors $M(u_1)$ and $M
+(u_2)$; but these are are both linear combinations of $h_1 v_1$ and $h_2 v_2$.  So, if the "the matrix of coefficients $G=\begin{pmatrix} u_1^T u_1& u_1^T u_2\\u_2^T u_1& u_2^T u_2\end{pmatrix}$ is invertible, then 
+ image of $M$ is the span of $v_1$ and $v_2$.
+But $G$ is the Grammian of $u_1, u_2$ and is invertible precisely when $u_1$ and $u_2$ are linearly independent (its determinant is the square of the area of the parallelogram spanned by $u_1$ and $u_2,$ as you can easily verify). So, for independent $u$s, the rank of $M$ is the dimension of the span of $v_1, v_2$ and if $v_1, v_2$ were independent, it would be 2. So if rank of $M$ is below 2, then either $u$s or $v$s are dependent, as wanted.
 
 
 
@@ -112,7 +113,7 @@ Continuing with the case of three hypothesis, recall $v_i$ and $u_i$ were likeli
 Observe that a pair of non-zero functions $V_1$ and $V_2$ such that $(V_1(x_1), V_1(x_2))$ is always proportional to 
 $(V_2(x_1), V_2(x_2))$ are "globally" proportional meaning $V_1=kV_2$ (take any $x$ with $V_2(x)\neq 0$ and make $k= V_1(x)/V_2(x)$).
 
- If distributions of $D_1$ under $H_1X$ and $H_2X$ are different, then they are also not proportional. By the previous paragraph, this implies that there will be two values $x_1$ and $x_2$ giving unproportional $v_1$ and $v_2$. Then for arbitrary pair of values $y_1, y_2$ of $D_2$ the corresponding vectors $u_1$ and $u_2$ are proportional, so, again, by the previous paragraph, the whole probability mass/density functions $U_1$ and $U_2$ of $D_2$ under $H_1X$ and $H_2X$ are proportional, ergo equal. 
+ If distributions of $D_1$ under $H_1X$ and $H_2X$ are different, then they are also not proportional. By the previous paragraph, this implies that there will be two values $x_1$ and $x_2$ giving unproportional $v_1$ and $v_2$. Then, by the Lemma, for arbitrary pair of values $y_1, y_2$ of $D_2$ the corresponding vectors $u_1$ and $u_2$ are proportional, so, again, by the previous paragraph, the whole probability mass/density functions $U_1$ and $U_2$ of $D_2$ under $H_1X$ and $H_2X$ are proportional, ergo equal. 
 
 So either $V_1=V_2$ or $U_1=U_2$.
 
@@ -158,8 +159,9 @@ Observe that $D(M, M)=\det M$. We then have, by induction on the number of summa
 
 $\det (\sum M_i)=D(\sum M_i, \sum M_j)=\sum_{i, j} D(M_i, M_j)$
 
+Remark 5: We are basically observing that the determinant is quadratic polynomial as a function of the 2 by 2 matrix, so it has a symmetric bilinear extension. 
 
-Remark 5: We also have $D(\lambda M, N)=\lambda D(M, N)$, as usual in bilinearity, but we don't need this.
+
 
  Remark 6: In higher (possibly) dimensions, and using tensor language, we are saying that taking second exterior power, which is quadratic in the matrix input, is a restriction of a symmetric bilinear operation (on two inputs), $(M\wedge N)(\vec{a}\wedge\vec{b})=\frac{1}{2}[(M\vec{a})\wedge (N\vec{b})+(N\vec{a})\wedge (M\vec{b})]$
 
@@ -171,6 +173,8 @@ Now consider the sum $X_1,X_2$ and $Y_1, Y_2$ independent. Form $X_1+Y_1, X_2Y_2
 
 ----->
 
+
+Remark 7: We also have $D(\lambda M, N)=\lambda D(M, N)$, as usual in bilinearity, but we don't need this.
 
 Now we can apply this to our problem. Let $M_i=h_i v_i u_i^T$ and $N_i=\sum_{i\neq j} M_i$, and $M=M_i+N_i=\sum_j M_j$. 
 
