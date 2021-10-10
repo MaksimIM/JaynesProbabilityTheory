@@ -33,5 +33,5 @@ After editing the markdown files, you can compile it to other formats with pando
 
 ## Viewing the html files online
 
-You can view the html files in this repository online [here](https://jezgillen.github.io/JaynesProbabilityTheory/).  
+You can view the html files in this repository online [here](https://maksimim.github.io/JaynesProbabilityTheory/).  
 
