@@ -1,0 +1,727 @@
+<meta charset="UTF-8">
+<h2 align="center"> Probability theory:  The Logic of Science - a biased review.</h2>
+
+<p align="right" >
+<i>P(A|B) = [P(A)*P(B|A)]/P(B), all the rest is commentary.</i> <br>-
+Astral Codex Ten tagline.
+</p>
+
+<p>
+If I told you that over the course of last year I have read  Hartshorne's graduate math textbook
+"<a href="https://en.wikipedia.org/wiki/Algebraic_Geometry_(book)">Algebraic Geometry</a>" and  did all the exercises in it,
+ you would probably assume I have learned some mathematics.
+</p>
+ 
+ <p>
+If I told you that over the course of last year I have read
+Thích Nhất Hạnh's "<a href="https://en.wikipedia.org/wiki/The_Miracle_of_Mindfulness">The Miracle of Mindfulness</a>", 
+and practicd all the techniques in it, you could deduce that I have developed some applicable skills stemming from a metaphysical doctrine.
+</p>
+ 
+ <p>
+In reality I did neither of these things.
+</p>
+
+<p>
+ I did, however, read E. T. Jaynes's
+"<a href="https://www.cambridge.org/gb/academic/subjects/physics/theoretical-physics-and-mathematical-physics/probability-theory-logic-science">Probability Theory: The Logic of Science</a>"  
+ (PT:TLoS from here on)
+and <a href="https://github.com/jezgillen/JaynesProbabilityTheory"a> solved (most of) the exercises</a>.
+</p>
+
+<p>
+If you 
+<a href="https://www.lesswrong.com/posts/kXSETKZ3X9oidMozA/the-level-above-mine">have</a>
+<a href="https://intelligence.org/research-guide/">heard</a>
+<a href="https://statmodeling.stat.columbia.edu/2007/09/13/jaynes_is_no_gu/">anything</a> 
+about this book, you may have expected that 
+I  have learned some mathematics, and developed some applicable skills stemming from a metaphysical doctrine. 
+In reality,  I have mostly learned that in the 20th century disputes concerning probability and statistics, 
+physicists whose last names start with J where (almost) always right, and everyone else was almost always wrong.
+
+Ok, fine, I did learn some math and got a fair bit of what can be called metaphysical indoctrination as well.
+But the math was mostly learned in pursuit of understanding of an offhand remark or a solution to an exercise, 
+often by following the crumb trail of hints and references left by Jaynes in the text, 
+and only occasionally from the text itself. As for the metaphysical indoctrination, well, there was some of that, but
+one does not simply join the 
+<a href="https://www.lesswrong.com/posts/fnEWQAYxcRnaYBqaZ/initiation-ceremony">Bayesian Conspiracy</a>
+by reading a 700+ page book. 
+One must read a <a href="https://intelligence.org/rationality-ai-zombies/">1600+ page book</a> at least!
+</p>
+
+<h3> On the origin of PT:TLoS.</h3>
+
+<p>
+Edwin Thompson (i.e. E.T.) Jaynes was a Ph.D student of Eugene  Wigner, the
+<a href="https://en.wikipedia.org/wiki/The_Unreasonable_Effectiveness_of_Mathematics_in_the_Natural_Sciences">unreasonably effective</a>
+ Nobel laureate physicist. Wigner is reported to have later characterized Jaynes as
+  "one of the two most under-appreciated people in physics." 
+Jaynes's PhD thesis was on ferroelectricity, 
+and apart from contributions to probability and statistical mechanics, he is perhaps most known for his 
+<a href="https://en.wikipedia.org/wiki/Jaynes%E2%80%93Cummings_model">work</a> in quantum optics.
+</p>
+
+<p>
+Jaynes defended his PhD at Princeton in 1950, and then moved to Stanford. 
+He did what one is supposed to do there: 
+invested in a <a href="https://en.wikipedia.org/wiki/Varian_Associates">Palo Alto tech startup</a>. 
+Since his first field of research could be called "applied classical electrodynamics", 
+he also consulted for them, calculating behaviour of electrons in cavity resonators
+ and working on magnetic resonance. Apparently this led to him buying a fairly large
+house -- though this was the 1950s, when 
+<a href="https://slatestarcodex.com/2019/07/23/book-review-the-electric-kool-aid-acid-test/">normal people</a> 
+could have houses in Palo Alto. 
+He bought an even larger house when he moved to University of Washington at St. Louis in 1960.
+</p>
+
+<p>
+In 1957 Jaynes published  
+<a href="https://bayes.wustl.edu/etj/articles/theory.1.pdf">two</a>
+ <a href="https://bayes.wustl.edu/etj/articles/theory.2.pdf">papers</a> 
+ on ``Information Theory and Statistical Mechanics'' 
+concerned with formulating (Gibbs's picture of) statistical mechanics in terms of 
+information theory, first for classical and second for quantum systems. 
+At about the same time he delivered a series of lectures on 
+"Probability theory in science and engineering" at the Field Research Laboratory 
+ of the Mobil oil company. 
+ The <a href="https://bayes.wustl.edu/etj/articles/mobil.pdf">published version</a> 
+ of 5 of these lectures is the first draft of the PT:TLoS. It includes
+a now-extinct section on Gibbs model and one titled "why does statistical mechanics work?", 
+ as well as (much) briefer versions of chapters 1, 2, 4, 5, 6, 11, and 18 of PT:TLoS, 
+ for a total of about 200 typed pages overall.
+It also contains a "historical introduction" explaining 
+"how it could happen that a person who is a rather strange 
+mixture of two thirds theoretical physicist and one-third 
+electrical engineer could <s>grow up to be a hero and a scholar</s> get really worried about the foundations of probability theory".
+The answer, of course, is by "trying to understand what statistical mechanics 
+is all about and how it is related to communication theory".  
+I'd say that struggle that still goes on for many of us! 
+</p>
+
+<p>
+Jaynes says that "in the years 1957–1970 the lectures were repeated, with steadily increasing content, at
+many other universities and research laboratories." In 1974 some of this steadily increasing content
+was assembled into a 446 page "fragmentary edition" entitled
+"Probability theory with applications in science and engineering"
+with a stated goal of eventually having "approximately 30 Lectures" in the project. 
+It now also included some of what will become chapters 10, 13, 19 and 22 of PT:TLoS, 
+as well as a chapter on irreversible statistical mechanics. 
+One can also find in it what is, in hindsight, a rather genteel "word of explanation and apology to mathematicians 
+who may happen on this book not written for them", 
+excusing absence of measure-theoretic notions. Jaynes says that he "is not opposed" to them and 
+"will gladly use and teach them as soon as" he finds "one specific
+real application where they are needed".
+ In the PT:TLoS the rejection of 
+modern mathematical toolkit continues unabated (arguably with some detrimental effects, 
+more on this later), but any tone of apology is gone. 
+What a difference 24 little years made.
+</p>
+
+<p>
+The magnum opus itself was woefully unfinished at the time of Jaynes's death in 1998. 
+The manuscript was massaged into a book shape by Jaynes's former graduate student Larry Bretthorst,
+resulting in the 727 page commentary on Bayes's theorem that we are now reviewing.
+</p>
+
+
+
+<h3> What Jaynes taught.</h3>
+
+<p>
+While no <a href="https://www.scottaaronson.com/blog/?p=277">Australian fashion models</a> 
+seem to be available to distill the core idea of PT:TLoS into a single passage, 
+we can get something reasonably close from Jaynes himself.
+Right from the start, he declares: "Our topic is the optimal processing of incomplete information", 
+and the focus is on producing "quantitative rules for conducting inference". 
+Note that while other frameworks might 
+<a href="https://slatestarcodex.com/2014/09/01/book-review-and-highlights-quantum-computing-since-democritus/">learn hypothesis</a>
+<a href="https://en.wikipedia.org/wiki/Probably_approximately_correct_learning">consitent with data</a>, 
+Jaynes is after not just "good enough" processing, but an "optimal" one. 
+Of course, the "quantitative rules" mentioned turn out to be those of 
+"probability theory and all of its conventional mathematics, but
+now viewed in a wider context than that of the standard textbooks." 
+This is the essential content of "Cox's theorems" and Jaynes spends the first chapter fleshing out 
+more precisely what the "quantitative rules for conducting inference" are and how they should look like, 
+and the second one reproving Cox's results (i.e. that only probabilities allow us to do inference the way we would like).
+</p>
+
+<p>
+With this first (but by no means last) tussle with foundations out of the way, 
+Jaynes proceeds to develops some of the 
+math needed for basic applications in "direct" and "inverse" probability. 
+Here, by "basic applications" I mean counting balls in urns. 
+(Lest you find this boring, let me remind you that counting things in urns, 
+is not only a centuries old pastime of probability theorists, but is 
+<a href="https://en.wikipedia.org/wiki/Attempts_to_overturn_the_2020_United_States_presidential_election">essential for functioning of any democratic society</a>.)
+And by "direct probability" I mean things like: 
+if there are a hundred red and a hundred blue <s>ballots</s> balls in and urn and you draw 10 "at random", 
+what is the probability that they are all red? That 9 of them are red and 1 is blue? Et cetera. 
+This is "sampling theory" and is covered in chapter 3, 
+with the question of what "at random" means getting some love in section 3.8.1. 
+"Inverse probability", on the other hand, is the old-school name for the more interesting kind of question: 
+suppose you draw 10 balls at random from an urn containing 200 balls, 
+and all 10 are red (this is your "data"). 
+How likely is it that there were 0 red balls in the urn? How about 1 red ball? How about 100? 
+Here of course the answer depends on what we thought about the number of red balls in the urn before doing the drawing
+ -- if we have looked in the urn just before and counted the balls directly,
+the drawing itself is unlikely to change our opinion about this "prior" count. 
+This innocuous observation is the the fact that launched a thousand ships, 
+for this <b>prior</b> is the one missing ingredient after which Bayes's theorem 
+- yes, the P(A|B) = [P(A)*P(B|A)]/P(B) - finishes the job. 
+Jaynes lists 4 "principles" for obtaining this missing ingredient
+(you know it's bad when there is more than one, and more than two is real trouble), 
+postpones further discussion to later chapters and proceeds to develop "inverse probability" 
+ - aka hypothesis testing - assuming the prior is known somehow.
+Along the way, we get introduced to measuring information (or "evidence") 
+provided by the data in decibels (which I believe Jaynes invented independently of the equivalent 
+"<a href="https://en.wikipedia.org/wiki/Hartley_(unit)">decibans</a>" of Turing and Good) in chapter 4.2,
+and learn how to do multiple hypothesis testing in chapter <s>86</s> 4.4.
+</p>
+
+<p>
+With all this hard work out of the way, we get to "queer uses of probability theory" 
+<s>also known as the seeds of CFAR curriculum</s>. While non-technical, 
+this chapter explains how to reason "in a Bayesean way" about telepathy, 
+why same evidence presented to different people may make their opinions diverge more, 
+how Bayesean nature of visual perception may explain optical illusions
+how not to weigh evidence in court, and other useful things like that.  
+"It's the priors, stupid"- for the most part; yet the details are entertaining and sometimes illuminating.
+</p>
+  
+<p>
+By chapter 6 the break is over, and we return to our urns. 
+Amid some rather mundane calculations, some inspiring things happen. 
+Under the rubric of "effects of qualitative prior information" - of the type of knowing "who does what to whom" -
+Jaynes introduces what we now can recognise as rudimentary probabilistic graphical models. 
+The question of the choice of a prior returns briefly, only to be postponed again. 
+For the most part it is a continuation of what has gone on before. 
+</p>
+    
+<p>
+Chapter 7, dedicated to Gaussian distribution, is a change of pace. 
+While mathematically interesting, at first blush it may seem purely technical.
+Yet there is a key question behind it: why is Gaussian distribution so ubiquitous?  
+Of course, mathematical reality being what it is, 
+all good explanations are connected to each other; 
+but the side from which one approaches the network of explanations matters both philosophically,
+and in terms of what further ideas it generates.
+Here, as in many other situations, Jaynes has a favorite side.</p>  
+
+<p> 
+A "standard" answer is commonly taught: if a number we are considering is a 
+sum of many (sufficiently) independent random "pieces" the result will be approximately Gaussian. 
+Since many things have multiple "small causes", this is a common situation. 
+Mathematically, this is expressed as the
+<a href=""https://en.wikipedia.org/wiki/Central_limit_theorem>Central limit theorem</a>. 
+A mechanism that makes this work also explains why Gaussian distribution is connected 
+to least squares fitting of linear models, and, more generally, 
+illuminates why mean and variance are the only thing that matter in a Gaussian distribution. 
+Thus Jaynes's favorite explanation is reached: 
+Gaussian distribution is the one we would obtain if we agree that we know some random number's mean and variance,
+and nothing else. 
+It is the distribution of <b>maximal entropy</b>  subject to that knowledge, 
+the one expressing total ignorance beyond those two values.
+Thus, out of a technical sounding-question in a technical-looking chapter a major technical theme is born: 
+if you know something, and want to get a prior reflecting that knowledge and nothing else, 
+look for a maximal entropy distribution compatible with this knowledge.    
+What this means mathematically, and how to find the maximal entropy distribution 
+(at least for "finite" situations) is explored in chapter 11. 
+(This is also where the seams start to show: 
+while producing Gaussian distribution as a maximal entropy one is easy, 
+once the material in chapter 11 is absorbed, 
+as far as I can tell  Jaynes never actually gets around to doing this. 
+Chapter 11 is in part II, where completeness of the text begins to decline.)
+</p>
+     
+<p> 
+Maximal entropy is one of the four methods for finding priors that Jaynes mentioned back in chapter 4,
+the one most closely associated with Jaynes himself.
+Another one is "group invariance" (more properly, "equivariance"), explored in Chapter 12 of PT:TLoS.
+The name hides a simple idea and a surprising complication. 
+The idea is simple indeed: if your setting is unchanged by some modification (expanding some object by a factor of 2, for example) 
+- and this includes your state of knowledge 
+(if I don't know anything about the length of something then 
+I don't know anything about twice its length 
+<i>and I think my ignorance should be expressed the same way mathematically</i>) -
+then my prior should be unchanged by this modification. 
+It turns out that in many situations this suffices to mostly determine the prior 
+(for a case of a length - also known as "scale"- parameter the prior probability density 
+at length L is then proportional to 1/L). The  surprising complication is 
+that often this is not enough. For simple examples like "scale" above this complication does not arise,
+but for a case of determining "scale" and "location" simultaneously it does, 
+and Jaynes gets it wrong. The analysis hinges on the difference between something called 
+"right invariant (Haar) measure" and "left invariant (Haar) measure" 
+(the "correct" one to use, as explained, for example, 
+in the  <a href="https://www.springer.com/gp/book/9780387960982">book</a> of Berger 
+(to which, by the way, Jaynes refers elsewhere in PTLTLoS)
+is the right one).
+In his generally very positive and friendly <a href="https://archive.siam.org/news/news.php?id=81">review</a> 
+Stanford statistician Persi Diaconis mentions that Jaynes has been accused of "not knowing his left from his right Haar measure". 
+In fact, in PT:TLoS Jaynes seems wholly oblivious to the issue in the first place. 
+His language is sufficiently imprecise to be confusing rather than enlightening 
+-- which is doubly strange since the explanations in Berger's book are considerably clearer.
+</p>
+
+<p>
+All of this "inference" business is about what to think, but who cares about that. 
+We want to know what to do! Thus, we need decision theory. 
+The shift in focus from inference to decision gives an occasion for some discoursing 
+on British vs. American priorities in life -- 
+which is particularly amusing given that the main credit for decision theory goes to the
+<a href="https://slatestarcodex.com/2017/05/26/the-atomic-bomb-considered-as-hungarian-high-school-science-fair-project/">hungarian</a>
+mathematician <a href="https://en.wikipedia.org/wiki/Abraham_Wald">Abraham Wald</a>, 
+of the "<a href="https://en.wikipedia.org/wiki/Survivorship_bias#In_the_military">it's the missing bullet hole locations that you need to worry about</a>" fame.
+(Wald's dramatic life story is second perhaps only to that of <a href="https://en.wikipedia.org/wiki/Alexander_Grothendieck">Alexander Grothendieck</a> in its Holywood potential.) 
+Wald's decision theory proceeds by assigning to each possible action (say: buy, sell) some utility, 
+dependent on the "true state of nature" (say, the price tomorrow). 
+The recommended action is then the one that maximizes the expected utility, "expected"  meaning average over your believes about the true state of nature 
+(i.e. tomorrow's price). That is, ignoring transaction costs: 
+buy if the expected utility of tomorrow's price is higher than utility of today's price, and sell otherwise. 
+(Of course the economists being naturally dismal talk about minimizing loss - or cost - 
+rather than maximizing utility.)
+</p>
+
+
+<p>
+This may sound trivial, but that's because we are already talking in the language of "believes about the true state of nature" -- 
+what a statistician may call "distribution of the model parameter",
+something which is not really allowed in "orthodox" or "frequentist" approach to statistics. 
+Instead, a frequentist might be concerned with a "decision procedure" or "strategy" based on some data, 
+i.e. some process that takes in data and spits out the action to take. 
+This procedure should not be too wild, and what "not too wild" means is formalized by Wald
+and is given the name "admissible" (a term which Jaynes seems to interpret as "good" and proceeds to rally against, 
+by providing some not-so good admissible strategies; I think simply interpreting "admissible" as "not obviously stupid"
+would've ameliorated that particular pet peeve).
+Then the triumph of Bayesianism is at hand: many years after starting the study of "admissible strategies", 
+Wald proved that they are all equivalent to starting with 
+some prior "believes about the true state of nature", updating them based on the data - via Bayes's theorem, of course - and then applying the "obvious" rule above.
+Moreover, in the case where the "decision" is actually "estimating a parameter",  by varying your utility/loss function and applying the above strategy, 
+one may recover such estimators as "take the poster maximum" (of which "classical" maximum likelihood is a special case), or "take the posterior mean".
+Jaynes rightly points out that the shape of loss function can change the decision quite drastically: 
+in deciding between cutting your hair too short or too long, one type of error is much less costly than another; 
+the cost of various errors in a "William Tell-type scenario" is even further from the usual models.
+</p>
+
+<p>
+With this - essentially final - layer of theory, we are ready for some applications, 
+first in distinguishing  a signal from the noise -and Jaynes does mean "signal" - 
+an electrical one, in volts (it is probably that one-third electrical engineer speaking), 
+and then in deciding what widgets to produce in our widget factory.
+While the first, simpler, task is arguably
+<a href="https://en.wikipedia.org/wiki/1983_Soviet_nuclear_false_alarm_incident">more important</a>,
+it is the later that is more revealing of both Jaynes's process and its flaws: the analysis is fine - great even -
+when taken on its own, but there are no sanity checks, no robustness analysis. 
+If I actually had a widget factory, I would probably assign a rather low weight to the whole thing,
+at least before hiring someone to vary the model and see how it flexes.
+</p>
+      
+<p>
+Among the issues that remain is the following.
+Imagine I have a coin. I may say that the probability that it will land heads on the next toss is half, 
+but this is far from capturing all my beliefs about the coin. 
+Perhaps I have personally forged the coin to the most exacting specifications, or perhaps I have never seen it before in my life. 
+Now, imagine I see it be tossed and come up heads 10 times in a row. 
+What would my prediction of the next toss be now? In the first case, still pretty close to 50-50 
+(perhaps my manufacturing process was flawed, or perhaps I should just hedge against  <a href="https://slatestarcodex.com/2015/08/20/on-overconfidence/">being overconfident</a>).
+In the second case I might start to suspect that the coin is not fair, and adjust my forecast accordingly. 
+The question before us is how to account for this difference. Jaynes takes this up in chapter 18, 
+and essentially invents a two-level
+<a href="https://en.wikipedia.org/wiki/Bayesian_hierarchical_modeling#Hierarchical_models">hierarchical Bayesian model</a>.
+Roughly, if I record my beliefs about the coin in a probability "density" I assign to various statements 
+A_p =(the coin is biased to flip heads with probability p), then I can update this density based on the observed results of flipping the coin. 
+The difference in the two scenarios above is in the initial shape of the distribution for A_p  - the "I forged this coin" initial distribution has a high peak near p=0.5, 
+while the "this is just some coin" one is more spread out 
+(incidentally, if our initial  distribution of believes about A_p 
+is in the <a href="https://en.wikipedia.org/wiki/Beta_distribution">Beta family</a>, 
+then this is particularly <a href="https://en.wikipedia.org/wiki/Conjugate_prior">easy to do</a>, which is what makes the section 18.5 work out).
+One thing to note however,  is that we are now talking about something like "probabilities of probabilities",
+and this is not what we discussed when we were talking about the whole "extension of logic" business. 
+In fact, I agree with the <a href="https://meaningness.com/probability-and-logic">the contention</a> 
+"logic" in "the logic of science" is to be initially understood as "propositional calculus" 
+(and that this is the setting of Cox's theorems), and with this hierarchical extension as "Aristotelian logic". 
+The question of probabilistic extensions of predicate (and higher-order) logic seems to be the subject of some current research.
+As to whether this has bearing on the question whether Bayesianism is "a complete theory of rationality" 
+is a question which is slightly too philosophical for my usual tastes. 
+</p>
+     
+
+<p> All of this is no doubt very thrilling (I mean, we are "only" solving the question of how one 
+should reason about - and act in!- the world; 
+we call it "inference" just to keep the excitement down and keep philosopher-logicians off our back). But it is
+not nearly as much fun as the numerous polemical tirades against "the orthodoxy", 
+be it of Fisher, Pearson, or Feller patriarchate.  </p>
+  
+  
+<h3> À la recherche du temps perdu.</h3>
+
+<p>Chapters 8, 16 and 17 give some account of - and Jaynesean commentary on - the classical statistics. 
+These were not there in the earlier drafts, which were more focused 
+on expounding Jaynes's theories and less on criticizing "the orthodoxy". 
+Perhaps this was also due to the ongoing nature of the polemic at the time. 
+In PT:TLoS the gloves are mostly off. 
+"Orthodox" statistics is described in terms of its "pathology" and "folly". 
+His main charge is that the methods are "ad hoc" - a phrase that appears 47 times in PT:TLoS.
+Coming from the work whose chief aim is to develop systematic rules of inference, 
+this is probably not surprising. </p>
+
+<p>
+If one were to pick out a single antagonist in the PT:TLoS it would have to be Sir Ronald Aylmer Fisher.
+One could say that Fisher was a geneticist and a statistician. Or, one could say that he was 
+"the greatest of Darwin’s successors" and  "the single most important figure in 20th century statistics". 
+Bradley Efron (another Stanford statistician) <a href="https://projecteuclid.org/journals/statistical-science/volume-13/issue-2/R-A-Fisher-in-the-21st-century-Invited-paper-presented/10.1214/ss/1028905930.full">writes</a> that "one
+difficulty in assessing the importance of Fisherian
+statistics is that it’s hard to say just what it is.
+Fisher had an amazing number of important ideas
+and some of them, like randomization inference and
+conditionality, are contradictory. It’s a little as if in
+economics Marx, Adam Smith and Keynes turned
+out to be the same person." 
+</p>
+
+<p>
+Among many charges Jaynes lays at Fisher is that of establishing statistics as a collection
+of (ad hoc!) recipes for analyzing data. In Jaynes's view Fisher's cookbooks (primarily  "<a href="https://en.wikipedia.org/wiki/Statistical_Methods_for_Research_Workers">Statistical Methods for Research Workers
+</a>", but also  <a href="https://en.wikipedia.org/wiki/The_Design_of_Experiments">The Design of Experiments
+</a>) established the situation in which a scientist was to follow the recipes, 
+but was not to question the reasoning behind these recipes. 
+</p>
+
+<p>
+Then, as per Jaynes:
+</p>
+
+<p>
+"Whenever a real scientific problem arose that was not covered by the published recipes,
+the scientist was expected to consult a professional statistician for advice on how to analyze
+his data, and often on how to gather them as well. There developed a statistician–client
+relationship rather like the doctor–patient one, and for the same reason. If there are simple
+unifying principles (as there are today in the theory we are expounding), then it is easy to
+learn them and apply them to whatever problem one has; each scientist can become his own
+statistician. But in the absence of unifying principles, the collection of all the empirical,
+logically unrelated procedures that a data analyst might need, like the collection of all the
+logically unrelated medicines and treatments that a sick patient might need, was too large
+for anyone but a dedicated professional to learn."
+</p>
+
+<p>
+Jaynes's statement that "deep change in the sociology of
+science – the relationship between scientist and statistician – is now underway" and that 
+"each scientist involved in data analysis can be his own
+statistician" seems premature. My impression is that basic courses in "applied statistics" 
+are routinely 
+taught without even attempting to impart much conceptual understanding, and for many scientists 
+doing your own statistics is still dangerously close to rolling your own crypto.
+</p>
+ 
+ <p>
+ Be that as it may, hardy anyone can be against getting scientists
+to understand the statistics they are practicing. According to Jaynes, 
+one of the earliest attempts to do this is the 1939 "Theory of Probability" by (future Sir) Harold Jefferys.
+</p>  
+
+<p>
+This book is perhaps the most direct prior influence on Jaynes and on PT:TLoS - 
+which, after all, is "dedicated to the memory of
+Sir Harold Jeffreys, who saw the truth and preserved it."
+</p> 
+
+<p>
+In Jaynes's telling, Jeffreys "was buried under an avalanche of
+criticism which simply ignored his mathematical demonstrations and substantive results
+and attacked his ideology".
+</p>
+
+<p>
+Jaynes writes:
+</p>
+
+<p>
+"We need to recognize that a large part of their differences arose from the fact that
+Fisher and Jeffreys were occupied with very different problems. Fisher studied biological
+problems, where one had no prior information and no guiding theory (this was long before
+the days of the DNA helix), and the data taking was very much like drawing from Bernoulli’s
+urn. Jeffreys studied problems of geophysics, where one had a great deal of cogent prior
+information and a highly developed guiding theory (all of Newtonian mechanics giving the
+theory of elasticity and seismic wave propagation, plus the principles of physical chemistry
+and thermodynamics), and the data taking procedure had no resemblance to drawing from
+an urn. Fisher, in his cookbook defines statistics as the study of populations;
+Jeffreys devotes virtually all of his analysis to problems of inference where there is no
+population."
+</p>
+
+<p>
+But just in case you had any doubt whose side he is on, Jaynes then adds:
+</p>
+
+<p>
+"What Fisher was never able to see is that, from Jeffreys’ viewpoint, Fisher’s biological
+problems were trivial, both mathematically and conceptually."
+</p>
+
+
+<p>
+Them are fightin words!
+</p>
+
+<p>
+Incidentally, Jaynes credits Fisher with having a "deep intuitive multidimensional space
+intuition", which allowed him to calculate many sampling distributions for the first time, 
+but points out  "that, just before
+starting to produce those results, Fisher spent a year (1912–1913) as assistant to the theoretical
+physicist Sir James Jeans, who was then preparing the second edition of his book
+on kinetic theory and worked daily on calculations with high-dimensional multivariate
+Gaussian distributions". 
+Yes, even these stem from a physicist whose last name starts with J!
+</p> 
+
+<p>
+A secondary antagonist is <a href="https://en.wikipedia.org/wiki/William_Feller">William Feller</a>,
+ the author of "the most successful treatise on probability ever written". 
+He is also accused by Jaynes of being too clever - and thus being able to get 
+away with not doing things systematically. According to Jaynes, "his readers get the impression that: (1)
+probability theory has no systematic methods; it is a collection of isolated, unrelated clever tricks,
+each of which works on one problem but not on the next one; (2) Feller was possessed of superhuman cleverness;
+(3) only a person with such cleverness can hope to find new useful results in probability theory" - 
+with the unstated implication that we should doubt all three. As an illustration of "clever tricks" Jaynes 
+chooses the following problem: 
+</p>
+
+
+<p>
+"Peter and Paul toss a coin alternately starting with Peter, and the one who
+first tosses ‘heads’ wins. What are the probabilities p, p' for Peter or Paul to win?
+</p>
+
+<p>
+The direct, systematic computation would sum (1/2)^n over the odd and even integers:
+p =Σ (1/2)^(2n+1)=2/3, p'=Σ (1/2)^(2n)=1/3.
+</p>
+
+
+<p>The clever trick notes instead that Paul will find himself in Peter’s shoes if Peter fails to
+win on the first toss: <i>ergo</i>, p' = p/2, so p = 2/3, p = 1/3."
+</p>
+
+<p>
+The "ergo" is saying that Paul will win if  (Peter does not win immediately) 
+and (Paul wins, given that Peter does not win immediately). The probability of the first clause is 1/2, 
+and that of the second is p (since after Peter tosses a tail  
+Paul's situation is the same as that of Peter at the start of the game); ergo, p' = p/2.
+</p>
+
+<p>
+Alternatively, one can solve this problem by saying instead that either Peter wins immediately, 
+or Paul wins on the second toss, or they are back where they started.
+In math, this says that p=1/2+1/4*p -- here 1/2 is the probability of Peter's immediate win,  1/4 is the probability of (Peter not winning immediately, then Paul not winning right after), 
+and p is the probability of (Peter wins from there).
+</p>
+
+<p>
+Of course, Jaynes himself can do things that are clever; 
+his dexterity with, among other things, generating functions, 
+transform methods, and asymptotic expansions, can appear magical to those not 
+trained as applied mathematicians or physicists.
+</p>
+
+<p>But there is additional irony here in that this "Peter and Paul problem" is exactly the wrong example with which 
+to complain about 
+“isolated clever tricks and gamesmanship”! In fact, thinking about a system moving between states 
+and analyzing how likely it is to reach certain 
+"terminal states" - i. e. setting up and analysing a Markov chain - is a fairly general method 
+to solve similar probability problems, well connected to other key areas of probability theory.</p>
+ 
+<p>This serves as an illustration of a deeper point - many clever tricks when well understood become powerful methods, 
+much more powerful indeed than straightforward but uninspiring computations.</p>
+
+<p>There is less disagreement here than may at first appear. 
+I agree with Jaynes in calling for “general mathematical techniques which will work not only on our present problem,
+but on hundreds of others”;
+it’s just that your current “general technique” may solve a given problem, 
+but not explain what is going on in it (mathematician Paul Zeitz calls this “How vs. Why”). 
+A clever trick may lead you to a better general theory, 
+closer to answering the “why” question — as indeed the Peter and Paul 
+coin tossing example illustrates. I am arguing not for gamesmanship, 
+but for bringing the game to the next level.
+</p>
+
+
+<p>
+There are many other things Jaynes has to say about "orthodox" statistics and statisticians. 
+One other such volley is a defense of Jeffreys in an argument with another "orthodox" statistician,
+Jerzy Neuyman, in which, according to Jaynes "Jeffreys is clearly right" - the conclusion that 
+I see as the only reason for including the episode in the book 
+(since the actual nature of the dispute is not given explicitly). 
+What is my reason for including it in this review? Well, having read the relevant
+parts of the original sources, I can report that Jeffreys was clearly wrong. 
+I encourage you to discuss whether 
+I am wrong that Jaynes is wrong that Neyman is wrong in the comments.
+</p>
+
+
+<p>
+In the <a href="https://archive.siam.org/news/news.php?id=81">review</a>   
+I have mentioned, Diaconis calls PT:TLoS "wonderfully out of date", saying that
+"the wonderful part is that Jaynes discusses
+and points to dozens of papers from the 1950s through the 1980s 
+that have slipped off the map." A noticeable fraction of this pointing is in fact
+pointing fingers at people doing things wrong. 
+It also forces the reader to either mostly ignore these sidetracks and discussions, 
+or to follow them up. Either strategy is admissible - and I have found the second one 
+quite rewarding when I followed it - 
+but it does make  reading the PT:TLoS much less straightforward.
+</p>
+
+<p>
+Jayenes's critiques are of course not limited to statistics.
+He has things to say on the set theory, measure theory, the infinite, Kolmogorov's 
+axiomatization of probability, generalized functions,
+Godel's incompleteness and so on. I was much reassured by Jaynes saying early on that
+"we shall find ourselves defending Kolmogorov
+against his critics on many technical points" - not because I think Kolmogorov needs defending, 
+but, conversely, because this increased my confidence that Jaynes's math will be mostly right.
+Yet the contents of Appendix B, in which much of the attack against modern mathematical 
+formalism is collected, convince me that Jaynes have not perceived the goals of finding the right
+language and level of generality for all things that underpin much of modern mathematical developments.
+To me his insistence that using these modern techniques leads to errors is akin to 
+complaining that summing infinite series leads to errors: sure it does, if you do it "naively", 
+or even if you do it in a complex but incorrect way. That's precisely why mathematicians have thought 
+long and hard about how one could do it without running into problems, 
+and developed multiple sophisticated and precise theories about this 
+(the most common of which they now teach in the "sequences and series" part of courses on mathematical analysis).</p>
+
+<p>
+In the same vein, I found the chapter on "paradoxes of probability theory" 
+the second most disappointing 
+(after the chapter on ignorance priors and transformation groups).
+</p>
+
+<p>
+In math, there are paradoxes of various kinds:  roughly, there are true statements that
+subvert naive intuition (a la Banach-Tarski paradox), 
+there are faulty demonstrations (Achilles and the tortoise),
+or arguments that reveal deficiency of terminology or of definition of terms (Russell's paradox).
+There remains a possibility of finding a paradox of yet another kind - a true contradiction, 
+but for the standard axioms of mathematics this has not yet happened. 
+Thus all "paradoxes" in PT:TLoS should be of the "non-contradictory" type. 
+Alas, some of them don't even rise to that level: "non-conglomerability" is essentially 
+a demonstration that assuming that probabilities satisfy only "finite additivity" 
+-- as opposed to the more restrictive "countable additivity" which is part of Kolmogorov's axioms
+ -- would allow some "probability" assignments that behave in pathological ways. 
+ This is a good example of something that may "defend Kolmogorov
+ against his critics on a technical point", but is hardly a paradox. 
+ The "Borel-Kolmogorov paradox" is mostly of terminological type - 
+ it poses a question of how to make sense of "conditioning on event of probability zero".
+ It was pretty much solved by Kolmogorov - the solution being that there is no
+  intrinsic sense in which one can talk about it, but one can sometimes do this if 
+ one has either a sequence of events of positive probability "converging" to the event in question
+(a resolution that Jaynes would love).
+ One common scenario is when the "event in question" is some "random variable" (in the technical sense) 
+ - this is what arises most commonly in practice. 
+ In full generality one has the theory of "disintegration" and of "conditioning on a sub sigma algebra". 
+ All of this is part of well-developed theory, so passionately criticised by Jaynes in Appendix B. 
+ Finally, the "marginalization paradox" is concerned with pathological behaviour of Bayesean inference in 
+ some situations where improper priors are used, and is part of what Diaconis calls Jaynes's 
+ "long-running debate with Dawid-Stone-Zideck".
+ I have delved into it to some depth during my read, 
+looking up some of the papers of Dawid-Stone-Zidek and all that, 
+but seems to have happily forgotten whatever insights I might have found there, other than 
+"improper priors are a constant source of trouble (but maybe not in exactly the way Jaynes thinks)". 
+If anyone has a better understanding, I'd be happy to be enlightened - especially if they 
+manage to find at least "one specific real application" where these insights are needed.
+</p>
+
+
+
+
+
+<h3>Exegi monumentum.</h3>
+
+
+<p>
+What are we to make of all this, 
+<a href="https://slatestarcodex.com/2017/03/16/book-review-seeing-like-a-state/">as</a>
+<a href="https://slatestarcodex.com/2016/12/02/contra-robinson-on-schooling/">the</a>
+<a href="https://slatestarcodex.com/2019/07/23/book-review-the-electric-kool-aid-acid-test/">saying</a>
+<a href="https://slatestarcodex.com/2015/09/05/if-you-cant-make-predictions-youre-still-in-a-crisis/">goes</a>?
+</p>
+ 
+ 
+ <p>
+PR:TLoS is, to put it mildly, a very special book. It is neither a textbook, nor a reference test, 
+nor a philosophical treatise, nor a history book - and it is a bit of all of those. 
+It is singularly shaped by the person of E. T. Jaynes: by his "two thirds theoretical physicist and one-third 
+electrical engineer" background, with its consequent interest in radards and in statistical mechanics, 
+by his unconventional thinking, 
+his polemic style of his long-standing disputes with statisticians of his age,
+and by his untimely death.
+</p>
+  
+<p>
+It's chapters written earlier and polished for longer are some of the strongest, while those added late 
+are often more open to criticism or incomplete. Yet for all those flaws, it's influence is tremendous 
+- it has 7.5 thousand citations, including in such high impact texts as Taleb's "Black Swan", 
+Goodfellow et al.'s "Deep Learning",  Koller and Friedman's "Probabilistic graphical models" 
+and many others. Notably, some of the references simply recommend it as 
+"an additional resource" on probability and information theory for those with
+"absolutely no prior experience with these subjects" or even "to the general reader"
+- a use for which I find it rather poorly suited, 
+and not just because it lacks many of the more recent developments. 
+At best, it may serve as a kind of "A Companion to Probability: 
+<a href="https://www.maa.org/press/maa-reviews/a-companion-to-analysis-a-second-first-and-first-second-course-in-analysis">A Second First and A Fist Second Course</a>
+in Probability"). 
+Overall, it may be one of these books that many wish to have read, 
+but not as many wish to actually read. 
+</p>
+     
+ <p>
+If this review seems overly critical - and though I do feel mildly apprehensive putting out a review of the work of 
+<a href="https://www.lesswrong.com/posts/kXSETKZ3X9oidMozA/the-level-above-mine">Nosferatu</a>
+himself, how critical can I really be, given the amount of time I willingly spent with this tome? 
+- it may be because Jaynes has by now, won many of his battles.
+It is difficult to appreciate an insight once it becomes the usual mode of thinking, 
+the <a href="https://en.wikipedia.org/wiki/This_Is_Water">proverbial water</a>.
+It is also, however, because the book itself is incomplete, and often frustrating. 
+
+
+  
+<p>
+In very first paragraph of the editor's preface, Larry Butterhurst explains: </p>
+
+<p>
+"I could have written [the] latter chapters and
+filled in the missing pieces, but if I did so, the work would no longer be Jaynes’; rather, it
+would be a Jaynes–Bretthorst hybrid with no way to tell which material came from which
+author. In the end, I decided the missing chapters would have to stay missing – the work
+would remain Jaynes’".
+</p>
+
+<p>
+This is a decision which one
+<a href="https://www.amazon.com/gp/customer-reviews/RUJH5ZTNY9VH1/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8&ASIN=0521592712"">Amazon review</a>
+calls "a bad mistake", saying "What [Jaynes] needed was an editor, but what he got instead was a hagiographer." 
+This is certainly how I felt when I was reading the book; now I am less sure. 
+Once you have struggled through it, the motivation to make the struggle less onerous diminishes, 
+and you begin to think that "keeping the work Jaynes'" may actually be a valid consideration, 
+and not just a lazy cop out you thought it to be whilst in the thick of it all.
+</p>
+
+<p>
+And yet I, too, find myself mourning for what this book could have been. I admit 
+that sometimes when faced with a choice (vanilla or chocolate? black jeans or blue?) I simply choose both.
+We already have the Jaynes's version. Can we not get the "completed version" as well? 
+Could we not write the missing chapters, explain the cryptic references, 
+solve the unsolved exercises and release the result to the world?
+Someone who is better than me at organizing things, and someone who knows more than me about copyright and publishing
+would need to think about it. On the one hand, we are in the 21st century, with the power of internet, 
+crowdsourcing and social campaigns. On the other hand, it is
+my understanding that it will almost be the 22nd century 
+before the copyright for PT:TLoS expires.
+</p>
+
+<p>
+And while we wait for that, we read the version we have. 
+The version which makes clear Jaynes's message: "progress in science
+goes forward on the shoulders of doubters, not believers". 
+The version that urges you to  think for yourself rather than to defer to the "orthodoxy", 
+whatever it may be called in your time - to see the truth and preserve it.
+</p>
